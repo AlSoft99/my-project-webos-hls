@@ -1,0 +1,20 @@
+/* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.frame-cell{
+	text-align: center;
+}
+.frame-bottom{
+	border-bottom:1px solid #B5A79C;
+}
+.frame-top{
+	border-top:1px solid #B5A79C;margin-top:1px;padding-top:1px;
+}
+.frame-body{
+	border-radius:5px;border: 1px solid #B8ADA9;box-shadow	: 3px 3px 0 rgba(184,173,169, .15), -3px -3px 0 rgba(184,173,169, .15), 3px -3px 0 rgba(184,173,169, .15), -3px 3px 0 rgba(184,173,169, .15); 
+	background-color:#CCD5D4; position:absolute;bottom:0;z-index:10;left:0;width:100%;height:50%;opacity:.75;
+}
+.frame-select{
+	background-color: #F4C1B0;border: 1px solid #B8ADA9;
+}
+.frame-state{
+	position:absolute;bottom:0;left:20px;
+}
