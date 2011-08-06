@@ -3,5 +3,6 @@ enyo.depends(
 	"library/main.js",
 	"library/life.js",
 	"library/state.js",
+	"library/view-item.js",
 	"css/main.css"
 );
