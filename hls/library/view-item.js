@@ -167,5 +167,9 @@ enyo.kind({
 				]}
 			]}
 		]}
-	]
+	],
+	buttonClick:function(){
+		console.log(enyo.$);
+		enyo.$.main_pane.selectView(enyo.$.main_otherView);
+	}
 });
