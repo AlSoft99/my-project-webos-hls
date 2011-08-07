@@ -1,8 +1,12 @@
 /* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
 enyo.depends(
-	"library/main.js",
-	"library/life.js",
-	"library/state.js",
-	"library/view-item.js",
+	"script/framework.js",
+	"script/view/welcome.js",
+	"script/view/view-item.js",
+	"script/view/validate.js",
+	"script/view/main.js",
+	"script/view/item/life.js",
+	"script/view/item/state.js",
+	
 	"css/main.css"
 );
