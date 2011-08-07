@@ -1,0 +1,10 @@
+enyo.kind({
+	name:"enyo.Validate",
+	kind:enyo.VFlexBox,
+	components:[
+		{kind:enyo.Button,content:"Validate",onclick:"goNext"}
+	],
+	goNext:function(){
+		enyo.$.frameWork.next()
+	}
+});

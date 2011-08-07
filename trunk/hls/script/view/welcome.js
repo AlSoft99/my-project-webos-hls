@@ -1,0 +1,10 @@
+enyo.kind({
+	name:"enyo.Welcome",
+	kind:enyo.VFlexBox,
+	components:[
+		{kind:enyo.Button,content:"Welcome",onclick:"goNext"}
+	],
+	goNext:function(){
+		enyo.$.frameWork.next()
+	}
+});
