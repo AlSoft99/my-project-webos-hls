@@ -5,6 +5,6 @@ enyo.kind({
 		{kind:enyo.Button,content:"Welcome",onclick:"goNext"}
 	],
 	goNext:function(){
-		enyo.$.frameWork.next()
+		enyo.$.frameWork.next();
 	}
 });
