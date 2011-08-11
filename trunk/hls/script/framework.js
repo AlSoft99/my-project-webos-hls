@@ -9,3 +9,6 @@ enyo.kind({
         {kind: "enyo.Main"}
     ]
 });
+$(function(){
+	setTimeout();
+})

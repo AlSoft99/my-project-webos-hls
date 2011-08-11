@@ -1,8 +1,11 @@
 enyo.kind({
 	name:"enyo.Welcome",
+	style:"padding:5px;",
 	kind:enyo.VFlexBox,
 	components:[
-		{kind:enyo.Button,content:"Welcome",onclick:"goNext"}
+		{kind:enyo.Control,content:"车载医疗救护系统",className:"header-title"},
+		{kind:enyo.Control,content:"请使用您的身份卡",className:"welcome-body",flex:1},
+		{kind:enyo.Button,content:"下一步",onclick:"goNext"}
 	],
 	goNext:function(){
 		enyo.$.frameWork.next();

@@ -1,4 +1,9 @@
 /* Copyright 2009-2011 Hewlett-Packard Development Company, L.P. All rights reserved. */
+.body{
+	-webkit-border-image: url("../images/background.png") 10 10 10 10 stretch stretch;
+	height:100%;
+	width:100%;
+}
 .frame-cell{
 	text-align: center;
 }
@@ -11,14 +16,12 @@
 .frame-body{
 	position:absolute;bottom:0;z-index:10;left:0;width:100%;height:50%;opacity:.75;
 }
-.body{
-	-webkit-border-image: url("../images/background.png") 10 10 10 10 stretch stretch;
-	height:100%;
-	width:100%;
-}
 .frame-select{
 	-webkit-border-image: url("../images/main/box_red.png") 10 10 10 10 stretch stretch;border-width: 10px;-webkit-box-sizing: border-box;
 }
 .frame-state{
 	position:absolute;bottom:0;left:20px;
+}
+.header-title{
+	padding-right:45px;background:url(../images/logo.png) no-repeat right center;height:40px;line-height: 40px;font-size: 13px;text-align: right;font-weight: bold;color: white;
 }
