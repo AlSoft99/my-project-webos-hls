@@ -11,35 +11,13 @@
 .frame-body{
 	position:absolute;bottom:0;z-index:10;left:0;width:100%;height:50%;opacity:.75;
 }
-.frame-unselect-1{
-	background:url(../images/frame-cover/popup_1.png) no-repeat;width:30px;height:30px;
-}
-.frame-unselect-2{
-	background:url(../images/frame-cover/popup_2.png) repeat-x;height:30px;
-}
-.frame-unselect-3{
-	background:url(../images/frame-cover/popup_3.png) no-repeat;width:30px;height:30px;
-}
-.frame-unselect-4{
-	background:url(../images/frame-cover/popup_4.png) repeat-y;width:30px;
-}
-.frame-unselect-5{
-	background:url(../images/frame-cover/popup_5.png) repeat-y;width:30px;
-}
-.frame-unselect-6{
-	background:url(../images/frame-cover/popup_6.png) no-repeat;width:30px;height:30px;
-}
-.frame-unselect-7{
-	background:url(../images/frame-cover/popup_7.png) repeat-x;height:30px;
-}
-.frame-unselect-8{
-	background:url(../images/frame-cover/popup_8.png) no-repeat;width:30px;height:30px;
-}
-.frame-unselect-color{
-	background-color:black;
+.body{
+	-webkit-border-image: url("../images/background.png") 10 10 10 10 stretch stretch;
+	height:100%;
+	width:100%;
 }
 .frame-select{
-	background-color: #F4C1B0;border: 1px solid #B8ADA9;
+	-webkit-border-image: url("../images/main/box_red.png") 10 10 10 10 stretch stretch;border-width: 10px;-webkit-box-sizing: border-box;
 }
 .frame-state{
 	position:absolute;bottom:0;left:20px;
