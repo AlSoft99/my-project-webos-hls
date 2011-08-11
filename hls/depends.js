@@ -10,5 +10,6 @@ enyo.depends(
 	"script/view/item/life.js",
 	"script/view/item/state.js",
 	
-	"css/main.css"
+	"css/main.css",
+	"css/welcome.css"
 );
