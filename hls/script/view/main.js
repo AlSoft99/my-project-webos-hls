@@ -3,7 +3,7 @@ enyo.kind({
 	kind:"HFlexBox",
 	style:"padding:10px;",
 	components:[
-   		{kind:"ViewItem"},
+   		{kind:"MainItem"},
    		{kind:"VFlexBox",components:[
         		{kind:enyo.Control,content:"hp header",style:"text-align:right;"},
         		{kind: "Pane", transitionKind: "enyo.transitions.LeftRightFlyin", components: [
