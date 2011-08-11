@@ -4,7 +4,7 @@ enyo.depends(
 		
 	"script/framework.js",
 	"script/view/welcome.js",
-	"script/view/view-item.js",
+	"script/view/main-item.js",
 	"script/view/validate.js",
 	"script/view/main.js",
 	"script/view/item/life.js",
