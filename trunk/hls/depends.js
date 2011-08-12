@@ -11,5 +11,6 @@ enyo.depends(
 	"script/view/item/state.js",
 	
 	"css/main.css",
-	"css/welcome.css"
+	"css/welcome.css",
+	"css/validate.css"
 );

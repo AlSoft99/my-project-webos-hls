@@ -9,5 +9,6 @@ enyo.kind({
 	],
 	goNext:function(){
 		enyo.$.frameWork.next();
+		change();
 	}
 });
