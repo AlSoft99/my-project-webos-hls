@@ -1,4 +1,8 @@
 .check-progress-button{
 	-webkit-border-image:url("../images/main/box_blue.png") 10 10 10 10 stretch stretch;
 	background-color:transparent;
+	border-width: 10px;
+}
+.check-progress-button .enyo-progress-button-inner{
+	margin: -5px;
 }

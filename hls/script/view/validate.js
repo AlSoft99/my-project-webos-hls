@@ -1,3 +1,4 @@
+var progressbarIndex = 1;
 enyo.kind({
 	name:"enyo.Validate",
 	kind:enyo.VFlexBox,
@@ -8,19 +9,24 @@ enyo.kind({
 	    	{kind:enyo.HFlexBox,flex:1.5,components:[
 	    		{kind:enyo.Control,flex:1},
 	    		{kind:enyo.VFlexBox,flex:2.5,components:[
-       	    		{kind:enyo.Control,flex:1,content:"XXX 医生您好："},
-       	    		{kind:enyo.Control,flex:1,content:"系统正在接收信息"},
-       	    		{kind:enyo.ProgressButton,className:"check-progress-button",animationPosition:true}
+       	    		{kind:enyo.Control,flex:2,style:"font-size:25px;font-weight:bold;",content:"XXX 医生您好："},
+       	    		{kind:enyo.Control,flex:1,style:"font-weight:bold;",content:"系统正在接收信息..."},
+       	    		{kind:enyo.ProgressButton,className:"check-progress-button",cancelable:false,animationPosition:true}
        	    	]},
        	    	{kind:enyo.Control,flex:1}
 	    	]},
 	    	{kind:enyo.Control,flex:1}
-	    ]},
-		{kind:enyo.Button,content:"Validate",onclick:"goNext"}
-	],
-	goNext:function(){
-		//enyo.$.frameWork.next()
-		var p = enyo.$.frameWork_validate_progressButton;
-		p.setPosition(50);
-	}
+	    ]}
+	]
 });
+function change(){
+	var p = enyo.$.frameWork_validate_progressButton;
+	p.setPosition(progressbarIndex);
+	progressbarIndex+=2;
+	if(progressbarIndex<=100){
+		setTimeout(change,50);
+	}else{
+		p.setPosition(100);
+		enyo.$.frameWork.next();
+	}
+}
