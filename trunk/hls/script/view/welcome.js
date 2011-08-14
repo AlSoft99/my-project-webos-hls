@@ -5,10 +5,12 @@ enyo.kind({
 	components:[
 		{kind:enyo.Control,content:"车载医疗救护系统",className:"header-title"},
 		{kind:enyo.Control,content:"请使用您的身份卡",className:"welcome-body",flex:1},
-		{kind:enyo.Button,content:"下一步",onclick:"goNext"}
+		{kind:enyo.Button,content:"验证身份",onclick:"goNext"}
 	],
 	goNext:function(){
 		enyo.$.frameWork.next();
 		change();
-	}
+	},
+    rendered:function(){
+    }
 });
