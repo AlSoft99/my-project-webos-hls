@@ -4,6 +4,9 @@
 	height:100%;
 	width:100%;
 }
+.header-title{
+	padding-right:45px;background:url(../images/logo.png) no-repeat right center;height:40px;line-height: 40px;font-size: 13px;text-align: right;font-weight: bold;color: white;
+}
 .frame-cell{
 	text-align: center;
 }
@@ -14,14 +17,71 @@
 	border-top:1px solid #B5A79C;margin-top:1px;padding-top:1px;
 }
 .frame-body{
-	position:absolute;bottom:0;z-index:10;left:0;width:100%;height:50%;opacity:.75;
+	position:absolute;bottom:0;z-index:10;left:0;width:100%;height:60%;opacity:.75;-webkit-border-image: url("../images/main/box_blue.png") 10 10 10 10 stretch stretch;border-width: 10px;-webkit-box-sizing: border-box;
+}
+.frame-footer{
+	text-align: center;-webkit-border-image: url("../images/main/box_blue.png") 10 10 10 10 stretch stretch;border-width: 10px;-webkit-box-sizing: border-box;font-size: .7em;font-weight: bold;-webkit-box-orient: vertical;-webkit-box-pack: center;display: -webkit-box;
 }
 .frame-select{
 	-webkit-border-image: url("../images/main/box_red.png") 10 10 10 10 stretch stretch;border-width: 10px;-webkit-box-sizing: border-box;
 }
 .frame-state{
-	position:absolute;bottom:0;left:20px;
+	position:absolute;bottom:0;left:10px;padding-bottom: 10%;font-weight: bold;font-size: .7em;
 }
-.header-title{
-	padding-right:45px;background:url(../images/logo.png) no-repeat right center;height:40px;line-height: 40px;font-size: 13px;text-align: right;font-weight: bold;color: white;
+.frame-tab-off-1{
+	background:url(../images/main/icon_1_off.png) no-repeat right;
+}
+.frame-tab-off-2{
+	background:url(../images/main/icon_2_off.png) no-repeat right;
+}
+.frame-tab-off-3{
+	background:url(../images/main/icon_3_off.png) no-repeat right;
+}
+.frame-tab-off-4{
+	background:url(../images/main/icon_4_off.png) no-repeat right;
+}
+.frame-tab-off-5{
+	background:url(../images/main/icon_5_off.png) no-repeat right;
+}
+.frame-tab-off-6{
+	background:url(../images/main/icon_6_off.png) no-repeat right;
+}
+.frame-tab-off-7{
+	background:url(../images/main/icon_7_off.png) no-repeat right;
+}
+.frame-tab-on-1{
+	background:url(../images/main/icon_1_on.png) no-repeat right;
+}
+.frame-tab-on-2{
+	background:url(../images/main/icon_2_on.png) no-repeat right;
+}
+.frame-tab-on-3{
+	background:url(../images/main/icon_3_on.png) no-repeat right;
+}
+.frame-tab-on-4{
+	background:url(../images/main/icon_4_on.png) no-repeat right;
+}
+.frame-tab-on-5{
+	background:url(../images/main/icon_5_on.png) no-repeat right;
+}
+.frame-tab-on-6{
+	background:url(../images/main/icon_6_on.png) no-repeat right;
+}
+.frame-tab-on-7{
+	background:url(../images/main/icon_7_on.png) no-repeat right;
+}
+.blue-box{
+	-webkit-border-image: url("../images/main/box_blue.png") 10 10 10 10 stretch stretch;border-width: 10px;-webkit-box-sizing: border-box;position: relative;
+}
+.red-box{
+	-webkit-border-image: url("../images/main/box_red.png") 10 10 10 10 stretch stretch;border-width: 10px;-webkit-box-sizing: border-box;position: relative;
+}
+.box-close{
+	background: url("../images/main/small_icon_5.png") no-repeat;width: 35px;height: 35px;position: absolute;z-index: 10;top: 10px;right: 10px;
+}
+.box-content{
+	padding:10px;
+}
+.box-center{
+	-webkit-box-orient: vertical;-webkit-box-pack: center;display: -webkit-box;text-align: center;
 }

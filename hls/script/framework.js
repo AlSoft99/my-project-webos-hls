@@ -1,7 +1,7 @@
 enyo.kind({
 	name:"enyo.FrameWork",
 	kind:enyo.Pane,
-	transitionKind: "enyo.transitions.LeftRightFlyin",
+	/*transitionKind: "enyo.transitions.LeftRightFlyin",*/
 	className:"body",
 	components: [
         {kind: "enyo.Welcome"},
@@ -9,6 +9,3 @@ enyo.kind({
         {kind: "enyo.Main"}
     ]
 });
-$(function(){
-	setTimeout();
-})
