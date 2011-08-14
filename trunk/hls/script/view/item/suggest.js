@@ -1,0 +1,19 @@
+enyo.kind({
+	name:"enyo.Suggest",
+	kind:enyo.HFlexBox,
+	style:"padding-bottom:2%;",
+	components:[
+		{kind:enyo.VFlexBox,components:[
+			{kind:enyo.VFlexBox,className:"blue-box box-content",components:[
+				{kind:enyo.Control,content:"建议:",className:"history-content-title"},
+				{kind:enyo.Scroller,flex:1,components:[
+					{kind:enyo.Control,content:"内容"}
+				]},
+				{kind:enyo.Control,className:"box-close"}
+			],flex:1}
+		],flex:3},
+		{kind:enyo.VFlexBox,style:"padding-left:2%;",components:[
+         	{kind:"enyo.PersonRed",flex:1}
+ 		],flex:1}
+	]
+});
