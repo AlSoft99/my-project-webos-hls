@@ -21,10 +21,11 @@ enyo.kind({
 });
 function change(){
 	var p = enyo.$.frameWork_validate_progressButton;
+	progressbarIndex+=20;
 	p.setPosition(progressbarIndex);
-	progressbarIndex+=2;
+	
 	if(progressbarIndex<=100){
-		setTimeout(change,50);
+		setTimeout(change,1000);
 	}else{
 		p.setPosition(100);
 		enyo.$.frameWork.next();
