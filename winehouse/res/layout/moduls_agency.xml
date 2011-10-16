@@ -10,7 +10,7 @@
     </LinearLayout>
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout2">
         <TextView android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView2" android:text="@string/floor_filter" android:layout_width="wrap_content"></TextView>
-        <Spinner android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content" android:id="@+id/floor_spinner"></Spinner>
+        <Spinner android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content" android:id="@+id/floor_spinner" android:layout_marginLeft="10px"></Spinner>
     </LinearLayout>
     <ScrollView android:layout_height="wrap_content" android:id="@+id/scrollView1" android:layout_width="match_parent">
     	<LinearLayout android:layout_width="match_parent" android:id="@+id/floor_desk" android:layout_height="match_parent" android:orientation="vertical"></LinearLayout>
