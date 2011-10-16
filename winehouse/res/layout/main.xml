@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/frameLayout1" android:layout_height="fill_parent" android:layout_width="fill_parent">
+	<LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="15px"
+	    android:gravity="center_horizontal"
+	    >
+	    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:weightSum="1" android:paddingTop="5px" android:paddingBottom="5px">
+	        <ImageView android:layout_width="wrap_content" android:id="@+id/imageView2" android:layout_height="wrap_content" android:src="@android:drawable/ic_lock_idle_lock"></ImageView>
+	        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="@string/userlogin"></TextView>
+	    </LinearLayout>
+		<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1">
+		    <ImageView android:layout_width="wrap_content" android:id="@+id/imageView1" android:layout_height="wrap_content" android:src="@android:drawable/ic_menu_recent_history"></ImageView>
+		    <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_gravity="center_vertical" android:gravity="center_vertical" android:layout_weight="1" android:text="@string/welcome" android:id="@+id/login.title"></TextView>
+		    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingLeft="30px" android:paddingRight="30px" android:text="@string/register" android:id="@+id/register"></Button>
+		</LinearLayout>
+		<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="请输入用户名" android:layout_marginTop="10px" android:id="@+id/username">
+			<requestFocus></requestFocus>
+		</EditText>
+		<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPassword" android:hint="请输入密码" android:layout_marginTop="10px" android:id="@+id/password"></EditText>
+		<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout3" android:layout_marginTop="10px">
+			<TextView android:text="" android:id="@+id/textView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"></TextView>
+			<Button android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/login" android:id="@+id/login"></Button>
+			<TextView android:text="" android:id="@+id/textView4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"></TextView>
+		</LinearLayout>
+		<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout4" android:layout_marginTop="10px">
+			<TextView android:text="" android:id="@+id/textView5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"></TextView>
+			<Button android:layout_weight="1" android:text="@string/exit" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/exit"></Button>
+			<TextView android:text="" android:id="@+id/textView6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"></TextView>
+		</LinearLayout>
+	</LinearLayout>
+	
+	
+</FrameLayout>

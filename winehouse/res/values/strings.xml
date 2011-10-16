@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, MycadillacActivity!</string>
+    <string name="app_name">Mycadillac</string>
+    <string name="login">登录</string>
+    <string name="welcome">欢迎使用新业酒店系统</string>
+    <string name="username">用户名</string>
+    <string name="userlogin">用户登录</string>
+    <string name="register">注册</string>
+    <string name="exit">退出</string>
+    <string name="load">正在读取中...</string>
+    <string name="index_title">欢迎您, </string>
+    <string name="back">返回</string>
+    <string name="agency_title">开启台面</string>
+    <string name="floor_filter">楼面过滤  </string>
+</resources>
