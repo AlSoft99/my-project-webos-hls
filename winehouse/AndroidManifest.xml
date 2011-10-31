@@ -18,5 +18,11 @@
 		</activity>
 		<activity android:name="IndexActivity"></activity>
 		<activity android:name=".moduls.AgencyActivity"></activity>
+		<activity android:name=".moduls.ScannerActivity"></activity>
     </application>
+    
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>      
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>      
+    <uses-feature android:name="android.hardware.camera" />      
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 </manifest>
