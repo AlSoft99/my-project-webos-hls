@@ -9,6 +9,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
@@ -30,6 +33,7 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
 import com.util.PlanarYUVLuminanceSource;
+import com.util.Util;
 
 public class ScannerActivity extends Activity {
 	/** Called when the activity is first created. */      
@@ -44,6 +48,8 @@ public class ScannerActivity extends Activity {
     final static int width = 480;      
     final static int height = 320;      
     int dstLeft, dstTop, dstWidth, dstHeight;  
+    final int DIALOG1=1;
+    String dialogContext = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -106,7 +112,9 @@ public class ScannerActivity extends Activity {
                 String strResult = "BarcodeFormat:"      
                         + result.getBarcodeFormat().toString() + "  text:"      
                         + result.getText();      
-                txtScanResult.setText(strResult);      
+                txtScanResult.setText(strResult); 
+                dialogContext = strResult;
+                showDialog(DIALOG1);
             } catch (Exception e) {      
                 txtScanResult.setText("Scanning");     
                 sfhCamera.AutoFocusAndPreviewCallback();  
@@ -142,4 +150,16 @@ public class ScannerActivity extends Activity {
             e.printStackTrace();   
         }   
     }
+    @Override  
+    protected Dialog onCreateDialog(int id) {  
+        switch (id) {  
+        case DIALOG1:  
+            return Util.dialogOneBtn(ScannerActivity.this, "扫描结果", dialogContext);  
+  
+        default:  
+            break;  
+        }  
+        return super.onCreateDialog(id);  
+    }  
+	
 }
