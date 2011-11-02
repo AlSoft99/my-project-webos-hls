@@ -9,9 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
@@ -106,7 +104,7 @@ public class ScannerActivity extends Activity {
             MultiFormatReader reader = new MultiFormatReader();      
             try {      
                 saveImage(mBitmap);  
-                Hashtable hints = new Hashtable();    
+                Hashtable<DecodeHintType, String> hints = new Hashtable<DecodeHintType, String>();    
                 hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");    
                 Result result = reader.decode(bitmap,hints);      
                 String strResult = "BarcodeFormat:"      
