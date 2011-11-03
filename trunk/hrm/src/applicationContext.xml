@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  	http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  	http://www.springframework.org/schema/tx 
+  	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  	http://www.springframework.org/schema/context 
+  	http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+  	> 
+	<!-- 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/hrm?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="g55068070"></property>
+	</bean>
+	 -->
+	 <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	  	<property name="jndiName">
+	    	<value>java:comp/env/jdbc/ebus</value>
+	  	</property>
+	</bean>
+	 
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">com.cn.common.MySQLDialect</prop> 
+				<prop key="hibernate.show_sql">true</prop>
+				<!--  
+				<prop key="connection.useUnicode">true</prop>
+				<prop key="connection.characterEncoding">UTF-8</prop>-->
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/hrm/entity/UserInfo.hbm.xml</value>
+				<value>com/hrm/entity/RoleInfo.hbm.xml</value>
+				<value>com/hrm/entity/MenuLevelStair.hbm.xml</value>
+				<value>com/hrm/entity/MenuLevelBinary.hbm.xml</value>
+				<value>com/hrm/entity/RoleMenuStair.hbm.xml</value>
+				<value>com/hrm/entity/RoleMenuBinary.hbm.xml</value>
+				<value>com/hrm/entity/EmployeeList.hbm.xml</value>
+				<value>com/hrm/entity/EmployeeInfo.hbm.xml</value>
+				<value>com/hrm/entity/WelfareParam.hbm.xml</value>
+				
+				<value>com/hrm/entity/GoodsType.hbm.xml</value>
+				<value>com/hrm/entity/GoodsList.hbm.xml</value>
+				<value>com/hrm/entity/DayGoodsClear.hbm.xml</value>
+				<value>com/hrm/entity/StoreOutputInfo.hbm.xml</value>
+				<value>com/hrm/entity/GoodsOutputInfo.hbm.xml</value>
+				<value>com/hrm/entity/ParamsType.hbm.xml</value>
+				<value>com/hrm/entity/ParamsList.hbm.xml</value>
+				<value>com/hrm/entity/StoreOutputList.hbm.xml</value>
+				<value>com/hrm/entity/GoodsOutputList.hbm.xml</value>
+				<value>com/hrm/entity/GoodsStat.hbm.xml</value>
+				<value>com/hrm/entity/StoreInputInfo.hbm.xml</value>
+				<value>com/hrm/entity/StoreType.hbm.xml</value>
+				<value>com/hrm/entity/StoreInputList.hbm.xml</value>
+				<value>com/hrm/entity/StoreParamsInfo.hbm.xml</value>
+				<value>com/hrm/entity/StoreList.hbm.xml</value>
+				<value>com/hrm/entity/GoodsMonthStat.hbm.xml</value>
+				<value>com/hrm/entity/OutUserList.hbm.xml</value>
+				<value>com/hrm/entity/StoreGoodsClear.hbm.xml</value>
+				<value>com/hrm/entity/DayClearChk.hbm.xml</value></list>
+		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+ 	<bean id="PointCut" class="com.hrm.filter.PointCut">
+		<property name="proxyList">
+			<list>
+				<ref bean="Mod_CheckLogin"/>
+			</list>
+		</property>
+	</bean>
+	<aop:config>
+		<aop:pointcut id="productServiceMethods" expression="execution(* com.hrm.vo.*Vo.execute(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="productServiceMethods" />
+		<aop:aspect ref="PointCut">
+			<aop:pointcut expression="execution(* com.hrm.vo.*Vo.execute(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)) and args(request,response)" id="proxy"/>
+			<aop:before method="filter" pointcut-ref="proxy"/>
+		</aop:aspect>
+	</aop:config>
+	<bean id="Mod_CheckLogin" class="com.hrm.filter.CheckLogin"></bean> 
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="delete" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="update" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="find*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="logic" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="execute" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<tx:method name="*" read-only="true" rollback-for="java.lang.Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	<context:property-placeholder location="classpath:socket.properties"/>
+	<bean id="hia" class="com.cn.voa.Hia">
+		<property name="len" value="0"/>
+		<property name="txCode" value="1@L6"/>
+		<property name="header" value="2@L100"/>
+	</bean>
+	<bean id="hoa" class="com.cn.voa.Hoa">
+		<property name="len" value="0"/>
+		<property name="txCode" value="2@L6"/>
+		<property name="respMsg" value="3@L20"/>
+	</bean>
+	
+</beans>

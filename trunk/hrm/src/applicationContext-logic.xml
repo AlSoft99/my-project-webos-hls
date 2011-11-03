@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  	http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  	http://www.springframework.org/schema/tx 
+  	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"> 
+  	
+  	<bean id="initData" class="com.hrm.server.InitData" init-method="init">
+  		<property name="roleInfoDAO">
+  			<ref bean="RoleInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="optionServlet" class="com.hrm.server.OptionServlet"/>
+  	<bean id="optionsChangeServlet" class="com.hrm.server.OptionsChangeServlet"/>
+  	<bean id="optionSqlServlet" class="com.hrm.server.OptionSqlServlet">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="userInfoQueryVo" class="com.hrm.query.UserInfoQueryVo">
+  		<property name="userInfoDAO">
+  			<ref bean="UserInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="userInfoVo" class="com.hrm.vo.UserInfoVo">
+  		<property name="userInfoDAO">
+  			<ref bean="UserInfoDAO"/>
+  		</property> 
+  		<property name="roleInfoDAO">
+  			<ref bean="RoleInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="roleInfoQueryVo" class="com.hrm.query.RoleInfoQueryVo">
+  		<property name="roleInfoDAO">
+  			<ref bean="RoleInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="roleInfoVo" class="com.hrm.vo.RoleInfoVo">
+  		<property name="roleInfoDAO">
+  			<ref bean="RoleInfoDAO"/>
+  		</property> 
+  	</bean>
+  	<bean id="menuRoleVo" class="com.hrm.vo.MenuRoleVo">
+  		<property name="roleInfoDAO">
+  			<ref bean="RoleInfoDAO"/>
+  		</property> 
+  		<property name="menuLevelStairDAO">
+  			<ref bean="MenuLevelStairDAO"/>
+  		</property>
+  		<property name="menuLevelBinaryDAO">
+  			<ref bean="MenuLevelBinaryDAO"/>
+  		</property>
+  		<property name="roleMenuStairDAO">
+  			<ref bean="RoleMenuStairDAO"/>
+  		</property>
+  		<property name="roleMenuBinaryDAO">
+  			<ref bean="RoleMenuBinaryDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="employeeInfoQueryVo" class="com.hrm.vo.EmployeeInfoQueryVo">
+  		<property name="employeeInfoDAO">
+  			<ref bean="EmployeeInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="welfareParamsVo" class="com.hrm.vo.WelfareParamsVo">
+  		<property name="welfareParamDAO">
+  			<ref bean="WelfareParamDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="employeeInfoVo" class="com.hrm.vo.EmployeeInfoVo">
+  		<property name="employeeInfoDAO">
+  			<ref bean="EmployeeInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="treeInfoQuery" class="com.hrm.query.TreeInfoQuery">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="queryInfoVo" class="com.hrm.query.QueryInfoVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="employeeListVo" class="com.hrm.vo.EmployeeListVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  		<property name="employeeListDAO">
+  			<ref bean="EmployeeListDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="goodsTypeVo" class="com.hrm.vo.GoodsTypeVo">
+  		<property name="goodsTypeDAO">
+  			<ref bean="GoodsTypeDAO"/>
+  		</property>
+  		<property name="goodsListDAO">
+  			<ref bean="GoodsListDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="paramsTypeVo" class="com.hrm.vo.ParamsTypeVo">
+  		<property name="paramsTypeDAO">
+  			<ref bean="ParamsTypeDAO"/>
+  		</property>
+  		<property name="paramsListDAO">
+  			<ref bean="ParamsListDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="storeOutputInfoVo" class="com.hrm.vo.StoreOutputInfoVo">
+  		<property name="storeOutputInfoDAO">
+  			<ref bean="StoreOutputInfoDAO"/>
+  		</property>
+  		<property name="storeOutputListDAO">
+  			<ref bean="StoreOutputListDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="goodsOutputInfoVo" class="com.hrm.vo.GoodsOutputInfoVo">
+  		<property name="goodsOutputListDAO">
+  			<ref bean="GoodsOutputListDAO"/>
+  		</property>
+  		<property name="goodsOutputInfoDAO">
+  			<ref bean="GoodsOutputInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="goodsStatQueryVo" class="com.hrm.vo.GoodsStatQueryVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="dayGoodsClearVo" class="com.hrm.vo.DayGoodsClearVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="checkSessionVo" class="com.hrm.vo.CheckSessionVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="applyInfoVo" class="com.hrm.vo.ApplyInfoVo">
+  		<property name="storeParamsInfoDAO">
+  			<ref bean="StoreParamsInfoDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="storeTypeVo" class="com.hrm.vo.StoreTypeVo">
+  		<property name="storeTypeDAO">
+  			<ref bean="StoreTypeDAO"/>
+  		</property>
+  		<property name="storeListDAO">
+  			<ref bean="StoreListDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="storeInputInfoVo" class="com.hrm.vo.StoreInputInfoVo">
+  		<property name="storeInputInfoDAO">
+  			<ref bean="StoreInputInfoDAO"/>
+  		</property>
+  		<property name="storeInputListDAO">
+  			<ref bean="StoreInputListDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="monthStatVo" class="com.hrm.vo.MonthStatVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="storeOutuserVo" class="com.hrm.vo.StoreOutuserVo">
+  		<property name="outUserListDAO">
+  			<ref bean="OutUserListDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="mainLoadVo" class="com.hrm.vo.MainLoadVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="statQuzrtzVo" class="com.hrm.vo.StatQuzrtzVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
+</beans>
