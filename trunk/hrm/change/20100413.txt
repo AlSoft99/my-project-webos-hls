@@ -1,0 +1,4 @@
+增加GOODS_STAT表
+修改DAY_GOODS_CLEAR表
+修改PARAMS_TYPE,增加货物录入人
+GoodsStatQueryVo类中使用了ifnull,在sqlerver2005中可能需要改成nullis

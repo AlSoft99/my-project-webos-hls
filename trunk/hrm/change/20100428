@@ -1,0 +1,14 @@
+(1)添加6张表,STORE_PARAMS_INFO,STORE_TYPE,STORE_LIST,STORE_INPUT_INFO,STORE_INPUT_LIST, 生成entity和dao
+(2)GoodsStatQueryVo类中添加方言类别,处理ifnull和isnull的问题
+(3)参数维护中加入:
+	申购确认等级	(编号:STOCK_LEVEL,名称:申购等级)
+	参数:	1	主管等级
+			2	财务等级
+			3	仓库等级
+			
+	确认状态		(编号:CONFIRM_STATUS,名称:确认状态)
+	参数:	1	待主管确认
+			2	待财务确认
+			3	待仓库确认
+			4	进仓完成
+

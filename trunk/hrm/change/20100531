@@ -1,0 +1,5 @@
+(1)"销售月报表"改为"月销售报表"
+(2)增加菜单"月销售总报表"
+(3)USER_INFO增加4个字段syscd,usercd,syscdtime,usercdtime
+(4)USER_INFO增加字段分别给默认值0
+(5)在参数维护中增加是否参数,YNTYPE	1=是, 0=否

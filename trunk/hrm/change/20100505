@@ -1,0 +1,13 @@
+(1)修改"总报表统计"菜单下"仓库全报表统计"为"出仓全报表统计"
+(2)修改"进仓人货物维护"为"进仓货物维护",修改"出仓人货物维护"为"出仓货物维护"
+(3)修改"GOODS_LIST"表, 改变typeid为outuser
+(4)"仓库报表统计"改为"出仓报表统计", "仓库总查询"改为"出仓总查询"
+(5)"货物全报表统计"改名"货物销售全统计", "货物报表统计"改名"货物销售统计"
+(6)修改GoodsList表中,outuser为userlist, 并且增加OUT_USER_LIST表
+(7)GOODS_STAT表中outuser改成userlist
+(8)DAY_GOODS_CLEAR表中outuser改成userlist
+(9)修改GOODS_MONTH_STAT表中outuser为userlist
+(10)添加STORE_GOODS_CLEAR表,用于校验数据正确性
+(11)添加菜单"进仓仓库维护",params/input_goods_params.jsp
+(12)STORE_TYPE表outuser改为storelist
+//input_store_params.js
