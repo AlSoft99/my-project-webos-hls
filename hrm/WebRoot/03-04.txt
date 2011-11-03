@@ -1,0 +1,10 @@
+[ 
+	{id:"role_manager",text:"角色管理",children:[
+		{id:"role_add",text:"角色管理",leaf:true,page:"page/role/role_manager.jsp"},
+		{id:"menu_manager",text:"菜单管理",leaf:true,page:"page/role/menu_manager.jsp"}
+	]},
+	{id:"user_manager",text:"用户管理",children:[
+		{id:"user_add",text:"用户管理",leaf:true,page:"page/user/user_manager.jsp"},
+		{id:"user_mod",text:"用户修改",leaf:true,page:"page/user/user_mod.jsp"}
+	]}
+]
