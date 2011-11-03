@@ -1,0 +1,4115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mysql xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<hrm>
+<day_goods_clear>
+	<row>
+		<cleardate>2010-04-20 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>3</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>2</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 16:28:25</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-20 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>3</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>2</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 16:28:25</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-20 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>5</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>5</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 16:28:25</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-21 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>4</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>3</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 16:57:51</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-21 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>4</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>3</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 16:57:51</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-22 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>5</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>5</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:39:55</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-22 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>5</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>5</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:39:55</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-22 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>5</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>5</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:39:55</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-22 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>5</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>5</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:39:55</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-19 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>8</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>6</lastnumber>
+		<equals>1</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:51:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-19 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>8</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>6</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:51:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-19 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>8</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>6</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:51:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-19 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>8</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>6</lastnumber>
+		<equals>1</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:51:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>7</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>7</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 09:44:30</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>6</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>5</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 09:44:30</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>4</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>3</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 09:44:30</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-27 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>2</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>2</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 09:44:30</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>3</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>3</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>system</updtuser>
+		<updttime>2010-05-31 15:00:00</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber xsi:nil="true" />		<outnumber>9</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>8</lastnumber>
+		<equals>0</equals>
+		<goodsdesc>无</goodsdesc>
+		<updtuser>system</updtuser>
+		<updttime>2010-05-31 15:00:01</updttime>
+	</row>
+</day_goods_clear>
+<employee_info>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<workday>6</workday>
+		<salary>32000</salary>
+		<worksalary>30000</worksalary>
+		<welfare>1000</welfare>
+		<tax>3200</tax>
+		<pubfund>3520</pubfund>
+		<safefund>3840</safefund>
+		<curefund>4160</curefund>
+		<otherfund>0</otherfund>
+		<integfund>1600</integfund>
+		<updt_time>2010-04-09 16:56:23</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d543230004</user_id>
+		<workday>5</workday>
+		<salary>5000</salary>
+		<worksalary>7000</worksalary>
+		<welfare>1000</welfare>
+		<tax>750</tax>
+		<pubfund>500</pubfund>
+		<safefund>550</safefund>
+		<curefund>650</curefund>
+		<otherfund>0</otherfund>
+		<integfund>600</integfund>
+		<updt_time>2010-04-01 15:43:15</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627db00af0127db108ec60005</user_id>
+		<workday>5</workday>
+		<salary>2222</salary>
+		<worksalary>3000</worksalary>
+		<welfare>444</welfare>
+		<tax>333.3</tax>
+		<pubfund>244.42</pubfund>
+		<safefund>266.64</safefund>
+		<curefund>311.08</curefund>
+		<otherfund>0</otherfund>
+		<integfund>311.08</integfund>
+		<updt_time>2010-04-09 17:00:09</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627db00af0127db1235130008</user_id>
+		<workday>5</workday>
+		<salary>5000</salary>
+		<worksalary>2000</worksalary>
+		<welfare>1000</welfare>
+		<tax>750</tax>
+		<pubfund>500</pubfund>
+		<safefund>550</safefund>
+		<curefund>650</curefund>
+		<otherfund>0</otherfund>
+		<integfund>600</integfund>
+		<updt_time>2010-04-09 16:26:52</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627f0721b0127f0c69d62000b</user_id>
+		<workday>0</workday>
+		<salary>5</salary>
+		<worksalary>0</worksalary>
+		<welfare>0</welfare>
+		<tax>0</tax>
+		<pubfund>0</pubfund>
+		<safefund>0</safefund>
+		<curefund>0</curefund>
+		<otherfund>0</otherfund>
+		<integfund>0</integfund>
+		<updt_time>2010-04-22 09:58:05</updt_time>
+	</row>
+</employee_info>
+<employee_list>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<salarydate>2010-02-03</salarydate>
+		<othersmart>233</othersmart>
+		<smartreason>迟到2次,每次50元</smartreason>
+		<factsalary>41547</factsalary>
+		<issend>0</issend>
+		<updt_time>2010-04-06 08:57:53</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<salarydate>2010-03-30</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>46680</factsalary>
+		<issend>0</issend>
+		<updt_time>2010-04-12 15:17:32</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<salarydate>2010-04-02</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>41780</factsalary>
+		<issend>1</issend>
+		<updt_time>2010-04-06 08:55:38</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<salarydate>2010-04-05</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>41780</factsalary>
+		<issend>0</issend>
+		<updt_time>2010-04-06 12:32:00</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<salarydate>2010-04-06</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>46680</factsalary>
+		<issend>0</issend>
+		<updt_time>2010-04-12 15:13:21</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<salarydate>2010-04-12</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>46680</factsalary>
+		<issend>0</issend>
+		<updt_time>2010-04-12 15:17:20</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<salarydate>2010-04-22</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>46680</factsalary>
+		<issend>0</issend>
+		<updt_time>2010-04-22 10:13:00</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d543230004</user_id>
+		<salarydate>2010-04-02</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>9950</factsalary>
+		<issend>1</issend>
+		<updt_time>2010-04-02 16:51:06</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d543230004</user_id>
+		<salarydate>2010-04-22</salarydate>
+		<othersmart>0</othersmart>
+		<smartreason>暂无记录</smartreason>
+		<factsalary>9950</factsalary>
+		<issend>0</issend>
+		<updt_time>2010-04-22 09:58:34</updt_time>
+	</row>
+</employee_list>
+<goods_list>
+	<row>
+		<id>GD12743256254066003265587</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>25</outnumber>
+		<innumber>45</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:00:44</updttime>
+	</row>
+	<row>
+		<id>GD12743256434843621333797</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>16</outnumber>
+		<innumber>45</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:00:44</updttime>
+	</row>
+	<row>
+		<id>GD12743256558128883894906</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>16</outnumber>
+		<innumber>20</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:36:34</updttime>
+	</row>
+	<row>
+		<id>GD12743256816714252953474</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>19</outnumber>
+		<innumber>25</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:36:34</updttime>
+	</row>
+	<row>
+		<id>GD12743257001879366671353</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>0</outnumber>
+		<innumber>0</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:30:00</updttime>
+	</row>
+	<row>
+		<id>GD12749224793124720929694</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>10</outnumber>
+		<innumber>34</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:43:25</updttime>
+	</row>
+	<row>
+		<id>GD12752685619213213753504</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>0</outnumber>
+		<innumber>22</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 09:21:01</updttime>
+	</row>
+	<row>
+		<id>GD12752685700157625056497</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>8</outnumber>
+		<innumber>20</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 09:21:01</updttime>
+	</row>
+	<row>
+		<id>GD12753752365930836325113</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>0</outnumber>
+		<innumber>10</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:08:34</updttime>
+	</row>
+	<row>
+		<id>GD12753759042506742234559</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>0</outnumber>
+		<innumber>10</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:08:34</updttime>
+	</row>
+	<row>
+		<id>GD12753775017183776806240</id>
+		<userlist>ADMIN2010042000001</userlist>
+		<goodsname>系统生成</goodsname>
+		<goodsdesc>系统生成</goodsdesc>
+		<goodsnumber>0</goodsnumber>
+		<outnumber>0</outnumber>
+		<innumber>60</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:33:19</updttime>
+	</row>
+</goods_list>
+<goods_month_stat>
+	<row>
+		<cleardate>2010-04-01 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>0</startnumber>
+		<innumber>25</innumber>
+		<outnumber>12</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>15</lastnumber>
+		<startdate>2010-04-01 00:00:00</startdate>
+		<enddate>2010-05-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:48:01</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-01 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>0</startnumber>
+		<innumber>25</innumber>
+		<outnumber>12</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>15</lastnumber>
+		<startdate>2010-04-01 00:00:00</startdate>
+		<enddate>2010-05-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:48:01</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-01 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>0</startnumber>
+		<innumber>20</innumber>
+		<outnumber>5</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>15</lastnumber>
+		<startdate>2010-04-01 00:00:00</startdate>
+		<enddate>2010-05-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:48:01</updttime>
+	</row>
+	<row>
+		<cleardate>2010-04-01 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>0</startnumber>
+		<innumber>25</innumber>
+		<outnumber>10</outnumber>
+		<returnnumber>0</returnnumber>
+		<lastnumber>15</lastnumber>
+		<startdate>2010-04-01 00:00:00</startdate>
+		<enddate>2010-05-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-21 08:48:01</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-01 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>15</startnumber>
+		<innumber>20</innumber>
+		<outnumber>17</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>20</lastnumber>
+		<startdate>2010-05-01 00:00:00</startdate>
+		<enddate>2010-06-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 16:18:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-01 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>15</startnumber>
+		<innumber>20</innumber>
+		<outnumber>8</outnumber>
+		<returnnumber>2</returnnumber>
+		<lastnumber>29</lastnumber>
+		<startdate>2010-05-01 00:00:00</startdate>
+		<enddate>2010-06-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 16:18:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-01 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>15</startnumber>
+		<innumber>0</innumber>
+		<outnumber>14</outnumber>
+		<returnnumber>3</returnnumber>
+		<lastnumber>4</lastnumber>
+		<startdate>2010-05-01 00:00:00</startdate>
+		<enddate>2010-06-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 16:18:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-01 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>15</startnumber>
+		<innumber>0</innumber>
+		<outnumber>12</outnumber>
+		<returnnumber>3</returnnumber>
+		<lastnumber>6</lastnumber>
+		<startdate>2010-05-01 00:00:00</startdate>
+		<enddate>2010-06-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 16:18:32</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-01 00:00:00</cleardate>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>0</startnumber>
+		<innumber>34</innumber>
+		<outnumber>13</outnumber>
+		<returnnumber>3</returnnumber>
+		<lastnumber>24</lastnumber>
+		<startdate>2010-05-01 00:00:00</startdate>
+		<enddate>2010-06-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 11:15:51</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-01 00:00:00</cleardate>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<startnumber>0</startnumber>
+		<innumber>20</innumber>
+		<outnumber>9</outnumber>
+		<returnnumber>1</returnnumber>
+		<lastnumber>12</lastnumber>
+		<startdate>2010-05-01 00:00:00</startdate>
+		<enddate>2010-06-01 00:00:00</enddate>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-31 14:51:05</updttime>
+	</row>
+</goods_month_stat>
+<goods_output_info>
+	<row>
+		<id>GUANJ2010052600004</id>
+		<outdate>2010-05-26 16:21:41</outdate>
+		<outuser>36f7f35627b7ce470127b7d4bb170003</outuser>
+		<goodsdesc>333</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-26 16:21:41</updttime>
+	</row>
+	<row>
+		<id>GUANJ2010053100002</id>
+		<outdate>2010-05-31 14:48:58</outdate>
+		<outuser>36f7f35627b7ce470127b7d4bb170003</outuser>
+		<goodsdesc>333</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-31 14:48:58</updttime>
+	</row>
+	<row>
+		<id>GUANX2010042000001</id>
+		<outdate>2010-04-20 15:38:38</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>222</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:38:38</updttime>
+	</row>
+	<row>
+		<id>GUANX2010042100001</id>
+		<outdate>2010-04-21 16:30:37</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>333</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-21 16:30:37</updttime>
+	</row>
+	<row>
+		<id>GUANX2010042100002</id>
+		<outdate>2010-04-21 16:56:30</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>444</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-21 16:56:30</updttime>
+	</row>
+	<row>
+		<id>GUANX2010042200001</id>
+		<outdate>2010-04-22 17:36:50</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>222</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:36:50</updttime>
+	</row>
+	<row>
+		<id>GUANX2010051900001</id>
+		<outdate>2010-05-19 17:40:41</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>222</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:40:41</updttime>
+	</row>
+	<row>
+		<id>GUANX2010051900002</id>
+		<outdate>2010-05-19 17:41:14</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>222</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:41:14</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052600001</id>
+		<outdate>2010-05-26 13:58:20</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>232</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 13:58:20</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052600002</id>
+		<outdate>2010-05-26 15:50:08</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>111</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 15:50:08</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052600003</id>
+		<outdate>2010-05-26 15:52:50</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>323</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 15:52:50</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052700001</id>
+		<outdate>2010-05-27 09:43:29</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>222</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 09:43:29</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052700002</id>
+		<outdate>2010-05-27 14:43:24</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>333</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 14:43:24</updttime>
+	</row>
+	<row>
+		<id>GUANX2010053100001</id>
+		<outdate>2010-05-31 10:50:36</outdate>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<goodsdesc>222</goodsdesc>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 10:50:36</updttime>
+	</row>
+</goods_output_info>
+<goods_output_list>
+	<row>
+		<id>GD12717491204061427040731</id>
+		<outid>GUANX2010042000001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>3</goodsnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:39:14</updttime>
+	</row>
+	<row>
+		<id>GD12717491559219428547567</id>
+		<outid>GUANX2010042000001</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>3</goodsnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:39:22</updttime>
+	</row>
+	<row>
+		<id>GD12717492081403930797292</id>
+		<outid>GUANX2010042000001</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:40:20</updttime>
+	</row>
+	<row>
+		<id>GD12718386397188570854495</id>
+		<outid>GUANX2010042100001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-21 16:30:46</updttime>
+	</row>
+	<row>
+		<id>GD12718386481873195708847</id>
+		<outid>GUANX2010042100001</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>3</goodsnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-21 16:30:52</updttime>
+	</row>
+	<row>
+		<id>GD12718386534841917089842</id>
+		<outid>GUANX2010042100001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-21 16:56:22</updttime>
+	</row>
+	<row>
+		<id>GD12718401934535548976772</id>
+		<outid>GUANX2010042100002</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>1</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-21 16:57:01</updttime>
+	</row>
+	<row>
+		<id>GD12719290124840995272527</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:36:57</updttime>
+	</row>
+	<row>
+		<id>GD12719290184849577031247</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:37:02</updttime>
+	</row>
+	<row>
+		<id>GD12719290233437040882574</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:37:07</updttime>
+	</row>
+	<row>
+		<id>GD12719290282349421440895</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:37:12</updttime>
+	</row>
+	<row>
+		<id>GD12742620435627698654595</id>
+		<outid>GUANX2010051900001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>7</goodsnumber>
+		<returnnumber>2</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:40:50</updttime>
+	</row>
+	<row>
+		<id>GD12742620516718981849966</id>
+		<outid>GUANX2010051900001</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>7</goodsnumber>
+		<returnnumber>2</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:40:56</updttime>
+	</row>
+	<row>
+		<id>GD12742620573758875460544</id>
+		<outid>GUANX2010051900001</outid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>7</goodsnumber>
+		<returnnumber>2</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:41:02</updttime>
+	</row>
+	<row>
+		<id>GD12742620635310432532456</id>
+		<outid>GUANX2010051900001</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>7</goodsnumber>
+		<returnnumber>2</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:41:09</updttime>
+	</row>
+	<row>
+		<id>GD12742620773439018889309</id>
+		<outid>GUANX2010051900002</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>1</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:41:20</updttime>
+	</row>
+	<row>
+		<id>GD12742620814370889822796</id>
+		<outid>GUANX2010051900002</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>1</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:41:24</updttime>
+	</row>
+	<row>
+		<id>GD12742620849213166821931</id>
+		<outid>GUANX2010051900002</outid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>1</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:41:27</updttime>
+	</row>
+	<row>
+		<id>GD12742620884370846012818</id>
+		<outid>GUANX2010051900002</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>1</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-19 17:41:32</updttime>
+	</row>
+	<row>
+		<id>GD12748535030939225131249</id>
+		<outid>GUANX2010052600001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 13:58:50</updttime>
+	</row>
+	<row>
+		<id>GD12748535316251302015092</id>
+		<outid>GUANX2010052600001</outid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 13:58:56</updttime>
+	</row>
+	<row>
+		<id>GD12748602119219929068539</id>
+		<outid>GUANX2010052600002</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 15:50:17</updttime>
+	</row>
+	<row>
+		<id>GD12748603732182213288045</id>
+		<outid>GUANX2010052600003</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 15:52:59</updttime>
+	</row>
+	<row>
+		<id>GD12748603805314579141336</id>
+		<outid>GUANX2010052600003</outid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>3</goodsnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 15:53:06</updttime>
+	</row>
+	<row>
+		<id>GD12748621036254173762788</id>
+		<outid>GUANJ2010052600004</outid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>1</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-26 16:21:49</updttime>
+	</row>
+	<row>
+		<id>GD12748621226253412334098</id>
+		<outid>GUANJ2010052600004</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-26 16:22:22</updttime>
+	</row>
+	<row>
+		<id>GD12749246297502587694274</id>
+		<outid>GUANX2010052700001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 09:43:55</updttime>
+	</row>
+	<row>
+		<id>GD12749428871408764805413</id>
+		<outid>GUANX2010052700002</outid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>10</goodsnumber>
+		<returnnumber>3</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:01:30</updttime>
+	</row>
+	<row>
+		<id>GD12752742391565147965149</id>
+		<outid>GUANX2010053100001</outid>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 11:11:05</updttime>
+	</row>
+	<row>
+		<id>GD12752754682346961728900</id>
+		<outid>GUANX2010053100001</outid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>3</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 11:11:21</updttime>
+	</row>
+	<row>
+		<id>GD12752885405314518511731</id>
+		<outid>GUANJ2010053100002</outid>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<goodsnumber>4</goodsnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-31 14:49:11</updttime>
+	</row>
+</goods_output_list>
+<goods_stat>
+	<row>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>45</storenumber>
+		<outnumber>29</outnumber>
+		<returnnumber>4</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>45</storenumber>
+		<outnumber>20</outnumber>
+		<returnnumber>4</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>20</storenumber>
+		<outnumber>19</outnumber>
+		<returnnumber>3</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>25</storenumber>
+		<outnumber>22</outnumber>
+		<returnnumber>3</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>0</storenumber>
+		<outnumber>0</outnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>34</storenumber>
+		<outnumber>13</outnumber>
+		<returnnumber>3</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12752685619213213753504</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>22</storenumber>
+		<outnumber>0</outnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>20</storenumber>
+		<outnumber>9</outnumber>
+		<returnnumber>1</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<goodsid>GD12753752365930836325113</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>0</storenumber>
+		<outnumber>0</outnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime xsi:nil="true" />	</row>
+	<row>
+		<goodsid>GD12753759042506742234559</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>0</storenumber>
+		<outnumber>0</outnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime xsi:nil="true" />	</row>
+	<row>
+		<goodsid>GD12753775017183776806240</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<storenumber>0</storenumber>
+		<outnumber>0</outnumber>
+		<returnnumber>0</returnnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime xsi:nil="true" />	</row>
+</goods_stat>
+<goods_type>
+</goods_type>
+<menu_level_binary>
+	<row>
+		<menu_tree_code>TD12700993299686222569891</menu_tree_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>角色管理</menu_tree_name>
+		<menu_tree_tips>角色管理菜单</menu_tree_tips>
+		<menu_page>page/role/role_manager.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:22:09</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12700993481714309198274</menu_tree_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>菜单管理</menu_tree_name>
+		<menu_tree_tips>菜单管理 (请不要删除)</menu_tree_tips>
+		<menu_page>page/role/menu_manager.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:22:28</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12700993603599938305222</menu_tree_code>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>用户管理</menu_tree_name>
+		<menu_tree_tips>用户管理菜单</menu_tree_tips>
+		<menu_page>page/user/user_manager.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:22:40</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12700993738903499417657</menu_tree_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>员工福利管理</menu_tree_name>
+		<menu_tree_tips>员工福利管理页面</menu_tree_tips>
+		<menu_page>page/employee/employee_manager.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:22:53</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12700993858593507082440</menu_tree_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>员工工资明细账单</menu_tree_name>
+		<menu_tree_tips>员工工资明细账单添加删除菜单</menu_tree_tips>
+		<menu_page>page/employee/employee_list.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:23:05</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12705362538598359572297</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>个人出仓货物维护</menu_tree_name>
+		<menu_tree_tips>货物参数维护</menu_tree_tips>
+		<menu_page>page/params/goods_params_info.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-06 14:44:13</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12706145703431771784253</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>系统参数维护(慎重修改)</menu_tree_name>
+		<menu_tree_tips>涉及到系统显示参数, 不是管理员请不要动该菜单</menu_tree_tips>
+		<menu_page>page/params/system_params_info.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-07 12:29:30</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12706280865930516819358</menu_tree_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓申请</menu_tree_name>
+		<menu_tree_tips>出仓申请节点</menu_tree_tips>
+		<menu_page>page/store/store_apply.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-07 16:14:46</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12706281534680807842705</menu_tree_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓确认</menu_tree_name>
+		<menu_tree_tips>仓库人员出仓确认</menu_tree_tips>
+		<menu_page>page/store/store_confirm.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-07 16:15:53</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12707988240621554370169</menu_tree_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓查询</menu_tree_name>
+		<menu_tree_tips>申请人发货查询</menu_tree_tips>
+		<menu_page>page/store/store_apply_query.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-09 15:40:24</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12707989459848792504937</menu_tree_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>仓库查询</menu_tree_name>
+		<menu_tree_tips>仓库人确认和未确认查询</menu_tree_tips>
+		<menu_page>page/store/store_confirm_query.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-09 15:42:25</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12708005946711570541640</menu_tree_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓报表统计</menu_tree_name>
+		<menu_tree_tips>仓库报表统计(仓库人报表)</menu_tree_tips>
+		<menu_page>page/report/store_stat.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-09 16:09:54</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12708007105466310451064</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>货物销售全统计</menu_tree_name>
+		<menu_tree_tips>管理员的货物报表统计</menu_tree_tips>
+		<menu_page>page/report/goods_all_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 13:10:05</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12710400022182342232543</menu_tree_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>销售货物</menu_tree_name>
+		<menu_tree_tips>销售货物</menu_tree_tips>
+		<menu_page>page/store/output_goods.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-12 10:40:02</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12710400406408955909824</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>销售总查询</menu_tree_name>
+		<menu_tree_tips>销售总查询,管理员级别查询</menu_tree_tips>
+		<menu_page>page/store/goods_all_query.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 13:05:01</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12710401006877823835723</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓总查询</menu_tree_name>
+		<menu_tree_tips>仓库总查询,管理员查询</menu_tree_tips>
+		<menu_page>page/store/store_all_query.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 13:05:03</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12710401406404384526070</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>货物日销售总查询</menu_tree_name>
+		<menu_tree_tips>货物日销售总查询 (管理员查询)</menu_tree_tips>
+		<menu_page>page/report/day_goods_all_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 10:45:10</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12711424579213558259482</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>日终货物清算</menu_tree_name>
+		<menu_tree_tips>日终货物销售清算</menu_tree_tips>
+		<menu_page>page/report/day_goods_clear.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 13:09:35</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12712181610008904145057</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓货物维护</menu_tree_name>
+		<menu_tree_tips>货物参数查询</menu_tree_tips>
+		<menu_page>page/params/goods_params_query.jsp</menu_page>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-14 12:09:21</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12713147558126410026796</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓全报表统计</menu_tree_name>
+		<menu_tree_tips>仓库报表统计(管理员)</menu_tree_tips>
+		<menu_page>page/report/store_all_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 10:48:43</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12713960910785437659030</menu_tree_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>货物日销售查询</menu_tree_name>
+		<menu_tree_tips>货物日销售查询</menu_tree_tips>
+		<menu_page>page/report/day_goods_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 13:34:51</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12713993000008771102286</menu_tree_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>货物销售统计</menu_tree_name>
+		<menu_tree_tips>货物人的货物报表统计</menu_tree_tips>
+		<menu_page>page/report/goods_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-16 14:28:20</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12724414283288452077896</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>申购参数维护</menu_tree_name>
+		<menu_tree_tips>申购参数维护</menu_tree_tips>
+		<menu_page>page/params/apply_params_info.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-28 15:57:08</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12724526489538732219686</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>进仓货物维护</menu_tree_name>
+		<menu_tree_tips>进仓人货物维护</menu_tree_tips>
+		<menu_page>page/params/input_store_params.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-28 19:04:08</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12725053177341754991211</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>个人进仓货物维护</menu_tree_name>
+		<menu_tree_tips>个人进仓货物维护</menu_tree_tips>
+		<menu_page>page/params/input_person_info.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-29 09:41:57</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12725090751402892062014</menu_tree_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>采购申请</menu_tree_name>
+		<menu_tree_tips>采购申请</menu_tree_tips>
+		<menu_page>page/stock/stock_apply.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-29 10:44:35</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12725093119841404461092</menu_tree_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>采购单主管确认</menu_tree_name>
+		<menu_tree_tips>采购单主管确认</menu_tree_tips>
+		<menu_page>page/stock/stock_manager_confirm.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-29 10:48:31</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12725094299845639908677</menu_tree_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>采购单财务出账</menu_tree_name>
+		<menu_tree_tips>采购单财务出账</menu_tree_tips>
+		<menu_page>page/stock/stock_finance_confirm.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-29 10:50:29</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12725095319842738621442</menu_tree_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>采购单仓库入库</menu_tree_name>
+		<menu_tree_tips>采购单仓库入库</menu_tree_tips>
+		<menu_page>page/stock/stock_store_confirm.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-29 10:52:11</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12730254432503457694075</menu_tree_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>采购单财务结算</menu_tree_name>
+		<menu_tree_tips>采购单财务结算</menu_tree_tips>
+		<menu_page>page/stock/stock_finance_clear.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-05 10:10:43</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12730382950623202808181</menu_tree_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>个人申购单列表</menu_tree_name>
+		<menu_tree_tips>个人申购单列表</menu_tree_tips>
+		<menu_page>page/stock/person_stock_list.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-05 13:44:55</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12730383610001181787249</menu_tree_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>全部申购单列表</menu_tree_name>
+		<menu_tree_tips>全部申购单列表</menu_tree_tips>
+		<menu_page>page/stock/all_stock_list.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-05 13:46:01</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12735575146257677960378</menu_tree_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>仓库数据统计</menu_tree_name>
+		<menu_tree_tips>仓库数据统计</menu_tree_tips>
+		<menu_page>page/store/store_data_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-11 13:58:34</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12735607014841288176928</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>仓库数据全统计</menu_tree_name>
+		<menu_tree_tips>仓库数据全统计</menu_tree_tips>
+		<menu_page>page/store/store_data_all_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-11 14:51:41</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12736329110628077928284</menu_tree_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>月销售报表</menu_tree_name>
+		<menu_tree_tips>销售月报表</menu_tree_tips>
+		<menu_page>page/report/goods_month_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-12 10:55:11</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12740774148126565636150</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>出仓仓库维护</menu_tree_name>
+		<menu_tree_tips>出仓仓库维护</menu_tree_tips>
+		<menu_page>page/params/output_goods_params.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-17 14:23:34</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12748623492654992016520</menu_tree_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>进仓仓库维护</menu_tree_name>
+		<menu_tree_tips>进仓仓库维护</menu_tree_tips>
+		<menu_page>page/params/input_goods_params.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-05-26 16:25:49</user_updt>
+	</row>
+	<row>
+		<menu_tree_code>TD12752705328437660896526</menu_tree_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_tree_name>月销售总报表</menu_tree_name>
+		<menu_tree_tips>月销售总报表</menu_tree_tips>
+		<menu_page>page/report/goods_month_all_stat.jsp</menu_page>
+		<user_name>36f7f35627b7ce470127b7d6b85e0006</user_name>
+		<user_updt>2010-05-31 09:48:52</user_updt>
+	</row>
+</menu_level_binary>
+<menu_level_stair>
+	<row>
+		<menu_id>TD12700992857503463418244</menu_id>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<role_code>0</role_code>
+		<menu_name>角色管理</menu_name>
+		<menu_tips>角色管理节点</menu_tips>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:21:25</user_updt>
+	</row>
+	<row>
+		<menu_id>TD12700992980003184767363</menu_id>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<role_code>0</role_code>
+		<menu_name>用户管理</menu_name>
+		<menu_tips>用户管理节点</menu_tips>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:21:38</user_updt>
+	</row>
+	<row>
+		<menu_id>TD12700993097181435297384</menu_id>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<role_code>0</role_code>
+		<menu_name>员工管理</menu_name>
+		<menu_tips>员工管理菜单</menu_tips>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-01 13:21:49</user_updt>
+	</row>
+	<row>
+		<menu_id>TD12705361824374443723767</menu_id>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<role_code>0</role_code>
+		<menu_name>参数维护</menu_name>
+		<menu_tips>参数维护</menu_tips>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-06 14:43:02</user_updt>
+	</row>
+	<row>
+		<menu_id>TD12706279653751250837754</menu_id>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<role_code>0</role_code>
+		<menu_name>出仓销售</menu_name>
+		<menu_tips>仓库管理</menu_tips>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-07 16:12:45</user_updt>
+	</row>
+	<row>
+		<menu_id>TD12708004973284836742441</menu_id>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<role_code>0</role_code>
+		<menu_name>报表统计</menu_name>
+		<menu_tips>各种报表统计</menu_tips>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-09 16:08:17</user_updt>
+	</row>
+	<row>
+		<menu_id>TD12713827127505846903956</menu_id>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<role_code>0</role_code>
+		<menu_name>总报表统计</menu_name>
+		<menu_tips>管理员报表统计</menu_tips>
+		<user_name>guanrl</user_name>
+		<user_updt>2010-04-16 09:51:52</user_updt>
+	</row>
+	<row>
+		<menu_id>TD12724518168590221921820</menu_id>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<role_code>0</role_code>
+		<menu_name>进仓申购</menu_name>
+		<menu_tips>申购进仓</menu_tips>
+		<user_name>36f7f35627b7ce470127b7d543230004</user_name>
+		<user_updt>2010-04-28 18:50:16</user_updt>
+	</row>
+</menu_level_stair>
+<out_user_list>
+	<row>
+		<userlist>ADMIN2010042000001</userlist>
+		<outuser>36f7f35627b7ce470127b7d4bb170003</outuser>
+		<tag>1</tag>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-26 16:21:02</updttime>
+	</row>
+	<row>
+		<userlist>ADMIN2010042000001</userlist>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<tag>1</tag>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-26 16:21:01</updttime>
+	</row>
+	<row>
+		<userlist>ADMIN22010052600001</userlist>
+		<outuser>36f7f35627b7ce470127b7d543230004</outuser>
+		<tag>2</tag>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-26 17:37:54</updttime>
+	</row>
+	<row>
+		<userlist>ADMIN22010052600001</userlist>
+		<outuser>36f7f35627b7ce470127b7d613ff0005</outuser>
+		<tag>2</tag>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-26 17:37:54</updttime>
+	</row>
+</out_user_list>
+<params_list>
+	<row>
+		<id>PD12706270111560182559302</id>
+		<typeid>STORE_STATUS</typeid>
+		<paramscode>1</paramscode>
+		<paramsname>申请出仓</paramsname>
+		<paramsdesc>由提货人申请出仓</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-07 15:59:15</updttime>
+	</row>
+	<row>
+		<id>PD12706271876562710460789</id>
+		<typeid>STORE_STATUS</typeid>
+		<paramscode>2</paramscode>
+		<paramsname>确认出仓</paramsname>
+		<paramsdesc>仓库人确认货物出仓</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-07 16:00:10</updttime>
+	</row>
+	<row>
+		<id>PD12706272127967016406249</id>
+		<typeid>STORE_STATUS</typeid>
+		<paramscode>3</paramscode>
+		<paramsname>驳回出仓</paramsname>
+		<paramsdesc>提货人可以驳回出仓</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-07 16:00:55</updttime>
+	</row>
+	<row>
+		<id>PD12725098675000356116746</id>
+		<typeid>STOCK_LEVEL</typeid>
+		<paramscode>1</paramscode>
+		<paramsname>主管等级</paramsname>
+		<paramsdesc>第一等级</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-29 14:20:21</updttime>
+	</row>
+	<row>
+		<id>PD12725098978756194944826</id>
+		<typeid>STOCK_LEVEL</typeid>
+		<paramscode>2</paramscode>
+		<paramsname>财务等级</paramsname>
+		<paramsdesc>第二等级</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-29 14:20:27</updttime>
+	</row>
+	<row>
+		<id>PD12725099073120432469369</id>
+		<typeid>STOCK_LEVEL</typeid>
+		<paramscode>3</paramscode>
+		<paramsname>仓库等级</paramsname>
+		<paramsdesc>第三等级</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-29 14:20:36</updttime>
+	</row>
+	<row>
+		<id>PD12725221580314357402050</id>
+		<typeid>CONFIRM_STATUS</typeid>
+		<paramscode>1</paramscode>
+		<paramsname>待主管确认</paramsname>
+		<paramsdesc>待主管确认</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-29 14:22:51</updttime>
+	</row>
+	<row>
+		<id>PD12725221723599101800120</id>
+		<typeid>CONFIRM_STATUS</typeid>
+		<paramscode>2</paramscode>
+		<paramsname>待财务确认</paramsname>
+		<paramsdesc>待财务确认</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-29 14:23:06</updttime>
+	</row>
+	<row>
+		<id>PD12725221877186736072463</id>
+		<typeid>CONFIRM_STATUS</typeid>
+		<paramscode>3</paramscode>
+		<paramsname>待财务结算</paramsname>
+		<paramsdesc>待仓库确认</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-05 10:09:24</updttime>
+	</row>
+	<row>
+		<id>PD12725222006566497090796</id>
+		<typeid>CONFIRM_STATUS</typeid>
+		<paramscode>4</paramscode>
+		<paramsname>待仓库确认</paramsname>
+		<paramsdesc>进仓完成</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-05 10:09:30</updttime>
+	</row>
+	<row>
+		<id>PD12730253746562382270445</id>
+		<typeid>CONFIRM_STATUS</typeid>
+		<paramscode>5</paramscode>
+		<paramsname>进仓完成</paramsname>
+		<paramsdesc>进仓完成</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-05 10:09:38</updttime>
+	</row>
+	<row>
+		<id>PD12753586465006827553857</id>
+		<typeid>YNTYPE</typeid>
+		<paramscode>0</paramscode>
+		<paramsname>否</paramsname>
+		<paramsdesc>用于所有否决状态</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-06-01 10:17:56</updttime>
+	</row>
+	<row>
+		<id>PD12753586780156754697091</id>
+		<typeid>YNTYPE</typeid>
+		<paramscode>1</paramscode>
+		<paramsname>是</paramsname>
+		<paramsdesc>用于所有是的状态</paramsdesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-06-01 10:18:18</updttime>
+	</row>
+</params_list>
+<params_type>
+	<row>
+		<id>CONFIRM_STATUS</id>
+		<typename>确认状态</typename>
+		<typedesc>确认状态</typedesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-29 14:22:11</updttime>
+	</row>
+	<row>
+		<id>DEPT</id>
+		<typename>部门名称</typename>
+		<typedesc>各个部门名称</typedesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-07 16:02:51</updttime>
+	</row>
+	<row>
+		<id>STOCK_LEVEL</id>
+		<typename>申购等级</typename>
+		<typedesc>申购等级</typedesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-29 14:22:20</updttime>
+	</row>
+	<row>
+		<id>STORE_STATUS</id>
+		<typename>仓库状态</typename>
+		<typedesc>进出仓库的各种状态</typedesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-07 14:39:54</updttime>
+	</row>
+	<row>
+		<id>YNTYPE</id>
+		<typename>是否状态</typename>
+		<typedesc>是否状态</typedesc>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-06-01 10:17:19</updttime>
+	</row>
+</params_type>
+<role_info>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<role_name>超级管理员</role_name>
+		<role_desc>管理所有用户和拥有所有权限!!</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 13:03:05</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<role_name>管理员</role_name>
+		<role_desc>权限可以管理所有角色</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 12:50:59</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<role_name>总裁</role_name>
+		<role_desc>公司CEO,管理所有部门及其业务</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-22 11:07:19</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<role_name>总经理</role_name>
+		<role_desc>管理所有部门</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 12:52:07</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b6b8c70006</role_code>
+		<role_name>部门经理</role_name>
+		<role_desc>管理各个部门人员</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 12:52:37</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<role_name>财务会计</role_name>
+		<role_desc>管理公司财务及其收支平衡</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 12:53:30</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b8027d0008</role_code>
+		<role_name>项目经理</role_name>
+		<role_desc>管理项目以及客户交流</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 12:54:02</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b855400009</role_code>
+		<role_name>软件工程师</role_name>
+		<role_desc>编写功能模块及其设计</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 12:54:23</updt_time>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<role_name>测试员</role_name>
+		<role_desc>测试团队开发的系统bug,属于团队成员</role_desc>
+		<user_name>guanrl</user_name>
+		<updt_time>2010-04-01 12:54:32</updt_time>
+	</row>
+</role_info>
+<role_menu_binary>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993299686222569891</menu_tree_code>
+		<user_updt>2010-04-20 11:31:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993481714309198274</menu_tree_code>
+		<user_updt>2010-04-20 11:31:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<menu_tree_code>TD12700993603599938305222</menu_tree_code>
+		<user_updt>2010-04-06 12:26:50</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<menu_tree_code>TD12700993738903499417657</menu_tree_code>
+		<user_updt>2010-04-07 10:10:10</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<menu_tree_code>TD12700993858593507082440</menu_tree_code>
+		<user_updt>2010-04-06 11:36:32</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12705362538598359572297</menu_tree_code>
+		<user_updt>2010-04-29 09:42:32</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12706145703431771784253</menu_tree_code>
+		<user_updt>2010-04-07 12:34:20</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12712181610008904145057</menu_tree_code>
+		<user_updt>2010-04-14 12:09:31</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12724414283288452077896</menu_tree_code>
+		<user_updt>2010-04-28 15:57:16</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12724526489538732219686</menu_tree_code>
+		<user_updt>2010-04-28 19:07:03</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12725053177341754991211</menu_tree_code>
+		<user_updt>2010-04-29 09:42:33</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12740774148126565636150</menu_tree_code>
+		<user_updt>2010-05-17 14:23:48</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12748623492654992016520</menu_tree_code>
+		<user_updt>2010-05-26 16:26:44</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706280865930516819358</menu_tree_code>
+		<user_updt>2010-04-16 13:05:27</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706281534680807842705</menu_tree_code>
+		<user_updt>2010-04-16 13:05:27</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707988240621554370169</menu_tree_code>
+		<user_updt>2010-04-16 13:05:27</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707989459848792504937</menu_tree_code>
+		<user_updt>2010-04-16 13:05:27</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12710400022182342232543</menu_tree_code>
+		<user_updt>2010-04-16 13:05:27</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12708005946711570541640</menu_tree_code>
+		<user_updt>2010-04-09 16:12:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12713960910785437659030</menu_tree_code>
+		<user_updt>2010-04-16 13:35:47</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12713993000008771102286</menu_tree_code>
+		<user_updt>2010-04-16 14:28:30</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12735575146257677960378</menu_tree_code>
+		<user_updt>2010-05-11 13:59:36</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12736329110628077928284</menu_tree_code>
+		<user_updt>2010-05-12 11:02:47</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12708007105466310451064</menu_tree_code>
+		<user_updt>2010-04-16 13:10:07</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710400406408955909824</menu_tree_code>
+		<user_updt>2010-04-16 13:05:07</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401006877823835723</menu_tree_code>
+		<user_updt>2010-04-16 13:05:09</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401406404384526070</menu_tree_code>
+		<user_updt>2010-04-16 13:04:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12711424579213558259482</menu_tree_code>
+		<user_updt>2010-04-16 13:09:40</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12713147558126410026796</menu_tree_code>
+		<user_updt>2010-04-16 13:04:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12735607014841288176928</menu_tree_code>
+		<user_updt>2010-05-11 14:51:57</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12752705328437660896526</menu_tree_code>
+		<user_updt>2010-05-31 09:49:21</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725090751402892062014</menu_tree_code>
+		<user_updt>2010-04-29 13:21:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725093119841404461092</menu_tree_code>
+		<user_updt>2010-04-29 13:21:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725094299845639908677</menu_tree_code>
+		<user_updt>2010-04-29 13:21:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725095319842738621442</menu_tree_code>
+		<user_updt>2010-04-29 13:21:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12730254432503457694075</menu_tree_code>
+		<user_updt>2010-05-05 10:10:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12730382950623202808181</menu_tree_code>
+		<user_updt>2010-05-05 13:46:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12730383610001181787249</menu_tree_code>
+		<user_updt>2010-05-05 13:46:16</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993481714309198274</menu_tree_code>
+		<user_updt>2010-04-12 14:46:01</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<menu_tree_code>TD12700993738903499417657</menu_tree_code>
+		<user_updt>2010-05-31 17:01:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<menu_tree_code>TD12700993858593507082440</menu_tree_code>
+		<user_updt>2010-05-31 17:01:54</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12705362538598359572297</menu_tree_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12712181610008904145057</menu_tree_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12724414283288452077896</menu_tree_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12724526489538732219686</menu_tree_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12725053177341754991211</menu_tree_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12740774148126565636150</menu_tree_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12748623492654992016520</menu_tree_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706280865930516819358</menu_tree_code>
+		<user_updt>2010-04-12 14:46:11</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706281534680807842705</menu_tree_code>
+		<user_updt>2010-04-20 14:45:55</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707988240621554370169</menu_tree_code>
+		<user_updt>2010-04-16 12:30:35</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707989459848792504937</menu_tree_code>
+		<user_updt>2010-04-12 14:46:11</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12710400022182342232543</menu_tree_code>
+		<user_updt>2010-04-12 14:46:11</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993299686222569891</menu_tree_code>
+		<user_updt>2010-04-20 11:24:50</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993481714309198274</menu_tree_code>
+		<user_updt>2010-04-20 11:24:50</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<menu_tree_code>TD12700993603599938305222</menu_tree_code>
+		<user_updt>2010-04-06 13:37:04</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12705362538598359572297</menu_tree_code>
+		<user_updt>2010-04-14 15:11:05</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12712181610008904145057</menu_tree_code>
+		<user_updt>2010-04-14 15:11:05</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706280865930516819358</menu_tree_code>
+		<user_updt>2010-04-14 15:11:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707988240621554370169</menu_tree_code>
+		<user_updt>2010-04-14 15:11:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707989459848792504937</menu_tree_code>
+		<user_updt>2010-04-14 15:11:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12710400022182342232543</menu_tree_code>
+		<user_updt>2010-04-14 15:11:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12708005946711570541640</menu_tree_code>
+		<user_updt>2010-04-14 15:11:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12713960910785437659030</menu_tree_code>
+		<user_updt>2010-05-28 16:45:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12713993000008771102286</menu_tree_code>
+		<user_updt>2010-05-28 16:45:46</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12735575146257677960378</menu_tree_code>
+		<user_updt>2010-05-28 16:45:48</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12736329110628077928284</menu_tree_code>
+		<user_updt>2010-05-28 16:45:49</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12708007105466310451064</menu_tree_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710400406408955909824</menu_tree_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401006877823835723</menu_tree_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401406404384526070</menu_tree_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12711424579213558259482</menu_tree_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12713147558126410026796</menu_tree_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12735607014841288176928</menu_tree_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993299686222569891</menu_tree_code>
+		<user_updt>2010-04-12 16:45:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993481714309198274</menu_tree_code>
+		<user_updt>2010-04-12 16:45:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12708007105466310451064</menu_tree_code>
+		<user_updt>2010-04-20 11:28:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710400406408955909824</menu_tree_code>
+		<user_updt>2010-04-20 11:28:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401006877823835723</menu_tree_code>
+		<user_updt>2010-04-20 11:28:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401406404384526070</menu_tree_code>
+		<user_updt>2010-04-20 11:28:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12711424579213558259482</menu_tree_code>
+		<user_updt>2010-04-20 11:28:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12713147558126410026796</menu_tree_code>
+		<user_updt>2010-04-20 11:28:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993299686222569891</menu_tree_code>
+		<user_updt>2010-04-21 16:21:35</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993481714309198274</menu_tree_code>
+		<user_updt>2010-04-21 16:21:35</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12705362538598359572297</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12706145703431771784253</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12712181610008904145057</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12724414283288452077896</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12724526489538732219686</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12725053177341754991211</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12740774148126565636150</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12748623492654992016520</menu_tree_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706280865930516819358</menu_tree_code>
+		<user_updt>2010-04-21 16:21:41</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706281534680807842705</menu_tree_code>
+		<user_updt>2010-04-21 16:21:41</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707988240621554370169</menu_tree_code>
+		<user_updt>2010-04-21 16:21:41</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707989459848792504937</menu_tree_code>
+		<user_updt>2010-04-21 16:21:41</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12710400022182342232543</menu_tree_code>
+		<user_updt>2010-04-21 16:21:41</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12708005946711570541640</menu_tree_code>
+		<user_updt>2010-05-20 09:28:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12713960910785437659030</menu_tree_code>
+		<user_updt>2010-05-20 09:28:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12713993000008771102286</menu_tree_code>
+		<user_updt>2010-05-20 09:28:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12735575146257677960378</menu_tree_code>
+		<user_updt>2010-05-20 09:28:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<menu_tree_code>TD12736329110628077928284</menu_tree_code>
+		<user_updt>2010-05-20 09:28:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12708007105466310451064</menu_tree_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710400406408955909824</menu_tree_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401006877823835723</menu_tree_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12710401406404384526070</menu_tree_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12711424579213558259482</menu_tree_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12713147558126410026796</menu_tree_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12735607014841288176928</menu_tree_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<menu_tree_code>TD12752705328437660896526</menu_tree_code>
+		<user_updt>2010-05-31 09:57:07</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725090751402892062014</menu_tree_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725093119841404461092</menu_tree_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725094299845639908677</menu_tree_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12725095319842738621442</menu_tree_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12730254432503457694075</menu_tree_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12730382950623202808181</menu_tree_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<menu_tree_code>TD12730383610001181787249</menu_tree_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b855400009</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<menu_tree_code>TD12700993738903499417657</menu_tree_code>
+		<user_updt>2010-04-20 11:26:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b855400009</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<menu_tree_code>TD12700993858593507082440</menu_tree_code>
+		<user_updt>2010-04-20 11:26:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993299686222569891</menu_tree_code>
+		<user_updt>2010-04-20 09:23:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<menu_tree_code>TD12700993481714309198274</menu_tree_code>
+		<user_updt>2010-04-20 09:23:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<menu_tree_code>TD12700993603599938305222</menu_tree_code>
+		<user_updt>2010-04-20 11:25:32</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706280865930516819358</menu_tree_code>
+		<user_updt>2010-04-20 11:25:36</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707988240621554370169</menu_tree_code>
+		<user_updt>2010-04-20 11:25:36</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707989459848792504937</menu_tree_code>
+		<user_updt>2010-04-20 11:25:36</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12710400022182342232543</menu_tree_code>
+		<user_updt>2010-04-20 11:25:36</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12705362538598359572297</menu_tree_code>
+		<user_updt>2010-04-16 12:33:26</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12706145703431771784253</menu_tree_code>
+		<user_updt>2010-04-16 12:33:26</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<menu_tree_code>TD12712181610008904145057</menu_tree_code>
+		<user_updt>2010-04-16 12:33:26</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706280865930516819358</menu_tree_code>
+		<user_updt>2010-04-16 12:33:29</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12706281534680807842705</menu_tree_code>
+		<user_updt>2010-04-16 12:33:29</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707988240621554370169</menu_tree_code>
+		<user_updt>2010-04-16 12:33:29</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12707989459848792504937</menu_tree_code>
+		<user_updt>2010-04-16 12:33:29</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<menu_tree_code>TD12710400022182342232543</menu_tree_code>
+		<user_updt>2010-04-16 12:33:29</user_updt>
+	</row>
+</role_menu_binary>
+<role_menu_stair>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<user_updt>2010-04-20 11:31:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<user_updt>2010-04-06 12:26:50</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<user_updt>2010-04-06 10:48:17</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<user_updt>2010-04-06 14:44:23</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<user_updt>2010-04-16 13:05:27</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<user_updt>2010-04-09 16:11:58</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<user_updt>2010-04-16 13:04:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<user_updt>2010-04-29 13:21:18</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<user_updt>2010-04-12 14:46:01</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<user_updt>2010-05-31 17:01:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<user_updt>2010-05-31 17:01:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b538030003</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<user_updt>2010-04-12 14:46:11</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<user_updt>2010-04-20 11:24:49</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<user_updt>2010-04-06 13:37:04</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<user_updt>2010-04-14 15:11:05</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<user_updt>2010-04-14 15:11:06</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<user_updt>2010-04-14 15:11:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<user_updt>2010-05-28 16:45:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<user_updt>2010-04-12 16:45:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b644140005</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<user_updt>2010-04-20 11:28:45</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<user_updt>2010-04-21 16:21:35</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<user_updt>2010-05-31 14:07:14</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<user_updt>2010-04-21 16:21:41</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12708004973284836742441</menu_code>
+		<user_updt>2010-05-20 09:28:51</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12713827127505846903956</menu_code>
+		<user_updt>2010-05-20 09:28:53</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<menu_code>TD12724518168590221921820</menu_code>
+		<user_updt>2010-05-20 11:17:19</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b855400009</role_code>
+		<menu_code>TD12700993097181435297384</menu_code>
+		<user_updt>2010-04-20 11:26:56</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12700992857503463418244</menu_code>
+		<user_updt>2010-04-20 09:23:05</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12700992980003184767363</menu_code>
+		<user_updt>2010-04-20 11:25:32</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627b7b31f0127b7b87897000a</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<user_updt>2010-04-20 11:25:36</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12705361824374443723767</menu_code>
+		<user_updt>2010-04-16 12:33:26</user_updt>
+	</row>
+	<row>
+		<role_code>36f7f35627f0721b0127f0c5cbe90008</role_code>
+		<menu_code>TD12706279653751250837754</menu_code>
+		<user_updt>2010-04-16 12:33:29</user_updt>
+	</row>
+</role_menu_stair>
+<store_goods_clear>
+	<row>
+		<cleardate>2010-05-25 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>9</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>9</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-25 18:01:53</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-25 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>9</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>9</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-25 18:04:37</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-25 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>11</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>9</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>11</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>9</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-25 18:01:53</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-25 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>9</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>9</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-25 18:01:53</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-25 00:00:00</cleardate>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>0</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>0</slastnumber>
+		<gstorenumber>0</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>0</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-25 18:01:53</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>23</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>2</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>23</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>2</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-26 16:22:25</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>9</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>9</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 08:50:27</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>4</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>4</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-26 16:21:52</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>19</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>6</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>19</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>6</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 15:53:11</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-26 00:00:00</cleardate>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>0</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>0</slastnumber>
+		<gstorenumber>0</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>0</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-26 08:50:27</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-27 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>25</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>20</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>25</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>20</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:37:11</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-27 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>29</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>29</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:37:11</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-27 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>4</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>4</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-27 09:35:06</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-27 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>19</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>6</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>19</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>6</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-27 09:35:06</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-27 00:00:00</cleardate>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>0</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>0</slastnumber>
+		<gstorenumber>0</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>0</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-27 09:35:06</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-27 00:00:00</cleardate>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>30</sstorenumber>
+		<soutnumber>7</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>23</slastnumber>
+		<gstorenumber>30</gstorenumber>
+		<goutnumber>7</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>23</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:37:11</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-28 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>25</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>20</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>25</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>20</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:37:07</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-28 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>29</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>29</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:37:07</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-28 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>4</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>4</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:37:07</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-28 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>19</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>6</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>19</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>6</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:37:07</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-28 00:00:00</cleardate>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>0</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>0</slastnumber>
+		<gstorenumber>0</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>0</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:37:07</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-28 00:00:00</cleardate>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>30</sstorenumber>
+		<soutnumber>7</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>23</slastnumber>
+		<gstorenumber>30</gstorenumber>
+		<goutnumber>7</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>23</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:37:07</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>25</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>20</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>25</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>20</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:14:49</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>29</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>29</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:14:49</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>4</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>4</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:14:49</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>19</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>6</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>19</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>6</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:14:49</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>0</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>0</slastnumber>
+		<gstorenumber>0</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>0</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:14:49</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>34</sstorenumber>
+		<soutnumber>10</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>24</slastnumber>
+		<gstorenumber>34</gstorenumber>
+		<goutnumber>10</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>24</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 14:08:22</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12752685619213213753504</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>22</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>22</slastnumber>
+		<gstorenumber>22</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>22</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 09:21:47</updttime>
+	</row>
+	<row>
+		<cleardate>2010-05-31 00:00:00</cleardate>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>8</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>12</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>8</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>12</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d4bb170003</updtuser>
+		<updttime>2010-05-31 14:50:18</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>25</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>20</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>25</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>20</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>45</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>29</slastnumber>
+		<gstorenumber>45</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>29</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>16</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>4</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>16</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>4</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>25</sstorenumber>
+		<soutnumber>19</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>6</slastnumber>
+		<gstorenumber>25</gstorenumber>
+		<goutnumber>19</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>6</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>0</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>0</slastnumber>
+		<gstorenumber>0</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>0</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>34</sstorenumber>
+		<soutnumber>10</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>24</slastnumber>
+		<gstorenumber>34</gstorenumber>
+		<goutnumber>10</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>24</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12752685619213213753504</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>22</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>22</slastnumber>
+		<gstorenumber>22</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>22</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>20</sstorenumber>
+		<soutnumber>8</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>12</slastnumber>
+		<gstorenumber>20</gstorenumber>
+		<goutnumber>8</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>12</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:03:17</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12753752365930836325113</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>10</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>10</slastnumber>
+		<gstorenumber>10</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>10</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:08:39</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12753759042506742234559</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>10</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>10</slastnumber>
+		<gstorenumber>10</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>10</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:08:39</updttime>
+	</row>
+	<row>
+		<cleardate>2010-06-01 00:00:00</cleardate>
+		<goodsid>GD12753775017183776806240</goodsid>
+		<userlist>ADMIN2010042000001</userlist>
+		<sstorenumber>60</sstorenumber>
+		<soutnumber>0</soutnumber>
+		<sreturnnumber xsi:nil="true" />		<slastnumber>60</slastnumber>
+		<gstorenumber>60</gstorenumber>
+		<goutnumber>0</goutnumber>
+		<greturnnumber xsi:nil="true" />		<glastnumber>60</glastnumber>
+		<equals>1</equals>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-06-01 15:33:25</updttime>
+	</row>
+</store_goods_clear>
+<store_input_info>
+	<row>
+		<id>GUANX2010052000001</id>
+		<preprice>2000</preprice>
+		<autprice>3500</autprice>
+		<applyuser>36f7f35627b7ce470127b7d6b85e0006</applyuser>
+		<applydate>2010-05-20 11:19:13</applydate>
+		<manguser>36f7f35627b7ce470127b7d543230004</manguser>
+		<confirmstatus>5</confirmstatus>
+		<ismang>1</ismang>
+		<accouser>36f7f35627b7ce470127b7d6b85e0006</accouser>
+		<isacco>1</isacco>
+		<storeuser>36f7f35627b7ce470127b7d543230004</storeuser>
+		<isstore>1</isstore>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-20 13:59:18</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052700001</id>
+		<preprice>200</preprice>
+		<autprice>1800</autprice>
+		<applyuser>36f7f35627b7ce470127b7d6b85e0006</applyuser>
+		<applydate>2010-05-27 10:03:55</applydate>
+		<manguser>36f7f35627b7ce470127b7d543230004</manguser>
+		<confirmstatus>5</confirmstatus>
+		<ismang>1</ismang>
+		<accouser>36f7f35627b7ce470127b7d6b85e0006</accouser>
+		<isacco>1</isacco>
+		<storeuser>36f7f35627b7ce470127b7d543230004</storeuser>
+		<isstore>1</isstore>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 14:00:31</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052700002</id>
+		<preprice>3000</preprice>
+		<autprice>2000</autprice>
+		<applyuser>36f7f35627b7ce470127b7d6b85e0006</applyuser>
+		<applydate>2010-05-27 14:02:02</applydate>
+		<manguser>36f7f35627b7ce470127b7d543230004</manguser>
+		<confirmstatus>5</confirmstatus>
+		<ismang>1</ismang>
+		<accouser>36f7f35627b7ce470127b7d6b85e0006</accouser>
+		<isacco>1</isacco>
+		<storeuser>36f7f35627b7ce470127b7d543230004</storeuser>
+		<isstore>1</isstore>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 14:05:50</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052700003</id>
+		<preprice>200</preprice>
+		<autprice>0</autprice>
+		<applyuser>36f7f35627b7ce470127b7d6b85e0006</applyuser>
+		<applydate>2010-05-27 14:29:27</applydate>
+		<manguser>36f7f35627b7ce470127b7d543230004</manguser>
+		<confirmstatus>1</confirmstatus>
+		<ismang>0</ismang>
+		<accouser xsi:nil="true" />		<isacco>0</isacco>
+		<storeuser xsi:nil="true" />		<isstore>0</isstore>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 14:29:27</updttime>
+	</row>
+	<row>
+		<id>GUANX2010053100001</id>
+		<preprice>2000</preprice>
+		<autprice>0</autprice>
+		<applyuser>36f7f35627b7ce470127b7d6b85e0006</applyuser>
+		<applydate>2010-05-31 14:13:58</applydate>
+		<manguser>36f7f35627b7ce470127b7d543230004</manguser>
+		<confirmstatus>1</confirmstatus>
+		<ismang>0</ismang>
+		<accouser xsi:nil="true" />		<isacco>0</isacco>
+		<storeuser xsi:nil="true" />		<isstore>0</isstore>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 14:13:58</updttime>
+	</row>
+</store_input_info>
+<store_input_list>
+	<row>
+		<id>SD12743344552507038396126</id>
+		<inid>GUANX2010052000001</inid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>50</goodsnumber>
+		<goodsprice xsi:nil="true" />		<goodsdesc xsi:nil="true" />		<updttime>2010-05-20 13:47:59</updttime>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+	</row>
+	<row>
+		<id>SD12743344803284387658151</id>
+		<inid>GUANX2010052000001</inid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<goodsprice xsi:nil="true" />		<goodsdesc xsi:nil="true" />		<updttime>2010-05-20 13:48:06</updttime>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+	</row>
+	<row>
+		<id>SD12743344896873982279010</id>
+		<inid>GUANX2010052000001</inid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>50</goodsnumber>
+		<goodsprice xsi:nil="true" />		<goodsdesc xsi:nil="true" />		<updttime>2010-05-20 13:48:16</updttime>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+	</row>
+	<row>
+		<id>SD12749259588435481070233</id>
+		<inid>GUANX2010052700001</inid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>22</goodsnumber>
+		<goodsprice xsi:nil="true" />		<goodsdesc xsi:nil="true" />		<updttime>2010-05-27 10:06:18</updttime>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+	</row>
+	<row>
+		<id>SD12749401251408721732113</id>
+		<inid>GUANX2010052700002</inid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>10</goodsnumber>
+		<goodsprice xsi:nil="true" />		<goodsdesc xsi:nil="true" />		<updttime>2010-05-27 14:02:10</updttime>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+	</row>
+	<row>
+		<id>SD12749417697656332008203</id>
+		<inid>GUANX2010052700003</inid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>10</goodsnumber>
+		<goodsprice xsi:nil="true" />		<goodsdesc xsi:nil="true" />		<updttime>2010-05-27 14:29:37</updttime>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+	</row>
+	<row>
+		<id>SD12752864420155145463292</id>
+		<inid>GUANX2010053100001</inid>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<goodsnumber>50</goodsnumber>
+		<goodsprice xsi:nil="true" />		<goodsdesc xsi:nil="true" />		<updttime>2010-05-31 14:14:08</updttime>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+	</row>
+</store_input_list>
+<store_list>
+	<row>
+		<id>GD12743256254066003265587</id>
+		<typeid>IS12743256109374561429649</typeid>
+		<goodsname>铅笔</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>10</initnumber>
+		<outnumber>45</outnumber>
+		<innumber>50</innumber>
+		<price>2</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-20 13:59:18</updttime>
+	</row>
+	<row>
+		<id>GD12743256434843621333797</id>
+		<typeid>IS12743256109374561429649</typeid>
+		<goodsname>钢笔</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>50</initnumber>
+		<outnumber>45</outnumber>
+		<innumber>0</innumber>
+		<price>10</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-04-22 17:36:21</updttime>
+	</row>
+	<row>
+		<id>GD12743256558128883894906</id>
+		<typeid>IS12743256109374561429649</typeid>
+		<goodsname>毛笔</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>0</initnumber>
+		<outnumber>20</outnumber>
+		<innumber>20</innumber>
+		<price>9</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-20 13:59:18</updttime>
+	</row>
+	<row>
+		<id>GD12743256816714252953474</id>
+		<typeid>IS12743256227968393970970</typeid>
+		<goodsname>报告纸</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>5</initnumber>
+		<outnumber>25</outnumber>
+		<innumber>50</innumber>
+		<price>1</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-20 13:59:18</updttime>
+	</row>
+	<row>
+		<id>GD12743257001879366671353</id>
+		<typeid>IS12743256227968393970970</typeid>
+		<goodsname>笔记本</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>0</initnumber>
+		<outnumber>0</outnumber>
+		<innumber>0</innumber>
+		<price>10</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-20 11:21:57</updttime>
+	</row>
+	<row>
+		<id>GD12749224793124720929694</id>
+		<typeid>IS12749224471566032564439</typeid>
+		<goodsname>222</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>2</initnumber>
+		<outnumber>34</outnumber>
+		<innumber>32</innumber>
+		<price>0</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-27 14:05:50</updttime>
+	</row>
+	<row>
+		<id>GD12752685619213213753504</id>
+		<typeid>IS12752685598755569088721</typeid>
+		<goodsname>2222</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>22</initnumber>
+		<outnumber>22</outnumber>
+		<innumber>0</innumber>
+		<price>20</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:16:08</updttime>
+	</row>
+	<row>
+		<id>GD12752685700157625056497</id>
+		<typeid>IS12752685598755569088721</typeid>
+		<goodsname>3333</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>30</initnumber>
+		<outnumber>20</outnumber>
+		<innumber>0</innumber>
+		<price>30</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:16:16</updttime>
+	</row>
+	<row>
+		<id>GD12753752365930836325113</id>
+		<typeid>IS12752685598755569088721</typeid>
+		<goodsname>4444</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>40</initnumber>
+		<outnumber>10</outnumber>
+		<innumber>0</innumber>
+		<price>40</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-06-01 14:54:02</updttime>
+	</row>
+	<row>
+		<id>GD12753759042506742234559</id>
+		<typeid>IS12752685598755569088721</typeid>
+		<goodsname>5555</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>50</initnumber>
+		<outnumber>10</outnumber>
+		<innumber>0</innumber>
+		<price>50</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-06-01 15:05:09</updttime>
+	</row>
+	<row>
+		<id>GD12753775017183776806240</id>
+		<typeid>IS12752685598755569088721</typeid>
+		<goodsname>6666</goodsname>
+		<goodsdesc>无</goodsdesc>
+		<initnumber>60</initnumber>
+		<outnumber>60</outnumber>
+		<innumber>0</innumber>
+		<price>60</price>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-06-01 15:31:47</updttime>
+	</row>
+</store_list>
+<store_output_info>
+	<row>
+		<id>GUANX2010042000001</id>
+		<outdate>2010-04-20 15:26:44</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:28:41</updttime>
+	</row>
+	<row>
+		<id>GUANX2010042000002</id>
+		<outdate>2010-04-20 15:29:20</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:29:32</updttime>
+	</row>
+	<row>
+		<id>GUANX2010042000003</id>
+		<outdate>2010-04-20 15:29:50</outdate>
+		<status>1</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:29:50</updttime>
+	</row>
+	<row>
+		<id>GUANX2010042200001</id>
+		<outdate>2010-04-22 17:33:33</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:36:34</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052700001</id>
+		<outdate>2010-05-27 10:22:34</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:00:44</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052700002</id>
+		<outdate>2010-05-27 15:47:19</outdate>
+		<status>1</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:47:19</updttime>
+	</row>
+	<row>
+		<id>GUANX2010052800001</id>
+		<outdate>2010-05-28 16:42:27</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d613ff0005</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:43:25</updttime>
+	</row>
+	<row>
+		<id>GUANX2010053100001</id>
+		<outdate>2010-05-31 09:18:28</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 09:21:01</updttime>
+	</row>
+	<row>
+		<id>GUANX2010060100001</id>
+		<outdate>2010-06-01 15:03:50</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:08:34</updttime>
+	</row>
+	<row>
+		<id>GUANX2010060100002</id>
+		<outdate>2010-06-01 15:32:37</outdate>
+		<status>2</status>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<recuser>36f7f35627b7ce470127b7d543230004</recuser>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:33:19</updttime>
+	</row>
+</store_output_info>
+<store_output_list>
+	<row>
+		<id>SD12717484180932962083484</id>
+		<outid>GUANX2010042000001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:27:04</updttime>
+	</row>
+	<row>
+		<id>SD12717484256878939747661</id>
+		<outid>GUANX2010042000001</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>5</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:28:34</updttime>
+	</row>
+	<row>
+		<id>SD12717484327342735312005</id>
+		<outid>GUANX2010042000001</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>3</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:27:24</updttime>
+	</row>
+	<row>
+		<id>SD12717485631564095940039</id>
+		<outid>GUANX2010042000002</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>2</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:29:27</updttime>
+	</row>
+	<row>
+		<id>SD12717485946562507833956</id>
+		<outid>GUANX2010042000003</outid>
+		<goodsid>GD12743257001879366671353</goodsid>
+		<goodsnumber>10</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-20 15:30:00</updttime>
+	</row>
+	<row>
+		<id>SD12719288154379180087674</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:33:40</updttime>
+	</row>
+	<row>
+		<id>SD12719288221713550396346</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:33:46</updttime>
+	</row>
+	<row>
+		<id>SD12719288279213611379454</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256558128883894906</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:33:52</updttime>
+	</row>
+	<row>
+		<id>SD12719288330628248725586</id>
+		<outid>GUANX2010042200001</outid>
+		<goodsid>GD12743256816714252953474</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-04-22 17:33:57</updttime>
+	</row>
+	<row>
+		<id>SD12749269581403855396728</id>
+		<outid>GUANX2010052700001</outid>
+		<goodsid>GD12743256434843621333797</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 10:22:45</updttime>
+	</row>
+	<row>
+		<id>SD12749269694849722458233</id>
+		<outid>GUANX2010052700001</outid>
+		<goodsid>GD12743256254066003265587</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 10:22:56</updttime>
+	</row>
+	<row>
+		<id>SD12749436156098534804115</id>
+		<outid>GUANX2010052700001</outid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>30</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:00:26</updttime>
+	</row>
+	<row>
+		<id>SD12749464416873792887385</id>
+		<outid>GUANX2010052700002</outid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>0</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-27 15:47:24</updttime>
+	</row>
+	<row>
+		<id>SD12750361570312640642389</id>
+		<outid>GUANX2010052800001</outid>
+		<goodsid>GD12749224793124720929694</goodsid>
+		<goodsnumber>4</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-28 16:43:19</updttime>
+	</row>
+	<row>
+		<id>SD12752687413592842146513</id>
+		<outid>GUANX2010053100001</outid>
+		<goodsid>GD12752685700157625056497</goodsid>
+		<goodsnumber>20</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 09:19:07</updttime>
+	</row>
+	<row>
+		<id>SD12752687488751531896466</id>
+		<outid>GUANX2010053100001</outid>
+		<goodsid>GD12752685619213213753504</goodsid>
+		<goodsnumber>22</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-05-31 09:19:17</updttime>
+	</row>
+	<row>
+		<id>SD12753758342657279228081</id>
+		<outid>GUANX2010060100001</outid>
+		<goodsid>GD12753752365930836325113</goodsid>
+		<goodsnumber>10</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:04:01</updttime>
+	</row>
+	<row>
+		<id>SD12753759172341935475971</id>
+		<outid>GUANX2010060100001</outid>
+		<goodsid>GD12753759042506742234559</goodsid>
+		<goodsnumber>10</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:05:35</updttime>
+	</row>
+	<row>
+		<id>SD12753775609684368033801</id>
+		<outid>GUANX2010060100002</outid>
+		<goodsid>GD12753775017183776806240</goodsid>
+		<goodsnumber>60</goodsnumber>
+		<updtuser>36f7f35627b7ce470127b7d6b85e0006</updtuser>
+		<updttime>2010-06-01 15:32:50</updttime>
+	</row>
+</store_output_list>
+<store_params_info>
+	<row>
+		<id>36f7f35628b3b26c0128b3b7f3bd0001</id>
+		<outuser>36f7f35627b7ce470127b7d543230004</outuser>
+		<stocklevel>1</stocklevel>
+		<min>0</min>
+		<max>20000</max>
+		<updttime>2010-05-20 11:18:16</updttime>
+	</row>
+	<row>
+		<id>36f7f35628b3b26c0128b3b833280002</id>
+		<outuser>36f7f35627b7ce470127b7d6b85e0006</outuser>
+		<stocklevel>2</stocklevel>
+		<min>0</min>
+		<max>20000</max>
+		<updttime>2010-05-20 11:18:33</updttime>
+	</row>
+	<row>
+		<id>36f7f35628b3b26c0128b3b862a40003</id>
+		<outuser>36f7f35627b7ce470127b7d543230004</outuser>
+		<stocklevel>3</stocklevel>
+		<min>0</min>
+		<max>20000</max>
+		<updttime>2010-05-20 11:18:45</updttime>
+	</row>
+</store_params_info>
+<store_type>
+	<row>
+		<id>IS12743256109374561429649</id>
+		<typename>笔类</typename>
+		<typedesc>笔类</typedesc>
+		<storelist>ADMIN22010052600001</storelist>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-20 11:20:10</updttime>
+	</row>
+	<row>
+		<id>IS12743256227968393970970</id>
+		<typename>纸类</typename>
+		<typedesc>纸类</typedesc>
+		<storelist>ADMIN22010052600001</storelist>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-20 11:20:22</updttime>
+	</row>
+	<row>
+		<id>IS12749224471566032564439</id>
+		<typename>111</typename>
+		<typedesc>222</typedesc>
+		<storelist>ADMIN22010052600001</storelist>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-27 09:07:27</updttime>
+	</row>
+	<row>
+		<id>IS12752685598755569088721</id>
+		<typename>222</typename>
+		<typedesc>222</typedesc>
+		<storelist>ADMIN22010052600001</storelist>
+		<updtuser>36f7f35627b7ce470127b7d543230004</updtuser>
+		<updttime>2010-05-31 09:15:59</updttime>
+	</row>
+</store_type>
+<user_info>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d4bb170003</user_id>
+		<role_code>36f7f35627b7b31f0127b7b5b2b10004</role_code>
+		<user_code>guanjianming</user_code>
+		<user_name>官建明</user_name>
+		<user_pwd>1111</user_pwd>
+		<user_phone>56452312</user_phone>
+		<user_mail>guanjiaming@163.com</user_mail>
+		<user_qq>65451232</user_qq>
+		<syscd>0</syscd>
+		<usercd>0</usercd>
+		<syscdtime>2010-04-01 13:26:52</syscdtime>
+		<usercdtime>2010-04-01 13:26:52</usercdtime>
+		<updt_time>2010-05-31 17:44:06</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d543230004</user_id>
+		<role_code>36f7f35627b7b31f0127b7b4f29d0002</role_code>
+		<user_code>admin</user_code>
+		<user_name>官瑞林</user_name>
+		<user_pwd>1111</user_pwd>
+		<user_phone>65452312</user_phone>
+		<user_mail>rayln@163.com</user_mail>
+		<user_qq>65452312</user_qq>
+		<syscd>0</syscd>
+		<usercd>0</usercd>
+		<syscdtime>2010-04-01 13:26:52</syscdtime>
+		<usercdtime>2010-04-01 13:26:52</usercdtime>
+		<updt_time>2010-05-31 17:44:06</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d613ff0005</user_id>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<user_code>xinying</user_code>
+		<user_name>新颖</user_name>
+		<user_pwd>1111</user_pwd>
+		<user_phone>65451232</user_phone>
+		<user_mail>xinying@163.com</user_mail>
+		<user_qq>65452123</user_qq>
+		<syscd>0</syscd>
+		<usercd>0</usercd>
+		<syscdtime>2010-04-01 13:26:52</syscdtime>
+		<usercdtime>2010-04-01 13:26:52</usercdtime>
+		<updt_time>2010-06-01 14:37:16</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d6b85e0006</user_id>
+		<role_code>36f7f35627b7b31f0127b7b786d50007</role_code>
+		<user_code>guanxiaoyuan</user_code>
+		<user_name>官小圆</user_name>
+		<user_pwd>1111</user_pwd>
+		<user_phone>65553212</user_phone>
+		<user_mail>guanxiaoyuan@163.com</user_mail>
+		<user_qq>65452123</user_qq>
+		<syscd>0</syscd>
+		<usercd>0</usercd>
+		<syscdtime>2010-06-01 13:55:11</syscdtime>
+		<usercdtime>2010-04-01 13:26:52</usercdtime>
+		<updt_time>2010-06-01 15:02:26</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627b7ce470127b7d767b80007</user_id>
+		<role_code>36f7f35627b7b31f0127b7b855400009</role_code>
+		<user_code>liyongchao</user_code>
+		<user_name>李永超</user_name>
+		<user_pwd>1111</user_pwd>
+		<user_phone>65453212</user_phone>
+		<user_mail>xigua@173.com</user_mail>
+		<user_qq>65452321</user_qq>
+		<syscd>0</syscd>
+		<usercd>0</usercd>
+		<syscdtime>2010-04-01 13:26:52</syscdtime>
+		<usercdtime>2010-04-01 13:26:52</usercdtime>
+		<updt_time>2010-05-31 17:44:08</updt_time>
+	</row>
+	<row>
+		<user_id>36f7f35627db00af0127db0fda990003</user_id>
+		<role_code>36f7f35627b7b31f0127b7b855400009</role_code>
+		<user_code>yanglanxiang</user_code>
+		<user_name>杨兰香</user_name>
+		<user_pwd>1111</user_pwd>
+		<user_phone>65452123</user_phone>
+		<user_mail>rayln@163.com</user_mail>
+		<user_qq>32123564</user_qq>
+		<syscd>0</syscd>
+		<usercd>0</usercd>
+		<syscdtime>2010-04-01 13:26:52</syscdtime>
+		<usercdtime>2010-04-01 13:26:52</usercdtime>
+		<updt_time>2010-05-31 17:44:08</updt_time>
+	</row>
+</user_info>
+<welfare_param>
+	<row>
+		<id>36f7f35627b7b31f0127b7b4f29d0002</id>
+		<workday>5</workday>
+		<welfare>1000</welfare>
+		<pubfund>0.1</pubfund>
+		<safefund>0.11</safefund>
+		<curefund>0.13</curefund>
+		<integfund>0.12</integfund>
+		<tax>0.15</tax>
+		<updt_time>2010-04-01 15:42:54</updt_time>
+	</row>
+	<row>
+		<id>36f7f35627b7b31f0127b7b538030003</id>
+		<workday>5</workday>
+		<welfare>444</welfare>
+		<pubfund>0.11</pubfund>
+		<safefund>0.12</safefund>
+		<curefund>0.14</curefund>
+		<integfund>0.14</integfund>
+		<tax>0.15</tax>
+		<updt_time>2010-04-09 16:59:46</updt_time>
+	</row>
+	<row>
+		<id>36f7f35627b7b31f0127b7b5b2b10004</id>
+		<workday>6</workday>
+		<welfare>1000</welfare>
+		<pubfund>0.11</pubfund>
+		<safefund>0.12</safefund>
+		<curefund>0.13</curefund>
+		<integfund>0.05</integfund>
+		<tax>0.1</tax>
+		<updt_time>2010-04-01 14:30:47</updt_time>
+	</row>
+</welfare_param>
+</hrm>
+</mysql>

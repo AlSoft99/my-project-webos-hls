@@ -1,0 +1,14 @@
+（1）申购确认等级 改变	增加：申购单财务结算	状态为3
+	确认状态		(编号:CONFIRM_STATUS,名称:确认状态)
+	参数:	1	待主管确认
+			2	待财务确认
+			3	待财务结算
+			4	待仓库确认
+			5	进仓完成
+			
+（2）菜单改变
+	采购申请		page/stock/stock_apply.jsp
+	采购单主管确认	page/stock/stock_manager_confirm.jsp
+	采购单财务出账	page/stock/stock_finance_confirm.jsp
+	采购单财务结算	page/stock/stock_finance_clear.jsp
+	采购单仓库入库	page/stock/stock_store_confirm.jsp
