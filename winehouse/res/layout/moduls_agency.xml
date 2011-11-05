@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="match_parent"
-  android:layout_height="match_parent" android:padding="10px">
+  android:layout_height="match_parent" android:padding="10px" >
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1">
         <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_weight="1" android:layout_gravity="center_vertical" android:text="@string/agency_title"></TextView>
         <Button android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/back" android:paddingLeft="20px" android:paddingRight="20px" android:onClick="back"></Button>

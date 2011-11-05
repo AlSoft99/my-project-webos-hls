@@ -12,4 +12,7 @@
     <string name="back">返回</string>
     <string name="agency_title">开启台面</string>
     <string name="floor_filter">楼面过滤  </string>
+    <string name="orderId">流水号:</string>
+    <string name="deskNumber">桌号:</string>
+    <string name="owner">点菜员:</string>
 </resources>
