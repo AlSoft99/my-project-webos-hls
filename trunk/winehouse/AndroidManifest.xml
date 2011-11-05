@@ -19,6 +19,7 @@
 		<activity android:name="IndexActivity"></activity>
 		<activity android:name=".moduls.AgencyActivity"></activity>
 		<activity android:name=".moduls.ScannerActivity"></activity>
+		<activity android:name=".moduls.DeskOrderActivity" ></activity>
     </application>
     
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>      

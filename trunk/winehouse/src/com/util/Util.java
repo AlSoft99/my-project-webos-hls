@@ -18,4 +18,12 @@ public class Util {
         });  
         return bul.create();  
     }
+	public static Dialog dialogTwoBtn(Context context,String title,String content,DialogInterface.OnClickListener confirm,DialogInterface.OnClickListener cancel){  
+		AlertDialog.Builder bul = new AlertDialog.Builder(context);  
+        bul.setTitle(title);  
+        bul.setMessage(content);  
+        bul.setPositiveButton("确定", confirm);  
+        bul.setNegativeButton("取消", cancel);
+        return bul.create();  
+    }
 }
