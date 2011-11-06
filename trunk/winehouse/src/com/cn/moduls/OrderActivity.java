@@ -35,7 +35,7 @@ public class OrderActivity extends Activity {
 	List<List<DeskEntity>> deskList = new ArrayList<List<DeskEntity>>();
 	private Spinner spinner;
 	private DeskControl dc;
-	
+	private ProgressDialog pd;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -150,8 +150,7 @@ public class OrderActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			dc = (DeskControl)v;
-			dialogContext = "是否确定开"+dc.getDeskNumber()+"台";
-			ProgressDialog pd=new ProgressDialog(OrderActivity.this);  
+			pd=new ProgressDialog(OrderActivity.this);  
 	        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);  
 	        pd.setMessage("数据载入中，请稍候！");  
 	        //显示进度条  
@@ -189,8 +188,17 @@ public class OrderActivity extends Activity {
 			
 		}
     }
-    
+    @Override
+	protected void onDestroy() {
+    	if (pd!=null) {
+    		pd.dismiss();
+		}
+		super.onDestroy();
+	}
     public void back(View v){
+    	if(pd!=null){
+    		pd.dismiss();
+    	}
     	OrderActivity.this.finish();
     }
 }
