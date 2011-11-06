@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.cn.R;
 import com.control.DeskControl;
@@ -151,15 +151,15 @@ public class AgencyActivity extends Activity {
     class openDeskModules implements OnClickListener{
 		@Override
 		public void onClick(View v) {
-			System.out.println(v);
 			dc = (DeskControl)v;
-			dialogContext = "是否确定开"+dc.getDeskNumber()+"台";
+			dialogContext = "是否确定开台";
             showDialog(1);
 		}
     }
     
     @Override  
     protected Dialog onCreateDialog(int id) {  
+    	System.out.println("id:"+id);
         switch (id) {  
         case 1:  
             return Util.dialogTwoBtn(AgencyActivity.this, "确定?", dialogContext,new ConfirmDialog(),new CancelDialog());  
@@ -176,14 +176,16 @@ public class AgencyActivity extends Activity {
     class ConfirmDialog implements DialogInterface.OnClickListener{
 		@Override
 		public void onClick(DialogInterface dialog, int which) {
-			pd=new ProgressDialog(AgencyActivity.this);  
+			if(pd==null){
+				pd=new ProgressDialog(AgencyActivity.this);  
+			}
 	        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);  
-	        pd.setMessage("数据载入中，请稍候！");  
+	        pd.setMessage("正在开启["+dc.getDeskNumber()+"]台，请稍候！");  
 	        //显示进度条  
 	        pd.show();
 	        pd.hide();
-	        dialogContext="开台成功!";
-	        showDialog(2);
+	        Toast.makeText(AgencyActivity.this, dc.getDeskNumber()+"台已成功开台!", Toast.LENGTH_LONG).show();
+	        //showDialog(2);
 		}
     }
     class SuccessConfirmDialog implements DialogInterface.OnClickListener{
@@ -201,12 +203,21 @@ public class AgencyActivity extends Activity {
     }
     
     public void back(View v){
+    	if (pd!=null) {
+    		pd.dismiss();
+		}
+    	AgencyActivity.this.removeDialog(1);
+    	AgencyActivity.this.removeDialog(2);
     	AgencyActivity.this.finish();
     }
     
     @Override
 	protected void onDestroy() {
-    	pd.dismiss();
+    	if (pd!=null) {
+    		pd.dismiss();
+		}
+    	AgencyActivity.this.removeDialog(1);
+    	AgencyActivity.this.removeDialog(2);
 		super.onDestroy();
 	}
 

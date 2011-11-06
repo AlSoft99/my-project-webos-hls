@@ -29,6 +29,7 @@ public class Util {
 		AlertDialog.Builder bul = new AlertDialog.Builder(context);  
         bul.setTitle(title);  
         bul.setMessage(content);  
+        System.out.println("content:"+content);
         bul.setPositiveButton("确定", confirm);  
         bul.setNegativeButton("取消", cancel);
         return bul.create();  

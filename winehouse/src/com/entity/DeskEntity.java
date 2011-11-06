@@ -7,7 +7,7 @@ public class DeskEntity {
 	private String numberColor;//桌子状态颜色
 	private String orderColor;//订单状态颜色
 	private String ownerColor;//点单员颜色
-	private String deskStatus;//桌子状态(预订,未开台,已开台)
+	private String deskStatus;//桌子状态(-1:预订,0:未开台,1:已开台)
 	private String orderStatue;//点单状态(1:已点单, 0:未点单)
 	
 	public String getDeskStatus() {

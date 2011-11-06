@@ -54,7 +54,6 @@ public class OrderActivity extends Activity {
 		Gson gson = new Gson();
 		java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<List<List<DeskEntity>>>() {}.getType();
 		deskList = gson.fromJson(json, type);    
-        System.out.println(deskList); 
 		
 		initSpinner();
 		initOrderSpinner();
