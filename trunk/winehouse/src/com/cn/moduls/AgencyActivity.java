@@ -159,7 +159,6 @@ public class AgencyActivity extends Activity {
     
     @Override  
     protected Dialog onCreateDialog(int id) {  
-    	System.out.println("id:"+id);
         switch (id) {  
         case 1:  
             return Util.dialogTwoBtn(AgencyActivity.this, "确定?", dialogContext,new ConfirmDialog(),new CancelDialog());  
