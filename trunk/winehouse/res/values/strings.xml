@@ -17,4 +17,5 @@
     <string name="owner">点菜员:</string>
     <string name="order_status">点菜状态</string>
     <string name="order_manager">点单管理</string>
+    <string name="start_meal">已上菜</string>
 </resources>
