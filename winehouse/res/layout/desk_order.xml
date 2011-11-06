@@ -3,18 +3,31 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent" android:padding="10dp">
+  android:layout_height="fill_parent" android:padding="10dp" android:background="#4775C0">
+  	<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="@string/order_manager"
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+</TextView>
+        <Button android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/back" android:paddingLeft="20px" android:paddingRight="20px" android:onClick="back"></Button>
+    </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_height="wrap_content">
-        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textView1" android:text="@string/orderId"></TextView>
+        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:layout_width="80dp" android:id="@+id/textView1" android:text="@string/orderId" android:gravity="right"></TextView>
         <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="201107092511010010" android:layout_marginLeft="10dp" android:id="@+id/orderId"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout2" android:layout_height="wrap_content">
-        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textView3" android:text="@string/owner"></TextView>
-        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="TextView" android:layout_marginLeft="10dp" android:id="@+id/owner"></TextView>
+        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:layout_width="80dp" android:id="@+id/textView3" android:text="@string/owner" android:gravity="right"></TextView>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="" android:layout_marginLeft="10dp" android:id="@+id/owner"></TextView>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout2" android:layout_height="wrap_content">
-        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textView5" android:text="@string/deskNumber"></TextView>
-        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="TextView" android:id="@+id/deskNumber" android:layout_marginLeft="10dp"></TextView>
+        <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:layout_width="80dp" android:id="@+id/textView5" android:text="@string/deskNumber" android:gravity="right"></TextView>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="" android:id="@+id/deskNumber" android:layout_marginLeft="10dp"></TextView>
     </LinearLayout>
     
 </LinearLayout>

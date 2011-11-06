@@ -10,9 +10,11 @@
     <string name="load">正在读取中...</string>
     <string name="index_title">欢迎您, </string>
     <string name="back">返回</string>
-    <string name="agency_title">开启台面</string>
+    <string name="agency_title">桌面管理</string>
     <string name="floor_filter">楼面过滤  </string>
     <string name="orderId">流水号:</string>
     <string name="deskNumber">桌号:</string>
     <string name="owner">点菜员:</string>
+    <string name="order_status">点菜状态</string>
+    <string name="order_manager">点单管理</string>
 </resources>

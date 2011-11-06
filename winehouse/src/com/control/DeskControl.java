@@ -53,4 +53,10 @@ public class DeskControl extends LinearLayout {
 	public void setDeskColor(String colorValue){
 		deskNumber.setBackgroundColor(Color.parseColor(colorValue));
 	}
+	public void setOrderColor(String colorValue){
+		order.setBackgroundColor(Color.parseColor(colorValue));
+	}
+	public void setDeskOwnerColor(String colorValue){
+		deskOwner.setBackgroundColor(Color.parseColor(colorValue));
+	}
 }
