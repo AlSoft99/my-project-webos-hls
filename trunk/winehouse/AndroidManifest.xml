@@ -18,6 +18,7 @@
 		</activity>
 		<activity android:name="IndexActivity"></activity>
 		<activity android:name=".moduls.AgencyActivity"></activity>
+		<activity android:name=".moduls.OrderActivity"></activity>
 		<activity android:name=".moduls.ScannerActivity"></activity>
 		<activity android:name=".moduls.DeskOrderActivity" ></activity>
     </application>

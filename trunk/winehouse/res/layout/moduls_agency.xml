@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="match_parent"
-  android:layout_height="match_parent" android:padding="10px" >
+  android:layout_height="match_parent" android:padding="10px" android:background="#4775C0">
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1">
         <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_weight="1" android:layout_gravity="center_vertical" android:text="@string/agency_title"></TextView>
         <Button android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/back" android:paddingLeft="20px" android:paddingRight="20px" android:onClick="back"></Button>
@@ -11,6 +11,18 @@
     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout2">
         <TextView android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView2" android:text="@string/floor_filter" android:layout_width="wrap_content"></TextView>
         <Spinner android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content" android:id="@+id/floor_spinner" android:layout_marginLeft="10px"></Spinner>
+    </LinearLayout>
+    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout3">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/order_status"
+            android:textAppearance="?android:attr/textAppearanceMedium" >
+		</TextView>
+        <Spinner android:layout_height="wrap_content" android:layout_weight="1" android:layout_width="wrap_content" android:id="@+id/order_spinner" android:layout_marginLeft="10px"></Spinner>
     </LinearLayout>
     <ScrollView android:layout_height="wrap_content" android:id="@+id/scrollView1" android:layout_width="match_parent">
     	<LinearLayout android:layout_width="match_parent" android:id="@+id/floor_desk" android:layout_height="match_parent" android:orientation="vertical"></LinearLayout>

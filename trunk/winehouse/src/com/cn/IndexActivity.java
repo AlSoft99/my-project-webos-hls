@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cn.moduls.AgencyActivity;
+import com.cn.moduls.OrderActivity;
 import com.cn.moduls.ScannerActivity;
 import com.util.ParameterCfg;
 
@@ -67,6 +68,9 @@ public class IndexActivity extends Activity {
 	private void enterModuals(int modulsIcon){
 		if(modulsIcon==R.drawable.agency){
 			Intent i = new Intent(IndexActivity.this,AgencyActivity.class);
+			this.startActivity(i);
+		}else if(modulsIcon==R.drawable.brand){
+			Intent i = new Intent(IndexActivity.this,OrderActivity.class);
 			this.startActivity(i);
 		}else if(modulsIcon==R.drawable.setting){
 			Intent i = new Intent(IndexActivity.this,ScannerActivity.class);

@@ -2,6 +2,7 @@ package com.cn.moduls;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.cn.R;
@@ -30,4 +31,7 @@ public class DeskOrderActivity extends Activity {
 		((TextView)findViewById(R.id.deskNumber)).setText(number);
 		((TextView)findViewById(R.id.owner)).setText(owner);
 	}
+	public void back(View v){
+		DeskOrderActivity.this.finish();
+    }
 }
