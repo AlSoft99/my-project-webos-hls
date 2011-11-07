@@ -2,19 +2,25 @@ package com.cn;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.sqlite.DatabaseHelper;
 import com.util.ProgressActivity;
 
 public class WinehouseActivity extends Activity {
+	private String foodType = "['冷菜','热菜','酒水']";
+	int version = 3;
+	
 	 /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        updateDB();
         Button btn1 = (Button)findViewById(R.id.login);
         btn1.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -43,4 +49,11 @@ public class WinehouseActivity extends Activity {
 			}
 		}
 	}
+	public void updateDB(){
+		DatabaseHelper database = new DatabaseHelper(this,version);
+        SQLiteDatabase s = database.getReadableDatabase(); 
+        s.close();
+        database.close();
+	}
+	
 }
