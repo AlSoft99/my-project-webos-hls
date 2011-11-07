@@ -21,6 +21,7 @@
 		<activity android:name=".moduls.OrderActivity"></activity>
 		<activity android:name=".moduls.ScannerActivity"></activity>
 		<activity android:name=".moduls.DeskOrderActivity" ></activity>
+		<activity android:name=".moduls.OrderSerialActivity" android:theme="@style/Loading"></activity>
     </application>
     
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>      
