@@ -2,6 +2,7 @@ package com.cn;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.sqlite.DatabaseHelper;
+import com.util.ParameterCfg;
 import com.util.ProgressActivity;
 
 public class WinehouseActivity extends Activity {
-	private String foodType = "['冷菜','热菜','酒水']";
 	int version = 3;
 	
 	 /** Called when the activity is first created. */
@@ -52,6 +53,17 @@ public class WinehouseActivity extends Activity {
 	public void updateDB(){
 		DatabaseHelper database = new DatabaseHelper(this,version);
         SQLiteDatabase s = database.getReadableDatabase(); 
+        Cursor cursor = s.query(DatabaseHelper.FOOD_TABLE_NAME, null, null, null, null, null, null);
+        System.out.println("=============================================");
+        while(cursor.moveToNext()){  
+            String id = cursor.getString(cursor.getColumnIndex("id"));  
+            String name = cursor.getString(cursor.getColumnIndex("name"));  
+            String type = cursor.getString(cursor.getColumnIndex("type"));  
+            String price = cursor.getString(cursor.getColumnIndex("price"));  
+            System.out.println("===========:"+id+"|"+name+"|"+type+"|"+price);
+            ParameterCfg.ORDER_LIST.add(id+"|"+name+"|"+type+"|"+price);
+        } 
+        cursor.close();
         s.close();
         database.close();
 	}
