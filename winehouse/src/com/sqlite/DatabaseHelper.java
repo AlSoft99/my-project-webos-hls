@@ -33,10 +33,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		System.out.println("oldVersion:"+oldVersion+"   newVersion:"+newVersion);
-		
+		updateFoodInfo(db);
+		updateFoodType(db);
 	}
 	public void updateFoodInfo(SQLiteDatabase db){
-		db.execSQL("DELETE FROM "+FOOD_TABLE_NAME);
+//		db.execSQL("DELETE FROM "+FOOD_TABLE_NAME);
+		db.delete(FOOD_TABLE_NAME, null, null);
 //		onCreate(db);
 		DBAction action = new DBAction();
 		List<FoodEntity> list = action.initFoodInfoJson();
@@ -44,7 +46,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 	
 	public void updateFoodType(SQLiteDatabase db){
-		db.execSQL("DELETE FROM "+FOOD_TYPE_TABLE_NAME);
+//		db.execSQL("DELETE FROM "+FOOD_TYPE_TABLE_NAME);
+		db.delete(FOOD_TYPE_TABLE_NAME, null, null);
 //		onCreate(db);
 		DBAction action = new DBAction();
 		List<FoodTypeEntity> list = action.initFoodTypeJson();

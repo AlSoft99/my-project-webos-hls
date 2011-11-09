@@ -19,4 +19,6 @@
     <string name="order_manager">点单管理</string>
     <string name="start_meal">已上菜</string>
     <string name="add_food">点菜</string>
+    <string name="search">搜索</string>
+    <string name="add">添加</string>
 </resources>

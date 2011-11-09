@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/deskOrderListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="vertical">
+		<LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+	        <AutoCompleteTextView
+            android:id="@+id/searchOrderId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:text="" 
+            android:layout_weight="1"
+            android:hint="请输菜名ID或者价格">
+			
+            <requestFocus />
+        </AutoCompleteTextView>
+
+		</LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
