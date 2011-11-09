@@ -14,7 +14,7 @@ import com.util.ParameterCfg;
 import com.util.ProgressActivity;
 
 public class WinehouseActivity extends Activity {
-	int version = 3;
+	int version = 1;
 	
 	 /** Called when the activity is first created. */
     @Override
