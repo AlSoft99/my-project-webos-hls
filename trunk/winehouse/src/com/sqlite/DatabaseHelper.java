@@ -24,31 +24,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME
-				+ " (no integer primary key autoincrement, type varchar(20), id varchar(20), name varchar(40), price int);");
-		db.execSQL("CREATE TABLE " + FOOD_TYPE_TABLE_NAME
-				+ " (no integer primary key autoincrement, type varchar(20));");
+		db.execSQL("CREATE TABLE " + FOOD_TABLE_NAME + " (no integer primary key autoincrement, type varchar(20), id varchar(20), name varchar(40), price int);");
+		db.execSQL("CREATE TABLE " + FOOD_TYPE_TABLE_NAME + " (no integer primary key autoincrement, type varchar(20));");
+		onUpgrade(db, DATABASE_VERSION, DATABASE_VERSION);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		System.out.println("oldVersion:"+oldVersion+"   newVersion:"+newVersion);
 		updateFoodInfo(db);
 		updateFoodType(db);
 	}
 	public void updateFoodInfo(SQLiteDatabase db){
-//		db.execSQL("DELETE FROM "+FOOD_TABLE_NAME);
 		db.delete(FOOD_TABLE_NAME, null, null);
-//		onCreate(db);
 		DBAction action = new DBAction();
 		List<FoodEntity> list = action.initFoodInfoJson();
 		action.insertFoodData(list,db);
 	}
 	
 	public void updateFoodType(SQLiteDatabase db){
-//		db.execSQL("DELETE FROM "+FOOD_TYPE_TABLE_NAME);
 		db.delete(FOOD_TYPE_TABLE_NAME, null, null);
-//		onCreate(db);
 		DBAction action = new DBAction();
 		List<FoodTypeEntity> list = action.initFoodTypeJson();
 		action.insertFoodTypeData(list,db);
