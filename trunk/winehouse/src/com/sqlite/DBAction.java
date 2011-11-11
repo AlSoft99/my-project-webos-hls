@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.entity.FoodEntity;
 import com.entity.FoodTypeEntity;
 import com.google.gson.Gson;
+import com.util.ParameterCfg;
 
 public class DBAction {
 	private String foodData = "";
@@ -38,7 +39,7 @@ public class DBAction {
 			values.put("name", foodEntity.getName());
 			values.put("type", foodEntity.getType());
 			values.put("price", foodEntity.getPrice());
-			long id = db.insert(DatabaseHelper.FOOD_TABLE_NAME, nullColumnHack, values);
+			long id = db.insert(ParameterCfg.FOOD_TABLE_NAME, nullColumnHack, values);
 			System.out.println("FoodEntity--id:"+id);
 		}
 
@@ -48,7 +49,7 @@ public class DBAction {
 		for (FoodTypeEntity foodEntity : list) {
 			ContentValues values = new ContentValues();
 			values.put("type", foodEntity.getType());
-			long id = db.insert(DatabaseHelper.FOOD_TYPE_TABLE_NAME, nullColumnHack, values);
+			long id = db.insert(ParameterCfg.FOOD_TYPE_TABLE_NAME, nullColumnHack, values);
 			System.out.println("FoodTypeEntity---id:"+id);
 		}
 

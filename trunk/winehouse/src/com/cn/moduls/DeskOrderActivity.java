@@ -2,6 +2,8 @@ package com.cn.moduls;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.cn.R;
+import com.control.ExpandControl;
+import com.sqlite.DatabaseHelper;
 import com.util.ParameterCfg;
 
 public class DeskOrderActivity extends Activity {
@@ -22,6 +26,7 @@ public class DeskOrderActivity extends Activity {
 	private String order;
 	private String owner;
 	private PopupWindow mPopupWindow;
+	ExpandControl orderList;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,6 +36,8 @@ public class DeskOrderActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,ParameterCfg.ORDER_LIST);
 		AutoCompleteTextView auto = (AutoCompleteTextView)findViewById(R.id.searchOrderId);
 		auto.setAdapter(adapter);
+		orderList = (ExpandControl)findViewById(R.id.orderList);
+		
 	}
 
 	private void getActivityData(){
@@ -59,6 +66,33 @@ public class DeskOrderActivity extends Activity {
 				mPopupWindow.dismiss();
 			}
 		});
+	}
+	public void appendOrderOnClick(View v){
+		AutoCompleteTextView tv = (AutoCompleteTextView)findViewById(R.id.searchOrderId);
+		String autoValue = tv.getText().toString();
+		String value = autoValue.split(ParameterCfg.ORDER_SPLIT)[0];
+		DatabaseHelper database = new DatabaseHelper(this,ParameterCfg.DATABASE_VERSION);
+        SQLiteDatabase s = database.getReadableDatabase(); 
+        Cursor cursor = s.query(ParameterCfg.FOOD_TABLE_NAME, null, "id=?", new String[]{value}, null, null, null);
+        String id="";
+        String name="";
+        String type="";
+        String price="";
+        if(cursor.moveToNext()){  
+            id = cursor.getString(cursor.getColumnIndex("id"));  
+            name = cursor.getString(cursor.getColumnIndex("name"));  
+            type = cursor.getString(cursor.getColumnIndex("type"));  
+            price = cursor.getString(cursor.getColumnIndex("price"))+"元";  
+        } 
+        if(!id.equals("")){
+        	orderList.addExpandData(type, id+"--------"+name);
+    		orderList.submit();
+    		orderList.expandAll();
+    		tv.getText().clear();
+        }
+        cursor.close();
+        s.close();
+        database.close();
 	}
 	public void orderListOnclick(View v){
 		Intent intent = new Intent(DeskOrderActivity.this, DeskOrderListActivity.class);
