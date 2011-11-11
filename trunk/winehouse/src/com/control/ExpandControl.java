@@ -8,6 +8,7 @@ import java.util.Map;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.SimpleExpandableListAdapter;
@@ -112,4 +113,5 @@ public class ExpandControl extends LinearLayout{
 			control.expandGroup(i);
 		}
 	}
+	
 }
