@@ -51,17 +51,15 @@ public class WinehouseActivity extends Activity {
 		}
 	}
 	public void updateDB(){
-		DatabaseHelper database = new DatabaseHelper(this,version);
+		DatabaseHelper database = new DatabaseHelper(this,ParameterCfg.DATABASE_VERSION);
         SQLiteDatabase s = database.getReadableDatabase(); 
-        Cursor cursor = s.query(DatabaseHelper.FOOD_TABLE_NAME, null, null, null, null, null, null);
-        System.out.println("=============================================");
+        Cursor cursor = s.query(ParameterCfg.FOOD_TABLE_NAME, null, null, null, null, null, null);
         while(cursor.moveToNext()){  
             String id = cursor.getString(cursor.getColumnIndex("id"));  
             String name = cursor.getString(cursor.getColumnIndex("name"));  
             String type = cursor.getString(cursor.getColumnIndex("type"));  
-            String price = cursor.getString(cursor.getColumnIndex("price"));  
-            System.out.println("===========:"+id+"|"+name+"|"+type+"|"+price);
-            ParameterCfg.ORDER_LIST.add(id+"|"+name+"|"+type+"|"+price);
+            String price = cursor.getString(cursor.getColumnIndex("price"))+"元";  
+            ParameterCfg.ORDER_LIST.add(id+ParameterCfg.ORDER_SPLIT+name+ParameterCfg.ORDER_SPLIT+type+ParameterCfg.ORDER_SPLIT+price);
         } 
         cursor.close();
         s.close();
