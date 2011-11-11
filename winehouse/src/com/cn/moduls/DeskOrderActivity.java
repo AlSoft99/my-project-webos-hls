@@ -98,4 +98,7 @@ public class DeskOrderActivity extends Activity {
 		Intent intent = new Intent(DeskOrderActivity.this, DeskOrderListActivity.class);
 		startActivity(intent);
 	}
+	public void deleteOrderDetail(View v){
+		System.out.println("===========================deleteOrderDetail:"+v.getParent());
+	}
 }
