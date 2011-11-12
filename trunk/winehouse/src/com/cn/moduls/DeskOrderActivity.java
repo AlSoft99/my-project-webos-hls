@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -37,9 +40,26 @@ public class DeskOrderActivity extends Activity {
 		AutoCompleteTextView auto = (AutoCompleteTextView)findViewById(R.id.searchOrderId);
 		auto.setAdapter(adapter);
 		orderList = (ExpandControl)findViewById(R.id.orderList);
-		
+		orderList.setOnItemLongClickListener(new OnItemLongClick());
 	}
 
+	class OnItemLongClick implements OnItemLongClickListener{
+		@Override
+		public boolean onItemLongClick(AdapterView<?> adapterView, View view,
+				int arg2, long arg3) {
+			System.out.println("==============");
+			System.out.println(adapterView);
+			System.out.println(view);
+			System.out.println(arg2);
+			System.out.println(arg3);
+			LinearLayout child = (LinearLayout)view;
+			System.out.println("control.tag();:"+view.getTag());
+			System.out.println(((TextView)view.findViewById(R.id.childPosition)).getText());
+			System.out.println("==============child.getTag():"+child.getTag(ParameterCfg.EXPAND_GROUP));
+			return false;
+		}
+		
+	}
 	private void getActivityData(){
 		Bundle bun = getIntent().getExtras();
 		number = (String)bun.get("number");

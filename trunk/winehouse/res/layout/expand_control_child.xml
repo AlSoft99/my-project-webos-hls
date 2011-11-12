@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>  
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
-    android:orientation="horizontal" android:layout_width="match_parent"  
-    android:layout_height="wrap_content">  
+    android:orientation="horizontal" android:layout_width="match_parent" android:id="@+id/orderType" 
+    android:layout_height="wrap_content" android:tag="child">  
 
     <TextView
         android:id="@+id/childId"
@@ -12,19 +12,16 @@
         android:paddingBottom="5px"
         android:paddingLeft="80px"
         android:paddingTop="5px"
-        android:text="TextView" >
+        android:text="TextView" 
+        >
 	</TextView>
-	<LinearLayout  android:layout_weight="2"
-    	android:orientation="horizontal" android:layout_width="match_parent"  
-    	android:layout_height="wrap_content"> 
-    	<EditText
-    	    android:text="1"
-        	android:id="@+id/orderListNumber"
-        	android:layout_width="60dp"
-        	android:layout_height="40dp"
-        	android:inputType="phone" >
-    	</EditText>	</LinearLayout>
-
+
+    <TextView
+        android:id="@+id/childPosition"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TextView" android:layout_weight="1" />
+
     <ImageView
         android:id="@+id/deleteOrderDetail"
         android:layout_width="wrap_content"
