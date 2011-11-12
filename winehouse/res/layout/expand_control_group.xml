@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>  
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
-    android:orientation="vertical" android:layout_width="fill_parent"  
+    android:orientation="horizontal" android:layout_width="fill_parent" android:tag="group" android:id="@+id/orderType" 
     android:layout_height="fill_parent">  
     <TextView android:layout_height="50px" android:layout_width="fill_parent"  
         android:id="@+id/groupId" android:paddingLeft="50dip" android:text="TextView"  
-        android:gravity="fill_vertical"></TextView>  
+        android:gravity="fill_vertical" android:layout_weight="1"></TextView>
+
+    <TextView
+        android:id="@+id/groupPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
   
 </LinearLayout> 
