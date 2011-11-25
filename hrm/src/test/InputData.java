@@ -40,7 +40,8 @@ public class InputData {
 		data.clearData(dao, doc);
 	}
 	//必要的导入表
-	private String[] need_import_node_name = {"menu_level_stair","menu_level_binary","params_type","params_list","role_menu_stair","role_menu_binary"};
+	private String[] need_import_node_name_1 = {"menu_level_binary","menu_level_stair","params_type","params_list","role_menu_binary","role_menu_stair","role_info","user_info"};
+	private String[] need_import_node_name = {"menu_level_stair","menu_level_binary","params_type","params_list","role_menu_stair","role_menu_binary","role_info","user_info"};
 	//必要的清除数据
 	private String[] need_clear_node_name = {"day_goods_clear","goods_month_stat","goods_output_info","goods_output_list",
 			"goods_stat","store_goods_clear","store_input_info","store_input_list","store_output_info",
@@ -130,10 +131,14 @@ public class InputData {
 	 * @param doc
 	 */
 	public void importData(HibernateSessionDAO dao,Document doc){
+		for (int i = 0; i < need_import_node_name_1.length; i++) {
+			final String del = "delete from "+need_import_node_name_1[i];
+			execute(dao, del);
+		}
 		for (int i = 0; i < need_import_node_name.length; i++) {
 			NodeList node = doc.getElementsByTagName(need_import_node_name[i]);
-			final String del = "delete from "+need_import_node_name[i];
-			execute(dao, del);
+			/*final String del = "delete from "+need_import_node_name[i];
+			execute(dao, del);*/
 			for (int j = 0; j < node.getLength(); j++) {
 				if(node.item(j)!=null){
 					NodeList temp = node.item(j).getChildNodes();
