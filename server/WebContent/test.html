@@ -9,9 +9,9 @@
 	$(function() {
 		$.ajax({
 			url : "testVo.do",
-			data : {username:"test",password:"word",entity:"test.entity.Test"},
-			success : function(){
-				alert(11);
+			data : {username:"用户",password:"密码",entity:"com.test.entity.UserInfo"},
+			success : function(o){
+				console.log(o);
 			},
 			error : function(text){
 				console.log(text);
