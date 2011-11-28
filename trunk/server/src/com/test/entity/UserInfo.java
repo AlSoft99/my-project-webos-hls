@@ -1,9 +1,6 @@
 package com.test.entity;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class Test {
+public class UserInfo {
 	private String username;
 	private String password;
 	public String getUsername() {
