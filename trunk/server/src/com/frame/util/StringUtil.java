@@ -8,10 +8,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import test.entity.Test;
 
 import com.frame.vo.Request;
 import com.google.gson.Gson;
+import com.test.entity.Test;
 
 public class StringUtil {
 	private static StringUtil util = new StringUtil();
@@ -34,13 +34,9 @@ public class StringUtil {
 			}
 			if(entity!=null){
 				Gson gson = new Gson();  
-				classObj = Class.forName(entity).newInstance();
-				
-				java.lang.reflect.Type type = classObj.getClass().getGenericSuperclass();
-				Test o = gson.fromJson("{username:\"test\",password:\"word\",entity:\"test.entity.Test\"}", type);
-				System.out.println("userame:"+o.getUsername());
+				classObj = gson.fromJson(paramsMap.toString(), Class.forName(entity).newInstance().getClass());
 			}
-//			req.setEntity(classObj);
+			req.setEntity(classObj);
 			req.setParamsMap(paramsMap);
 			req.setUserInfo(request.getSession().getAttribute("userInfo"));
 			req.setHttpRequest(request);

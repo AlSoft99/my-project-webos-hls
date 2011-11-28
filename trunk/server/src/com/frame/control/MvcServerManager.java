@@ -24,20 +24,24 @@ public class MvcServerManager {
 	@RequestMapping(value="/*.do" ,method=RequestMethod.GET)
 	public void controllerGet(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		System.out.println("ServerManager:"+request.getParameter("username"));
-		logicAction(request,response);
-		response.getWriter().println("fanhui");
+		Request req = logicAction(request,response);
+		response.getWriter().println(req.getResponse().toString());
 	}
 	
 	private Request logicAction(HttpServletRequest request,HttpServletResponse response){
 		String uri = request.getServletPath();
 		String springName = uri.substring(1, uri.indexOf("."));
 		BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
-//		BaseVo base = factory.getBean(springName, BaseVo.class);
+		BaseVo base = factory.getBean(springName, BaseVo.class);
+		Request req = null;
 		try {
-			Request req =  StringUtil.newInstant().toRequest(request, response);
+			req =  StringUtil.newInstant().toRequest(request, response);
+			req = base.execute(req);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return null;
+		return req;
 	}
 }
