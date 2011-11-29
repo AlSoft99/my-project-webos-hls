@@ -9,6 +9,7 @@
 	$(function() {
 		$.ajax({
 			url : "testVo.do",
+			type:"post",
 			data : {username:"用户",password:"密码",entity:"com.test.entity.UserInfo"},
 			success : function(o){
 				console.log(o);
