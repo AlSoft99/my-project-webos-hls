@@ -25,11 +25,11 @@ public class TestVo implements BaseVo {
 		UserInfo userInfo = (UserInfo)request.getEntity();
 		System.out.println("test.name:"+userInfo.getUsername());
 		userInfoDao.save(userInfo);
-		userInfo.setUsername("name1");
+		/*userInfo.setUsername("name1");
 		userInfoDao.save(userInfo);
-		throw new Exception("报错!!");
-//		request.setResponse("1000分");
-//		return request;
+		throw new Exception("报错!!");*/
+		request.setResponse("1000分");
+		return request;
 	}
 
 }
