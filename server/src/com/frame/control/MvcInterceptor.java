@@ -14,7 +14,6 @@ public class MvcInterceptor implements HandlerInterceptor {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		System.out.println("preHandle:"+request.getParameter("username"));
 		return true;
 	}
 	//控制器执行完成后,生成视图之前执行的动作

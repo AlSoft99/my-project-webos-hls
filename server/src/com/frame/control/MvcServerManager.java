@@ -23,7 +23,6 @@ public class MvcServerManager {
 	}
 	@RequestMapping(value="/*.do" ,method=RequestMethod.GET)
 	public void controllerGet(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		System.out.println("ServerManager:"+request.getParameter("username"));
 		Request req = logicAction(request,response);
 		response.getWriter().println(req.getResponse().toString());
 	}
