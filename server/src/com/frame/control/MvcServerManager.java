@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.frame.log.LogUtil;
 import com.frame.util.StringUtil;
 import com.frame.vo.BaseVo;
 import com.frame.vo.Request;
@@ -24,7 +25,14 @@ public class MvcServerManager {
 	@RequestMapping(value="/*.do" ,method=RequestMethod.GET)
 	public void controllerGet(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		Request req = logicAction(request,response);
-		response.getWriter().println(req.getResponse().toString());
+		if(req.getResponse()!=null){
+			response.getWriter().println(req.getResponse().toString());
+		}else{
+			String uri = request.getServletPath();
+			String springName = uri.substring(1, uri.indexOf("."));
+			LogUtil.error("页面传入的uri为:"+uri+" spring的ID为:"+springName+"出现问题!");
+			response.getWriter().println("后台出现异常!");
+		}
 	}
 	
 	private Request logicAction(HttpServletRequest request,HttpServletResponse response){

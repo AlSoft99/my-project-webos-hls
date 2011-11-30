@@ -1,30 +1,35 @@
 package com.test.vo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Repository;
 
 import com.frame.vo.BaseVo;
 import com.frame.vo.Request;
-import com.test.dao.UserInfoDAO;
+import com.test.dao.UserInfoDao;
 import com.test.entity.UserInfo;
 
 @Repository
 public class TestVo implements BaseVo {
-	@Autowired
-	private UserInfoDAO userInfoDAO;
-	public UserInfoDAO getUserInfoDAO() {
-		return userInfoDAO;
+	@Resource
+	private UserInfoDao userInfoDao;
+	public UserInfoDao getUserInfoDao() {
+		return userInfoDao;
 	}
-	public void setUserInfoDAO(UserInfoDAO userInfoDAO) {
-		this.userInfoDAO = userInfoDAO;
+	
+	public void setUserInfoDAO(UserInfoDao userInfoDAO) {
+		this.userInfoDao = userInfoDAO;
 	}
 	@Override
 	public Request execute(Request request) throws Exception {
 		UserInfo userInfo = (UserInfo)request.getEntity();
 		System.out.println("test.name:"+userInfo.getUsername());
-		userInfoDAO.save(userInfo);
-		request.setResponse("1000分");
-		return request;
+		userInfoDao.save(userInfo);
+		userInfo.setUsername("name1");
+		userInfoDao.save(userInfo);
+		throw new Exception("报错!!");
+//		request.setResponse("1000分");
+//		return request;
 	}
 
 }
