@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="lib/jquery-1.7-min.js"></script>
+</head>
+<script>
+	$(function() {
+		$.ajax({
+			url : "testVo.do",
+			type:"post",
+			data : {username:"用户",password:"密码",entity:"com.test.entity.UserInfo"},
+			success : function(o){
+				console.log(o);
+			},
+			error : function(text){
+				console.log(text);
+			}
+		});
+	});
+</script>
+<body>
+<div id="error"></div>
+</body>
+</html>
