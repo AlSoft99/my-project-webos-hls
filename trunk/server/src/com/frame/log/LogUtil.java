@@ -13,6 +13,9 @@ public class LogUtil {
 	public static void error(String log){
 		logger.error(log);
 	}
+	public static void error(String log,Exception e){
+		logger.error(log,e);
+	}
 	public static void fatal(String log){
 		logger.fatal(log);
 	}
