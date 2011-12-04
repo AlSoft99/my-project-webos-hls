@@ -1,6 +1,6 @@
 var include_file = {
 	jqueryui: [
-	    "lib/ui/css/ui-lightness/jquery-ui-1.8.16.custom.css",
+	    /*"lib/ui/css/ui-lightness/jquery-ui-1.8.16.custom.css",*/
 	    "lib/ui/js/jquery-ui-1.8.16.custom.min.js"
 	],
 	plugin: [
@@ -28,6 +28,7 @@ var frame = {
             var attr = isCSS ? " type='text/css' rel='stylesheet' " : " language='javascript' type='text/javascript' ";
             var link = (isCSS ? "href" : "src") + "='" + name + "'";
             var name = "<" + tag + attr + link + "></" + tag + ">";
+            console.log("name:"+name);
             if(!sync){
             	//异步加载
             	document.write("<" + tag + attr + link + "></" + tag + ">");

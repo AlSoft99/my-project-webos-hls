@@ -6,8 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- CSS -->
-<link href="lib/transdmin/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="stylesheet/css/main.css" rel="stylesheet" type="text/css" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/transdmin/css/transdmin.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="stylesheet/css/main.css"  media="screen" />
+<link type='text/css' rel='stylesheet' href='lib/ui/css/ui-lightness/jquery-ui-1.8.16.custom.css'></link>
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="lib/transdmin/css/ie6.css" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="lib/transdmin/css/ie7.css" /><![endif]-->
 
@@ -22,10 +23,10 @@
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <ul id="mainNav">
-        	<li><a href="#userinfo" class="active" >首页</a></li> <!-- Use the "active" class for the active menu item  -->
+        	<li><a href="#userinfo1" class="active" >首页</a></li> <!-- Use the "active" class for the active menu item  -->
         	<li><a href="#userinfo" >好友</a></li>
-        	<li><a href="#userinfo" >消息</a></li>
-        	<li><a href="#userinfo" >资料</a></li>
+        	<li><a href="#userinfo2" >消息</a></li>
+        	<li><a href="#userinfo3" >资料</a></li>
         	<li class="logout"><a href="#">登出</a></li>
         </ul>
         <!-- // #end mainNav -->
@@ -34,19 +35,19 @@
 			<div id="container">
         		<div id="sidebar">
                 	<ul class="sideNav">
-                    	<li><a href="#userinfo">照片</a></li>
-                    	<li><a href="#userinfo" class="active">日记</a></li>
-                    	<li><a href="#userinfo">音乐</a></li>
-                    	<li><a href="#userinfo">电影</a></li>
-                    	<li><a href="#userinfo">书籍</a></li>
-                    	<li><a href="#userinfo">网盘</a></li>
+                    	<li><a href="#userinfo4">照片</a></li>
+                    	<li><a href="#userinfo5">日记</a></li>
+                    	<li><a href="#userinfo6">音乐</a></li>
+                    	<li><a href="#userinfo7">电影</a></li>
+                    	<li><a href="#userinfo8">书籍</a></li>
+                    	<li><a href="#userinfo9">网盘</a></li>
                     </ul>
                     <!-- // .sideNav -->
                 </div>    
                 <!-- // #sidebar -->
                 
-                <!-- h2 stays for breadcrumbs -->
-                <h2><a href="#" id="user_page">我的首页</a> &raquo; <a href="#" class="active" id="user_item">Print resources</a></h2>
+                <!-- h2 stays for breadcrumbs --> 
+                <h2><a href="#" id="user_page">我的首页</a> &raquo; <a href="#" class="active" id="user_item">首页</a></h2>
                 
                 <div id="main">
                 	<form action="" class="jNice">
