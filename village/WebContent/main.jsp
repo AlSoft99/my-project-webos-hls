@@ -1,20 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Transdmin Light</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <!-- CSS -->
 <link href="lib/transdmin/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="stylesheet/css/main.css" rel="stylesheet" type="text/css" media="screen" />
+<!-- <link href="lib/ui/css/ui-lightness/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" media="screen" /> -->
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="lib/transdmin/css/ie6.css" /><![endif]-->
 <!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="lib/transdmin/css/ie7.css" /><![endif]-->
 
 <!-- JavaScripts-->
-<script type="text/javascript" src="lib/jquery.min.js"></script>
-<script type="text/javascript" src="js/frame.js"></script></script>
+<script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="lib/ui/js/jquery-ui-1.8.16.custom.min.js"></script> -->
+<script type="text/javascript" src="lib/frame.js"></script>
 </head>
-
 <body>
 	<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->

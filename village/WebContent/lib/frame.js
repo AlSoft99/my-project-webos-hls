@@ -1,9 +1,16 @@
-var plugin = [
-	"lib/plugin/jquery.lazyload.min.js",
-	"js/common.js",
-];
-var modules = [
-];
+var include_file = {
+	jqueryui: [
+	    "lib/ui/css/ui-lightness/jquery-ui-1.8.16.custom.css",
+	    "lib/ui/js/jquery-ui-1.8.16.custom.min.js"
+	],
+	plugin: [
+     	"lib/plugin/jquery.lazyload.min.js",
+    	"lib/common.js",
+    ],
+    modules: [
+        "modules/main.js"
+	]
+};
 var frame = {
 	//可动态加载css,js文件,支持同步和异步
 	include: function(file,sync) {
@@ -23,14 +30,17 @@ var frame = {
             var name = "<" + tag + attr + link + "></" + tag + ">";
             if(!sync){
             	//异步加载
-            	document.write(name);
+            	document.write("<" + tag + attr + link + "></" + tag + ">");
             }else{
             	//同步加载
             	$(document).append(name);
             }
         }
     }
-}
+};
 $(function(){
-	frame.include(plugin,true);
+	
+	frame.include(include_file.plugin,true);
+	frame.include(include_file.jqueryui,true);
+	frame.include(include_file.modules,true);
 });
