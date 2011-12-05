@@ -5,6 +5,7 @@
 }
 .title{
 	font-size: 15px;
+	line-height:20px;
 }
 .bold{
 	font-weight: bold;
@@ -14,6 +15,6 @@
 	width:6px;
 	height:9px;
 }
-.definedMsg{
+.default-msg{
 	color:#9A9A9A;
 }
