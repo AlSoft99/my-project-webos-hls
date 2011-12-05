@@ -5,7 +5,7 @@ var include_file = {
 	],
 	plugin: [
      	"lib/plugin/jquery.lazyload.min.js",
-    	"lib/common.js",
+    	"lib/common.js"
     ],
     modules: [
         "modules/main.js"
@@ -28,7 +28,6 @@ var frame = {
             var attr = isCSS ? " type='text/css' rel='stylesheet' " : " language='javascript' type='text/javascript' ";
             var link = (isCSS ? "href" : "src") + "='" + name + "'";
             var name = "<" + tag + attr + link + "></" + tag + ">";
-            console.log("name:"+name);
             if(!sync){
             	//异步加载
             	document.write("<" + tag + attr + link + "></" + tag + ">");

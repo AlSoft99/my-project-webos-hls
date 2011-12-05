@@ -7,6 +7,8 @@ var main = {
 	refresh : function(){
 		var url = window.location.hash;
 		if(url==""){
+			url = "#userinfo";
+			$("#main").load(viewpath + $.parseWindowUrl(url));
 			return;
 		}
 		$("#main").load(viewpath + $.parseWindowUrl(url));
