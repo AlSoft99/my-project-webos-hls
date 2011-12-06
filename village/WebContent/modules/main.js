@@ -1,5 +1,5 @@
 var viewpath = "modules/view/";
-$(function(){
+$(function(){ 
 	main.refresh();
 	main.menuChange();
 });
