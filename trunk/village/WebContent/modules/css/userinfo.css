@@ -18,7 +18,7 @@
 	padding-left: 10px;
 }
 .bl-userinfo-person-content textarea{
-	width: 98%;padding:5px;font-size: 15px;
+	width: 665px;padding:5px;font-size: 15px;
 }
 .bl-userinfo-triangle{ 
 	position:absolute;top:15px;left:5px;
@@ -31,5 +31,10 @@
 }
 .bl-userinfo-msg-frame{
 	width:100%;
-	padding:10px 0px;
+	padding:15px 0px;
+	margin-top:20px;
+}
+.bl-userinfo-msg-frame div{
+	width:33%;
+	text-align: center;
 }
