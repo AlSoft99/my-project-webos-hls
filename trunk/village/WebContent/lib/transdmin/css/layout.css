@@ -32,15 +32,21 @@ h1 a {
 }
 
 h1 span { display: none; }
-
+.sideTitle{
+	background-color: #EEE;
+	padding:6px;
+	margin-bottom:30px;
+}
 /* Main Navigation ---------------------------------------- */
 
 #mainNav {
 	/* width: 918px; */
 	height: 37px;
-	padding: 6px;
-	margin: 0 0 30px 0;
-	background: url(../img/top-menu-bg.gif) no-repeat left top; 
+	/* padding: 6px;
+	margin: 0 0 30px 0; */
+	border:1px solid #DDD;
+	background-color: #F6F6F6;
+	/* background: url(../img/top-menu-bg.gif) no-repeat left top;  */
 	/* We used a background image making the thick border and the thin one to keep the html structure simple */
 }
 

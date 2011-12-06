@@ -1,9 +1,13 @@
 <link type="text/css" rel="stylesheet" href="modules/css/userinfo.css" media="screen" />
-<script type="text/javascript" src="modules/script/userinfo.js"></script>
+<script type="text/javascript" src="modules/script/userinfo.js"></script> 
 <div class="body">
 	<div class="bl-userinfo-title">
-		<div class="bl-userinfo-photo">
-			<img src="stylesheet/img/120_0_0.gif">
+		<div class="float">
+			<div class="bl-userinfo-photo">
+				<img src="stylesheet/img/120_0_0.gif">
+			</div>
+			<div class="clear"></div> 
+			<div style="margin-top:5px;"><a style="float: left;" href="#">换头像</a><a style="float:right;" href="#">改资料</a></div>
 		</div>
 		<div class="bl-userinfo-person-frame">
 			<div class="bl-userinfo-person-content">
@@ -11,13 +15,14 @@
 			</div>
 			<div id="sign-body" class="bl-userinfo-person-content bl-userinfo-sign" >
 				<textarea id="sign" class="" default="说点什么" style="height:40px;"></textarea><div class="triangle bl-userinfo-triangle"></div>
-				<div id="sign-bottom" class="bl-userinfo-person-content bl-userinfo-sign-bottom" style="padding-left:0px;width:637px;display:none;">
-					<input type="button" value="发表" style="float:right;"/><div class="clear"></div>
+				<div id="sign-bottom" class="bl-userinfo-person-content bl-userinfo-sign-bottom" style="padding-left:0px;width:635px;display:none;">
+					<input type="button" id="sign-submit" value="发表" style="float:right;"/><div class="clear"></div> 
 				</div>
 			</div>
-			
 		</div>
 		<div class="clear"></div>
 	</div>
-	<input type="button" value="file" id="button1"/><input type="file" style="display:none" id="button2" value="test"/> 
+	<div class="frame bl-userinfo-msg-frame">
+		1234325
+	</div>
 </div>

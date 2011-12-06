@@ -20,13 +20,15 @@
     	<h1><a href="#"><span>Transdmin Light</span></a></h1>
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
-        <ul id="mainNav">
-        	<li><a href="#userinfo1" class="active" >首页</a></li> <!-- Use the "active" class for the active menu item  -->
-        	<li><a href="#userinfo" >好友</a></li>
-        	<li><a href="#userinfo2" >消息</a></li>
-        	<li><a href="#userinfo3" >资料</a></li>
-        	<li class="logout"><a href="#">登出</a></li>
-        </ul>
+        <div class="sideTitle">
+	        <ul id="mainNav">
+	        	<li><a href="#userinfo1" class="active" >首页</a></li> <!-- Use the "active" class for the active menu item  -->
+	        	<li><a href="#userinfo" >好友</a></li>
+	        	<li><a href="#userinfo2" >消息</a></li>
+	        	<li><a href="#userinfo3" >资料</a></li>
+	        	<li class="logout"><a href="#">登出</a></li>
+	        </ul>
+        </div>
         <!-- // #end mainNav -->
         
         <div id="containerHolder">
