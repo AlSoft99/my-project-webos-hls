@@ -4,17 +4,21 @@ $(function(){
 		$("#button2").click();
 	});
 	$("textarea, input[type=text]").enmuDefaultMsg();
-	$("#sign").focusin(function(){
-		$(this).height(65);
+	$("#sign-body").focusin(function(){
+		$(this).children("textarea").height(65);
 		$("#sign-bottom").show();
 	}).focusout(function(e){
-		$(this).height(40);
+		$(this).children("textarea").height(40);
 		$("#sign-bottom").hide();
 	});
 	$("#sign-bottom").mousedown(function(e){
+		/*window.event.returnValue = false;
+		return false;*/
+		e.stopImmediatePropagation();
 		e.preventDefault();
 	});
 	$("#sign-submit").click(function(){
 		
 	});
+	$("#userinfo-tabs").tabs();
 });
