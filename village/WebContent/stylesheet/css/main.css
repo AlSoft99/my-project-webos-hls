@@ -1,7 +1,13 @@
 a{
 	color: #3366CC;
 }
-
+.link{
+	text-decoration: none;
+	color: #8692A2;
+}
+.link:HOVER{
+	color:#336699;
+}
 .body{
 	width:100%;
 	/* height:700px; */
