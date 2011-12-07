@@ -38,3 +38,13 @@ a{
 	background-color:#FBFBFB;
 	border: 1px solid #EEEEEE;
 }
+.frame-content-bottom{
+	padding:10px;
+	border-bottom: 1px solid #CAD0DB;
+}
+.grey{
+	color:#999999;
+}
+.section{
+	text-indent: 25px;
+}
