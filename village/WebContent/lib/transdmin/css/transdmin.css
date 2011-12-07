@@ -13,5 +13,5 @@
 @import url("reset.css");
 @import url("layout.css");
 @import url("../../../stylesheet/css/main.css");
-@import url("../../ui/css/ui/jquery-ui-redmond.css");
+@import url("../../ui/css/redmond/jquery-ui-custom.css");
 @import url("../../../stylesheet/css/jquery-ui.css");
