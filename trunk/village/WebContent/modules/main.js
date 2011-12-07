@@ -22,7 +22,7 @@ var main = {
 	},
 	menuChange : function(){
 		$("#mainNav li a,#sidebar li a").click(function(){
-			$("#main").hide();
+			$("#main").animate({opacity:0},100);
 			main.loadingWay(viewpath + $.parseWindowUrl($(this).attr("href")));
 			$("#mainNav li .active, #sidebar li .active").removeClass("active");
 			$(this).addClass("active");
@@ -31,7 +31,7 @@ var main = {
 	},
 	loadingWay : function(url){
 		$("#main").load(url,function(){
-			$(this).fadeIn(500);
+			$(this).animate({opacity:1},500);
 		});
 	}
 };
