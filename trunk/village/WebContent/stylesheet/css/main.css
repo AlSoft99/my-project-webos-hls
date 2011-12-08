@@ -69,5 +69,9 @@ a{
 .close{
 	background:url("../img/close_8-1.png") no-repeat;
 	height: 8px;
-	width:8px;
+	width: 8px;
+	display: block;
+}
+.close:hover{
+	background:url("../img/close_8-1.png") no-repeat -8px;
 }
