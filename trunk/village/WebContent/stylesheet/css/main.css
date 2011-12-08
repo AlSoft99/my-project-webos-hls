@@ -5,8 +5,11 @@ a{
 	text-decoration: none;
 	color: #8692A2;
 }
-.link:HOVER{
+.link:hover{
 	color:#336699;
+}
+.link-none{
+	text-decoration: none;
 }
 .body{
 	width:100%;
@@ -59,4 +62,12 @@ a{
 }
 .ui-input-search input{
 	border:0px;
+}
+.selected{
+	background-color: #F4F4F4;
+}
+.close{
+	background:url("../img/close_8-1.png") no-repeat;
+	height: 8px;
+	width:8px;
 }
