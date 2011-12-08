@@ -16,6 +16,7 @@ var main = {
 		$("#mainNav li a,#sidebar li a").each(function(){
 			if($(this).attr("href")==url){
 				$(this).addClass("active");
+				$("#user_item").text($(this).text());
 				return;
 			}
 		});

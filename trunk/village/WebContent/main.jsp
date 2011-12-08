@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>官家部落</title>
+<title>官家部落格</title>
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="lib/transdmin/css/transdmin.css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="lib/transdmin/css/ie6.css" /><![endif]-->
