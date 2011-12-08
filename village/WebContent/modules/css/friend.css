@@ -9,9 +9,20 @@
 	float:right;
 	color:#999999;
 }
+.bl-friend-min-head{
+	padding:2px;
+	border: 1px solid #999;
+}
 .bl-friend-min-head img{
 	width:50px;
 	height:50px;
-}.bl-friend-type-list{
-	
+}
+.bl-friend-type-list {
+	width:460px;
+}
+.bl-friend-type-list .float-right.link-none{
+	color:#999;
+}
+#friend-list > div{
+	width:520px;
 }

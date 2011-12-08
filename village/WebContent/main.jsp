@@ -32,7 +32,7 @@
         <!-- // #end mainNav -->
         
         <div id="containerHolder">
-			<div id="container">
+			<div id="container" style="min-height: 500px;">
         		<div id="sidebar">
                 	<ul class="sideNav">
                     	<li><a href="#userinfo4">照片</a></li>
