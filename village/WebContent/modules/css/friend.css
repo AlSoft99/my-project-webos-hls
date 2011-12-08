@@ -1,0 +1,17 @@
+.bl-friend-link{
+	padding:7px 10px;
+}
+.bl-friend-link a{
+	float:left;
+	text-decoration: none;
+}
+.bl-friend-link span{
+	float:right;
+	color:#999999;
+}
+.bl-friend-min-head img{
+	width:50px;
+	height:50px;
+}.bl-friend-type-list{
+	
+}

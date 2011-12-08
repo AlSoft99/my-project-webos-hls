@@ -30,5 +30,8 @@ $.fn.extend({
 				$(this).addClass(className);
 			}
 		});
+	},
+	searchInput: function(){
+		$(this).wrap("<div class='ui-input-search'></div>");
 	}
 });
