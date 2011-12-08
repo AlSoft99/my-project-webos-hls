@@ -4,8 +4,8 @@ $.extend({
 	}
 });
 $.fn.extend({
-	enmuDefaultMsg: function(){
-		var attr = "default";
+	defaultMsg: function(){
+		var attr = "defaultMsg";
 		var className = "default-msg";
 		var parseVal = function(val){
 			if(typeof(val)=="undefined"){

@@ -3,7 +3,7 @@ $(function(){
 	$("#button1").click(function(){
 		$("#button2").click();
 	});
-	$("textarea, input[type=text]").enmuDefaultMsg();
+	$("textarea, input[type=text]").defaultMsg();
 	$("#sign-body").focusin(function(){
 		$(this).children("textarea").height(65);
 		$("#sign-bottom").show();
