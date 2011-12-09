@@ -18,7 +18,11 @@
 	height:50px;
 }
 .bl-friend-type-list {
-	width:460px;
+	width:445px;
+	padding-left:15px;
+}
+.bl-friend-type-list a{
+	line-height: 19px;
 }
 .bl-friend-type-list .float-right.link-none{
 	color:#999;

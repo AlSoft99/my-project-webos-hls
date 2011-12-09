@@ -1,3 +1,6 @@
+@IMPORT url("combobox.css");
+@IMPORT url("input.css");
+
 a{
 	color: #3366CC;
 }
@@ -50,18 +53,6 @@ a{
 }
 .section{
 	text-indent: 25px;
-}
-.ui-input{
-	height:22px;
-	margin-top:2px;
-}
-.ui-input-search{
-	border:1px solid #BFBFBF;
-	background:url(../img/sear_icon.png) no-repeat 6px center; 
-	padding-left:20px;
-}
-.ui-input-search input{
-	border:0px;
 }
 .selected{
 	background-color: #F4F4F4;
