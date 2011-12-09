@@ -1,0 +1,38 @@
+.combobox-frame{
+	background:url("../img/btn_modify.png") no-repeat;width:69px;height:19px;line-height:19px;text-indent: 6px;font-size: 12px;
+}
+.combobox-frame:hover{
+	background:url("../img/btn_modify.png") no-repeat 0 -19px;
+}
+.combobox-list{
+	position: absolute;
+}
+.combobox-list[position=right] > div{
+	float: right;
+}
+.combobox-list[position=left] > div{
+	float: left;
+}
+.combobox-title{
+	background:url("../img/btn_modify.png") no-repeat 0 -18px;width:69px;height:19px;line-height:21px;text-indent: 6px;font-size: 12px;color: black;position: absolute;cursor: pointer;
+}
+.combobox-list[position=right] > .combobox-title{
+	right:0px;
+	top:-18px;
+}
+.combobox-list[position=left] > .combobox-title{
+	top:-18px;
+}
+.combobox-list .combobox-content{
+	padding: 2px 10px;border: 1px solid #999;background-color: white;
+}
+.combobox-list .combobox-content a{
+	color: #222;text-decoration: none;display: block;padding:2px 12px;
+}
+.combobox-list .combobox-content a:hover{
+	background-color: #336699;
+	color: white;
+}
+.combobox-list .combobox-content .select{
+	background: url("../img/dhao.png") no-repeat 0 5px;
+}
