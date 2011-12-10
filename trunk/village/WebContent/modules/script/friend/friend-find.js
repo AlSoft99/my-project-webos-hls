@@ -1,6 +1,6 @@
 $(function() {
 
-	$( "#search-user" ).autocomplete({
+	$( "#find-user" ).autocomplete({
 		source: function( request, response ) {
 			$.ajax({
 				url: "test.jsp",
@@ -29,24 +29,6 @@ $(function() {
 			//$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
 		}
 	});
-	var isGo = function(){
-		var flag = true;
-		$(".bl-friend-item").each(function(){
-			if($(this).text()==$("#search-user").val()){
-				flag = false;
-				$("#search-user").val("");
-			}
-		});
-		return flag;
-	};
 	$("input[type=text]").defaultMsg();
-	$("#search-user").searchInput();
-	$("input[type=button]").button();
-	$("#add-user-btn").click(function(){
-		if(!isGo()){
-			return;
-		}
-		$("#invite-list").append('<div class="bl-friend-list"><div class="bl-friend-item">'+$("#search-user").val()+'</div><a href="#" class="close bl-friend-close"></a><div class="clear"></div></div>');
-		$("#search-user").val("");
-	});
+	$("#find-user").searchInput();
 });

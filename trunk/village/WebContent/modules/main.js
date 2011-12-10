@@ -11,7 +11,7 @@ var main = {
 			main.loadingWay(viewpath + $.parseWindowUrl(url));
 			return;
 		}
-		main.loadingWay(viewpath + $.parseWindowUrl(url));
+		this.loadingWay(viewpath + $.parseWindowUrl(url));
 		$("#mainNav li .active, #sidebar li .active").removeClass("active");
 		$("#mainNav li a,#sidebar li a").each(function(){
 			if($(this).attr("href")==url){

@@ -1,0 +1,33 @@
+#search-user { width: 25em; }
+#main .bl-friend-table{
+	border-bottom: 1px solid #DDD;
+}
+#main .bl-friend-table td{
+	vertical-align:middle;
+	border-bottom:0px;
+	padding:10px 20px;
+}
+.bl-friend-table td .ui-input-search{
+	width: 25.2em;
+	float: left;
+	margin-top: 2px;
+}
+#add-user-btn{
+	margin-left: 10px;
+	margin-top: 1px;
+}
+.bl-friend-invite{
+	width:430px;height:150px;border:1px solid #999;padding:5px 10px;overflow: auto;
+}
+.bl-friend-invite .bl-friend-item{
+	padding:0 5px;float: left;width: 95%;
+}
+.bl-friend-close{
+	float: left;margin-top: 10px;
+}
+.bl-friend-list:hover{
+	background-color: #F9F9F9;
+}
+.bl-friend-msg{
+	width:430px;height:150px;padding:5px 10px;
+}
