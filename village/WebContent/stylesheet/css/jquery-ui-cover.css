@@ -1,7 +1,8 @@
-.ui-widget-content{
+.ui-tabs.ui-widget-content{
 	border: none;
 	background: none;
 }
-.ui-widget-content a{
+.ui-tabs-panel.ui-widget-content a{
 	color: #3366CC;
 }
+.ui-autocomplete-loading { background: white url('../img/ui-anim_basic_16x16.gif') right center no-repeat; }
