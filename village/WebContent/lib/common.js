@@ -15,8 +15,10 @@ $.fn.extend({
 		};
 		$(this).each(function(){
 			var value = parseVal($(this).attr(attr));
-			$(this).val(value);
-			$(this).addClass(className);
+			if(value!=""){
+				$(this).val(value);
+				$(this).addClass(className);
+			}
 		});
 		$(this).focus(function(){
 			if($(this).hasClass(className)){
@@ -24,7 +26,8 @@ $.fn.extend({
 				$(this).removeClass(className);
 			}
 		}).focusout(function(){
-			if($.trim($(this).val())==""){
+			var value = parseVal($(this).attr(attr));
+			if($.trim($(this).val())=="" && value!=""){
 				var value = parseVal($(this).attr(attr));
 				$(this).val(value);
 				$(this).addClass(className);
@@ -40,7 +43,7 @@ $.fn.extend({
 	 * 2. title, 标题
 	 * 3. position参数,格式{}
 	 */
-	combobox: function(o,callback){
+	comboboxType: function(o,callback){
 		var combobox = this;
 		var option = {
 			list:[],//显示的列表,格式:[{key:'11',value:'同事'},{key:'11',value:'同事',select:true}]
@@ -105,6 +108,12 @@ $.fn.extend({
 		};
 		$(document).click(function(){
 			$("#"+id).fadeOut(500);
+		});
+	},
+	createCombobox: function(){
+		var id = $(this).attr("id");
+		$.getScript("lib/plugin/jquery.combobox.js",function(){
+			$("#"+id).combobox();
 		});
 	}
 });

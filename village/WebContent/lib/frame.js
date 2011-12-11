@@ -5,6 +5,7 @@ var include_file = {
 	],
 	plugin: [
      	"lib/plugin/jquery.lazyload.min.js",
+     	/*"lib/plugin/jquery.combobox.js",*/
     	"lib/common.js"
     ],
     modules: [
