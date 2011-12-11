@@ -31,6 +31,7 @@ var main = {
 		});
 	},
 	loadingWay : function(url){
+		$("#main").empty();
 		$("#main").load(url,function(){
 			$(this).animate({opacity:1},500);
 		});

@@ -35,6 +35,7 @@
 			<div id="container" style="min-height: 500px;">
         		<div id="sidebar">
                 	<ul class="sideNav">
+                		<li><a href="#article">文章</a></li>
                     	<li><a href="#userinfo4">照片</a></li>
                     	<li><a href="#userinfo5">日记</a></li>
                     	<li><a href="#userinfo6">音乐</a></li>
