@@ -1,7 +1,7 @@
 $.extend({
-	parseWindowUrl: function(url){
+	/*parseWindowUrl: function(url){
 		return url.substring(url.indexOf("#")+1)+".html";
-	}
+	}*/
 });
 $.fn.extend({
 	defaultMsg: function(){
