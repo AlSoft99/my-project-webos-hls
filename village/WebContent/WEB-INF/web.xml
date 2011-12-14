@@ -16,6 +16,10 @@
 		<servlet-class>com.frame.servlet.InitServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	<servlet>
+		<servlet-name>FileServlet</servlet-name>
+		<servlet-class>com.frame.servlet.FileServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>spring-mvc</servlet-name>
@@ -24,6 +28,10 @@
 	<servlet-mapping>
 		<servlet-name>InitServlet</servlet-name>
 		<url-pattern>*.init</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>FileServlet</servlet-name>
+		<url-pattern>*.file</url-pattern>
 	</servlet-mapping>
 	<!-- ************************context start *****************************-->
 	<context-param>
