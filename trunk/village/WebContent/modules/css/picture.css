@@ -1,0 +1,56 @@
+.bl-picture-icon{
+	display: inline;text-decoration: none;padding:0 3px;
+}
+.bl-picture-icon:hover{
+	display: inline;text-decoration: underline;
+}
+.bl-picture-icon-select{
+	background-color:lightYellow;
+}
+.bl-picture-icon span{
+	height:20px;line-height: 20px;margin-bottom: -5px;color: #556C88;
+}
+.bl-picture-split{
+	margin-left: 5px;
+	color: #AAA;
+}
+.bl-picture-title-page{
+	width: 162px;height: 162px;display: block;padding: 5px;
+}
+.bl-picture-title-name{
+	color: #556C88;padding:6px 0;
+}
+.bl-picture-title-name > a{
+	text-decoration: none;
+}
+.bl-picture-title-name > a:hover{
+	text-decoration: underline;
+}
+.bl-picture-title-detail{
+	color: #AAA;
+	font-size: 12px;
+}
+.bl-picture-content{
+	/* padding-top:10px; */
+}
+.bl-picture-cell{
+	padding: 20px 7px;
+}
+.bl-picture-create{
+	width:100%;
+}
+.bl-picture-create td{
+	padding:5px 0;vertical-align: middle;
+}
+.bl-picture-sort{
+	border: 1px solid #C5DBEC;background-color: #DFEFFC;padding: 5px 0 5px 25px;margin-top: 10px;color: #1D5987;width:720px;
+}
+.bl-picture-sort > div{
+	line-height:30px;
+}
+.bl-picture-delete{
+	width:93px;height:91px;background-position: 0 -60px;
+}
+.bl-picture-delete-frame{
+	padding-bottom:10px;padding-right: 27px;
+}

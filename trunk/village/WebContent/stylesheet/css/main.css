@@ -4,6 +4,9 @@
 a{
 	color: #3366CC;
 }
+textarea{
+	overflow:auto;
+}
 .link{
 	text-decoration: none;
 	color: #8692A2;
@@ -27,9 +30,7 @@ a{
 	font-weight: bold;
 }
 .triangle{
-	background:url("../img/hp_pbar.png");
-	width:6px;
-	height:9px;
+	background:url("../img/hp_pbar.png");width:6px;height:9px;
 }
 .default-msg{ 
 	color:#9A9A9A;
@@ -41,8 +42,7 @@ a{
 	float:right;
 }
 .frame{
-	background-color:#FBFBFB;
-	border: 1px solid #EEEEEE;
+	background-color:#FBFBFB;border: 1px solid #EEEEEE;
 }
 .frame-content-bottom{
 	padding:10px;
@@ -58,11 +58,14 @@ a{
 	background-color: #F4F4F4;
 }
 .close{
-	background:url("../img/close_8-1.png") no-repeat;
-	height: 8px;
-	width: 8px;
-	display: block;
+	background:url("../img/close_8-1.png") no-repeat;height: 8px;width: 8px;display: block;
 }
 .close:hover{
 	background:url("../img/close_8-1.png") no-repeat -8px;
+}
+.icon{
+	background-image: url("../img/icon.png");background-repeat: no-repeat;width: 20px;height: 20px;line-height: 20px;
+}
+.page-title{
+	background-image: url("../../stylesheet/img/album.png");background-repeat: no-repeat;
 }
