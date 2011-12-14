@@ -36,6 +36,9 @@
 .bl-picture-cell{
 	padding: 20px 7px;
 }
+.bl-picture-cell > div{
+	width:160px;
+}
 .bl-picture-create{
 	width:100%;
 }
@@ -49,8 +52,20 @@
 	line-height:30px;
 }
 .bl-picture-delete{
-	width:93px;height:91px;background-position: 0 -60px;
+	width:93px;height:91px;background-position: 0 -60px;position: relative;
 }
 .bl-picture-delete-frame{
 	padding-bottom:10px;padding-right: 27px;
+}
+.bl-picture-delete-close{
+	position:absolute;right: 7px;top:5px;cursor: pointer;
+}
+.bl-picture-delete-title{
+	position: absolute;top:24%;width:75px;left:10%;text-align: center;line-height: 15px;
+}
+.bl-picture-delete-foot{
+	position: absolute;bottom:10%;width:75px;left:10%;text-align: center;line-height: 15px;font-size: 10px;color:#AAA;
+}
+.bl-picture-drag{
+	background-color: lightyellow;
 }

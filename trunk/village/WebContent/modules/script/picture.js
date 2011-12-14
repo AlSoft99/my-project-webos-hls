@@ -1,4 +1,4 @@
-var temp = [{name:"ralyn1",number:"1",date:"2011-12-13"},{name:"ralyn2",number:"6",date:"2011-12-13"},{name:"ralyn3",number:"11",date:"2011-12-13"},{name:"ralyn4",number:"41",date:"2011-12-13"},{name:"ralyn5",number:"13",date:"2011-12-13"}];
+var temp = [{id:"001",name:"ralyn1",number:"1",date:"2011-12-13"},{id:"002",name:"ralyn2",number:"6",date:"2011-12-13"},{id:"003",name:"ralyn3",number:"11",date:"2011-12-13"},{id:"004",name:"ralyn4",number:"41",date:"2011-12-13"},{id:"005",name:"ralyn5",number:"13",date:"2011-12-13"}];
 var picture = {
 	dropobject : null,
 	upload:null,
@@ -44,19 +44,36 @@ var picture = {
 			debug : false
 		});
 		function uploadStart(a){
-			console.log(a);
+			//console.log(a);
 		}
 		function uploadSuccess(a){
-			console.log(a);
+			//console.log(a);
 		}
 	},
 	dropable : function(){
 		$( ".bl-picture-cell" ).draggable({ revert: "invalid" });
 		this.dropobject = $( "#picture-delete-drag" ).droppable({
 			accept: ".bl-picture-cell",
-			activeClass: "ui-state-hover",
+			activeClass: "bl-picture-drag",
 			drop: function( event, ui ) {
+				var $item = ui.draggable;
+				$item.animate({width:"0px",height:"0px",opacity:"0"},500,function(){
+					$item.attr("delete","true").hide();
+					var deleteid = $item.attr("deleteid");
+					var name = $item.find(".picture-name").text();
+					var number = $item.find(".picture-number").text();
+					var cell = $('<div class="float bl-picture-delete-frame" deleteid="'+deleteid+'"><div class="bl-picture-delete page-title"><a class="close bl-picture-delete-close" ></a><span class="bl-picture-delete-title">'+name+'</span><span class="bl-picture-delete-foot">'+number+'张照片</span></div></div>');
+					cell.find(".close").bind("click",function(){
+						$(this).parents(".bl-picture-delete-frame").animate({width:"0px",opacity:"0"},500,function(){
+							$(this).remove();
+							var id = $item.attr("deleteid");
+							var o = $("#picture-list").find("div[deleteid="+id+"]");
+							o.removeAttr("style").css("position","relative");
+						});
+					});
+					$("#picture-delete-list").append(cell);
 				
+				});
 			}
 		});
 	},
@@ -64,7 +81,7 @@ var picture = {
 		$("#picture-list").empty();
 		for ( var int = 0; int < temp.length; int++) {
 			var o = temp[int];
-			var cell = '<div class="float bl-picture-cell"><a href="#" class="bl-picture-title-page page-title" style="background-position: 0 -160px"><img alt="" src="stylesheet/img/160.gif"></a><div class="bl-picture-title-name"><a href="#" >'+o.name+'</a></div><div class="bl-picture-title-detail"><span>'+o.number+'</span><span>张相片</span><span>'+o.date+'</span></div></div>';
+			var cell = '<div class="float bl-picture-cell" delete="false" deleteid="'+o.id+'"><a href="#" class="bl-picture-title-page page-title" style="background-position: 0 -160px"><img alt="" src="stylesheet/img/160.gif"></a><div class="bl-picture-title-name"><a href="#" class="picture-name">'+o.name+'</a></div><div class="bl-picture-title-detail"><span class="picture-number">'+o.number+'</span><span>张相片</span><span class="picture-date">'+o.date+'</span></div></div>';
 			$("#picture-list").append(cell);
 		}
 	}
@@ -103,6 +120,7 @@ $(function(){
 	$("#picture-delete").click(function(){
 		$("#picture-delete-drag").slideDown(500);
 		$("#picture-sort-drag").slideUp(500);
+		$("#picture-delete-list").empty();
 		picture.createlist();
 		picture.dropable();
 		return false;
