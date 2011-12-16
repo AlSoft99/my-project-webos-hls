@@ -1,5 +1,35 @@
-<link type="text/css" rel="stylesheet" href="modules/css/picture/picture-manager.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="modules/css/picture/picture-manager.css" media="screen" /> 
+<link type="text/css" rel="stylesheet" href="lib/plugin/yoxview/yoxview.css" media="screen" />
+<script type="text/javascript" src="lib/plugin/yoxview/jquery.yoxview.min.js"></script> 
 <script type="text/javascript" src="modules/script/picture/picture-manager.js"></script> 
-<div class="body">
+<div style="padding-bottom:50px;">
+	<div>
+		<a class="bl-picture-icon bl-picture-icon-select" href="#" id="phote-create"><span class="icon" style="background-position: -40px -40px;display:inline-block;"></span><span>上传照片</span></a>
+		<span class="bl-picture-split">|</span>
+		<a class="bl-picture-icon" href="#" id="phote-edit"><span class="icon" style="background-position: -40px -100px;display:inline-block;"></span><span>编辑照片</span></a>
+		<span class="bl-picture-split">|</span>
+		<a class="bl-picture-icon" href="#" id="phote-delete"><span class="icon" style="background-position: -40px 0;display:inline-block;"></span><span>删除照片</span></a>
+		<span class="bl-picture-split">|</span>
+		<a class="bl-picture-icon" href="#" id="phote-sort"><span class="icon" style="background-position: -280px -40px;display:inline-block;"></span><span>照片排序</span></a>
+		<span class="bl-picture-split">|</span>
+		<a class="bl-picture-icon" href="#"><span class="icon" style="background-position: -400px -160px;display:inline-block;"></span><span>回收站</span></a>
+	</div>
+	<div>
+		<div class="bl-picture-sort" id="phote-sort-drag" style="padding:15px;">
+			<!-- <div class="float">对相框点击鼠标进行拖动, 拖动完成后点击保存按钮进行保存!</div> -->
+		</div>
 	
+		<div id="phote-item-list" class="yoxview">
+		    <!-- <div class="bl-phote-frame"><a href="upload/picture/a36f0420-81aa-490d-8fe8-04e3ba48b78a.png"><img src="upload/picture/a36f0420-81aa-490d-8fe8-04e3ba48b78a.png" style="width:100px;height:100px;" alt="First" title="First image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div>
+		    <div class="bl-phote-frame"><a href="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg"><img src="upload/picture/c434d9b3-6764-4cba-8299-5f26eccf861b.jpg" style="width:100px;height:100px;" alt="Second" title="Second image" /></a></div> -->
+		</div>
+	</div>
 </div>
