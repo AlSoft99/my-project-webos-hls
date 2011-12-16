@@ -20,5 +20,6 @@ $(function(){
 	$("input[type=button],button").button(); 
 	$("textarea, input[type=text]").defaultMsg();
 	$("#articledate").datepicker();
-	$("#articletype").createCombobox("#articletype");
+	//$("#articletype").createCombobox("#articletype");
+	$("#articletype").selectmenu();
 });
