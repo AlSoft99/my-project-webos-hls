@@ -4,7 +4,7 @@
 	<Resource name="jdbc/ebus" auth="Container"
 		type="javax.sql.DataSource"
 		driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql://127.0.0.1:3306/test"
-		username="root" password="xxxxx" maxActive="200" maxIdle="100"
+		url="jdbc:mysql://127.0.0.1:3306/village"
+		username="root" password="830102" maxActive="200" maxIdle="100"
 		maxWait="-1" />
 </Context>

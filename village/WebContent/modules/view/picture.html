@@ -16,10 +16,10 @@
 	<div id="picture-dialog" title="<span style='padding:3px 0;float:left;'>创建相册</span>" style="padding:1em 1em;">
 		<table class="bl-picture-create">
 			<tr>
-				<td>&nbsp;&nbsp;相册名称:</td><td><input type="text" maxlength=24 style="width:95%;" class="ui-input"/></td>
+				<td>&nbsp;&nbsp;相册名称:</td><td><input type="text" id="picturename" maxlength=24 style="width:95%;" class="ui-input"/></td>
 			</tr>
 			<tr>
-				<td>&nbsp;&nbsp;相册描述:</td><td><textarea style="width:95%;height:100px;"></textarea></td>
+				<td>&nbsp;&nbsp;相册描述:</td><td><textarea id="picturedescribe" style="width:95%;height:100px;"></textarea></td>
 			</tr>
 			<tr>
 				<td>&nbsp;&nbsp;访问权限:</td>
@@ -36,17 +36,18 @@
 	</div>
 	<div id="picture-tabs" >
 		<ul>
-			<li><a href="#tabs-1">添加相册</a></li>
-			<li><a href="modules/view/friend/friend-find.html">添加照片</a></li>
-			<li><a href="modules/view/friend/friend-invite.html">管理照片</a></li>
+			<li><a href="#tabs-1">管理相册</a></li>
+			<li><a href="modules/view/picture/picture-manager.html">管理照片</a></li>
 		</ul>
 		<div id="tabs-1">
 			<div>
 				<a class="bl-picture-icon bl-picture-icon-select" href="#" id="picture-create"><span class="icon" style="background-position: -80px -220px;display:inline-block;"></span><span>创建相册</span></a>
 				<span class="bl-picture-split">|</span>
-				<a class="bl-picture-icon" href="#" id="picture-sort"><span class="icon" style="background-position: -280px -40px;display:inline-block;"></span><span>相册排序</span></a>
+				<a class="bl-picture-icon" href="#" id="picture-edit"><span class="icon" style="background-position: -40px -20px;display:inline-block;"></span><span>编辑相册</span></a>
 				<span class="bl-picture-split">|</span>
 				<a class="bl-picture-icon" href="#" id="picture-delete"><span class="icon" style="background-position: -40px 0;display:inline-block;"></span><span>删除相册</span></a>
+				<span class="bl-picture-split">|</span>
+				<a class="bl-picture-icon" href="#" id="picture-sort"><span class="icon" style="background-position: -280px -40px;display:inline-block;"></span><span>相册排序</span></a>
 				<span class="bl-picture-split">|</span>
 				<a class="bl-picture-icon" href="#"><span class="icon" style="background-position: -400px -160px;display:inline-block;"></span><span>回收站</span></a>
 			</div>

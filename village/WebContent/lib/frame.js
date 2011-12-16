@@ -1,7 +1,7 @@
 var include_file = {
 	jqueryui: [
 	    /*"lib/ui/css/ui-lightness/jquery-ui-1.8.16.custom.css",*/
-	    "lib/ui/js/jquery-ui-1.8.16.custom.min.js"
+	    "lib/ui/js/jquery.ui.custom.min.js"
 	],
 	plugin: [
      	"lib/plugin/jquery.lazyload.min.js",

@@ -68,7 +68,7 @@ var picture = {
 							$(this).remove();
 							var id = $item.attr("deleteid");
 							var o = $("#picture-list").find("div[deleteid="+id+"]");
-							o.removeAttr("style").css("position","relative");
+							o.removeAttr("style").css("position","relative").attr("delete","false");
 						});
 					});
 					$("#picture-delete-list").append(cell);
@@ -81,8 +81,9 @@ var picture = {
 		$("#picture-list").empty();
 		for ( var int = 0; int < temp.length; int++) {
 			var o = temp[int];
-			var cell = '<div class="float bl-picture-cell" delete="false" deleteid="'+o.id+'"><a href="#" class="bl-picture-title-page page-title" style="background-position: 0 -160px"><img alt="" src="stylesheet/img/160.gif"></a><div class="bl-picture-title-name"><a href="#" class="picture-name">'+o.name+'</a></div><div class="bl-picture-title-detail"><span class="picture-number">'+o.number+'</span><span>张相片</span><span class="picture-date">'+o.date+'</span></div></div>';
-			$("#picture-list").append(cell);
+			var cell = '<div class="float bl-picture-cell" delete="false" deleteid="'+o.id+'"><a href="#" class="bl-picture-title-page page-title" style="background-position: 0 -160px"><img alt="" src="stylesheet/img/160.gif"></a><div class="bl-picture-title-name"><span class="picture-name">'+o.name+'</span></div><div class="bl-picture-title-detail"><span class="picture-number">'+o.number+'</span><span>张相片</span><span class="picture-date">'+o.date+'</span></div></div>';
+			var element = $(cell);
+			$("#picture-list").append(element);
 		}
 	}
 };
@@ -105,10 +106,26 @@ $(function(){
 		}
 	});
 	$("#picture-create").click(function(){
+		picture.createlist();
+		$("#picturename").val("");
+		$("#picturedescribe").val("");
 		$( "#picture-dialog" ).dialog("open");
 		$("#picture-sort-drag").slideUp(500);
 		$("#picture-delete-drag").slideUp(500);
 		return false;
+	});
+	$("#picture-edit").click(function(){
+		picture.createlist();
+		$("#picture-sort-drag").slideUp(500);
+		$("#picture-delete-drag").slideUp(500);
+		$(".bl-picture-title-page").bind("click",function(){
+			var picturedescribe = $(this).parent().find(".picture-describe");
+			var picturename = $(this).parent().find(".picture-name");
+			$( "#picture-dialog" ).dialog("open");
+			$("#picturename").val(picturename.text());
+			$("#picturedescribe").val(picturedescribe.text());
+			return false;
+		});
 	});
 	$("#picture-sort").click(function(){
 		picture.createlist();
