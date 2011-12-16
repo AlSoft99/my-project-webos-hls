@@ -1,0 +1,15 @@
+.bl-phote-frame{
+	padding:5px;
+	float: left;
+	border: 1px solid #AAA;
+	margin: 6px;
+}
+.bl-phote-frame-item{
+	padding:4px 13px;
+}
+.bl-phote-frame-item-select{
+	background-color:lightyellow;
+}
+.bl-phote-title{
+	cursor: pointer;
+}
