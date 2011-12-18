@@ -78,7 +78,7 @@ function fileQueueError(file, errorCode, message) {
 }
 
 function fileDialogComplete(numFilesSelected, numFilesQueued) {
-	try {console.log(this.getStats());
+	try {
 		if (this.getStats().files_queued > 0) {
 			document.getElementById(this.customSettings.cancelButtonId).disabled = false;
 		}
@@ -147,10 +147,6 @@ function uploadError(file, errorCode, message) {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setError();
 		progress.toggleCancel(false);
-		console.log("=====================");
-console.log(file);
-console.log(errorCode);
-console.log(message);
 		switch (errorCode) {
 		case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
 			progress.setStatus("Upload Error: " + message);
