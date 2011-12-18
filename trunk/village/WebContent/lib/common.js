@@ -115,5 +115,113 @@ $.fn.extend({
 		$.getScript("lib/plugin/jquery.combobox.js",function(){
 			$("#"+id).combobox();
 		});
+	},
+	pageFoot : function(o,callback){
+		var _this = $(this);
+		var option = {
+			createdate : "",
+			total:0,
+			current:0,
+			pagenumber : 30,
+			shownumber : 7
+		};
+		$.extend(option,o);
+		function clearFoot(){
+			_this.find(".common-page-foot").remove();
+		}
+		function bindEvent(){
+			_this.find("span").bind("click",function(){
+				var current = 0;
+				var number = Math.ceil(option.total / option.pagenumber);
+				if($(this).hasClass("select")){
+					return;
+				}else if($(this).hasClass("common-page-no")){
+					current = $(this).text();
+				}else if($(this).hasClass("common-page-frist")){
+					current = 1;
+				}else if($(this).hasClass("common-page-previous")){
+					current = eval(option.current-1);
+					if(current<1){
+						return;
+					}
+				}else if($(this).hasClass("common-page-next")){
+					current = eval(Number(option.current)+1);
+					if(current>number){
+						return;
+					}
+				}else if($(this).hasClass("common-page-end")){
+					current = number;
+				}
+				var tmp = option;
+				tmp.current = current;
+				var returnVal = callback(tmp);
+				if(returnVal || typeof returnVal == "undefined"){
+					option.current = current;
+					goCurrent(option);
+				}
+				
+			});
+		}
+		function hideButton(hideFrist,hideLast){
+			if(hideFrist){
+				_this.find(".common-page-frist").hide();
+			}else{
+				_this.find(".common-page-frist").show();
+			}
+			if(hideLast){
+				_this.find(".common-page-end").hide();
+			}else{
+				_this.find(".common-page-end").show();
+			}
+		}
+		function goCurrent(o){
+			clearFoot();
+			//当前页的分割点
+			var splitnumber = Math.floor(o.shownumber/2);
+			var createString = '<div class="float" '+(o.createdate==""?'style="display:none;"':"")+' ><div class="float">创建日期:</div><div class="float">'+o.createdate+'</div></div>';
+			var footStart = '<span class="common-page-frist">首页</span><span class="common-page-previous">上一页</span>';
+			var footEnd = '<span class="common-page-next">下一页</span><span class="common-page-end">末页</span>';
+			var footBody = "";
+			//页数
+			var number = Math.ceil(o.total / o.pagenumber);
+			var flag = 0;
+			//是否隐藏首页按钮
+			var hideFrist = false;
+			//是否隐藏最末页按钮
+			var hideLast = false;
+			for ( var int = 1; int <= number; int++) {
+				var temp = "";
+				if(int+splitnumber>=o.current || (o.current+o.shownumber>=number && number-int<o.shownumber)){
+					if(int==o.current){
+						temp = '<span class="common-page-no select">'+int+'</span>';
+					}else{
+						temp = '<span class="common-page-no">'+int+'</span>';
+					}
+					footBody += temp;
+					flag++;
+					if(int == 1){
+						hideFrist = true;
+					}
+					if(int == number){
+						hideLast = true;
+					}
+				};
+				if(flag==o.shownumber){
+					break;
+				}
+			}
+			var foot = "<div class='float-right'>"+footStart+footBody+footEnd+"</div>";
+			var last = $('<div class="common-page-foot"></div>').append(createString).append(foot);
+			_this.append(last);
+			//处理首页和下一页按钮是否隐藏
+			hideButton(hideFrist,hideLast);
+			bindEvent();
+		}
+		if(option.total==0){
+			return;
+		}
+		
+		goCurrent(option);
 	}
+	
 });
