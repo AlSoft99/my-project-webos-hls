@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
+</head>
+<script>
+$(function(){
+	
+	var img = new Image();
+	img.src = "http://www.planeart.cn/demo/imgReady/vistas24.jpg?1324093188902";
+	$("#offimg").append(img);
+	/***********提前获取图片的高度和宽度***********/
+	var width = img.offsetWidth;
+	var height = img.offsetHeight;
+	var intervalId;
+	var getPicture = function(){
+		console.log("width:"+width+"  height:"+height);
+		if(width != img.offsetWidth && height != img.offsetHeight){
+			console.log("actualy"+" width:"+img.offsetWidth+"  height:"+img.offsetHeight);
+			$("#offimg").remove();
+			clearInterval(intervalId);
+		}
+	}
+	intervalId = setInterval(getPicture,150);
+	/**********************/
+	/*********判断图片是否读取完毕*************/
+	if(img.complete){//是否缓存读取
+		console.log("======com======");
+		console.log("img.width:"+img.width+"   img.height:"+img.height);
+		$("#img").append(img);
+	}else{
+		img.onload = function(e){//图片加载完毕
+			console.log("======load======");
+			console.log(e);
+			console.log("img.width:"+img.width+"   img.height:"+img.height);
+			$("#img").append(img);
+		}
+	}
+	/**********************/
+	
+});
+</script>
+<body>
+	<div id="img"></div><div id="offimg"></div>
+</body>
+</html>

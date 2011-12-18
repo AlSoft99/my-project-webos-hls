@@ -21,8 +21,10 @@ function cancelQueue(instance) {
    package.  They are part of my application.  Without these none
    of the actions SWFUpload makes will show up in my application.
    ********************** */
-function fileDialogStart() {
+function fileDialogStart(e) {
 	/* I don't need to do anything here */
+	console.log(this);
+	return false;
 }
 function fileQueued(file) {
 	try {
