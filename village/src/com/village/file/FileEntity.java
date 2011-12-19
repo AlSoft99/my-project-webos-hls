@@ -1,5 +1,7 @@
 package com.village.file;
 
+import java.io.InputStream;
+
 public class FileEntity {
 	//上传修改的名字
 	private String uploadname;
@@ -7,6 +9,14 @@ public class FileEntity {
 	private String sourcename;
 	//上传的路径
 	private String uploadurl;
+	//输入流
+	private InputStream stream;
+	public InputStream getStream() {
+		return stream;
+	}
+	public void setStream(InputStream stream) {
+		this.stream = stream;
+	}
 	public String getUploadname() {
 		return uploadname;
 	}
