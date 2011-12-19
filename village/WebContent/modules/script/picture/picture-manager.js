@@ -1,12 +1,12 @@
 var temp = [{id:"001",name:"ralyn1",number:"1",date:"2011-12-13"},{id:"002",name:"ralyn2",number:"6",date:"2011-12-13"},{id:"003",name:"ralyn3",number:"11",date:"2011-12-13"},{id:"004",name:"ralyn4",number:"41",date:"2011-12-13"},{id:"005",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"006",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"007",name:"ralyn5",number:"13",date:"2011-12-13"}];
-var tempphote = [{big:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",small:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",title:"fist image"},{big:"734c363f-3aaf-41df-a22a-d9e047425942.png",small:"734c363f-3aaf-41df-a22a-d9e047425942.png",title:"second image"},
-                 {big:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",small:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",title:"fist image"},{big:"734c363f-3aaf-41df-a22a-d9e047425942.png",small:"734c363f-3aaf-41df-a22a-d9e047425942.png",title:"second image"},
-                 {big:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",small:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",title:"fist image"},{big:"734c363f-3aaf-41df-a22a-d9e047425942.png",small:"734c363f-3aaf-41df-a22a-d9e047425942.png",title:"second image"},
-                 {big:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",small:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",title:"fist image"},{big:"734c363f-3aaf-41df-a22a-d9e047425942.png",small:"734c363f-3aaf-41df-a22a-d9e047425942.png",title:"second image"},
-                 {big:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",small:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",title:"fist image"},{big:"734c363f-3aaf-41df-a22a-d9e047425942.png",small:"734c363f-3aaf-41df-a22a-d9e047425942.png",title:"second image"},
-                 {big:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",small:"221bfa11-4d75-4c09-bfc7-e97329d41829.jpg",title:"fist image"},{big:"734c363f-3aaf-41df-a22a-d9e047425942.png",small:"734c363f-3aaf-41df-a22a-d9e047425942.png",title:"second image"}];
+var tempphote = [{big:"3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",small:"min/3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",title:"fist image"},{big:"7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",small:"min/7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",title:"second image"},
+                 {big:"c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",small:"min/c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",title:"fist image"},{big:"c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",small:"min/c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",title:"second image"},
+                 {big:"3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",small:"min/3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",title:"fist image"},{big:"7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",small:"min/7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",title:"second image"},
+                 {big:"c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",small:"min/c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",title:"fist image"},{big:"c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",small:"min/c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",title:"second image"},
+                 {big:"3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",small:"min/3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",title:"fist image"},{big:"7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",small:"min/7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",title:"second image"},
+                 {big:"c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",small:"min/c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",title:"fist image"},{big:"c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",small:"min/c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",title:"second image"}];
 var picturemanager = {
-	imageUrl : "upload/picture/",
+	imageUrl : "upload/guanrl/picture/",
 	getImage : function(id){
 		return tempphote;
 	},
