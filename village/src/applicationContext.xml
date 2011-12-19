@@ -62,4 +62,9 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="productServiceMethods" />
 	</aop:config>
 	
+	
+	<!-- 配置上传文件的类路径, 可以删掉 -->
+	<bean id="fileUpload" class="com.frame.util.FileUpload">
+		<property name="filepath" value="upload/"/>
+	</bean>
 </beans>
