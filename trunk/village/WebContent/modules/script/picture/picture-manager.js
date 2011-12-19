@@ -19,8 +19,8 @@ var picturemanager = {
 			file_size_limit : "10240", // 10MB
 			file_types : "*.jpg;*.gif;*.png", //此处也可以修改成你想限制的类型，比如：*.doc;*.wpd;*.pdf
 			file_types_description : "Image Files",
-			//file_upload_limit : "5",
-			file_queue_limit : "12",
+			file_upload_limit : "12",
+			//file_queue_limit : "12",
 
 			// 事件处理设置（所有的自定义处理方法都在handler.js文件里）
 			file_dialog_start_handler : fileDialogStart,
@@ -55,32 +55,41 @@ var picturemanager = {
 		/*function uploadStart(a){
 			console.log(a);
 		}*/
+		var imgLoad = function (url, callback) {  
+		    var img = new Image();  
+		    img.src = url; 
+		    img.width = 100;
+		    img.height = 100;
+		    if (img.complete) {  
+		        callback(img);  
+		    } else {  
+		        img.onload = function () {  
+		            callback(img);  
+		            img.onload = null;  
+		        };  
+		    };  
+		};
 		function uploadSuccess(file, serverData){
 			//console.log(a);
-			console.log("serverData:"+serverData);
-			var returnVal = $.parseJSON(serverData);
+			var returnVal = $.parseJSON(serverData)[0];
 			var index = file.index;
-			var _this = $(".bl-phote-upload-item").get(index);
-			console.log("++index:"+index);
+			var _this = $($(".bl-phote-upload-item").get(index));
 			_this.find(".bl-phote-loading").hide();
-			console.log("00000");
-			_this.find(".bl-phote-show").show();
-			_this.find(".bl-phote-show").find("img")[0].src = returnVal.uploadurl+returnVal.uploadname;
-			
+			imgLoad(returnVal.uploadurl+"min/"+returnVal.uploadname, function(img){
+				_this.find(".bl-phote-show").append(img).fadeIn(500);
+			});
 		}
 		function uploadProgress(file, bytesLoaded, bytesTotal) {
-			var index = file.index;
 			try {
-				var _this = $(".bl-phote-upload-item").get(index);
+				var index = file.index;
+				var _this = $($(".bl-phote-upload-item").get(index));
 				var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
-				console.log("===start11=:"+index);
-				console.log(_this);
 				_this.find(".bl-phote-loading").show();
-				console.log("==end=");
-				_this.find(".bl-phote-loading-progress").text(percent);
+				_this.find(".bl-phote-loading-progress").text(percent+"%");
 			} catch (ex) {
 				this.debug(ex);
 			}
+			
 		}
 	},
 	emptyItem : function(){
@@ -127,6 +136,10 @@ $(function(){
 			"完成": function() {
 				$( this ).dialog( "close" );
 			}
+		},
+		close: function() {
+			$(this).find(".bl-phote-show").empty();
+			$(this).find("#phototitle").val("官家部落格的图片秀秀");
 		}
 	});
 	$("#phote-create").click(function(){

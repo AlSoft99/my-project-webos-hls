@@ -63,6 +63,7 @@ public class FileUpload {
 						entity.setSourcename(item.getName());
 						entity.setUploadname(name);
 						entity.setUploadurl(downloalpath);
+						entity.setStream(item.getInputStream());
 						result.add(entity);
 					}
 				}
