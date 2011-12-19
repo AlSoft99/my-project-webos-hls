@@ -13,7 +13,7 @@ var picturemanager = {
 	swfupload : function(){
 		picture.upload = new SWFUpload({
 			// 处理文件上传的url  ${pageContext.request.contextPath}
-			upload_url : "upload.file", // 路径写全，否则Firefox下会出现404错误。自由修改处一：处理文件上传的url路径，注意还要写全部
+			upload_url : "pictureUploadVo.photo", // 路径写全，否则Firefox下会出现404错误。自由修改处一：处理文件上传的url路径，注意还要写全部
 
 			// 上传文件限制设置
 			file_size_limit : "10240", // 10MB
@@ -52,11 +52,35 @@ var picturemanager = {
 			// Debug 设置
 			debug : false
 		});
-		function uploadStart(a){
+		/*function uploadStart(a){
+			console.log(a);
+		}*/
+		function uploadSuccess(file, serverData){
 			//console.log(a);
+			console.log("serverData:"+serverData);
+			var returnVal = $.parseJSON(serverData);
+			var index = file.index;
+			var _this = $(".bl-phote-upload-item").get(index);
+			console.log("++index:"+index);
+			_this.find(".bl-phote-loading").hide();
+			console.log("00000");
+			_this.find(".bl-phote-show").show();
+			_this.find(".bl-phote-show").find("img")[0].src = returnVal.uploadurl+returnVal.uploadname;
+			
 		}
-		function uploadSuccess(a){
-			//console.log(a);
+		function uploadProgress(file, bytesLoaded, bytesTotal) {
+			var index = file.index;
+			try {
+				var _this = $(".bl-phote-upload-item").get(index);
+				var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
+				console.log("===start11=:"+index);
+				console.log(_this);
+				_this.find(".bl-phote-loading").show();
+				console.log("==end=");
+				_this.find(".bl-phote-loading-progress").text(percent);
+			} catch (ex) {
+				this.debug(ex);
+			}
 		}
 	},
 	emptyItem : function(){
@@ -95,8 +119,8 @@ $(function(){
 	});
 	$( "#photo-dialog-add" ).dialog({
 		resizable: true,
-		height:450,
-		width:750,
+		height:470,
+		width:765,
 		autoOpen: false,
 		modal: true,
 		buttons: {
@@ -112,4 +136,5 @@ $(function(){
 	$("#phote-foot").pageFoot({createdate:"20110802",total:330,current:6},function(o){
 		console.log(o.current);
 	});
+	
 });

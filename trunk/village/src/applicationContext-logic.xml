@@ -16,5 +16,5 @@
   	> 
   	<!-- 扫描注入到spring -->
 	<context:component-scan base-package="com.test.vo" ></context:component-scan>
-	
+	<context:component-scan base-package="com.village.vo" ></context:component-scan>
 </beans>

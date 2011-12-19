@@ -20,6 +20,10 @@
 		<servlet-name>FileServlet</servlet-name>
 		<servlet-class>com.frame.servlet.FileServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>PhotoServlet</servlet-name>
+		<servlet-class>com.village.file.PhotoServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>spring-mvc</servlet-name>
@@ -32,6 +36,10 @@
 	<servlet-mapping>
 		<servlet-name>FileServlet</servlet-name>
 		<url-pattern>*.file</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PhotoServlet</servlet-name>
+		<url-pattern>*.photo</url-pattern>
 	</servlet-mapping>
 	<!-- ************************context start *****************************-->
 	<context-param>
