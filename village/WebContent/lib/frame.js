@@ -54,7 +54,10 @@ var frame = {
     	$.ajax({
     		url: url,
     		async: !sync,
-    		dataType: 'script'
+    		dataType: 'script',
+    		success : function(){
+    			
+    		}
 		});
 		
     }
