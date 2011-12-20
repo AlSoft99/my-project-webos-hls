@@ -1,8 +1,5 @@
 var viewpath = "modules/view/";
-$(function(){ 
-	main.refresh();
-	main.menuChange();
-});
+
 var main = {
 	parseWindowUrl : function(url){
 		return url.substring(url.indexOf("#")+1)+".html";
@@ -40,3 +37,7 @@ var main = {
 		});
 	}
 };
+$(function(){ 
+	main.refresh();
+	main.menuChange();
+});

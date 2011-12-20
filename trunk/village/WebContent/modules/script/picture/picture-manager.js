@@ -1,10 +1,10 @@
 var temp = [{id:"001",name:"ralyn1",number:"1",date:"2011-12-13"},{id:"002",name:"ralyn2",number:"6",date:"2011-12-13"},{id:"003",name:"ralyn3",number:"11",date:"2011-12-13"},{id:"004",name:"ralyn4",number:"41",date:"2011-12-13"},{id:"005",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"006",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"007",name:"ralyn5",number:"13",date:"2011-12-13"}];
-var tempphote = [{big:"3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",small:"min/3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",title:"fist image"},{big:"7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",small:"min/7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",title:"second image"},
-                 {big:"c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",small:"min/c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",title:"fist image"},{big:"c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",small:"min/c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",title:"second image"},
-                 {big:"3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",small:"min/3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",title:"fist image"},{big:"7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",small:"min/7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",title:"second image"},
-                 {big:"c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",small:"min/c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",title:"fist image"},{big:"c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",small:"min/c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",title:"second image"},
-                 {big:"3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",small:"min/3e552685-eaa4-4141-b019-8f02bdcbe4d5.jpg",title:"fist image"},{big:"7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",small:"min/7acf3b35-5306-4c10-b3e8-2416fb00e3a0.jpg",title:"second image"},
-                 {big:"c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",small:"min/c5eb7e85-9685-43ab-8dfc-83f08c2a405b.jpg",title:"fist image"},{big:"c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",small:"min/c8bf00eb-9fc3-49c7-a12a-6baf2844d430.jpg",title:"second image"}];
+var tempphote = [{big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
+                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"},
+                 {big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
+                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"},
+                 {big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
+                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"}];
 var picturemanager = {
 	imageUrl : "upload/guanrl/picture/",
 	getImage : function(id){
@@ -99,15 +99,22 @@ var picturemanager = {
 		var image = this.getImage();
 		for ( var int = 0; int < image.length; int++) {
 			var o = image[int];
-			var cell = '<div class="bl-phote-frame"><a href="'+this.imageUrl+o.big+'"><img src="'+this.imageUrl+o.small+'" style="width:100px;height:100px;" alt="'+o.title+'" title="'+o.title+'" /></a></div>';
+			var cell = '<div class="bl-phote-frame"><div class="bl-phote-frame-choice" ><div ></div><a class="icon bl-phote-frame-edit" href="#"></a><a class="icon bl-phote-frame-delete" href="#"></a></div><a href="'+this.imageUrl+o.big+'"><img src="'+this.imageUrl+o.small+'" style="width:100px;height:100px;" alt="'+o.title+'" title="'+o.title+'" /></a></div>';
 			$("#phote-item-list").append(cell);
 		};
 		$("#phote-item-list").append("<div class='clear'></div>");
 	},
 	startYoxview : function(id){
 		$(id).yoxview({
-		    backgroundColor: 'Blue',
+		    //backgroundColor: 'Blue',
 		    playDelay: 5000
+		});
+	},
+	bindEvent : function(){
+		$(".bl-phote-frame").mouseenter(function(){
+			$(this).find(".bl-phote-frame-choice").stop(true, true).animate({"margin-top":"0","opacity":1},500);
+		}).mouseleave(function(e){
+			$(this).find(".bl-phote-frame-choice").stop(true, true).animate({"margin-top":"-25px","opacity":0},500);
 		});
 	}
 };
@@ -124,6 +131,7 @@ $(function(){
 		$(this).parent().addClass("bl-phote-frame-item-select");
 		picturemanager.emptyItem();
 		picturemanager.createItem();
+		picturemanager.bindEvent();
 		picturemanager.startYoxview("#phote-item-list");
 	});
 	$( "#photo-dialog-add" ).dialog({
@@ -147,7 +155,7 @@ $(function(){
 		return false;
 	});
 	$("#phote-foot").pageFoot({createdate:"20110802",total:330,current:6},function(o){
-		console.log(o.current);
+		//console.log(o.current);
 	});
 	
 });
