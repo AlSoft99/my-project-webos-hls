@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>官家部落格</title>
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="lib/transdmin/css/transdmin.css" media="screen" />
