@@ -32,8 +32,15 @@
 	background-color:black;opacity:.5;width:100px;height:20px;position: absolute;z-index: 1;
 }
 .bl-phote-frame-edit{
-	background-position: -80px -120px;width:20px; height:20px;display:block;left: 0;position: absolute;z-index: 2;
+	background-position: -120px -40px;width:20px; height:20px;display:block;left: 0;position: absolute;z-index: 2;
 }
+.bl-phote-frame-edit:hover{
+	background-position: -80px -120px;
+}
+
 .bl-phote-frame-delete{
-	background-position: -320px -360px;width:20px; height:20px;display:block;right:0;position: absolute;z-index: 2;
+	background-position: -400px -160px;width:20px; height:20px;display:block;right:0;position: absolute;z-index: 2;
+}
+.bl-phote-frame-delete:hover{
+	background-position: -320px -360px;
 }
