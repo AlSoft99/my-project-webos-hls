@@ -23,7 +23,7 @@ var main = {
 	},
 	menuChange : function(){
 		$("#mainNav li a,#sidebar li a").click(function(){
-			$("#main").css("opacity",0);
+			$("#main").css("opacity",1);
 			main.loadingWay(viewpath + main.parseWindowUrl($(this).attr("href")));
 			$("#mainNav li .active, #sidebar li .active").removeClass("active");
 			$(this).addClass("active");
@@ -32,7 +32,9 @@ var main = {
 	},
 	loadingWay : function(url){
 		$("#main").empty();
+		$("#main").append("<div class='loading' style='width:31px;height:31px;margin:200px auto;'></div>");
 		$("#main").load(url,function(){
+			$("#main").css("opacity",0);
 			$(this).animate({opacity:1},500);
 		});
 	}
