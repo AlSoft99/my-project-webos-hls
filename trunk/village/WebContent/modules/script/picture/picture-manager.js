@@ -99,10 +99,21 @@ var picturemanager = {
 		var image = this.getImage();
 		for ( var int = 0; int < image.length; int++) {
 			var o = image[int];
-			var cell = '<div class="bl-phote-frame"><div class="bl-phote-frame-choice" ><div ></div><a class="icon bl-phote-frame-edit" href="#"></a><a class="icon bl-phote-frame-delete" href="#"></a></div><a href="'+this.imageUrl+o.big+'"><img src="'+this.imageUrl+o.small+'" style="width:100px;height:100px;" alt="'+o.title+'" title="'+o.title+'" /></a></div>';
+			var id = o.big.substring(0,o.big.indexOf("."));
+			var cell = '<div class="bl-phote-frame"><div class="bl-phote-frame-choice" ><div ></div><a class="icon bl-phote-frame-edit" imageid="'+id+'" href="#"></a><a imageid="'+id+'" class="icon bl-phote-frame-delete" href="#"></a></div><a href="'+this.imageUrl+o.big+'"><img src="'+this.imageUrl+o.small+'" style="width:100px;height:100px;" alt="'+o.title+'" title="'+o.title+'" /></a></div>';
 			$("#phote-item-list").append(cell);
 		};
 		$("#phote-item-list").append("<div class='clear'></div>");
+		$(".bl-phote-frame-edit").click(function(){
+			var id = $(this).attr("imageid");
+			$( "#photo-dialog-edit" ).dialog("open");
+			return false;
+		});
+		$(".bl-phote-frame-delete").click(function(){
+			var id = $(this).attr("imageid");
+			$( "#photo-dialog-delete" ).dialog("open");
+			return false;
+		});
 	},
 	startYoxview : function(id){
 		$(id).yoxview({
@@ -150,6 +161,32 @@ $(function(){
 			$(this).find("#phototitle").val("官家部落格的图片秀秀");
 		}
 	});
+	$( "#photo-dialog-edit" ).dialog({
+		resizable: false,
+		height:140,
+		modal: true,
+		buttons: {
+			"修改": function() {
+				$( this ).dialog( "close" );
+			},
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+	$( "#photo-dialog-delete" ).dialog({
+		resizable: false,
+		height:140,
+		modal: true,
+		buttons: {
+			"删除": function() {
+				$( this ).dialog( "close" );
+			},
+			"取消": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
 	$("#phote-create").click(function(){
 		$( "#photo-dialog-add" ).dialog("open");
 		return false;
@@ -157,5 +194,4 @@ $(function(){
 	$("#phote-foot").pageFoot({createdate:"20110802",total:330,current:6},function(o){
 		//console.log(o.current);
 	});
-	
 });

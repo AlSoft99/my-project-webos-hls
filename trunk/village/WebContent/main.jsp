@@ -51,7 +51,7 @@
                 <!-- h2 stays for breadcrumbs --> 
                 <h2><a href="#" id="user_page">我的首页</a> &raquo; <a href="#" class="active" id="user_item">首页</a></h2>
                 
-                <div id="main" style="opacity:0;">
+                <div id="main" style="opacity:1;">
                 	<div class="body"></div>
                 </div>
                 <!-- // #main -->
