@@ -33,6 +33,7 @@ var main = {
 	loadingWay : function(url){
 		$("#main").empty();
 		$("#main").append("<div class='loading' style='width:31px;height:31px;margin:200px auto;'></div>");
+		$("body > *[id!=wrapper]").remove();
 		$("#main").load(url,function(){
 			$("#main").css("opacity",0);
 			$(this).animate({opacity:1},500);

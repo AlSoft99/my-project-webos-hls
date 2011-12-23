@@ -1,13 +1,12 @@
-var temp = [{id:"001",name:"ralyn1",number:"1",date:"2011-12-13"},{id:"002",name:"ralyn2",number:"6",date:"2011-12-13"},{id:"003",name:"ralyn3",number:"11",date:"2011-12-13"},{id:"004",name:"ralyn4",number:"41",date:"2011-12-13"},{id:"005",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"006",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"007",name:"ralyn5",number:"13",date:"2011-12-13"}];
-var tempphote = [{big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
-                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"},
-                 {big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
-                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"},
-                 {big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
-                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"}];
 var picturemanager = {
 	imageUrl : "upload/guanrl/picture/",
 	getImage : function(id){
+		var tempphote = [{big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
+		                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"},
+		                 {big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
+		                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"},
+		                 {big:"9c2d4c01-c816-4710-84e2-d41d3a498016.png",small:"min/9c2d4c01-c816-4710-84e2-d41d3a498016.png",title:"fist image"},{big:"20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",small:"min/20b0eaf9-17c9-447e-acca-ac748e33f7f8.png",title:"second image"},
+		                 {big:"161372fc-f83b-4b05-9bde-966d07d87282.jpg",small:"min/161372fc-f83b-4b05-9bde-966d07d87282.jpg",title:"fist image"},{big:"f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",small:"min/f9e9d47c-d580-4ef8-96c5-7f58495227c7.png",title:"second image"}];
 		return tempphote;
 	},
 	swfupload : function(){
@@ -104,6 +103,7 @@ var picturemanager = {
 			$("#phote-item-list").append(cell);
 		};
 		$("#phote-item-list").append("<div class='clear'></div>");
+		$("#phote-item-list").fadeIn(500);
 		$(".bl-phote-frame-edit").click(function(){
 			var id = $(this).attr("imageid");
 			$( "#photo-dialog-edit" ).dialog("open");
@@ -131,6 +131,7 @@ var picturemanager = {
 };
 $(function(){
 	picturemanager.swfupload();
+	var temp = [{id:"001",name:"ralyn1",number:"1",date:"2011-12-13"},{id:"002",name:"ralyn2",number:"6",date:"2011-12-13"},{id:"003",name:"ralyn3",number:"11",date:"2011-12-13"},{id:"004",name:"ralyn4",number:"41",date:"2011-12-13"},{id:"005",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"006",name:"ralyn5",number:"13",date:"2011-12-13"},{id:"007",name:"ralyn5",number:"13",date:"2011-12-13"}];
 	for ( var int = 0; int < temp.length; int++) {
 		var o = temp[int];
 		var cell = $('<div class="float bl-phote-frame-item" id="'+o.id+'"><div class="bl-picture-delete page-title bl-phote-title"><span class="bl-picture-delete-title">'+o.name+'</span><span class="bl-picture-delete-foot">'+o.number+'张照片</span></div></div>');
@@ -144,6 +145,9 @@ $(function(){
 		picturemanager.createItem();
 		picturemanager.bindEvent();
 		picturemanager.startYoxview("#phote-item-list");
+		$("#phote-foot").pageFoot({createdate:"20110802",total:330,current:6},function(o){
+			//console.log(o.current);
+		});
 	});
 	$( "#photo-dialog-add" ).dialog({
 		resizable: true,
@@ -163,8 +167,10 @@ $(function(){
 	});
 	$( "#photo-dialog-edit" ).dialog({
 		resizable: false,
-		height:140,
+		width:550,
+		height:190,
 		modal: true,
+		autoOpen: false,
 		buttons: {
 			"修改": function() {
 				$( this ).dialog( "close" );
@@ -176,8 +182,9 @@ $(function(){
 	});
 	$( "#photo-dialog-delete" ).dialog({
 		resizable: false,
-		height:140,
+		height:160,
 		modal: true,
+		autoOpen: false,
 		buttons: {
 			"删除": function() {
 				$( this ).dialog( "close" );
@@ -191,7 +198,5 @@ $(function(){
 		$( "#photo-dialog-add" ).dialog("open");
 		return false;
 	});
-	$("#phote-foot").pageFoot({createdate:"20110802",total:330,current:6},function(o){
-		//console.log(o.current);
-	});
+	
 });

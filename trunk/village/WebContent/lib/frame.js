@@ -63,7 +63,6 @@ var frame = {
     }
 };
 $(function(){
-	
 	frame.include(include_file.plugin,true,true);
 	frame.include(include_file.jqueryui,true,true);
 	frame.include(include_file.modules,true,true);

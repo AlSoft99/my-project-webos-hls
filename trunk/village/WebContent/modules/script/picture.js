@@ -111,7 +111,7 @@ $(function(){
 	$("#picture-tabs").tabs({ 
 		spinner:'Retrieving data...',
 		load:function(){
-			console.log($(this));
+			//console.log($(this));
 		}
 	});
 	$("div[id^='ui-tabs']").append("<div class='loading' style='width:31px;height:31px;margin:200px auto;'></div>");
