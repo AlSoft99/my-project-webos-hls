@@ -37,6 +37,8 @@ var main = {
 		$("#main").load(url,function(){
 			$("#main").css("opacity",0);
 			$(this).animate({opacity:1},500);
+			$("input[type=button],button").button();
+			$('[title]').colorTip({color:'yellow'});
 		});
 	}
 };
