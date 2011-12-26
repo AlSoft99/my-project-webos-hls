@@ -1,41 +1,60 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="gb2312">
-<head>
-<title>阻止JavaScript事件冒泡传递（cancelBubble 、stopPropagation）</title>
-<meta name="keywords"
-	content="JavaScript,事件冒泡,cancelBubble,stopPropagation" />
-<script type="text/javascript">
-	function doSomething(obj, evt) {
-		var e = (evt) ? evt : window.event;
-		if (window.event) {
-			e.cancelBubble = true;
-		} else {
-			//e.preventDefault();   
-			e.stopPropagation();
-		}
-	}
-</script>
-</head>
-<body>
-	<div id="parent1" onclick="alert(this.id)"
-		style="width: 250px; background-color: yellow">
-		<p>This is parent1 div.</p>
-		<div id="child1" onclick="alert(this.id)"
-			style="width: 200px; background-color: orange">
-			<p>This is child1.</p>
-		</div>
-		<p>This is parent1 div.</p>
-	</div>
-	<br />
-	<div id="parent2" onclick="alert(this.id)"
-		style="width: 250px; background-color: cyan;">
-		<p>This is parent2 div.</p>
-		<div id="child2" onclick="doSomething(this,event);"
-			style="width: 200px; background-color: lightblue;">
-			<p>This is child2. Will bubble.</p>
-		</div>
-		<p>This is parent2 div.</p>
-	</div>
-	<input type="file"/>
-</body>
+<html> 
+    <head> 
+        <script src="http://img.jb51.net/jslib/jquery/jquery-1.3.2.min.js"></script> 
+        <script src="http://img.jb51.net/jslib/jquery/jquery.jcrop.min.js"></script> 
+<style type="text/css"> 
+        body{ 
+            margin:100px auto; 
+            text-align:center; 
+        } 
+        .jcrop-holder { 
+            text-align: left; 
+        } 
+        .jcrop-vline, .jcrop-hline{ 
+            font-size: 0; 
+            position: absolute; 
+            background: white url('http://img.jb51.net/jslib/images/Jcrop.gif') top left repeat; 
+        } 
+        .jcrop-vline { 
+            height: 100%; 
+            width: 1px !important; 
+        } 
+        .jcrop-hline { 
+            width: 100%; 
+            height: 1px !important; 
+        } 
+        .jcrop-handle { 
+            font-size: 1px; 
+            width: 7px !important; 
+            height: 7px !important; 
+            border: 1px #eee solid; 
+            background-color: #333; 
+            *width: 9px; 
+            *height: 9px; 
+        } 
+         
+        .jcrop-tracker { 
+            width: 100%; 
+            height: 100%; 
+        } 
+         
+        .custom .jcrop-vline,.custom .jcrop-hline{ 
+            background: yellow; 
+        } 
+        .custom .jcrop-handle{ 
+            border-color: black; 
+            background-color: #C7BB00; 
+            -moz-border-radius: 3px; 
+            -webkit-border-radius: 3px; 
+        } 
+        </style> 
+        <script language="Javascript"> 
+        jQuery(function(){ 
+            jQuery('#cropbox').Jcrop(); 
+        }); 
+        </script> 
+    </head> 
+    <body> 
+            <img src="http://img.jb51.net/jslib/images/flowers.jpg" id="cropbox" />
+     </body> 
 </html>

@@ -84,4 +84,13 @@
 	<welcome-file-list>
 		<welcome-file>main.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>RegisterUrl</servlet-name>
+		<jsp-file>/main.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterUrl</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
 </web-app>

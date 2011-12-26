@@ -102,10 +102,9 @@ var picturemanager = {
 			var cell = '<div class="bl-phote-frame"><div class="bl-phote-frame-choice" ><div ></div><a class="icon bl-phote-frame-edit" title="编辑" imageid="'+id+'" href="#"></a><a imageid="'+id+'" title="删除" class="icon bl-phote-frame-delete" href="#"></a></div><a href="'+this.imageUrl+o.big+'"><img src="'+this.imageUrl+o.small+'" style="width:100px;height:100px;" alt="'+o.title+'" title="'+o.title+'" /></a></div>';
 			$("#phote-item-list").append(cell);
 		};
-		alert(11);
 		$("#phote-item-list").append("<div class='clear'></div>");
 		$("#phote-item-list").fadeIn(500);
-		$('#phote-item-list [title]').colorTip({color:'yellow'});
+		//$('#phote-item-list [title]').colorTip({color:'yellow'});
 		$(".bl-phote-frame-edit").click(function(){
 			var id = $(this).attr("imageid");
 			$( "#photo-dialog-edit" ).dialog("open");
