@@ -7,6 +7,9 @@ a{
 textarea{
 	overflow:auto;
 }
+body{
+	font-size: 12px;
+}
 .link{
 	text-decoration: none;
 	color: #8692A2;
@@ -34,6 +37,9 @@ textarea{
 }
 .default-msg{ 
 	color:#9A9A9A;
+}
+.clear{
+	clear: both;
 }
 .float-left, .float{
 	float:left;
