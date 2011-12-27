@@ -86,11 +86,11 @@
 	</welcome-file-list>
 	
 	<servlet>
-		<servlet-name>RegisterUrl</servlet-name>
-		<jsp-file>/main.jsp</jsp-file>
+		<servlet-name>ArticleUrl</servlet-name>
+		<jsp-file>/modules/view/index/index-article.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>RegisterUrl</servlet-name>
-		<url-pattern>/register</url-pattern>
+		<servlet-name>ArticleUrl</servlet-name>
+		<url-pattern>/article</url-pattern>
 	</servlet-mapping>
 </web-app>

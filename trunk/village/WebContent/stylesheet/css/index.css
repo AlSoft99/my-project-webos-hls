@@ -1,8 +1,8 @@
 .bl-index-top{
 	background: url("../img/header.jpg") no-repeat;width: 969px;height: 133px;border: 1px solid #D3DFDF;margin: 30px auto 0px;position: relative;
 }
-.bl-index-man{
-	margin: 10px auto 0;width: 969px;border: 1px solid #DDD;
+.bl-index-body-right{
+	margin: 10px auto 0;width: 135px;border: 1px solid #DDD;float: right;
 }
 .bl-index-list{
 	padding: 0px 4px;
@@ -10,17 +10,26 @@
 .bl-index-title{
 	background: #EAF1F2 url("../img/title.png") repeat-x 0 0;border-bottom: 1px solid #DDD;padding: 10px;
 }
-.bl-index-title span,.bl-index-title a{
+.bl-index-title span{
+	font-size: 12px;color: #444444;font-weight: bold;text-decoration: none;
+}
+.bl-index-title a{
 	font-size: 12px;color: #069;font-weight: bold;text-decoration: none;
 }
 .bl-index-title a:HOVER{
 	text-decoration: underline;
 }
 .bl-index-item{
-	width: 100px;padding:5px;text-align: center;border: 1px solid #DDD;margin: 5px 4px;float: left;
+	width: 97px;padding:5px;text-align: center;margin: 5px 4px;cursor: pointer;
 }
 .bl-index-item span{
 	font-size: 13px;color: #069;font-weight: bold;
+}
+.bl-index-photo{
+	border: 1px solid #DDD;width:100px;height:100px;padding:3px;
+}
+.bl-index-photo img{
+	width:100px;
 }
 .bl-index-login{
 	position: absolute;right: 30px;top: 100px;color: #069;
@@ -36,4 +45,34 @@
 }
 #dialog-register td{
 	padding:3px 0;
+}
+.bl-index-body{
+	width: 969px;
+}
+.bl-index-body-left{
+	float: left;width:822px;margin-top:10px;
+}
+.bl-index-frame{
+	border: 1px solid #DDD;
+}
+.bl-index-content-item{
+	padding:10px;
+}
+.bl-index-content-item .title{
+	font-size: 14px;font-weight:bold;text-decoration:none;color: #069;
+}
+.bl-index-content-item .time{
+	color:#999;
+}
+.bl-index-content-item .content{
+	color:#444;
+}
+.bl-index-content-item .type{
+	text-decoration: none;
+}
+.bl-index-content-item .type:hover{
+	text-decoration: underline;
+}
+.bl-index-content-body{
+	border-bottom: 1px dashed #CDCDCD;
 }
