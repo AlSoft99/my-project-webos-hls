@@ -8,6 +8,7 @@ textarea{
 	overflow:auto;
 }
 body{
+	margin:0;padding:0;
 	font-size: 12px;
 	font-family: Tahoma, 'Microsoft Yahei', Simsun;
 }
@@ -78,4 +79,37 @@ body{
 }
 .loading{
 	background-image: url("../img/loading.gif");
+}
+.logo{
+	background: url("../img/index/logo_white_small.png") no-repeat;
+}
+.dl-user{
+	padding-left:50px;
+}
+.dl-user .dl-user-line{
+	width:1px;background-color: #CDCDCD;height:42px;margin-left: 10px;margin-top: 3px;
+}
+.dl-user dt{
+	margin: 0 0 0 25px;
+}
+.dl-user dt a{
+	font-size: 22px;text-decoration: none;color: black;
+}
+.dl-user .dl-user-photo{
+	border: 1px solid #CDCDCD;float: left;margin-left: -50px;
+}
+.dl-user .dl-user-photo img{
+	width:43px; height:43px;padding:2px;border-width: 0px;
+}
+.dl-user .dl-user-tips{
+	color: black;margin: 5px 0 0 25px;
+}
+.dl-user .dl-user-tips a{
+	color: black;
+}
+.dl-user .dl-user-tips span{
+	color: #777;
+}
+.dl-user .dl-user-comment{
+	width:35px;height:35px;background-color: #CC0000;text-align:center;color:white;font-size: 14px;line-height:35px;font-weight: bold;
 }

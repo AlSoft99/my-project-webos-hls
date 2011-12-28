@@ -1,78 +1,87 @@
-.bl-index-top{
-	background: url("../img/header.jpg") no-repeat;width: 969px;height: 133px;border: 1px solid #D3DFDF;margin: 30px auto 0px;position: relative;
+.index-title{
+	min-width: 990px;background-color: #1C1D1A;
 }
-.bl-index-body-right{
-	margin: 10px auto 0;width: 135px;border: 1px solid #DDD;float: right;
+.index-logo{
+	padding:35px 0 10px 65px;display: block;color: #848484;text-decoration: none;font-size: 13px;
 }
-.bl-index-list{
-	padding: 0px 4px;
+.index-title-frame{
+	margin: auto;width:990px;
 }
-.bl-index-title{
-	background: #EAF1F2 url("../img/title.png") repeat-x 0 0;border-bottom: 1px solid #DDD;padding: 10px;
+.index-menu{
+	color: #BBBABA;height: 60px;margin-top: 5px;
 }
-.bl-index-title span{
-	font-size: 12px;color: #444444;font-weight: bold;text-decoration: none;
+.index-menu ul li.select{
+	background-color:#BB0303;border-radius:3px; 
 }
-.bl-index-title a{
-	font-size: 12px;color: #069;font-weight: bold;text-decoration: none;
+.index-menu ul li.select a{
+	color:white;text-decoration: none;
 }
-.bl-index-title a:HOVER{
-	text-decoration: underline;
+.index-menu ul{
+	list-style: none;
 }
-.bl-index-item{
-	width: 97px;padding:5px;text-align: center;margin: 5px 4px;cursor: pointer;
+.index-menu ul li{
+	float: left;width:60px;height:29px;line-height: 29px;margin-right: 5px;cursor: pointer;text-align: center;
 }
-.bl-index-item span{
-	font-size: 13px;color: #069;font-weight: bold;
+.index-menu ul li a{
+	color: #BBBABA;text-decoration: none;
 }
-.bl-index-photo{
-	border: 1px solid #DDD;width:100px;height:100px;padding:3px;
+.index-content-item{
+	padding-top: 20px;
 }
-.bl-index-photo img{
-	width:100px;
+.index-content{
+	width:720px;
 }
-.bl-index-login{
-	position: absolute;right: 30px;top: 100px;color: #069;
+.index-tips{
+	width:220px;padding-top: 20px;
 }
-.bl-index-login span{
-	margin: 0 10px;font-size: 12px;
+.index-content-photo{
+	padding-bottom:20px; background: url("../img/index/hatching_line.png") repeat-x left bottom;
 }
-.bl-index-login a{
-	font-size: 12px;text-decoration: none;
+.index-content-text{
+	font-size: 14px;line-height: 24px;
 }
-.bl-index-login a:hover{
-	text-decoration: underline;color: #069;
+.index-content-text p{
+	margin: 0;padding: 7px 0;
 }
-#dialog-register td{
-	padding:3px 0;
+.index-toolbar{
+	padding:20px 0;
 }
-.bl-index-body{
-	width: 969px;
+.index-toolbar ul{
+	list-style: none;margin: 0;padding: 0;
 }
-.bl-index-body-left{
-	float: left;width:822px;margin-top:10px;
+.index-toolbar ul .search{
+	padding-left:25px;
 }
-.bl-index-frame{
-	border: 1px solid #DDD;
+.index-toolbar ul .like{
+	padding-left:25px;
 }
-.bl-index-content-item{
-	padding:10px;
+.index-toolbar ul li{
+	float: left;color:#CDCDCD;padding-right:10px;
 }
-.bl-index-content-item .title{
-	font-size: 14px;font-weight:bold;text-decoration:none;color: #069;
+.index-toolbar a{
+	font-size: 14px;color: black;
 }
-.bl-index-content-item .time{
-	color:#999;
+.index-toolbar a:hover{
+	color: red;
 }
-.bl-index-content-item .content{
-	color:#444;
+.index-foot-line{
+	background: url("../img/index/content_text_line.png") repeat-x left;height:6px;
 }
-.bl-index-content-item .type{
-	text-decoration: none;
+.index-type{
+	padding:7px;background-color: #E3E3E3;border-radius:3px 3px 0 0;margin-top: 30px;
 }
-.bl-index-content-item .type:hover{
-	text-decoration: underline;
+.index-type h1{
+	font-size:15px;color: #585858;margin: 0;
 }
-.bl-index-content-body{
-	border-bottom: 1px dashed #CDCDCD;
+.index-tips ul{
+	list-style: none;padding:0;
+}
+.index-tips ul li{
+	margin: 0;padding-left:10px;border-bottom: 1px dotted #DDD;
+}
+.index-tips ul li a{
+	font-size: 14px;text-decoration: none;color: #777;line-height: 30px;height:30px;
+}
+.index-tips ul li a:hover{
+	color:red;
 }
