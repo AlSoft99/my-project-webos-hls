@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% 
-String user = request.getParameter("user");
-System.out.println("====user:="+user);
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -70,6 +69,31 @@ System.out.println("====user:="+user);
 							在wp_head();前边加上wp_deregister_script主要作用是去除默认调用的jquery，这个只能在头部文件使用注销默认的调用js文件。去除之后，可以用google的jquery库，减少自身服务器的负担。
 							方法：在head.php或footer.php文件中（本博在footer.php中）加入
 							</div></p>
+						</div>
+						<div class="bl-index-content-discuss">
+							<div class="discuss-frame">
+								<h5 class="discuss-sum">评论 (<span>1</span> 个评论)</h5>
+								<div class="discuss-list">
+									<div class="discuss-item">
+										<dl>
+											<dd class="discuss-photo float"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
+											<dt><a href="#" style="font-weight: bold;">rayln</a>&nbsp;<span>2011-12-28 09:22</span><a class="float-right" href="#">删除</a><a class="float-right" href="#">编辑</a></dt>
+											<dd class="discuss-content">离线编辑器开放接口所使用的。其中RSD是一个广义的接口，wlwmanifest是针对微软Live Writer编辑器的。有了这两个接口，在使用离线编辑器撰写博客的时候，就可以直接在软件中选择分类，标签等等内容了</dd>
+											<dd class="clear"></dd>
+										</dl>
+										<dl>
+											<dd class="discuss-photo float"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
+											<dt><a href="#" style="font-weight: bold;">rayln</a>&nbsp;<span>2011-12-28 09:22</span><a class="float-right" href="#">删除</a><a class="float-right" href="#">编辑</a></dt>
+											<dd class="discuss-content">离线编辑器开放接口所使用的。其中RSD是一个广义的接口，wlwmanifest是针对微软Live Writer编辑器的。有了这两个接口，在使用离线编辑器撰写博客的时候，就可以直接在软件中选择分类，标签等等内容了</dd>
+											<dd class="clear"></dd>
+										</dl>
+									</div>
+								</div>
+								<div>
+									
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>

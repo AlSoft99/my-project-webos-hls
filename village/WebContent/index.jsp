@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +16,7 @@
 <script type="text/javascript" src="modules/index.js"></script>
 </head>
 <body>
-	<div id="dialog-register" title="<span style='padding:3px 0;float:left;'>注册</span>">
+	<div id="dialog-register" style="display: none;" title="<span style='padding:3px 0;float:left;'>注册</span>">
 		<form>
 			<table style="width:100%;">
 				<tr>
@@ -35,151 +34,167 @@
 			</table>
 		</form>
 	</div>
-	<div style="margin: auto;width:969px;">
-		<div class="bl-index-top">
-			<div class="bl-index-login bl-index-prev"><a href="#" id="register">立即注册</a><span>or</span><input type="button" id="login" value="登陆"/></div>
-			<div class="bl-index-login bl-index-now" style="display: none;">用户<span style="color: red;">xxx</span>, 欢迎您登陆本博客!</div>
-		</div>
-		<div class="bl-index-body" id="index-body">
-			<div class="bl-index-body-left">
-				<div class="bl-index-frame">
-					<div class="bl-index-title">
-						<span>最新文章</span>
-						<a href="register" class="float-right">更多</a>
-					</div>
-					<div class="bl-index-content-item">
-						<div class="bl-index-content-body">
-							<p><a href="article?user=guanrl&article=21768681" class="title">wordpress 优化wp_head()</a></p>
-							<p><span class="time">2011-10-28 22:28</span><span class="time"> | </span><span class="time">作者:</span><a href="article?user=guanrl&article=21768681" class="time type">官瑞林</a></p>
-							<p><span class="content">
-	优化wp_head()就是把从wp_head中移除不需要元素，同时也可以加快速度。  步骤：  加入到function.php  remove_action(‘wp_head’, ‘wp_generator’); //wp-generator移除wordpress的版本号，本身blog的版本号没什么意义，但是如果让恶意玩家看到，可能会用官网公布的漏洞攻击blog  remove_action(‘wp_head’, ‘wlwmani ...</span></p>
-							<p class="time"><span>文章分类: </span><a href="article?user=guanrl&article=21768681" class="time type">wordpress</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次阅读</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次评论</a></p>
-						</div>
-						<div class="bl-index-content-body">
-							<p><a href="article?user=guanrl&article=21768681" class="title">wordpress 优化wp_head()</a></p>
-							<p><span class="time">2011-10-28 22:28</span><span class="time"> | </span><span class="time">作者:</span><a href="article?user=guanrl&article=21768681" class="time type">官瑞林</a></p>
-							<p><span class="content">
-	优化wp_head()就是把从wp_head中移除不需要元素，同时也可以加快速度。  步骤：  加入到function.php  remove_action(‘wp_head’, ‘wp_generator’); //wp-generator移除wordpress的版本号，本身blog的版本号没什么意义，但是如果让恶意玩家看到，可能会用官网公布的漏洞攻击blog  remove_action(‘wp_head’, ‘wlwmani ...</span></p>
-							<p class="time"><span>文章分类: </span><a href="article?user=guanrl&article=21768681" class="time type">wordpress</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次阅读</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次评论</a></p>
-						</div>
-						<div class="bl-index-content-body">
-							<p><a href="article?user=guanrl&article=21768681" class="title">wordpress 优化wp_head()</a></p>
-							<p><span class="time">2011-10-28 22:28</span><span class="time"> | </span><span class="time">作者:</span><a href="article?user=guanrl&article=21768681" class="time type">官瑞林</a></p>
-							<p><span class="content">
-	优化wp_head()就是把从wp_head中移除不需要元素，同时也可以加快速度。  步骤：  加入到function.php  remove_action(‘wp_head’, ‘wp_generator’); //wp-generator移除wordpress的版本号，本身blog的版本号没什么意义，但是如果让恶意玩家看到，可能会用官网公布的漏洞攻击blog  remove_action(‘wp_head’, ‘wlwmani ...</span></p>
-							<p class="time"><span>文章分类: </span><a href="article?user=guanrl&article=21768681" class="time type">wordpress</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次阅读</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次评论</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="bl-index-frame" style="margin-top:10px;">
-					<div class="bl-index-title">
-						<span>最新日记</span>
-						<a href="register" class="float-right">更多</a>
-					</div>
-					<div class="bl-index-content-item">
-						<div class="bl-index-content-body">
-							<p><a href="article?user=guanrl&article=21768681" class="title">wordpress 优化wp_head()</a></p>
-							<p><span class="time">2011-10-28 22:28</span><span class="time"> | </span><span class="time">作者:</span><a href="article?user=guanrl&article=21768681" class="time type">官瑞林</a></p>
-							<p><span class="content">
-	优化wp_head()就是把从wp_head中移除不需要元素，同时也可以加快速度。  步骤：  加入到function.php  remove_action(‘wp_head’, ‘wp_generator’); //wp-generator移除wordpress的版本号，本身blog的版本号没什么意义，但是如果让恶意玩家看到，可能会用官网公布的漏洞攻击blog  remove_action(‘wp_head’, ‘wlwmani ...</span></p>
-							<p class="time"><span>文章分类: </span><a href="article?user=guanrl&article=21768681" class="time type">wordpress</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次阅读</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次评论</a></p>
-						</div>
-						<div class="bl-index-content-body">
-							<p><a href="article?user=guanrl&article=21768681" class="title">wordpress 优化wp_head()</a></p>
-							<p><span class="time">2011-10-28 22:28</span><span class="time"> | </span><span class="time">作者:</span><a href="article?user=guanrl&article=21768681" class="time type">官瑞林</a></p>
-							<p><span class="content">
-	优化wp_head()就是把从wp_head中移除不需要元素，同时也可以加快速度。  步骤：  加入到function.php  remove_action(‘wp_head’, ‘wp_generator’); //wp-generator移除wordpress的版本号，本身blog的版本号没什么意义，但是如果让恶意玩家看到，可能会用官网公布的漏洞攻击blog  remove_action(‘wp_head’, ‘wlwmani ...</span></p>
-							<p class="time"><span>文章分类: </span><a href="article?user=guanrl&article=21768681" class="time type">wordpress</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次阅读</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次评论</a></p>
-						</div>
-						<div class="bl-index-content-body">
-							<p><a href="article?user=guanrl&article=21768681" class="title">wordpress 优化wp_head()</a></p>
-							<p><span class="time">2011-10-28 22:28</span><span class="time"> | </span><span class="time">作者:</span><a href="article?user=guanrl&article=21768681" class="time type">官瑞林</a></p>
-							<p><span class="content">
-	优化wp_head()就是把从wp_head中移除不需要元素，同时也可以加快速度。  步骤：  加入到function.php  remove_action(‘wp_head’, ‘wp_generator’); //wp-generator移除wordpress的版本号，本身blog的版本号没什么意义，但是如果让恶意玩家看到，可能会用官网公布的漏洞攻击blog  remove_action(‘wp_head’, ‘wlwmani ...</span></p>
-							<p class="time"><span>文章分类: </span><a href="article?user=guanrl&article=21768681" class="time type">wordpress</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次阅读</a><span> | </span><a href="article?user=guanrl&article=21768681" class="time type"><span class="time">54</span>次评论</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="bl-index-frame" style="margin-top:10px;">
-					<div class="bl-index-title">
-						<span>最新图片</span>
-						<a href="register" class="float-right">更多</a>
-					</div>
-					<div class="bl-index-list">
-						<div class="bl-index-item float">
-							<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-							<div><span>官瑞林</span></div>
-						</div>
-						<div class="bl-index-item float">
-							<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-							<div><span>官瑞林</span></div>
-						</div>
-						<div class="bl-index-item float">
-							<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-							<div><span>官瑞林</span></div>
-						</div>
-						<div class="bl-index-item float">
-							<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-							<div><span>官瑞林</span></div>
-						</div>
-						<div class="bl-index-item float">
-							<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div> 
-							<div><span>官瑞林</span></div>
-						</div>
-						<div class="bl-index-item float">
-							<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-							<div><span>官瑞林</span></div>
-						</div>
-						<div class="bl-index-item float">
-							<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-							<div><span>官瑞林</span></div>
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-			</div>
-			<div class="bl-index-body-right">
-				<div class="bl-index-title">
-					<span>关注的人</span>
-					<a href="register" class="float-right">更多</a>
-				</div>
-				<div class="bl-index-list">
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-					<div class="bl-index-item">
-						<div class="bl-index-photo"><img src="stylesheet/img/120_0_0.gif" ></div>
-						<div><span>官瑞林</span></div>
-					</div>
-				</div>
+	<div class="index-title">
+		<div class="index-title-frame">
+			<div class="float"><a class="logo index-logo" href="#"> | 为用户创造优质的在线生活体验</a></div>
+			<div class="float-right index-menu">
+				<ul class="float-right">
+					<li class="select"><a href="#">首页</a></li>
+					<li><a href="#">日记</a></li>
+					<li><a href="#">相集</a></li>
+					<li><a href="#">留言板</a></li>
+				</ul>
 			</div>
 			<div class="clear"></div>
 		</div>
+	</div>
+	<div class="index-title" style="background-color: #3E5819;">
+		<div style="margin: auto;width:990px;"><img src="stylesheet/img/index/title.png" style="width:990px;height:340px;"/></div>
+	</div>
+	<div style="margin: auto;width:990px;">
+		<div class="float index-content">
+			<!-- 文章内容开始 -->
+			<div class="index-content-item">
+				<div>
+					<dl class="dl-user">
+						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
+						<dd class="float dl-user-line"></dd>
+						<dd class="float-right dl-user-comment">5</dd>
+						<dt><a href="#">情感化设计中的手绘应用表现</a></dt>
+						<dd class="dl-user-tips"><a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
+						<dd class="clear"></dd>
+					</dl>
+				</div>
+				<div class="index-content-photo">
+					<img src="stylesheet/img/index/banner4.jpg" />
+				</div>
+				<div class="index-content-text">
+					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
+				</div>
+				<div class="index-toolbar">
+					<ul class="float">
+						<li>浏览:<span>400400400400</span></li>
+						<li>喜爱:<span>3</span></li>
+					</ul>
+					<a href="#" class="float-right">阅读全文</a>
+					<div class="clear"></div>
+				</div>
+				<div class="index-foot-line"></div>
+			</div>
+			<!-- 文章内容结束 -->
+			<div class="index-content-item">
+				<div>
+					<dl class="dl-user">
+						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
+						<dd class="float dl-user-line"></dd>
+						<dd class="float-right dl-user-comment">5</dd>
+						<dt><a href="#">情感化设计中的手绘应用表现</a></dt>
+						<dd class="dl-user-tips"><a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
+						<dd class="clear"></dd>
+					</dl>
+				</div>
+				<div class="index-content-photo">
+					<img src="stylesheet/img/index/banner4.jpg" />
+				</div>
+				<div class="index-content-text">
+					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
+				</div>
+				<div class="index-toolbar">
+					<ul class="float">
+						<li>浏览:<span>400400400400</span></li>
+						<li>喜爱:<span>3</span></li>
+					</ul>
+					<a href="#" class="float-right">阅读全文</a>
+					<div class="clear"></div>
+				</div>
+				<div class="index-foot-line"></div>
+			</div>
+			<div class="index-content-item">
+				<div>
+					<dl class="dl-user">
+						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
+						<dd class="float dl-user-line"></dd>
+						<dd class="float-right dl-user-comment">5</dd>
+						<dt><a href="#">情感化设计中的手绘应用表现</a></dt>
+						<dd class="dl-user-tips"><a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
+						<dd class="clear"></dd>
+					</dl>
+				</div>
+				<div class="index-content-photo">
+					<img src="stylesheet/img/index/banner4.jpg" />
+				</div>
+				<div class="index-content-text">
+					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
+				</div>
+				<div class="index-toolbar">
+					<ul class="float">
+						<li>浏览:<span>400400400400</span></li>
+						<li>喜爱:<span>3</span></li>
+					</ul>
+					<a href="#" class="float-right">阅读全文</a>
+					<div class="clear"></div>
+				</div>
+				<div class="index-foot-line"></div>
+			</div>
+			<div class="index-content-item">
+				<div>
+					<dl class="dl-user">
+						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
+						<dd class="float dl-user-line"></dd>
+						<dd class="float-right dl-user-comment">5</dd>
+						<dt><a href="#">情感化设计中的手绘应用表现</a></dt>
+						<dd class="dl-user-tips"><a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
+						<dd class="clear"></dd>
+					</dl>
+				</div>
+				<div class="index-content-photo">
+					<img src="stylesheet/img/index/banner4.jpg" />
+				</div>
+				<div class="index-content-text">
+					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
+				</div>
+				<div class="index-toolbar">
+					<ul class="float">
+						<li>浏览:<span>400400400400</span></li>
+						<li>喜爱:<span>3</span></li>
+					</ul>
+					<a href="#" class="float-right">阅读全文</a>
+					<div class="clear"></div>
+				</div>
+				<div class="index-foot-line"></div>
+			</div>
+		</div>
+		<div class="float-right index-tips">
+			<p><input type="text" id="search" style="width:195px;" defaultMsg="搜索文章"/></p>
+			<div class="index-type"><h1>文章分类</h1></div>
+			<ul>
+				<li><a href="#">交互设计 +</a></li>
+				<li><a href="#">视觉设计 +</a></li>
+				<li><a href="#">摄影印象 +</a></li>
+				<li><a href="#">用户研究 +</a></li>
+				<li><a href="#">新人Show +</a></li>
+				<li><a href="#">最近折腾 +</a></li>
+			</ul>
+			<div class="index-type"><h1>热门标签</h1></div>
+			<ul>
+				<li><a href="#">理论</a></li>
+				<li><a href="#">创意</a></li>
+				<li><a href="#">作品</a></li>
+				<li><a href="#">案例</a></li>
+				<li><a href="#">互联网</a></li>
+				<li><a href="#">用户习惯</a></li>
+			</ul>
+			<div class="index-type"><h1>友情链接</h1></div>
+			<ul>
+				<li><a href="#">交互设计 +</a></li>
+				<li><a href="#">视觉设计 +</a></li>
+				<li><a href="#">摄影印象 +</a></li>
+				<li><a href="#">用户研究 +</a></li>
+				<li><a href="#">新人Show +</a></li>
+				<li><a href="#">最近折腾 +</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
 	</div>
 </body>
 </html>

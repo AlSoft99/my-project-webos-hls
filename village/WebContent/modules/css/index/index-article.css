@@ -1,4 +1,39 @@
 .bl-index-content-body h1{
-	font-size: 20px;
-	font-weight: 100;
+	font-size: 20px;font-weight: 100;
+}
+.bl-index-content-body .content{
+	font-size: 14px;
+}
+.bl-index-content-discuss .discuss-sum{
+	border-bottom: 1px solid #CDCDCD;line-height: 30px;margin: 10px 0;font-size: 12px;
+}
+.bl-index-content-discuss .discuss-list{
+	
+}
+.bl-index-content-discuss .discuss-item dl{
+	padding: 10px 0 10px 65px;border-bottom: 1px dashed #CDCDCD;margin: 0;
+}
+.bl-index-content-discuss .discuss-item dt{
+	margin: 5px 0;
+}
+.bl-index-content-discuss .discuss-item dt a{
+	color: #069;text-decoration: none;padding: 0 2px;
+}
+.bl-index-content-discuss .discuss-item dt a:hover{
+	text-decoration: underline;
+}
+.bl-index-content-discuss .discuss-item dt span{
+	color: #CDCDCD;
+}
+.bl-index-content-discuss .discuss-item .discuss-photo{
+	margin-left: -65px;display: inline;
+}
+.bl-index-content-discuss .discuss-item .discuss-photo a{
+	border: 1px solid #CDCDCD;display: block;
+}
+.bl-index-content-discuss .discuss-item .discuss-photo img{
+	width:48px;height:48px;padding:2px;border-width: 0px;
+}
+.bl-index-content-discuss .discuss-item .discuss-content{
+	margin: 0;color: #444;
 }
