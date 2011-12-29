@@ -16,7 +16,15 @@
 		<servlet-class>com.frame.servlet.InitServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+		<servlet>
+	    <servlet-name>ImageServlet</servlet-name>
+	    <servlet-class>com.wf.web.ImageServlet</servlet-class>
+	</servlet>
 	
+	<servlet-mapping>
+	    <servlet-name>ImageServlet</servlet-name>
+	    <url-pattern>/imageServlet</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>spring-mvc</servlet-name>
 		<url-pattern>*.do</url-pattern>

@@ -61,5 +61,8 @@
 		<aop:pointcut id="productServiceMethods" expression="execution(* com.test.vo.*Vo.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="productServiceMethods" />
 	</aop:config>
-	
+	<!-- 配置上传文件的类路径, 可以删掉 -->
+	<bean class="com.frame.util.FileUpload">
+		<property name="filepath" value="upload/picture/"/>
+	</bean>
 </beans>
