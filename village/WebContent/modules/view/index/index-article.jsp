@@ -34,7 +34,7 @@
 						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
 						<dd class="float dl-user-line"></dd>
 						<dd class="float-right dl-user-comment">5</dd>
-						<dt><a href="article">情感化设计中的手绘应用表现</a></dt>
+						<dt><span class="dl-user-title">情感化设计中的手绘应用表现</span></dt>
 						<dd class="dl-user-tips">
 							<a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span>&nbsp;<span>/</span>
 							&nbsp;<span>相关标签</span>
@@ -59,7 +59,8 @@
 					<ul class="float">
 						<li><span style="color:red;">本文出自HP UX Blog，转载时请注明出处</span></li>
 					</ul>
-					<a href="#" class="float-right" style="font-size: 12px;line-height: 20px;">给好文加心!</a>
+					<a href="#" class="float-right" style="font-size: 12px;line-height: 20px;padding:0 5px;">给好文加心!</a>
+					<span class="float-right">19</span>
 					<span class="icon index-love float-right"></span>
 					<div class="clear"></div>
 				</div>
@@ -85,7 +86,9 @@
 						<div class="discuss-submit">
 							<h5 class="discuss-sum">提交评论 </h5>
 							<p><textarea style="width: 99.5%;height:80px;"></textarea></p>
-							<p><span>验证码  </span><span style="padding: 0 7px;"><input type="text" class="ui-input" id="checkcode"/></span><input type="button" value="提交"/></p>
+							<p id="checkcode-field">
+								<span>验证码  </span><span style="padding: 0 7px;"><input type="text" class="ui-input" id="checkcode"/></span><input type="button" value="提交"/>
+							</p>
 							<div class="checkcode-frame" id="index-checkcode" style="position: absolute;z-index: 100;display:none;">
 								<a href="#" id="refresh-checkcode">刷新验证码</a>
 								<img id="checkcode-image" src="" style="display:none;"/>
@@ -99,38 +102,10 @@
 			<!-- 文章内容结束 -->
 		</div>
 		<div class="float-right index-tips">
-			<p><input type="text" id="search" style="width:195px;" defaultMsg="搜索文章"/></p>
-			<div class="index-type"><h1>文章分类</h1></div>
-			<ul>
-				<li><a href="#">交互设计 +</a></li>
-				<li><a href="#">视觉设计 +</a></li>
-				<li><a href="#">摄影印象 +</a></li>
-				<li><a href="#">用户研究 +</a></li>
-				<li><a href="#">新人Show +</a></li>
-				<li><a href="#">最近折腾 +</a></li>
-			</ul>
-			<div class="index-type"><h1>热门标签</h1></div>
-			<ul>
-				<li><a href="#">理论</a></li>
-				<li><a href="#">创意</a></li>
-				<li><a href="#">作品</a></li>
-				<li><a href="#">案例</a></li>
-				<li><a href="#">互联网</a></li>
-				<li><a href="#">用户习惯</a></li>
-			</ul>
-			<div class="index-type"><h1>友情链接</h1></div>
-			<ul>
-				<li><a href="#">交互设计 +</a></li>
-				<li><a href="#">视觉设计 +</a></li>
-				<li><a href="#">摄影印象 +</a></li>
-				<li><a href="#">用户研究 +</a></li>
-				<li><a href="#">新人Show +</a></li>
-				<li><a href="#">最近折腾 +</a></li>
-			</ul>
+			<%@ include file="index-tips.jsp" %>
 		</div>
 		<div class="clear"></div>
 	</div>
-	<div class="foot">
-		</div>
+	<%@ include file="../foot.html" %>
 </body>
 </html>

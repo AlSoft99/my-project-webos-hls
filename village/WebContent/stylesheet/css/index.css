@@ -40,6 +40,9 @@
 .index-content-photo{
 	padding-bottom:20px; background: url("../img/index/hatching_line.png") repeat-x left bottom;
 }
+.index-content-photo img{
+	border-width: 0px;
+}
 .index-content-text{
 	font-size: 14px;line-height: 24px;
 }
@@ -47,7 +50,7 @@
 	margin: 0;padding: 7px 0;
 }
 .index-toolbar{
-	padding:20px 0;
+	padding:20px 0;line-height:20px;
 }
 .index-toolbar ul{
 	list-style: none;margin: 0;padding: 0;
@@ -98,6 +101,12 @@
 	color:#333333;font-size: 14px;
 }
 .index-love{
+	display: inline-block;background-position: -120px -180px;
+}
+.index-search{
+	display: inline-block;background-position: -120px -400px;
+}
+.index-like{
 	display: inline-block;background-position: -120px -180px;
 }
 .index-foot{
