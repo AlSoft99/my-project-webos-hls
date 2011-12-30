@@ -21,11 +21,8 @@ public class PhotoServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("111");
 		FileUpload upload = ServletFactory.newInstant().getFactory().getBean("fileUpload", FileUpload.class);
-		System.out.println(upload);
 		upload.upload(request, response);
-		System.out.println(22);
 		response.getWriter().print("success");
 	}
 	
