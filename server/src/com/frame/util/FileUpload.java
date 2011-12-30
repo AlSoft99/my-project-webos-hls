@@ -52,7 +52,6 @@ public class FileUpload {
 					}
 				}
 			}
-			response.getWriter().print("success");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
