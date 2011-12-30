@@ -129,5 +129,29 @@
 		<servlet-name>ArticleUrl</servlet-name>
 		<url-pattern>/article</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>TypeUrl</servlet-name>
+		<jsp-file>/modules/view/index/index-type.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TypeUrl</servlet-name>
+		<url-pattern>/type</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>IndexUrl</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>IndexUrl</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>AuthorUrl</servlet-name>
+		<jsp-file>/modules/view/index/index-author.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthorUrl</servlet-name>
+		<url-pattern>/author</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

@@ -86,6 +86,18 @@ body{
 .dl-user{
 	padding-left:50px;
 }
+dl.dl-author{
+	padding-left:0px;
+}
+dl.dl-author dt{
+	margin: 0;
+}
+dl.dl-author .dl-user-tips{
+	margin: 5px 0 0 0;
+}
+.dl-user .dl-user-title{
+	font-size: 22px;
+}
 .dl-user .dl-user-line{
 	width:1px;background-color: #CDCDCD;height:42px;margin-left: 10px;margin-top: 3px;
 }
@@ -117,5 +129,5 @@ body{
 	height:112px;background: url("../img/orgcnbg.jpg");margin: auto;
 }
 .checkcode-frame{
-	border: 1px solid #DDD;background-color: #FEFEFE;box-shadow:1px 2px 2px rgba(0,0,0,0.3);min-width:80px;text-align: center;padding:7px;
+	border: 1px solid #DDD;background-color: #FEFEFE;box-shadow:1px 2px 2px rgba(0,0,0,0.3);min-width:80px;text-align: center;padding:7px;cursor: pointer;
 }

@@ -1,4 +1,6 @@
 $(function(){
-	$("#search").searchInput();
-	$("input[type=text]").defaultMsg();
+	$("#index-menu li").click(function(){
+		$("#index-menu .select").removeClass("select");
+		$(this).addClass("select");
+	});
 });
