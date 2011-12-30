@@ -16,9 +16,13 @@
 		<servlet-class>com.frame.servlet.InitServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		<servlet>
+	<servlet>
 	    <servlet-name>ImageServlet</servlet-name>
-	    <servlet-class>com.wf.web.ImageServlet</servlet-class>
+	    <servlet-class>com.frame.util.ImageServlet</servlet-class>
+	</servlet>
+	<servlet>
+	    <servlet-name>PictureUploadVo</servlet-name>
+	    <servlet-class>com.test.vo.PhotoServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -32,6 +36,10 @@
 	<servlet-mapping>
 		<servlet-name>InitServlet</servlet-name>
 		<url-pattern>*.init</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PictureUploadVo</servlet-name>
+		<url-pattern>*.photo</url-pattern>
 	</servlet-mapping>
 	<!-- ************************context start *****************************-->
 	<context-param>
