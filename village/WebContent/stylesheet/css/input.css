@@ -10,4 +10,5 @@
 .ui-input-search input{
 	border:0px;
 	outline-style:none;
+	padding:3px 0;
 }

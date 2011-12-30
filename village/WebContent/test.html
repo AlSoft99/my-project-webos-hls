@@ -1,27 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/layout.css"/>
-<style type="text/css">
-</style>
-<title>无标题文档</title>
-</head>
-<body>
-<div class="ask">
-  <h2><strong>使用</strong>问答</h2>
-  <dl>
-    <dt><a href="32">博客里的文章是我自己写的！</a></dt>
-    <dd>我已经有女朋友了，她却打电话给我，说想与我交往。我问她原因，她说我诚实能干我已经有女朋友了，她却打电话给我，说想与我交往。我问她原因，她说我诚实能干我已经有女朋友了，她却打电话给我，说想与我交往。</dd>
-  </dl>
-  <dl>
-    <dt><a href="3232">博客里的文章是我自己写的！</a></dt>
-    <dd>我是87年就到税务工作，税制改革后在地税局，截止今日我的社会保险问题组意见？</dd>
-  </dl>
-  <dl>
-    <dt><a href="3232">博客里的文章是我自己写的！</a></dt>
-    <dd>　如果你仍然在使用传统table来创建数据列表，那么请继续往下你的工作更轻松…</dd>
-  </dl>
-</div>
-</body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>验证码</title>
+    <script type="text/javascript">
+    function refresh(obj) {
+        obj.src = "imageServlet?"+Math.random();
+    }
+    </script>
+  </head>
+  <body>
+    <form action="checkServlet" method="post">
+        <label>输入验证码</label><br/>
+        <input type="text" name="randomCode"/><img title="点击更换" onclick="javascript:refresh(this);" src="imageServlet"><br/>
+        <input type="submit" value="submit">
+    </form>
+  </body>
 </html>

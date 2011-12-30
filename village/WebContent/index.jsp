@@ -8,10 +8,10 @@
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="stylesheet/css/index.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="stylesheet/css/main.css" media="screen" />
-<link type="text/css" rel="stylesheet" href="lib/ui/css/redmond/jquery-ui-custom.css" media="screen" />
+<!--link type="text/css" rel="stylesheet" href="lib/ui/css/redmond/jquery-ui-custom.css" media="screen" /-->
 <!-- JavaScripts-->
 <script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
-<script type="text/javascript" src="lib/ui/js/jquery.ui.custom.min.js"></script>
+<!--script type="text/javascript" src="lib/ui/js/jquery.ui.custom.min.js"></script-->
 <script type="text/javascript" src="lib/common.js"></script>
 <script type="text/javascript" src="modules/index.js"></script>
 </head>
@@ -34,24 +34,11 @@
 			</table>
 		</form>
 	</div>
-	<div class="index-title">
-		<div class="index-title-frame">
-			<div class="float"><a class="logo index-logo" href="#"> | 为用户创造优质的在线生活体验</a></div>
-			<div class="float-right index-menu">
-				<ul class="float-right">
-					<li class="select"><a href="#">首页</a></li>
-					<li><a href="#">日记</a></li>
-					<li><a href="#">相集</a></li>
-					<li><a href="#">留言板</a></li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
+	<%@ include file="modules/view/index/index-menu.html" %>
 	<div class="index-title" style="background-color: #3E5819;">
 		<div style="margin: auto;width:990px;"><img src="stylesheet/img/index/title.png" style="width:990px;height:340px;"/></div>
 	</div>
-	<div style="margin: auto;width:990px;">
+	<div class="index-body">
 		<div class="float index-content">
 			<!-- 文章内容开始 -->
 			<div class="index-content-item">
@@ -60,7 +47,7 @@
 						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
 						<dd class="float dl-user-line"></dd>
 						<dd class="float-right dl-user-comment">5</dd>
-						<dt><a href="#">情感化设计中的手绘应用表现</a></dt>
+						<dt><a href="article">情感化设计中的手绘应用表现</a></dt>
 						<dd class="dl-user-tips"><a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
 						<dd class="clear"></dd>
 					</dl>
