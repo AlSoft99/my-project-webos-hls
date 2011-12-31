@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
-import com.frame.log.LogUtil;
 import com.frame.vo.BaseVo;
 import com.frame.vo.Request;
 import com.test.dao.UserInfoDao;

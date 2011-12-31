@@ -8,33 +8,17 @@
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="stylesheet/css/index.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="stylesheet/css/main.css" media="screen" />
-<!--link type="text/css" rel="stylesheet" href="lib/ui/css/redmond/jquery-ui-custom.css" media="screen" /-->
+<link type="text/css" rel="stylesheet" href="lib/ui/css/redmond/jquery-ui-custom.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/plugin/colortip/colortip.jquery.css" media="screen" />
 <!-- JavaScripts-->
 <script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
-<!--script type="text/javascript" src="lib/ui/js/jquery.ui.custom.min.js"></script-->
+<script type="text/javascript" src="lib/ui/js/jquery.ui.custom.min.js"></script>
+<script type="text/javascript" src="lib/plugin/colortip/colortip.jquery.js"></script>
 <script type="text/javascript" src="lib/common.js"></script>
 <script type="text/javascript" src="modules/index.js"></script>
 </head>
 <body>
-	<div id="dialog-register" style="display: none;" title="<span style='padding:3px 0;float:left;'>注册</span>">
-		<form>
-			<table style="width:100%;">
-				<tr>
-					<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" defaultMsg="输入邮箱" style="width: 420px;"></td>
-				</tr>
-				<tr>
-					<td style="width:90px;">姓名</td><td><input type="text" class="ui-input" defaultMsg="输入用户姓名" style="width: 420px;"></td>
-				</tr>
-				<tr>
-					<td style="width:90px;">密码</td><td><input type="text" class="ui-input" defaultMsg="输入密码" style="width: 420px;"></td>
-				</tr>
-				<tr>
-					<td style="width:90px;">确认密码</td><td><input type="text" class="ui-input" defaultMsg="输入确认密码" style="width: 420px;"></td>
-				</tr>
-			</table>
-		</form>
-	</div>
-	<%@ include file="modules/view/index/index-menu.html" %>
+	<%@ include file="modules/view/index/index-menu.jsp" %>
 	<div class="index-title" style="background-color: #3E5819;">
 		<div style="margin: auto;width:990px;"><img src="stylesheet/img/index/title.png" style="width:990px;height:340px;"/></div>
 	</div>

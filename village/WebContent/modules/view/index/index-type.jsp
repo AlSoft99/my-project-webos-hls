@@ -20,7 +20,7 @@
 <script type="text/javascript" src="modules/script/index/index-type.js"></script>
 </head>
 <body>
-	<%@ include file="index-menu.html" %>
+	<%@ include file="index-menu.jsp" %>
 	<div class="index-body">
 		<div class="index-navigation" style="padding-top:25px;">
 			<a href="#">首页</a> > <a href="#">视觉设计</a>
