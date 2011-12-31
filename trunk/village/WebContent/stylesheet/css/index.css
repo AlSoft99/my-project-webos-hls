@@ -7,6 +7,9 @@
 .index-logo{
 	padding:35px 0 10px 65px;display: block;color: #848484;text-decoration: none;font-size: 13px;
 }
+.index-logo:hover{
+	color:white;
+}
 .index-title-frame{
 	margin: auto;width:990px;
 }
