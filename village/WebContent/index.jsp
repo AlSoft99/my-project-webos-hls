@@ -8,7 +8,7 @@
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="stylesheet/css/index.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="stylesheet/css/main.css" media="screen" />
-<link type="text/css" rel="stylesheet" href="lib/ui/css/redmond/jquery-ui-custom.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/ui/css/smoothness/jquery-ui-custom.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="lib/plugin/colortip/colortip.jquery.css" media="screen" />
 <!-- JavaScripts-->
 <script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
