@@ -385,7 +385,7 @@ $.fn.extend({
 		console.log(message);
 		console.log($(this).height());
 		$(this).css("border","1px solid red");
-		$(this).after("<span class='icon' style='background-position:-240px -200px;display:inline-block;cursor:point;' title='"+message+"'></span>");
+		$(this).after("<span class='icon' style='background-position:-240px -200px;display:inline-block;cursor:pointer;vertical-align:middle;' title='"+message+"'></span>");
 		$("[title]").colorTip();
 	},
 	hideErrorMessage:function(){
