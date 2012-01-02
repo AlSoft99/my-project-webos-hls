@@ -9,15 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>官家部落格</title>
 <!-- CSS ../../../-->
-<link type="text/css" rel="stylesheet" href="stylesheet/css/main.css" media="screen" />
-<link type="text/css" rel="stylesheet" href="lib/ui/css/smoothness/jquery-ui-custom.css" media="screen" />
+<%@ include file="../include.html" %>
 <link type="text/css" rel="stylesheet" href="stylesheet/css/index.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="modules/css/index/index-article.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="modules/css/index/index-article-wordpress.css" media="screen" />
 <!-- JavaScripts-->
-<script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
-<script type="text/javascript" src="lib/ui/js/jquery.ui.custom.min.js"></script>
-<script type="text/javascript" src="lib/common.js"></script>
 <script type="text/javascript" src="modules/script/index/index-article.js"></script>
 </head>
 <body>

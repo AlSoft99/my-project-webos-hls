@@ -1,5 +1,6 @@
 <link type="text/css" rel="stylesheet" href="lib/plugin/colortip/colortip.jquery.css" media="screen" />
 <script type="text/javascript" src="lib/plugin/colortip/colortip.jquery.js"></script>
+<script type="text/javascript" src="lib/plugin/jquery.validate.js"></script>
 <div id="dialog-register" style="display: none;" title="<span style='padding:3px 0;float:left;'>注册</span>">
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
