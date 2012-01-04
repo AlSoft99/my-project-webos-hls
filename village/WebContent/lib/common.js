@@ -5,7 +5,7 @@ $.extend({
 });
 $.fn.extend({
 	defaultMsg: function(){
-		var attr = "defaultMsg";
+		var attr = "placeholder";
 		var className = "default-msg";
 		var parseVal = function(val){
 			if(typeof(val)=="undefined"){

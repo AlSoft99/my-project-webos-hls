@@ -5,7 +5,7 @@
 //UserInfoDao dao = ServletFactory.newInstant().getFactory().getBean("userInfoDao",UserInfoDao.class);
 
 %>
-<p><input type="text" class="ui-input" id="search" style="width:195px;" defaultMsg="搜索文章"/></p>
+<p><input type="text" class="ui-input" id="search" style="width:195px;" placeholder="搜索文章"/></p>
 <div class="index-type"><h1>文章分类</h1></div>
 <ul>
 	<li><a href="type">交互设计 +</a></li>
