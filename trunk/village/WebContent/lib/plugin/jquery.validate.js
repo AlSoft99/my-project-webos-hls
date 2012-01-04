@@ -13,7 +13,8 @@ $.fn.extend({
 		var varchar = /[A-Za-z0-9_]+/;
 		var number = /\d/;
 		var email = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
-		var password = /^(?!^\d+$|^[a-zA-Z]+$)(?:[a-zA-Z\d]{6,12})$/;
+		//var password = /^(?!^\d+$|^[a-zA-Z]+$)(?:[a-zA-Z\d]{6,12})$/;
+		var password = /[A-Za-z0-9_]+/;
     	/**
     	 * for example:
     	 * <input id="test" type="text" value="automaticallysentto" maxlength="225" minlength="29" errorMsg="this value is minlength {min}, maxlength {max}" regExp="/^\w{1,22}$/" validFunction="validFun" regExpMsg="this is regExp message!">
@@ -78,6 +79,7 @@ $.fn.extend({
 		};
 		
 		var judgeLength = function(){
+			console.log("attr.valueLength:"+attr.valueLength);
 			if(typeof(attr.minlength)!="undefined"){
 				if(attr.valueLength < attr.minlength && !attr.isShowMsg){
 					attr.isShowMsg = true;
@@ -160,10 +162,13 @@ $.fn.extend({
 	},
 	showErrorMessage:function(message){
 		$(this).css("border","1px solid red");
-		$(this).after("<span class='icon' style='background-position:-240px -200px;display:inline-block;cursor:pointer;vertical-align:middle;' title='"+message+"'></span>");
-		$("[title]").colorTip();
+		$(this).next(".vaildate-error").remove();
+		$(this).after("<span class='icon vaildate-error ' style='background-position:-240px -200px;display:inline-block;cursor:pointer;vertical-align:middle;' title='"+message+"'></span>");
+		$(".vaildate-error[title]").colorTip();
 	},
 	hideErrorMessage:function(){
 		$(this).css("border","");
+		$(this).next(".vaildate-error").remove();
+		$(this).after("<span class='icon vaildate-correct' style='background-position:-240px -220px;display:inline-block;cursor:pointer;vertical-align:middle;'></span>");
 	}
 });
