@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  	http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  	http://www.springframework.org/schema/tx 
+  	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  	http://www.springframework.org/schema/context 
+  	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  	http://www.springframework.org/schema/mvc 
+  	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<!-- 对Web包的所有类进行扫描,完成Bean创建和自动依赖注入 -->
+	<context:component-scan base-package="com" />
+	<!-- 启动SpringMVC注解功能,完成请求和注解POJO的映射 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"></bean>
+	<!-- 根据返回值拼装前缀和后缀,返回页面 -->
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+ 
+	<!-- 拦截器 -->
+	<!-- <bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<bean class="com.frame.control.MvcInterceptor" />
+			</list>
+		</property>
+	</bean> -->
+	<!-- <bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="bulletinList.do">bulletionListAction</prop>
+				<prop key="hello.do">helloWorldController</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="bulletionListAction" class="com.controller.BulletionListAction"></bean> -->
+
+</beans>
