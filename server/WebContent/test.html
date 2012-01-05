@@ -11,7 +11,7 @@
 </head>
 <script>
 	$(function() {
-		$.ajax({
+		/**$.ajax({
 			url : "main/ajax/add.mvc",
 			type:"post",
 			data : {username:"用户",password:"密码",entity:"com.test.entity.UserInfo"},
@@ -21,6 +21,11 @@
 			error : function(text){
 				console.log(text);
 			}
+		});**/
+
+		$.get("test.do?method=add",{username:"1234",password:"4567"},function(data){
+			console.log("=========");
+			console.log(data);
 		});
 
 		new SWFUpload({
