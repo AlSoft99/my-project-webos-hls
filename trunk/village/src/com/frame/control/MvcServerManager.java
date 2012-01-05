@@ -16,13 +16,13 @@ import com.frame.util.StringUtil;
 import com.frame.vo.BaseVo;
 import com.frame.vo.Request;
 
-@Controller
+/*@Controller*/
 public class MvcServerManager {
-	@RequestMapping(value="/*.do" ,method=RequestMethod.POST)
+	/*@RequestMapping(value="/*.do" ,method=RequestMethod.POST)*/
 	public void controllerPost(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		controllerGet(request,response);
 	}
-	@RequestMapping(value="/*.do" ,method=RequestMethod.GET)
+	/*@RequestMapping(value="/*.do" ,method=RequestMethod.GET)*/
 	public void controllerGet(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		Request req = logicAction(request,response);
 		if(req.getResponse()!=null){
