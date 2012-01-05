@@ -8,7 +8,7 @@
 <body>
 <script>
 	$(function(){
-		$.get("test.do",{username:"1234",password:"4567"},function(data){
+		$.get("add.do?method=add",{usrename:"1234",password:"4567"},function(data){
 			console.log("=========");
 			console.log(data);
 		});
