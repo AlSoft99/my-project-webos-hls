@@ -26,7 +26,7 @@
 		<property name="username" value="root" />
 		<property name="password" value="xxxxx" />
 	</bean> -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
@@ -34,15 +34,27 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
 				<prop key="hibernate.show_sql">true</prop>
-				<!--  
-				<prop key="connection.useUnicode">true</prop>
-				<prop key="connection.characterEncoding">UTF-8</prop>-->
 			</props>
 		</property>
 		<property name="mappingResources">
 			<list>
-				<!-- *****************需要修改部分*************** -->
+				*****************需要修改部分***************
 				<value>com/test/entity/UserInfo.hbm.xml</value>
+			</list>
+		</property>
+	</bean> -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> 自动创建表-->
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.test.entity</value><!-- 扫描实体类，也就是平时所说的model -->
 			</list>
 		</property>
 	</bean>
