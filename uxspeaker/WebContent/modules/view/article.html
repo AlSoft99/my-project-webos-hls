@@ -1,0 +1,44 @@
+<link type="text/css" rel="stylesheet" href="modules/css/article.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/ui/css/base/jquery.ui.selectmenu.css" media="screen" />
+<script type="text/javascript" src="lib/ui/js/jquery.ui.selectmenu.js"></script> 
+<script type="text/javascript" src="modules/script/article.js"></script> 
+<!-- <script type="text/javascript" src="lib/plugin/jquery.combobox.js"></script> -->
+<!-- <script type="text/javascript" src="lib/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="lib/kindeditor/lang/zh_CN.js"></script> -->
+
+<table class="ui-table-custom" style="margin-top:35px;">
+	<tr>
+		<td align="right">日期:</td><td><input id="articledate" type="text" class="ui-input" style="width:227px;" /></td>
+	</tr>
+	<tr>
+		<td align="right">类别:</td>
+		<td>
+			<select id="articletype" style="width:225px;">
+				<option value="">Select one...</option>
+				<option value="ActionScript">ActionScript</option>
+				<option value="AppleScript">AppleScript</option>
+				<option value="Asp">Asp</option>
+				<option value="BASIC">BASIC</option>
+				<option value="C">C</option>
+				<option value="C++">C++</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right">标题:</td><td><input id="articletitle" type="text" class="ui-input" style="width:650px;" placeholder="请输入文章标题"/></td>
+	</tr>
+	<tr>
+		<td align="right">内容:</td>
+		<td>
+			<textarea name="articlecontent" id="articlecontent" style="visibility: hidden;width:650px;height:400px;"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="button" value="发送邀请"/></td>
+	</tr>
+	<tr style="height:150px;">
+		<td></td>
+		<td></td>
+	</tr>
+</table>

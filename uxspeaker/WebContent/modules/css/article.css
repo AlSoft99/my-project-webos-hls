@@ -1,0 +1,8 @@
+#main .ui-table-custom td{
+	vertical-align:middle;
+	border-bottom:0px;
+	padding:10px 20px;
+}
+#main .ui-table-custom{
+	border-bottom: 1px solid #DDD;
+}

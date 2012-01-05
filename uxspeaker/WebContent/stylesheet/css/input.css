@@ -1,0 +1,9 @@
+.ui-input{
+	padding:4px;margin-top:2px;line-height: 16px;
+}
+.ui-input-search{
+	border:1px solid #BFBFBF;background:url(../img/sear_icon.png) no-repeat 6px center; padding-left:20px;
+}
+.ui-input-search input{
+	border:0px;outline-style:none;padding:4px 0;margin: 0;
+}
