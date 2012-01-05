@@ -2,10 +2,17 @@
 <html>
   <head>
     <title>验证码</title>
+    <script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
     <script type="text/javascript">
     function refresh(obj) {
         obj.src = "imageServlet?"+Math.random();
     }
+    $(function(){
+    	$.get("test.do?method=add",{username:"1234",password:"4567"},function(data){
+			console.log("=========");
+			console.log(data);
+		});
+    });
     </script>
   </head>
   <body>
