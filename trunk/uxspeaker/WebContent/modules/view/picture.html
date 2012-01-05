@@ -1,0 +1,74 @@
+<link type="text/css" rel="stylesheet" href="modules/css/picture.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/swfupload/default.css" media="screen" />
+<script type="text/javascript" src="lib/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="lib/swfupload/handlers.js"></script>
+<!-- <script type="text/javascript" src="lib/swfupload/fileprogress.js"></script> -->
+<script type="text/javascript" src="modules/script/picture.js"></script> 
+
+<div class="body">
+	
+	<div id="picture-dialog" title="<span style='padding:3px 0;float:left;'>创建相册</span>" style="padding:1em 1em;">
+		<table class="bl-picture-create">
+			<tr>
+				<td>&nbsp;&nbsp;相册名称:</td><td><input type="text" id="picturename" maxlength=24 style="width:95%;" class="ui-input"/></td>
+			</tr>
+			<tr>
+				<td>&nbsp;&nbsp;相册描述:</td><td><textarea id="picturedescribe" style="width:95%;height:100px;"></textarea></td>
+			</tr>
+			<tr>
+				<td>&nbsp;&nbsp;访问权限:</td>
+				<td>
+					<div id="vistor">
+						<input type="radio" id="vistortype1" name="vistortype" /><label for="vistortype1">公开</label>
+						<input type="radio" id="vistortype2" name="vistortype" checked="checked" /><label for="vistortype2">好友可见</label>
+						<input type="radio" id="vistortype3" name="vistortype" /><label for="vistortype3">密码访问</label>
+						<input type="radio" id="vistortype4" name="vistortype" /><label for="vistortype4">私有</label>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="picture-tabs" >
+		<ul>
+			<li><a href="#tabs-1">管理相册</a></li>
+			<li><a href="modules/view/picture/picture-manager.html?v=03">管理照片</a></li>
+		</ul>
+		<div id="tabs-1">
+			<div>
+				<a class="bl-picture-icon bl-picture-icon-select" href="#" id="picture-create"><span class="icon" style="background-position: -80px -220px;display:inline-block;"></span><span>创建相册</span></a>
+				<span class="bl-picture-split">|</span>
+				<a class="bl-picture-icon" href="#" id="picture-edit"><span class="icon" style="background-position: -40px -20px;display:inline-block;"></span><span>编辑相册</span></a>
+				<span class="bl-picture-split">|</span>
+				<a class="bl-picture-icon" href="#" id="picture-delete"><span class="icon" style="background-position: -40px 0;display:inline-block;"></span><span>删除相册</span></a>
+				<span class="bl-picture-split">|</span>
+				<a class="bl-picture-icon" href="#" id="picture-sort"><span class="icon" style="background-position: -280px -40px;display:inline-block;"></span><span>相册排序</span></a>
+				<span class="bl-picture-split">|</span>
+				<a class="bl-picture-icon" href="#"><span class="icon" style="background-position: -400px -160px;display:inline-block;"></span><span>回收站</span></a>
+			</div>
+			<div class="bl-picture-sort" style="display:none;" id="picture-sort-drag">
+				<div class="float">对相框点击鼠标进行拖动, 拖动完成后点击保存按钮进行保存!</div>
+				<div class="float-right" style="margin-right:25px;"><input type="button" value="保存" id="bl-picture-sortsave"/><!-- &nbsp;&nbsp;<input type="button" value="关闭" id="bl-picture-sortsave"/> --></div><div class="clear"></div>
+			</div>
+			<div class="bl-picture-sort" style="display:none;" id="picture-delete-drag">
+				<div class="float">相册拖动到此处进行删除!</div>
+				<div class="float-right" style="margin-right:25px;"><input type="button" value="刪除" id="bl-picture-sortsave"/><!-- &nbsp;&nbsp;<input type="button" value="关闭" id="bl-picture-sortsave"/> --></div><div class="clear"></div>
+				<div style="min-height:105px;" id="picture-delete-list">
+					<!-- <div class="float bl-picture-delete-frame">
+						<div class="bl-picture-delete page-title">
+							<a class="close bl-picture-delete-close" ></a>
+							<span class="bl-picture-delete-title">title</span>
+							<span class="bl-picture-delete-foot">11张照片</span>
+						</div>
+					</div> -->
+				</div>
+				<!--  -->
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+			<div id="picture-list" class="bl-picture-content">
+				
+			</div>
+			
+		</div>
+	</div>
+</div>

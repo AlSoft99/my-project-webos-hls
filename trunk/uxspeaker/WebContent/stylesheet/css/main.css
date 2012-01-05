@@ -1,0 +1,133 @@
+@IMPORT url("combobox.css");
+@IMPORT url("input.css");
+
+a{
+	color: #3366CC;
+}
+textarea{
+	overflow:auto;
+}
+body{
+	margin:0;padding:0;
+	font-size: 12px;
+	font-family: Tahoma, 'Microsoft Yahei', Simsun;
+}
+.link{
+	text-decoration: none;
+	color: #8692A2;
+}
+.link:hover{
+	color:#336699;
+}
+.link-none{
+	text-decoration: none;
+}
+.body{
+	width:100%;
+	/* height:700px; */
+	padding: 15px 0;
+}
+.title{
+	font-size: 15px;
+	line-height:20px;
+}
+.bold{
+	font-weight: bold;
+}
+.triangle{
+	background:url("../img/hp_pbar.png");width:6px;height:9px;
+}
+.default-msg{ 
+	color:#9A9A9A;
+}
+.clear{
+	clear: both;
+}
+.float-left, .float{
+	float:left;
+}
+.float-right{
+	float:right;
+}
+.frame{
+	background-color:#FBFBFB;border: 1px solid #EEEEEE;
+}
+.frame-content-bottom{
+	padding:10px;
+	border-bottom: 1px solid #CAD0DB;
+}
+.grey{
+	color:#999999;
+}
+.section{
+	text-indent: 25px;
+}
+.selected{
+	background-color: #F4F4F4;
+}
+.close{
+	background:url("../img/close_8-1.png") no-repeat;height: 8px;width: 8px;display: block;
+}
+.close:hover{
+	background:url("../img/close_8-1.png") no-repeat -8px;
+}
+.icon{
+	background-image: url("../img/icon.png");background-repeat: no-repeat;width: 20px;height: 20px;line-height: 20px;
+}
+.page-title{
+	background-image: url("../../stylesheet/img/album.png");background-repeat: no-repeat;
+}
+.loading{
+	background-image: url("../img/loading.gif");
+}
+.logo{
+	background: url("../img/index/logo_white_small.png") no-repeat;
+}
+.dl-user{
+	padding-left:50px;
+}
+dl.dl-author{
+	padding-left:0px;
+}
+dl.dl-author dt{
+	margin: 0;
+}
+dl.dl-author .dl-user-tips{
+	margin: 5px 0 0 0;
+}
+.dl-user .dl-user-title{
+	font-size: 22px;
+}
+.dl-user .dl-user-line{
+	width:1px;background-color: #CDCDCD;height:42px;margin-left: 10px;margin-top: 3px;
+}
+.dl-user dt{
+	margin: 0 0 0 25px;
+}
+.dl-user dt a{
+	font-size: 22px;text-decoration: none;color: black;
+}
+.dl-user .dl-user-photo{
+	border: 1px solid #CDCDCD;float: left;margin-left: -50px;
+}
+.dl-user .dl-user-photo img{
+	width:43px; height:43px;padding:2px;border-width: 0px;
+}
+.dl-user .dl-user-tips{
+	color: black;margin: 5px 0 0 25px;
+}
+.dl-user .dl-user-tips a{
+	color: black;
+}
+.dl-user .dl-user-tips span{
+	color: #777;
+}
+.dl-user .dl-user-comment{
+	width:35px;height:35px;background-color: #CC0000;text-align:center;color:white;font-size: 14px;line-height:35px;font-weight: bold;
+}
+.foot{
+	height:112px;background: url("../img/orgcnbg.jpg");margin: auto;
+}
+.checkcode-frame{
+	border: 1px solid #DDD;background-color: #FEFEFE;box-shadow:1px 2px 2px rgba(0,0,0,0.3);min-width:80px;text-align: center;padding:7px;cursor: pointer;
+}

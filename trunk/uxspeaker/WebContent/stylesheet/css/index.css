@@ -1,0 +1,118 @@
+.index-body{
+	margin: auto;width:990px;
+}
+.index-title{
+	min-width: 990px;background-color: #1C1D1A;
+}
+.index-logo{
+	padding:35px 0 10px 65px;display: block;color: #848484;text-decoration: none;font-size: 13px;
+}
+.index-logo:hover{
+	color:white;
+}
+.index-title-frame{
+	margin: auto;width:990px;
+}
+.index-menu{
+	color: #BBBABA;height: 60px;margin-top: 5px;
+}
+.index-menu ul li.select{
+	background-color:#BB0303;border-radius:3px; 
+}
+.index-menu ul li.select a{
+	color:white;text-decoration: none;
+}
+.index-menu ul{
+	list-style: none;
+}
+.index-menu ul li{
+	float: left;width:60px;height:29px;line-height: 29px;margin-right: 5px;cursor: pointer;text-align: center;
+}
+.index-menu ul li a{
+	color: #BBBABA;text-decoration: none;
+}
+.index-content-item{
+	padding-top: 20px;
+}
+.index-content{
+	width:720px;
+}
+.index-tips{
+	width:220px;padding-top: 20px;
+}
+.index-content-photo{
+	padding-bottom:20px; background: url("../img/index/hatching_line.png") repeat-x left bottom;
+}
+.index-content-photo img{
+	border-width: 0px;
+}
+.index-content-text{
+	font-size: 14px;line-height: 24px;
+}
+.index-content-text p{
+	margin: 0;padding: 7px 0;
+}
+.index-toolbar{
+	padding:20px 0;line-height:20px;
+}
+.index-toolbar ul{
+	list-style: none;margin: 0;padding: 0;
+}
+.index-toolbar ul .search{
+	padding-left:25px;
+}
+.index-toolbar ul .like{
+	padding-left:25px;
+}
+.index-toolbar ul li{
+	float: left;color:#CDCDCD;padding-right:10px;
+}
+.index-toolbar a{
+	font-size: 14px;color: black;
+}
+.index-toolbar a:hover{
+	color: red;
+}
+.index-foot-line{
+	background: url("../img/index/content_text_line.png") repeat-x left;height:6px;
+}
+.index-type{
+	padding:7px;background-color: #E3E3E3;border-radius:3px 3px 0 0;margin-top: 30px;
+}
+.index-type h1{
+	font-size:15px;color: #585858;margin: 0;
+}
+.index-tips ul{
+	list-style: none;padding:0;
+}
+.index-tips ul li{
+	margin: 0;padding-left:10px;border-bottom: 1px dotted #DDD;
+}
+.index-tips ul li a{
+	font-size: 14px;text-decoration: none;color: #777;line-height: 30px;height:30px;
+}
+.index-tips ul li a:hover{
+	color:red;
+}
+.index-navigation a{
+	color:#777;font-size: 14px;text-decoration: none;
+}
+.index-navigation a:hover{
+	color:#333333;text-decoration: underline;
+}
+.index-navigation span{
+	color:#333333;font-size: 14px;
+}
+.index-love{
+	display: inline-block;background-position: -120px -180px;
+}
+.index-search{
+	display: inline-block;background-position: -120px -400px;
+}
+.index-like{
+	display: inline-block;background-position: -120px -180px;
+}
+.index-foot{
+	height:150px;
+	background-color: #777;
+}

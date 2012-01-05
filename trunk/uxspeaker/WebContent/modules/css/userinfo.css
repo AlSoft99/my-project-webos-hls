@@ -1,0 +1,42 @@
+.bl-userinfo-title{
+	width:100%;
+}
+.bl-userinfo-title > div{
+	/* height:130px; */
+}
+.bl-userinfo-photo{
+	float:left;padding:5px;border: 1px solid #CACACA;
+}
+.bl-userinfo-photo img{
+	width: 95px;height:95px;
+}
+.bl-userinfo-person-frame{
+	float: left;
+}
+.bl-userinfo-person-content{
+	width:673px;padding-left: 10px;
+}
+.bl-userinfo-person-content textarea{
+	width: 665px;padding:5px;font-size: 15px;
+}
+.bl-userinfo-triangle{ 
+	position:absolute;top:15px;left:5px;
+}
+.bl-userinfo-sign{
+	margin-top:10px;position: relative;
+}
+.bl-userinfo-sign-bottom{
+	background-color:#FAFAFA;border-bottom: 1px solid #CACACA;border-left: 1px solid #CACACA;border-right: 1px solid #CACACA;padding:2px;
+}
+.bl-userinfo-msg-frame{
+	width:100%;
+	padding:15px 0px;
+	margin-top:20px;
+}
+.bl-userinfo-msg-frame div{
+	width:33%;
+	text-align: center;
+}
+.bl-userinfo-content-row{
+	padding:6px 0;
+}
