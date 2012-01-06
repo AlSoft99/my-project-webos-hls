@@ -2,10 +2,10 @@
 	margin: auto;width:990px;
 }
 .index-title{
-	min-width: 990px;background-color: #1C1D1A;
+	min-width: 990px;background-color: #F5F5F5;
 }
 .index-logo{
-	padding:35px 0 10px 65px;display: block;color: #848484;text-decoration: none;font-size: 13px;
+	padding:30px 0 10px 65px;display: block;color: #848484;text-decoration: none;font-size: 13px;
 }
 .index-logo:hover{
 	color:white;
@@ -14,7 +14,7 @@
 	margin: auto;width:990px;
 }
 .index-menu{
-	color: #BBBABA;height: 60px;margin-top: 5px;
+	color: #BBBABA;margin-top: 5px;
 }
 .index-menu ul li.select{
 	background-color:#BB0303;border-radius:3px; 
@@ -68,7 +68,7 @@
 	float: left;color:#CDCDCD;padding-right:10px;
 }
 .index-toolbar a{
-	font-size: 14px;color: black;
+	font-size: 14px;color: black;text-decoration: none;
 }
 .index-toolbar a:hover{
 	color: red;
@@ -77,10 +77,10 @@
 	background: url("../img/index/content_text_line.png") repeat-x left;height:6px;
 }
 .index-type{
-	padding:7px;background-color: #E3E3E3;border-radius:3px 3px 0 0;margin-top: 30px;
+	padding:10px;background-color: #F5F5F5;border-radius:3px 3px 0 0;margin-top: 30px;
 }
 .index-type h1{
-	font-size:15px;color: #585858;margin: 0;
+	font-size:15px;color: #767676;margin: 0;
 }
 .index-tips ul{
 	list-style: none;padding:0;
@@ -107,10 +107,13 @@
 	display: inline-block;background-position: -120px -180px;
 }
 .index-search{
-	display: inline-block;background-position: -120px -400px;
+	display: inline-block;background-position: 0px 0px;height:12px;width:12px;margin-top: 4px;
 }
 .index-like{
-	display: inline-block;background-position: -120px -180px;
+	display: inline-block;background-position: 0px -12px;height:12px;width:12px;margin-top: 4px;
+}
+.index-comment{
+	display: inline-block;background-position: -12px -12px;height:12px;width:17px;margin-top: 4px;
 }
 .index-foot{
 	height:150px;
