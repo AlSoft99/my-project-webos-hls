@@ -21,7 +21,7 @@
 </div>
 <div class="index-title">
 	<div class="index-title-frame">
-		<div class="float"><a class="logo index-logo float" href="#"> | 为用户创造优质的在线生活体验</a>&nbsp;&nbsp;<a class="float index-logo" id="register-btn" style="padding-left: 10px;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></div>
+		<div class="float"><a class="logo float" style="margin-top: 10px;" href="#"></a>&nbsp;&nbsp;<a class="float index-logo" id="register-btn" style="padding-left: 10px;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></div>
 		<div class="float-right index-menu">
 			<ul class="float-right">
 				<li class="select"><a href="index" >首页</a></li>
