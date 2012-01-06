@@ -10,11 +10,11 @@ $.fn.extend({
 		return val;
 	},
 	validate:function(option){
-		var varchar = /[A-Za-z0-9_]+/;
-		var number = /\d/;
+		var varchar = /^[A-Za-z0-9_]+$/;
+		var number = /^\d$/;
 		var email = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
 		//var password = /^(?!^\d+$|^[a-zA-Z]+$)(?:[a-zA-Z\d]{6,12})$/;
-		var password = /[A-Za-z0-9_]+/;
+		var password = /^[A-Za-z0-9_]+$/;
     	/**
     	 * for example:
     	 * <input id="test" type="text" value="automaticallysentto" maxlength="225" minlength="29" errorMsg="this value is minlength {min}, maxlength {max}" regExp="/^\w{1,22}$/" validFunction="validFun" regExpMsg="this is regExp message!">
@@ -140,7 +140,14 @@ $.fn.extend({
 				attr.errorMsg = "请输入正确的email地址 ";
 			}else if(obj.attr("validate")=="password"){
 				attr.isShowMsg = !password.test(attr.value);
-				attr.errorMsg = "请输入正确的密码 ";
+				attr.errorMsg = "请输入字母数字或者下划线 ";
+				if(typeof(obj.attr("confirm"))!="undefined" && !attr.isShowMsg){
+					var confirmpwd = $("#"+obj.attr("confirm")).val();
+					if($.trim(confirmpwd)!="" && confirmpwd!=obj.val()){
+						attr.isShowMsg = true;
+						attr.errorMsg = "请确认密码相同 ";
+					}
+				}
 			}else if(obj.attr("validate")=="varchar"){
 				attr.isShowMsg = !varchar.test(attr.value);
 				attr.errorMsg = "请输入字母数字或者下划线 ";
@@ -162,13 +169,13 @@ $.fn.extend({
 	},
 	showErrorMessage:function(message){
 		$(this).css("border","1px solid red");
-		$(this).next(".vaildate-error").remove();
+		$(this).next(".vaildate-error,.vaildate-correct").remove();
 		$(this).after("<span class='icon vaildate-error ' style='background-position:-240px -200px;display:inline-block;cursor:pointer;vertical-align:middle;' title='"+message+"'></span>");
 		$(".vaildate-error[title]").colorTip();
 	},
 	hideErrorMessage:function(){
-		$(this).css("border","");
-		$(this).next(".vaildate-error").remove();
+		$(this).css("border","1px solid #ABADB3");
+		$(this).next(".vaildate-error,.vaildate-correct").remove();
 		$(this).after("<span class='icon vaildate-correct' style='background-position:-240px -220px;display:inline-block;cursor:pointer;vertical-align:middle;'></span>");
 	}
 });

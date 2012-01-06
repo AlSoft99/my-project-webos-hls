@@ -9,6 +9,9 @@
 .lastest-comment{
 	
 }
+.index-tips > ul{
+	margin: 5px 0;
+}
 .index-tips .lastest-comment > dt > a, .index-tips .lastest-comment > dt > span{
 	height: auto;
 	line-height: normal;color:#464646;

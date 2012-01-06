@@ -1,5 +1,5 @@
 .ui-input{
-	padding:4px;margin-top:2px;line-height: 16px;
+	padding:4px;margin-top:2px;line-height: 16px;border: 1px solid #ABADB3;
 }
 .ui-input-search{
 	border:1px solid #BFBFBF;background:url(../img/sear_icon.png) no-repeat 6px center; padding-left:20px;

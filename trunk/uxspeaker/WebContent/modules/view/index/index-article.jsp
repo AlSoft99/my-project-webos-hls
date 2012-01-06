@@ -29,8 +29,6 @@
 				<div>
 					<dl class="dl-user">
 						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dd class="float dl-user-line"></dd>
-						<dd class="float-right dl-user-comment">5</dd>
 						<dt><span class="dl-user-title">情感化设计中的手绘应用表现</span></dt>
 						<dd class="dl-user-tips">
 							<a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span>&nbsp;<span>/</span>

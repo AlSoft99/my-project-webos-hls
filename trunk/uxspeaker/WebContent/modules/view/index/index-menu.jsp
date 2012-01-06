@@ -5,16 +5,16 @@
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
 			<tr>
-				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input"  validate="email" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;"></td>
+				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" id="userid"  validate="email" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;"></td>
 			</tr>
 			<tr>
-				<td style="width:90px;">姓名</td><td><input type="text" class="ui-input"  validate="varchar" isnull=true maxlength="20" minlength="0" placeholder="输入用户姓名" style="width: 380px;"></td>
+				<td style="width:90px;">姓名</td><td><input type="text" class="ui-input" id="username"  validate="varchar" isnull=true maxlength="20" minlength="0" placeholder="输入用户姓名" style="width: 380px;"></td>
 			</tr>
 			<tr>
-				<td style="width:90px;">密码</td><td><input type="text" class="ui-input"  validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入密码" style="width: 380px;"></td>
+				<td style="width:90px;">密码</td><td><input type="text" class="ui-input" id="password" confirm="con-password"  validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入密码" style="width: 380px;"></td>
 			</tr>
 			<tr>
-				<td style="width:90px;">确认密码</td><td><input type="text" class="ui-input"  validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入确认密码" style="width: 380px;"></td>
+				<td style="width:90px;">确认密码</td><td><input type="text" class="ui-input" id="con-password"  validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入确认密码" style="width: 380px;"></td>
 			</tr>
 		</table>
 	</form>
@@ -25,8 +25,8 @@
 		<div class="float-right index-menu">
 			<ul class="float-right">
 				<li class="select"><a href="index" >首页</a></li>
-				<li><a href="author">日记</a></li>
-				<li><a href="#">相集</a></li>
+				<!-- li><a href="author">日记</a></li>
+				<li><a href="#">相集</a></li> -->
 				<li><a href="#">留言板</a></li>
 				<li><a href="#">关于</a></li>
 			</ul>
@@ -36,8 +36,8 @@
 </div>
 <script>
 $(function(){
-	function validateForm(){
-		
+	function register(){
+		$("#dialog-register form").validateform();
 	}
 	$( "#dialog-register" ).dialog({
 		resizable: true,
@@ -48,7 +48,7 @@ $(function(){
 		buttons: {
 			"注册": function() {
 				//$( this ).dialog( "close" );
-				$("#dialog-register form").validateform();
+				register();
 			},
 			"关闭": function() {
 				$( this ).dialog( "close" );

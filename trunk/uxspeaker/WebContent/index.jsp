@@ -158,7 +158,7 @@
 				<div class="index-foot-line"></div>
 			</div>
 			<!-- 文章内容结束 -->
-			
+			<div id="page-foot" style="margin-top: 20px;"></div>
 		</div>
 		<div class="float-right index-tips">
 			<%@ include file="modules/view/index/index-tips.jsp" %>
