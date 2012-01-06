@@ -5,7 +5,7 @@
 	border: 1px solid #B9B7B7;color: #8B8A8A;margin:1px;padding:0 5px;text-decoration : none;height: 17px;line-height: 17px;overflow: hidden;cursor: pointer;
 }
 .common-page-foot span:hover{
-	text-decoration: underline;
+	/* text-decoration: underline; */
 }
 .common-page-foot span.select{
 	background-color: #8B8A8A;color: white;cursor: text;
