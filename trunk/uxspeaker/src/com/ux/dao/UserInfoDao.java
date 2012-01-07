@@ -1,12 +1,12 @@
-package com.test.dao;
+package com.ux.dao;
 
 import org.springframework.stereotype.Repository;
 
 import com.frame.dao.BaseDao;
-import com.test.entity.UserInfoTest;
+import com.ux.entity.UserInfo;
 @Repository
 public class UserInfoDao extends BaseDao{
-	public void save(UserInfoTest userInfo){
-		getHibernateTemplate().save(userInfo);
+	public void save(UserInfo entity){
+		getHibernateTemplate().save(entity);
 	}
 }

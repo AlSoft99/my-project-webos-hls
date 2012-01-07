@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.frame.vo.BaseVo;
 import com.frame.vo.Request;
 import com.test.dao.UserInfoDao;
-import com.test.entity.UserInfo;
+import com.test.entity.UserInfoTest;
 
 @Repository
 public class TestVo implements BaseVo {
@@ -22,7 +22,7 @@ public class TestVo implements BaseVo {
 	}
 	@Override
 	public Request execute(Request request) throws Exception {
-		UserInfo userInfo = (UserInfo)request.getEntity();
+		UserInfoTest userInfo = (UserInfoTest)request.getEntity();
 		System.out.println("test.name:"+userInfo.getUsername());
 		userInfoDao.save(userInfo);
 		/*userInfo.setUsername("name1");

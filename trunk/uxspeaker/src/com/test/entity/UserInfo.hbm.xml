@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 28, 2011 3:57:44 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.test.entity.UserInfo" table="USER_INFO">
+    <class name="com.test.entity.UserInfoTest" table="USER_INFO">
         <id name="username" type="java.lang.String">
             <column name="USERNAME" />
             <generator class="assigned" />

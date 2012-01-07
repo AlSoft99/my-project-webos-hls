@@ -21,5 +21,43 @@ public class UserInfo implements Serializable {
 	@SequenceGenerator(name="seq",sequenceName="id",allocationSize=1)
     @Column(name = "id", nullable = false)
     private Integer id;
-
+	@Column(name = "id", nullable = false,length=30)
+	private String userid;
+	@Column(name = "id", nullable = false,length=30)
+	private String username;
+	@Column(name = "id", nullable = false,length=30)
+	private String password;
+	@Column(name = "id", nullable = true,length=100)
+	private String picture;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	
 }

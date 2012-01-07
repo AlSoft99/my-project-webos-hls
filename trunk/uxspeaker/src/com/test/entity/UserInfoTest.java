@@ -1,6 +1,6 @@
 package com.test.entity;
 
-public class UserInfo {
+public class UserInfoTest {
 	private String username;
 	private String password;
 	public String getUsername() {
