@@ -6,18 +6,18 @@ import org.springframework.stereotype.Repository;
 
 import com.frame.vo.BaseVo;
 import com.frame.vo.Request;
-import com.test.dao.UserInfoDao;
+import com.test.dao.UserInfoTestDao;
 import com.test.entity.UserInfoTest;
 
 @Repository
 public class TestVo implements BaseVo {
 	@Resource
-	private UserInfoDao userInfoDao;
-	public UserInfoDao getUserInfoDao() {
+	private UserInfoTestDao userInfoDao;
+	public UserInfoTestDao getUserInfoDao() {
 		return userInfoDao;
 	}
 	
-	public void setUserInfoDAO(UserInfoDao userInfoDAO) {
+	public void setUserInfoDAO(UserInfoTestDao userInfoDAO) {
 		this.userInfoDao = userInfoDAO;
 	}
 	@Override
