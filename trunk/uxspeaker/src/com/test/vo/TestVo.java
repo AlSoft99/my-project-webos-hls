@@ -12,19 +12,21 @@ import com.test.entity.UserInfoTest;
 @Repository
 public class TestVo implements BaseVo {
 	@Resource
-	private UserInfoTestDao userInfoDao;
-	public UserInfoTestDao getUserInfoDao() {
-		return userInfoDao;
-	}
+	private UserInfoTestDao userInfoTestDao;
 	
-	public void setUserInfoDAO(UserInfoTestDao userInfoDAO) {
-		this.userInfoDao = userInfoDAO;
+	public UserInfoTestDao getUserInfoTestDao() {
+		return userInfoTestDao;
 	}
+
+	public void setUserInfoTestDao(UserInfoTestDao userInfoTestDao) {
+		this.userInfoTestDao = userInfoTestDao;
+	}
+
 	@Override
 	public Request execute(Request request) throws Exception {
 		UserInfoTest userInfo = (UserInfoTest)request.getEntity();
 		System.out.println("test.name:"+userInfo.getUsername());
-		userInfoDao.save(userInfo);
+		userInfoTestDao.save(userInfo);
 		/*userInfo.setUsername("name1");
 		userInfoDao.save(userInfo);
 		throw new Exception("报错!!");*/

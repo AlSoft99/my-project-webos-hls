@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ux.dao.UserInfoDao;
-import com.ux.entity.UserInfo;
 
 @Controller
-public class RegisterVo {
+public class CheckVo {
 	@Resource
 	private UserInfoDao userInfoDao;
 	
-	@RequestMapping(value="/register.do",method=RequestMethod.GET, params="method=add")
-	public @ResponseBody String register(@RequestParam(value="username",required=true) String username,UserInfo userInfo){
-		System.out.println("username:"+username);
-		userInfoDao.save(userInfo);
-		return "success";
+	@RequestMapping(value="/checkid.do",method=RequestMethod.GET)
+	public @ResponseBody String checkId(@RequestParam(value="userid",required=true) String userid){
+		if(userInfoDao.checkId(userid)){
+			return "success";
+		}
+		return "该邮箱已被使用,请重新输入!";
 	}
 }

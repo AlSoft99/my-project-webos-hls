@@ -1,5 +1,3 @@
-<%@page import="com.test.entity.UserInfo"%>
-<%@page import="com.test.dao.UserInfoDao"%>
 <%@page import="com.frame.servlet.ServletFactory"%>
 <% 
 //UserInfoDao dao = ServletFactory.newInstant().getFactory().getBean("userInfoDao",UserInfoDao.class);

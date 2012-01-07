@@ -79,7 +79,6 @@ $.fn.extend({
 		};
 		
 		var judgeLength = function(){
-			console.log("attr.valueLength:"+attr.valueLength);
 			if(typeof(attr.minlength)!="undefined"){
 				if(attr.valueLength < attr.minlength && !attr.isShowMsg){
 					attr.isShowMsg = true;
@@ -151,6 +150,35 @@ $.fn.extend({
 			}else if(obj.attr("validate")=="varchar"){
 				attr.isShowMsg = !varchar.test(attr.value);
 				attr.errorMsg = "请输入字母数字或者下划线 ";
+			}else if(obj.attr("default")=="varchar"){
+				attr.isShowMsg = false;
+				attr.errorMsg = "请输入任意字符 ";
+			}
+			if(typeof(obj.attr("validateAjax"))!="undefined" && !attr.isShowMsg){
+				var url = obj.attr("validateAjax");
+				var json = {};
+				json[obj.attr("name")] = obj.val();
+				/*$.ajax(url,json,function(data){
+					if(data!="success"){
+						attr.isShowMsg = false;
+						attr.errorMsg = data;
+					}
+				});*/
+				$.ajax({
+					  url: url,
+					  data: json,
+					  async: false,
+					  success: function(data){
+							if(data!="success"){
+								attr.isShowMsg = true;
+								attr.errorMsg = data;
+							}
+					  },
+					  error: function(jqXHR, textStatus, errorThrown){
+						  attr.isShowMsg = true;
+						  attr.errorMsg = "ajaxMessage:"+errorThrown+" ";
+					  }
+				});
 			}
 			judgeLength();
 		}

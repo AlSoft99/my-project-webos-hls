@@ -1,5 +1,7 @@
 package com.ux.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.frame.dao.BaseDao;
@@ -8,5 +10,12 @@ import com.ux.entity.UserInfo;
 public class UserInfoDao extends BaseDao{
 	public void save(UserInfo entity){
 		getHibernateTemplate().save(entity);
+	}
+	public boolean checkId(String userid){
+		List list = getHibernateTemplate().find("select id from UserInfo where userid='"+userid+"'");
+		if (list.size()==0) {
+			return true;
+		}
+		return false;
 	}
 }
