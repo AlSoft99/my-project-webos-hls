@@ -38,6 +38,9 @@
 $(function(){
 	function register(){
 		$("#dialog-register form").validateform();
+		$.get("register.do",function(val){
+			console.log(val);
+		});
 	}
 	$( "#dialog-register" ).dialog({
 		resizable: true,
