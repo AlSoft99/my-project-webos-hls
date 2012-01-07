@@ -15,19 +15,18 @@ import javax.persistence.Table;
 @Table(name = "ux_user_info")
 public class UserInfo implements Serializable {   
 	private static final long serialVersionUID = 1L;
-	@Id
-    @Basic(optional = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator="seq")
-	@SequenceGenerator(name="seq",sequenceName="id",allocationSize=1)
-    @Column(name = "id", nullable = false)
+	@Id  
+    @Basic(optional = false)   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)   
+    @Column(name = "id", nullable = false)   
     private Integer id;
-	@Column(name = "id", nullable = false,length=30)
+	@Column(name = "userid", nullable = false,length=30)
 	private String userid;
-	@Column(name = "id", nullable = false,length=30)
+	@Column(name = "username", nullable = false,length=30)
 	private String username;
-	@Column(name = "id", nullable = false,length=30)
+	@Column(name = "password", nullable = false,length=30)
 	private String password;
-	@Column(name = "id", nullable = true,length=100)
+	@Column(name = "picture", nullable = true,length=100)
 	private String picture;
 	public Integer getId() {
 		return id;
