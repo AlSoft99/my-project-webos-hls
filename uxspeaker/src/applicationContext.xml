@@ -70,7 +70,7 @@
 	</tx:advice>
 	<aop:config>
 		<!-- 切面. 表示vo包下Vo结尾的类中execute方法进行切面代理, 代理事务回滚 --><!-- *****************需要修改部分*************** -->
-		<aop:pointcut id="productServiceMethods" expression="execution(* com.test.vo.*Vo.*(..))" />
+		<aop:pointcut id="productServiceMethods" expression="execution(* com.ux.vo.*Vo.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="productServiceMethods" />
 	</aop:config>
 	
