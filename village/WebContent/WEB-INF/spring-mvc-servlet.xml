@@ -28,14 +28,9 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	<!-- 拦截器 -->
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-		<property name="interceptors">
-			<list>
-				<bean class="com.frame.control.MvcInterceptor" />
-			</list>
-		</property>
-	</bean>
+	<mvc:interceptors>   
+    	<bean class="com.frame.control.MvcInterceptor"></bean>  
+	</mvc:interceptors> 
 	
 	<!-- <bean id="fileUploadController" class="com.frame.control.FileUploadController" />
 	<bean id="handlerMapping"
