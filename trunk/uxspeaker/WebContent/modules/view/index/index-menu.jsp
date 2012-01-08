@@ -42,6 +42,12 @@ $(function(){
 			$.get("register.do?method=add&"+$("#dialog-register form").serialize(),function(val){
 				console.log(val);
 			});
+			/* $.ajax({
+				  url: "register.do?method=add&"+$("#dialog-register form").serialize(),
+				  success: function(val){
+						console.log(val);
+				},
+			}); */
 		}else{
 			
 		}
