@@ -1,10 +1,21 @@
 $.fn.extend({
-	validateform : function(){
+	validateInit: function(){
+		$(this).find("input[validate],select[validate],textarea[validate]").each(function(){
+			$(this).focusout(function(){
+				var val = $(this).validate();
+				$(this).attr("validate-pass",val);
+			});
+		});
+		
+	},
+	validateForm : function(){
 		var val = true;
 		$(this).find("input[validate],select[validate],textarea[validate]").each(function(){
-			val = $(this).validate();
-			if(!val){
-				return val;
+			var pass = $(this).attr("validate-pass");
+			if(typeof(pass)=="undefined" || pass=="false" || pass==false){
+				val = false;
+				$(this).validate();
+				return false;
 			}
 		});
 		return val;
@@ -141,7 +152,7 @@ $.fn.extend({
 				attr.isShowMsg = !password.test(attr.value);
 				attr.errorMsg = "请输入字母数字或者下划线 ";
 				if(typeof(obj.attr("confirm"))!="undefined" && !attr.isShowMsg){
-					var confirmpwd = $("#"+obj.attr("confirm")).val();
+					var confirmpwd = $("#"+obj.attr("confirm")).getInputVal();
 					if($.trim(confirmpwd)!="" && confirmpwd!=obj.val()){
 						attr.isShowMsg = true;
 						attr.errorMsg = "请确认密码相同 ";
@@ -205,5 +216,15 @@ $.fn.extend({
 		$(this).css("border","1px solid #ABADB3");
 		$(this).next(".vaildate-error,.vaildate-correct").remove();
 		$(this).after("<span class='icon vaildate-correct' style='background-position:-240px -220px;display:inline-block;cursor:pointer;vertical-align:middle;'></span>");
+	},
+	getInputVal: function(){
+		if($(this).hasClass("default-msg")){
+			return "";
+		}
+		return $(this).val();
+	},
+	reset : function(){
+		$(this).find(".vaildate-error,.vaildate-correct").remove();
+		$(this).find("[validate-pass]").attr("validate-pass","false");
 	}
 });
