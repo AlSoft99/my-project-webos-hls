@@ -149,5 +149,13 @@
 		<servlet-name>AuthorUrl</servlet-name>
 		<url-pattern>/author</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>MainUrl</servlet-name>
+		<jsp-file>/main.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MainUrl</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

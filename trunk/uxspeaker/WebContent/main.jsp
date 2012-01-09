@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="com.ux.entity.UserInfo"%>
+<% 
+UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-<title>官家部落格</title>
+<title>UXSPEAKER</title>
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="lib/transdmin/css/transdmin.css" media="screen" />
 <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="lib/transdmin/css/ie6.css" /><![endif]-->
@@ -18,7 +21,7 @@
 <body>
 	<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
-    	<h1><a href="#"><span>Transdmin Light</span></a></h1>
+    	<div style="height: 55px;"><a class="logo float" style="margin-top: 10px;" href="#"></a><span class="clear"></span></div>
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <div class="sideTitle">

@@ -2,8 +2,34 @@ $.extend({
 	/*parseWindowUrl: function(url){
 		return url.substring(url.indexOf("#")+1)+".html";
 	}*/
+	toast : function(msg,duration){
+		var time = 2000;
+		if(typeof(duration)!="undefined"){
+			time = duration;
+		}
+		var obj = $("<div style='position: absolute;top:50%;left:48%;z-index:99999;border:1px solid #EADFCF;padding:10px;background-color:#F9F9F5;border-radius:5px;box-shadow:1px 1px 3px #F2EDE4;visibility: hidden;'>"+msg+"</div>");
+		$("body").append(obj);
+		var left = ($(document).width()-obj.innerWidth())/2;
+		obj.css("left",left+"px").css("display","none").css("visibility","visible");
+		obj.fadeIn(500,function(){
+			setTimeout(function(){
+				obj.fadeOut(500,function(){
+					obj.remove();
+				});
+			},time);
+		});
+	}
 });
 $.fn.extend({
+	loading : function(fn){
+		if(fn=="open"){
+			var obj = $("<div class='loading wait-loading' style='width:100%;height:100%;position: absolute;z-index:9999;background-position:center center;filter:Alpha(opacity=40);background-color:white;top:0;opacity:.4;background-repeat:no-repeat;'></div>");
+			$("body").append(obj);
+		}else if(fn=="close"){
+			$("body").find(".wait-loading").remove();
+		}
+		
+	},
 	defaultMsg: function(){
 		var attr = "placeholder";
 		var className = "default-msg";

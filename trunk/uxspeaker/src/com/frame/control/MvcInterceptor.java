@@ -14,7 +14,6 @@ public class MvcInterceptor extends HandlerInterceptorAdapter {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		
 		return true;
 	}
 	//控制器执行完成后,生成视图之前执行的动作

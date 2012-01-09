@@ -18,4 +18,8 @@ public class UserInfoDao extends BaseDao{
 		}
 		return false;
 	}
+	public List<UserInfo> checkIsExist(String userid,String password){
+		List<UserInfo> list = getHibernateTemplate().find("from UserInfo where userid='"+userid+"' and password='"+password+"'");
+		return list;
+	}
 }
