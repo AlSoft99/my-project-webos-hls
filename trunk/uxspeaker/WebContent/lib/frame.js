@@ -63,6 +63,7 @@ var frame = {
 		
     }
 };
+var projectname = "";
 $(function(){
 	frame.include(include_file.plugin,true,true);
 	frame.include(include_file.jqueryui,true,true);
