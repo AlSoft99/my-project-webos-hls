@@ -108,11 +108,6 @@ $(function(){
 			}); */
 		}
 	}
-	$("body").ajaxError(function(e, xhr, settings, exception){
-		var error = exception+" "+xhr.status;
-		$.toast(error);
-		$("body").loading("close");
-	});
 	$( "#dialog-register" ).dialog({
 		resizable: true,
 		height:280,

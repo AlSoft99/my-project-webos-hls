@@ -1,7 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.ux.entity.UserInfo"%>
+<%@page import="com.google.gson.Gson"%>
 <% 
 UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
+String sessionStr = "";
+if(userInfo==null){
+	%>
+	<p>用户已超时,请重新登陆...5秒后跳转, 或者点击此处直接跳转<a href="index">跳转</a></p>
+	<script>
+	setTimeout(function(){
+		window.location = "index";
+	},5000);
+	</script>
+	<%
+	return;
+}else{
+	Gson gson = new Gson();
+	java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<UserInfo>() {}.getType();    
+    sessionStr = gson.toJson(userInfo,type);
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,6 +35,9 @@ UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
 <script type="text/javascript" src="lib/ui/js/jquery.min.js"></script>
 <script type="text/javascript" src="lib/frame.js"></script>
 </head>
+<script>
+window.sessionStr = '<%=sessionStr%>';
+</script>
 <body>
 	<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
@@ -52,7 +72,7 @@ UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
                 <!-- // #sidebar -->
                 
                 <!-- h2 stays for breadcrumbs --> 
-                <h2><a href="#" id="user_page">我的首页</a> &raquo; <a href="#" class="active" id="user_item">首页</a></h2>
+                <h2><span id="user_page">我的首页</span> &raquo; <a href="#userinfo" class="active" id="user_item">首页</a></h2>
                 
                 <div id="main" style="opacity:1;">
                 	<div class="body"></div>

@@ -93,8 +93,6 @@ function fileDialogComplete(numFilesSelected, numFilesQueued) {
 
 function uploadStart(file) {
 	try {
-		console.log("==start=");
-		console.log(file);
 		/* I don't want to do any file validation or anything,  I'll just update the UI and return true to indicate that the upload should start */
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setStatus("正在上传...");

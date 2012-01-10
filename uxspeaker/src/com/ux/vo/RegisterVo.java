@@ -1,5 +1,6 @@
 package com.ux.vo;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,8 @@ public class RegisterVo {
 	
 	@RequestMapping(value="/register.do",method=RequestMethod.GET, params="method=add")
 	public @ResponseBody String register(@RequestParam(value="username",required=true) String username,UserInfo userInfo){
+		Date date = new Date();
+		userInfo.setCurrentdate(date);
 		userInfoDao.save(userInfo);
 		return "success";
 	}

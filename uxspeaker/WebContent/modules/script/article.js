@@ -6,7 +6,7 @@
 });*/
 var article = {
 	editor : "",
-	basePath : '/village/lib/kindeditor/',
+	basePath : projectname+'/lib/kindeditor/',
 	initKindEditor: function(){
 		$.getScript('lib/kindeditor/kindeditor-min.js', function() {
 			KindEditor.basePath = article.basePath;

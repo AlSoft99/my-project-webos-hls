@@ -63,8 +63,11 @@ var frame = {
 		
     }
 };
-var projectname = "";
+window.projectname = "";
 $(function(){
+	if(window.location.pathname.indexOf("uxspeaker")!=-1){
+		window.projectname = "/uxspeaker";
+	}
 	frame.include(include_file.plugin,true,true);
 	frame.include(include_file.jqueryui,true,true);
 	frame.include(include_file.modules,true,true);
