@@ -85,7 +85,7 @@ $(function(){
 	};
 	function uploadSuccess(file, serverData){
 		//console.log(a);
-		var returnVal = $.parseJSON(serverData)[0];
+		var returnVal = $.parseJSON(serverData);
 		cutpicture["uploadname"] = returnVal.uploadname;
 		imgLoad(returnVal.uploadurl + returnVal.uploadname,function(image){
 			image.id = "upload-photo";
@@ -119,11 +119,16 @@ $(function(){
 			$.toast("请选择图片再上传");
 			return;
 		}
+		$("body").loading("open");
 		var cut = $.param(cutpicture);
-		console.log(cut);
 		$.get("cuthead.do?"+cut,function(data){
-			
+			$("#preview").attr("src",data);
+			$("body").loading("close");
+			$.toast("保存成功!");
+			main.session["picture"] = data;
 		});
 	});
-	
+	if(typeof(main.session["picture"])!="undefined" && main.session["picture"]!=""){
+		$("#preview").attr("src",main.session["picture"]);
+	}
 });

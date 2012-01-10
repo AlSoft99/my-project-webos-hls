@@ -42,4 +42,8 @@ $(function(){
 	$("#userinformation a").click(function(){
 		main.loadingWay(viewpath + main.parseWindowUrl($(this).attr("href")));
 	});
+	if(typeof(main.session["picture"])!="undefined" && main.session["picture"]!=""){
+		$("#user-picture").attr("src",main.session["picture"]);
+	};
+	
 });
