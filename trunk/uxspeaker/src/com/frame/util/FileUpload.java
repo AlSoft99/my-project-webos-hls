@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -126,5 +127,33 @@ public class FileUpload {
         }
 
         return false;
+    }
+    
+    public FileEntity getInputStream(HttpServletRequest request){
+    	FileItemFactory factory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		try {
+			List items = upload.parseRequest(request);
+			if (null != items) {
+				Iterator itr = items.iterator();
+				while (itr.hasNext()) {
+					FileItem item = (FileItem) itr.next();
+					if (item.isFormField()) {
+						continue;
+					} else {
+						FileEntity file = new FileEntity();
+						String type = item.getName().split("\\.")[1].toLowerCase();//获取文件类型
+						String name = UUID.randomUUID().toString();
+						file.setStream(item.getInputStream());
+						file.setUploadname(name+"."+type);
+						return file;
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return null;
     }
 }

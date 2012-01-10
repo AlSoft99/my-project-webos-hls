@@ -1,8 +1,11 @@
 package com.ux.util;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -28,13 +31,17 @@ public class HeadPhotoServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		FileUpload upload = ServletFactory.newInstant().getFactory().getBean("fileUpload", FileUpload.class);
-		List<FileEntity> file = upload.upload(request, response,"head"+"/");
-		/*String minpath = System.getProperty("webapp.root")+file.get(0).getUploadurl()+"min/";
-		File min = new File(minpath);
+		/*List<FileEntity> file = upload.upload(request, response,"head"+"/");*/
+		String url = "tmp/head/";
+		String path = System.getProperty("webapp.root")+url;
+		File min = new File(path);
 		if(!min.exists()){
 			min.mkdirs();
-		}*/
-		BufferedImage image = ImageIO.read(file.get(0).getStream());
+		}
+		
+		FileEntity entity = upload.getInputStream(request);
+		entity.setUploadurl(url);
+		BufferedImage image = ImageIO.read(entity.getStream());
     	float w = image.getWidth();
     	float h = image.getHeight();
 
@@ -47,11 +54,10 @@ public class HeadPhotoServlet extends HttpServlet{
     	}
     	int intW = (int)w;
     	int intH = (int)h;
-    	System.out.println("11w:"+(int)w+"  h:"+(int)h+"");
-		Utils.reduceImg(file.get(0).getStream(), System.getProperty("webapp.root")+file.get(0).getUploadurl()+file.get(0).getUploadname(), intW, intH);
+		Utils.reduceImg(image, path+entity.getUploadname(), intW, intH);
 		Gson gson = new Gson();
-		java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<List<FileEntity>>() {}.getType();    
-        String beanListToJson = gson.toJson(file,type);
+		java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<FileEntity>() {}.getType();    
+        String beanListToJson = gson.toJson(entity,type);
 		response.getWriter().print(beanListToJson);
 	}
 	
