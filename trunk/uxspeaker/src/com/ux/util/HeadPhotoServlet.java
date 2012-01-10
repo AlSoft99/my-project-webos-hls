@@ -45,8 +45,10 @@ public class HeadPhotoServlet extends HttpServlet{
     		h = (300*h)/w;
     		w = 300;
     	}
-    	System.out.println("11w:"+w+"  h:"+h+"");
-		Utils.reduceImg(file.get(0).getStream(), System.getProperty("webapp.root")+file.get(0).getUploadurl()+file.get(0).getUploadname(), Integer.parseInt(w+""), Integer.parseInt(h+""));
+    	int intW = (int)w;
+    	int intH = (int)h;
+    	System.out.println("11w:"+(int)w+"  h:"+(int)h+"");
+		Utils.reduceImg(file.get(0).getStream(), System.getProperty("webapp.root")+file.get(0).getUploadurl()+file.get(0).getUploadname(), intW, intH);
 		Gson gson = new Gson();
 		java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<List<FileEntity>>() {}.getType();    
         String beanListToJson = gson.toJson(file,type);
