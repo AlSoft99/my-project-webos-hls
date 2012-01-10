@@ -1,0 +1,35 @@
+<link type="text/css" rel="stylesheet" href="modules/css/updatephoto.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/swfupload/default.css" media="screen" />
+<link rel="stylesheet" href="lib/plugin/jcrop/jquery.jcrop.css" type="text/css" />
+<script type="text/javascript" src="lib/swfupload/swfupload.js"></script>
+<script type="text/javascript" src="lib/swfupload/handlers.js"></script>
+<script type="text/javascript" src="lib/plugin/jcrop/jquery.jcrop.min.js" ></script>
+<script type="text/javascript" src="modules/script/updatephoto.js"></script> 
+
+
+<div class="body">
+	<div class="float" style="padding-right:100px;">
+		<h5 style="padding: 15px 0;">当前头像</h5>
+		<div class="bl-updatephoto-photo" >
+			<img src="stylesheet/img/120_0_0.gif" id="preview">
+		</div>
+	</div>
+	<div class="float">
+		<h5 style="padding: 15px 0;">修改头像</h5>
+		<div style="padding-bottom: 20px;">
+			<div class="flash" id="fsUploadProgress" style="display:none;"></div>
+			<div style="padding-left: 5px;">
+				<span id="spanButtonPlaceholder"></span> <input id="btnCancel"
+					type="button" value="取消" onclick="cancelQueue(upload);"
+					disabled="disabled"
+					style="margin-left: 2px; height: 22px; font-size: 8pt;display: none;" />
+			</div>
+		</div>
+		<div class="bl-updatephoto-photo" id="bl-updatephoto-head" style="width:300px;height:300px;text-align: center;">
+			<div class="loading bl-updatephoto-loading" id="bl-updatephoto-loading" style="display: none;"><span id="update-loading"></span></div>
+		</div>
+		<div style="margin-top: 30px;margin-bottom: 30px;">
+			<input type="button" value="保存图片" id="save-photo"/>
+		</div>
+	</div>
+</div>

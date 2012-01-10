@@ -28,6 +28,10 @@
 	    <servlet-name>ImageServlet</servlet-name>
 	    <servlet-class>com.frame.util.ImageServlet</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>HeadPhotoServlet</servlet-name>
+	    <servlet-class>com.ux.util.HeadPhotoServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 	    <servlet-name>ImageServlet</servlet-name>
@@ -48,6 +52,10 @@
 	<servlet-mapping>
 		<servlet-name>PhotoServlet</servlet-name>
 		<url-pattern>*.photo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>HeadPhotoServlet</servlet-name>
+		<url-pattern>*.head</url-pattern>
 	</servlet-mapping>
 	<!-- ************************context start *****************************-->
 	<context-param>

@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.ux.entity.UserInfo;
+
 public class MvcInterceptor extends HandlerInterceptorAdapter {
 
 	//发向控制器之前执行的动作, 比如session判断,是否过期
@@ -14,7 +16,17 @@ public class MvcInterceptor extends HandlerInterceptorAdapter {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		return true;
+		String uri = request.getServletPath();
+		if(uri.equals("/register.do")){
+			return true;
+		}else{
+			UserInfo userinfo = (UserInfo)request.getSession().getAttribute("userinfo");
+			if(userinfo==null){
+				throw new Exception("session missing, please login again!");
+			}
+			return true;
+		}
+		
 	}
 	//控制器执行完成后,生成视图之前执行的动作
 	@Override

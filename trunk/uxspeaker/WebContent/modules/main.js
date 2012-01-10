@@ -1,6 +1,10 @@
 var viewpath = "modules/view/";
 
 var main = {
+	session : {},
+	sessionParse : function(str){
+		this.session = $.parseJSON(str);
+	},
 	parseWindowUrl : function(url){
 		return url.substring(url.indexOf("#")+1)+".html";
 	},
@@ -17,6 +21,7 @@ var main = {
 			if($(this).attr("href")==url){
 				$(this).addClass("active");
 				$("#user_item").text($(this).text());
+				$("#user_item").attr("href",url);
 				return;
 			}
 		});
@@ -28,6 +33,7 @@ var main = {
 			$("#mainNav li .active, #sidebar li .active").removeClass("active");
 			$(this).addClass("active");
 			$("#user_item").text($(this).text());
+			$("#user_item").attr("href",$(this).attr("href"));
 		});
 	},
 	loadingWay : function(url){
@@ -40,9 +46,18 @@ var main = {
 			$("input[type=button],button").button();
 			$('[title]').colorTip({color:'yellow'});
 		});
-	}
+	},
 };
 $(function(){ 
 	main.refresh();
 	main.menuChange();
+	main.sessionParse(sessionStr);
+	$("#user_page,#user_item").click(function(){
+		main.loadingWay(viewpath + main.parseWindowUrl($(this).attr("href")));
+	});
+	$("body").ajaxError(function(e, xhr, settings, exception){
+		var error = exception+" "+xhr.status;
+		$.toast(error);
+		$("body").loading("close");
+	});
 });

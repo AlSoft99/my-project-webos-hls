@@ -22,4 +22,7 @@ public class UserInfoDao extends BaseDao{
 		List<UserInfo> list = getHibernateTemplate().find("from UserInfo where userid='"+userid+"' and password='"+password+"'");
 		return list;
 	}
+	public void update(UserInfo userinfo){
+		getHibernateTemplate().update(userinfo);
+	}
 }

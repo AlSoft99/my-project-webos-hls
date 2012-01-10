@@ -18,7 +18,20 @@ $.extend({
 				});
 			},time);
 		});
-	}
+	},
+	//判断中文长度
+	getLength:function(strTemp){
+    	var i,sum;  
+    	sum=0;  
+    	for(i=0;i<strTemp.length;i++) {  
+    		if ((strTemp.charCodeAt(i)>=0) && (strTemp.charCodeAt(i)<=255)){
+    			sum=sum+1;  
+    		}else{
+    			sum=sum+2;
+    		}
+    	}  
+    	return sum;  
+    }
 });
 $.fn.extend({
 	loading : function(fn){
@@ -260,5 +273,5 @@ $.fn.extend({
     		}
     	}  
     	return sum;  
-    },
+    }
 });
