@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.frame.util.CutImage;
+import com.frame.util.Utils;
 import com.ux.dao.UserInfoDao;
 import com.ux.entity.CutPhoto;
 import com.ux.entity.UserInfo;
@@ -32,17 +33,16 @@ public class UpdateUserInfoVo {
 	///uxspeaker/lib/swfupload/uploadphoto.do
 	@RequestMapping(value="/cuthead.do",method=RequestMethod.GET)
 	public @ResponseBody String uploadphoto(CutPhoto cut,HttpSession session) throws Exception{
-		String name = System.getProperty("webapp.root")+"/tmp/head/"+cut.getUploadname();
-		String out = System.getProperty("webapp.root")+"/upload/head/"+cut.getUploadname();
-		System.out.println("cut.getUploadname():"+cut.getUploadname());
+		String name = System.getProperty("webapp.root")+"/tmp/head/";
+		String out = System.getProperty("webapp.root")+"/upload/head/";
 		if(cut.getW()!=0){
 			CutImage o = new CutImage(cut.getX(), cut.getY(), cut.getW(), cut.getH());
-			o.setSrcpath(name);
-			o.setSubpath(out);
+			o.setSrcpath(name+cut.getUploadname());
+			o.setSubpath(out+cut.getUploadname());
 			o.cut();
 		}else{
 			FileOperate o = new FileOperate();
-			o.copyFile(name, out);
+			o.copyFile(name+cut.getUploadname(), out+cut.getUploadname());
 		}
 		
 		UserInfo userinfo = (UserInfo)session.getAttribute("userinfo");

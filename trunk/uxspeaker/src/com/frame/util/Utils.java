@@ -86,4 +86,10 @@ public class Utils {
 	        ex.printStackTrace();   
 	    }   
 	} 
+	public static void createFolder(String path){
+		File min = new File(path);
+		if(!min.exists()){
+			min.mkdirs();
+		}
+	}
 }
