@@ -8,8 +8,8 @@ $(function(){
 		file_size_limit : "10240", // 10MB
 		file_types : "*.jpg;*.gif;*.png", //此处也可以修改成你想限制的类型，比如：*.doc;*.wpd;*.pdf
 		file_types_description : "Image Files",
-		file_upload_limit : "12",
-		//file_queue_limit : "12",
+		//file_upload_limit : "1",
+		file_queue_limit : "1",
 
 		// 事件处理设置（所有的自定义处理方法都在handler.js文件里）
 		file_dialog_start_handler : fileDialogStart,
@@ -59,10 +59,10 @@ $(function(){
 		function updatePreview(c) {
 			if (parseInt(c.w) > 0) {
 				$.extend(cutpicture,c);
-				var rx = 100 / c.w;
+				/*var rx = 100 / c.w;
 				var ry = 100 / c.h;
 
-				/*$('#preview').css({
+				$('#preview').css({
 					width : Math.round(rx * boundx) + 'px',
 					height : Math.round(ry * boundy) + 'px',
 					marginLeft : '-' + Math.round(rx * c.x) + 'px',
@@ -88,6 +88,7 @@ $(function(){
 		var returnVal = $.parseJSON(serverData);
 		cutpicture["uploadname"] = returnVal.uploadname;
 		imgLoad(returnVal.uploadurl + returnVal.uploadname,function(image){
+			cutpicture["w"] = 0;
 			image.id = "upload-photo";
 			if(image.width < image.height){
 				image.height = 300;
@@ -95,7 +96,6 @@ $(function(){
 				image.width = 300;
 			}
 			
-			image.style = "position:absolute;left:10px;";
 			$("#bl-updatephoto-loading").hide();
 			$("#bl-updatephoto-head").append(image);
 			createJcrop();
@@ -105,7 +105,7 @@ $(function(){
 	function uploadProgress(file, bytesLoaded, bytesTotal) {
 		try {
 			$("#upload-photo,.jcrop-holder").remove();
-			
+			$("#bl-updatephoto-head").fadeIn(500);
 			var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
 			$("#bl-updatephoto-loading").show();
 			$("#update-loading").text(percent+"%");
