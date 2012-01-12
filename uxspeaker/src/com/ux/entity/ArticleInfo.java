@@ -10,7 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 
 @Entity  
 @Table(name = "ux_article_info")
@@ -29,14 +32,22 @@ public class ArticleInfo implements Serializable {
 	@Column(name = "title", nullable = false,length=50)
 	private String title;
 	//图片路径
-	@Column(name = "picture", nullable = true,length=50)
+	@Column(name = "picture", nullable = true,length=100)
 	private String picture;
 	//内容
-	@Column(name = "content", nullable = false)
-	private Clob content;
+	@Lob()
+	@Type(type = "org.hibernate.type.StringClobType") 
+	@Column(name = "content",columnDefinition="CLOB", nullable = false)
+	private String content;
 	//标签
 	@Column(name = "tag", nullable = true,length=50)
 	private String tag;
+	//喜爱
+	@Column(name = "love", nullable = false)   
+    private Integer love;
+	//浏览数
+	@Column(name = "brower", nullable = false)   
+	private Integer brower;
 	//首次添加时间
 	@Column(name = "firstDate", nullable = true)
 	private Date firstDate;
@@ -67,10 +78,10 @@ public class ArticleInfo implements Serializable {
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-	public Clob getContent() {
+	public String getContent() {
 		return content;
 	}
-	public void setContent(Clob content) {
+	public void setContent(String content) {
 		this.content = content;
 	}
 	public String getTag() {
@@ -90,6 +101,18 @@ public class ArticleInfo implements Serializable {
 	}
 	public void setCurrentDate(Date currentDate) {
 		this.currentDate = currentDate;
+	}
+	public Integer getLove() {
+		return love;
+	}
+	public void setLove(Integer love) {
+		this.love = love;
+	}
+	public Integer getBrower() {
+		return brower;
+	}
+	public void setBrower(Integer brower) {
+		this.brower = brower;
 	}
 	
 }

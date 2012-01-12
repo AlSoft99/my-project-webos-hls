@@ -10,7 +10,7 @@ var article = {
 	initKindEditor: function(){
 		$.getScript('lib/kindeditor/kindeditor-min.js', function() {
 			KindEditor.basePath = article.basePath;
-			article.editor = KindEditor.create('textarea[name="articlecontent"]');
+			article.editor = KindEditor.create('textarea[id="articlecontent"]');
 		});
 	}
 };
@@ -19,10 +19,9 @@ $(function(){
 	article.initKindEditor();
 	$("input[type=button],button").button(); 
 	$("textarea, input[type=text]").defaultMsg();
-	$("#articledate").datepicker();
+	/*$("#articledate").datepicker();*/
 	//$("#articletype").createCombobox("#articletype");
-	$("#articletype").selectmenu();
-	
+	$("#type").selectmenu();
 	var cutpicture = {};
 	var upload = new SWFUpload({
 		// 处理文件上传的url  ${pageContext.request.contextPath}
@@ -155,9 +154,10 @@ $(function(){
 				$("body").loading("open");
 				var cut = $.param(cutpicture);
 				$.get("article-upload.do?"+cut,function(data){
-					$("#article-photo-info").attr("src",data);
+					$("#article-photo-info").attr("src",data).attr("width",226).attr("height",80);
 					$("body").loading("close");
 					$.toast("保存成功!");
+					cutpicture.uploadname = data;
 					$( "#dialog-upload" ).dialog( "close" );
 				});
 			},
@@ -171,5 +171,19 @@ $(function(){
 	});
 	$("#article-photo-info").click(function(){
 		$( "#dialog-upload" ).dialog("open");
+	});
+	$("#submitarticle").click(function(){
+		var param = $(".ui-form").serialize();
+		var editor = {};
+		editor["content"] = article.editor.html();
+		if(typeof(cutpicture.uploadname)!="undefined" || cutpicture.uploadname!=""){
+			editor.picture = cutpicture.uploadname;
+		}else{
+			editor.picture = "";
+		}
+		param = param +"&"+$.param(editor);
+		$.get("article-add.do?"+param,function(data){
+			console.log(data);
+		});
 	});
 });

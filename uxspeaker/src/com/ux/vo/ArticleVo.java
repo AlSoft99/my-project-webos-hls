@@ -1,6 +1,7 @@
 package com.ux.vo;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.frame.util.CutImage;
 import com.frame.util.Utils;
 import com.ux.dao.ArticleDao;
+import com.ux.entity.ArticleInfo;
 import com.ux.entity.CutPhoto;
 import com.ux.entity.UserInfo;
 import com.ux.util.FileOperate;
@@ -38,5 +40,14 @@ public class ArticleVo {
 			o.copyFile(name+cut.getUploadname(), out+cut.getUploadname());
 		}
 		return "upload/"+userinfo.getUserid()+"/article/"+cut.getUploadname();
+	}
+	@RequestMapping(value="/article-add.do",method=RequestMethod.GET)
+	public @ResponseBody String addArticle(ArticleInfo info) throws IOException{
+		info.setBrower(0);
+		info.setLove(0);
+		info.setCurrentDate(new Date());
+		info.setFirstDate(new Date());
+		articleDao.save(info);
+		return "success";
 	}
 }
