@@ -22,50 +22,52 @@
 		<div class="loading bl-article-loading" id="bl-article-loading" style="display: none;"><span id="update-loading"></span></div>
 	</div>
 </div>
-<table class="ui-table-custom" style="margin-top:35px;">
-	<tr>
-		<td align="right">日期:</td><td><input id="articledate" type="text" class="ui-input" style="width:227px;" /></td>
-	</tr>
-	<tr>
-		<td align="right">类别:</td>
-		<td>
-			<select id="articletype" style="width:225px;">
-				<option value="">Select one...</option>
-				<option value="ActionScript">ActionScript</option>
-				<option value="AppleScript">AppleScript</option>
-				<option value="Asp">Asp</option>
-				<option value="BASIC">BASIC</option>
-				<option value="C">C</option>
-				<option value="C++">C++</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td align="right">标题:</td><td><input id="articletitle" type="text" class="ui-input" style="width:650px;" placeholder="请输入文章标题"/></td>
-	</tr>
-	<tr>
-		<td align="right">首图:</td>
-		<td>
-			<div class="bl-article-photo" id="article-photo" >
-				<img width="650" height="230" style="cursor: pointer;" src="stylesheet/img/120_0_0.gif" id="article-photo-info">
-			</div>
-		</td>
-	</tr>
-	<tr>
-		<td align="right">内容:</td>
-		<td>
-			<textarea name="articlecontent" id="articlecontent" style="visibility: hidden;width:650px;height:400px;"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td align="right">标签:</td><td><input id="articletag" type="text" class="ui-input" style="width:650px;" placeholder="请输入标签,多标签','隔开"/></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><input type="button" value="提交文章"/></td>
-	</tr>
-	<tr style="height:150px;">
-		<td></td>
-		<td></td>
-	</tr>
-</table>
+<form class="ui-form">
+	<table class="ui-table-custom" style="margin-top:35px;">
+		<!-- tr>
+			<td align="right">日期:</td><td><input id="articledate" type="text" class="ui-input" style="width:227px;" /></td>
+		</tr> -->
+		<tr>
+			<td align="right">类别:</td>
+			<td>
+				<select id="type" name="type" style="width:225px;">
+					<option value="">Select one...</option>
+					<option value="ActionScript">ActionScript</option>
+					<option value="AppleScript">AppleScript</option>
+					<option value="Asp">Asp</option>
+					<option value="BASIC">BASIC</option>
+					<option value="C">C</option>
+					<option value="C++">C++</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">标题:</td><td><input id="title" name="title" type="text" class="ui-input" style="width:650px;" placeholder="请输入文章标题"/></td>
+		</tr>
+		<tr>
+			<td align="right">首图:</td>
+			<td>
+				<div class="bl-article-photo" id="article-photo" style="text-align: center">
+					<img style="cursor: pointer;" src="stylesheet/img/question-mark.png" id="article-photo-info" >
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">内容:</td>
+			<td>
+				<textarea id="articlecontent" name="articlecontent" style="visibility: hidden;width:650px;height:400px;"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">标签:</td><td><input id="tag" name="tag" type="text" class="ui-input" style="width:650px;" placeholder="请输入标签,多标签','隔开"/></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="button" id="submitarticle" value="提交文章"/></td>
+		</tr>
+		<tr style="height:150px;">
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</form>
