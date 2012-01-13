@@ -1,7 +1,6 @@
 package com.ux.entity;
 
 import java.io.Serializable;
-import java.sql.Clob;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -25,6 +24,9 @@ public class ArticleInfo implements Serializable {
 	//唯一ID
     @Column(name = "id", nullable = false)   
     private Integer id;
+	//用户id
+	@Column(name = "userid", nullable = false,length=30)   
+    private String userid;
 	//类别
 	@Column(name = "type", nullable = false,length=10)
 	private String type;
@@ -37,16 +39,16 @@ public class ArticleInfo implements Serializable {
 	//内容
 	@Lob()
 	@Type(type = "org.hibernate.type.StringClobType") 
-	@Column(name = "content",columnDefinition="CLOB", nullable = false)
+	@Column(name = "content",columnDefinition="longtext", nullable = true)
 	private String content;
 	//标签
 	@Column(name = "tag", nullable = true,length=50)
 	private String tag;
 	//喜爱
-	@Column(name = "love", nullable = false)   
+	@Column(name = "love", nullable = true)   
     private Integer love;
 	//浏览数
-	@Column(name = "brower", nullable = false)   
+	@Column(name = "brower", nullable = true)   
 	private Integer brower;
 	//首次添加时间
 	@Column(name = "firstDate", nullable = true)
@@ -113,6 +115,12 @@ public class ArticleInfo implements Serializable {
 	}
 	public void setBrower(Integer brower) {
 		this.brower = brower;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	
 }
