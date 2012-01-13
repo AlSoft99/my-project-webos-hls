@@ -176,13 +176,14 @@ $(function(){
 		var param = $(".ui-form").serialize();
 		var editor = {};
 		editor["content"] = article.editor.html();
-		if(typeof(cutpicture.uploadname)!="undefined" || cutpicture.uploadname!=""){
+		if(typeof(cutpicture.uploadname)!="undefined" && cutpicture.uploadname!=""){
 			editor.picture = cutpicture.uploadname;
 		}else{
 			editor.picture = "";
 		}
 		param = param +"&"+$.param(editor);
-		$.get("article-add.do?"+param,function(data){
+		/*$(".ui-form").submit();*/
+		$.post("article-add.do",param,function(data){
 			console.log(data);
 		});
 	});

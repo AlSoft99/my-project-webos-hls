@@ -41,8 +41,10 @@ public class ArticleVo {
 		}
 		return "upload/"+userinfo.getUserid()+"/article/"+cut.getUploadname();
 	}
-	@RequestMapping(value="/article-add.do",method=RequestMethod.GET)
-	public @ResponseBody String addArticle(ArticleInfo info) throws IOException{
+	@RequestMapping(value="/article-add.do",method=RequestMethod.POST)
+	public @ResponseBody String addArticle(ArticleInfo info,HttpSession session) throws IOException{
+		UserInfo userinfo = (UserInfo)session.getAttribute("userinfo");
+		info.setUserid(userinfo.getUserid());
 		info.setBrower(0);
 		info.setLove(0);
 		info.setCurrentDate(new Date());
