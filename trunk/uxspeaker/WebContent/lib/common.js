@@ -31,6 +31,52 @@ $.extend({
     		}
     	}  
     	return sum;  
+    },
+    swfupload : function(option){
+    	var v = {
+			// 处理文件上传的url  ${pageContext.request.contextPath}
+			upload_url : "uploadphoto.head", // 路径写全，否则Firefox下会出现404错误。自由修改处一：处理文件上传的url路径，注意还要写全部
+
+			// 上传文件限制设置
+			file_size_limit : "10240", // 10MB
+			file_types : "*.jpg;*.gif;*.png", //此处也可以修改成你想限制的类型，比如：*.doc;*.wpd;*.pdf
+			file_types_description : "Image Files",
+			//file_upload_limit : "1",
+			file_queue_limit : "1",
+
+			// 事件处理设置（所有的自定义处理方法都在handler.js文件里）
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete,
+
+			// 按钮设置
+			button_image_url : "lib/swfupload/xpbutton.png", // 按钮图标
+			button_placeholder_id : "spanButtonPlaceholder",
+			button_width : 60,
+			button_height : 25,
+			//button_text : "<span>1234567</span>",
+			button_disabled: false,
+
+			// swf设置
+			flash_url : "lib/swfupload/swfupload.swf",
+
+			custom_settings : {
+				progressTarget : "fsUploadProgress",
+				cancelButtonId : "btnCancel"
+			},
+
+			// Debug 设置
+			debug : false
+		};
+    	$.extend(true,v,option);
+    	var upload = new SWFUpload(v);
+    	return upload;
     }
 });
 $.fn.extend({
