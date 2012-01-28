@@ -1,4 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.frame.servlet.ServletFactory" %>
+<%@ page import="com.ux.dao.ArticleDao" %>
+<%@ page import="com.ux.entity.ArticleInfo" %>
+<% 
+ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
+List<ArticleInfo> list = dao.queryArticle(0,5);
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,146 +26,43 @@
 	</div> -->
 	<div class="index-body">
 		<div class="float index-content">
+			<% 
+			for(ArticleInfo info : list){
+				
+			%>
 			<!-- 文章内容开始 -->
 			<div class="index-content-item">
 				<div>
 					<dl class="dl-user">
 						<dd class="dl-user-photo"><a href="author"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><a href="article">情感化设计中的手绘应用表现</a></dt>
-						<dd class="dl-user-tips"><a href="author">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="type">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
+						<dt><a href="article?id=<%=info.getId()%>"><%=info.getTitle() %></a></dt>
+						<dd class="dl-user-tips"><a href="author">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="type">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span><%=info.getFirstDate() %></span></dd>
 						<dd class="clear"></dd>
 					</dl>
 				</div>
 				<div class="index-content-photo">
-					<a href="#"><img src="stylesheet/img/index/banner4.jpg" /></a>
+					<a href="article?id=<%=info.getId()%>"><img width="720" height="255" src="<%=info.getPicture() %>" /></a>
 				</div>
 				<div class="index-content-text">
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
+					<%=info.getText() %>
 				</div>
 				<div class="index-toolbar">
 					<ul class="float">
-						<li><span class="ux-icon index-search float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-like float"></span>&nbsp;<span>400400400400</span></li>
+						<li><span class="ux-icon index-search float"></span>&nbsp;<span><%=info.getBrower() %></span></li>
+						<li><span class="ux-icon index-like float"></span>&nbsp;<span><%=info.getLove() %></span></li>
 						<li><span class="ux-icon index-comment float"></span>&nbsp;<span>400400400400</span></li>
 					</ul>
-					<a href="#" class="float-right">> 阅读全文</a>
+					<a href="article?id=<%=info.getId()%>" class="float-right">> 阅读全文</a>
 					<div class="clear"></div>
 				</div>
 				<div class="index-foot-line"></div>
 			</div>
 			<!-- 文章内容结束 -->
-			<!-- 文章内容开始 -->
-			<div class="index-content-item">
-				<div>
-					<dl class="dl-user">
-						<dd class="dl-user-photo"><a href="author"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><a href="article">情感化设计中的手绘应用表现</a></dt>
-						<dd class="dl-user-tips"><a href="author">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="type">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
-						<dd class="clear"></dd>
-					</dl>
-				</div>
-				<div class="index-content-photo">
-					<a href="#"><img src="stylesheet/img/index/banner4.jpg" /></a>
-				</div>
-				<div class="index-content-text">
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-				</div>
-				<div class="index-toolbar">
-					<ul class="float">
-						<li><span class="ux-icon index-search float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-like float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-comment float"></span>&nbsp;<span>400400400400</span></li>
-					</ul>
-					<a href="#" class="float-right">> 阅读全文</a>
-					<div class="clear"></div>
-				</div>
-				<div class="index-foot-line"></div>
-			</div>
-			<!-- 文章内容结束 -->
-			<!-- 文章内容开始 -->
-			<div class="index-content-item">
-				<div>
-					<dl class="dl-user">
-						<dd class="dl-user-photo"><a href="author"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><a href="article">情感化设计中的手绘应用表现</a></dt>
-						<dd class="dl-user-tips"><a href="author">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="type">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
-						<dd class="clear"></dd>
-					</dl>
-				</div>
-				<div class="index-content-photo">
-					<a href="#"><img src="stylesheet/img/index/banner4.jpg" /></a>
-				</div>
-				<div class="index-content-text">
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-				</div>
-				<div class="index-toolbar">
-					<ul class="float">
-						<li><span class="ux-icon index-search float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-like float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-comment float"></span>&nbsp;<span>400400400400</span></li>
-					</ul>
-					<a href="#" class="float-right">> 阅读全文</a>
-					<div class="clear"></div>
-				</div>
-				<div class="index-foot-line"></div>
-			</div>
-			<!-- 文章内容结束 -->
-			<!-- 文章内容开始 -->
-			<div class="index-content-item">
-				<div>
-					<dl class="dl-user">
-						<dd class="dl-user-photo"><a href="author"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><a href="article">情感化设计中的手绘应用表现</a></dt>
-						<dd class="dl-user-tips"><a href="author">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="type">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
-						<dd class="clear"></dd>
-					</dl>
-				</div>
-				<div class="index-content-photo">
-					<a href="#"><img src="stylesheet/img/index/banner4.jpg" /></a>
-				</div>
-				<div class="index-content-text">
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-				</div>
-				<div class="index-toolbar">
-					<ul class="float">
-						<li><span class="ux-icon index-search float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-like float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-comment float"></span>&nbsp;<span>400400400400</span></li>
-					</ul>
-					<a href="#" class="float-right">> 阅读全文</a>
-					<div class="clear"></div>
-				</div>
-				<div class="index-foot-line"></div>
-			</div>
-			<!-- 文章内容结束 -->
-			<!-- 文章内容开始 -->
-			<div class="index-content-item">
-				<div>
-					<dl class="dl-user">
-						<dd class="dl-user-photo"><a href="author"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><a href="article">情感化设计中的手绘应用表现</a></dt>
-						<dd class="dl-user-tips"><a href="author">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="type">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span></dd>
-						<dd class="clear"></dd>
-					</dl>
-				</div>
-				<div class="index-content-photo">
-					<a href="#"><img src="stylesheet/img/index/banner4.jpg" /></a>
-				</div>
-				<div class="index-content-text">
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-				</div>
-				<div class="index-toolbar">
-					<ul class="float">
-						<li><span class="ux-icon index-search float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-like float"></span>&nbsp;<span>400400400400</span></li>
-						<li><span class="ux-icon index-comment float"></span>&nbsp;<span>400400400400</span></li>
-					</ul>
-					<a href="#" class="float-right">> 阅读全文</a>
-					<div class="clear"></div>
-				</div>
-				<div class="index-foot-line"></div>
-			</div>
-			<!-- 文章内容结束 -->
+			<%
+			}
+			%>
+			
+			
 			<div id="page-foot" style="margin-top: 20px;"></div>
 		</div>
 		<div class="float-right index-tips">

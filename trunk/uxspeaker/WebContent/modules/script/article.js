@@ -17,6 +17,7 @@ var article = {
 
 $(function(){
 	article.initKindEditor();
+	$("#article-tabs").tabs();
 	$("input[type=button],button").button(); 
 	$("textarea, input[type=text]").defaultMsg();
 	/*$("#articledate").datepicker();*/
@@ -141,9 +142,19 @@ $(function(){
 		$( "#dialog-upload" ).dialog("open");
 	});
 	$("#submitarticle").click(function(){
+		var sublength = 250;
 		var param = $(".ui-form").serialize();
 		var editor = {};
+		var text = "";
+		if(article.editor.text().length>sublength){
+			text = article.editor.text().substring(0,sublength)+"......";
+		}else{
+			text = article.editor.text();
+		}
+		
 		editor["content"] = article.editor.html();
+		editor["text"] = text;
+		console.log(editor);
 		if(typeof(cutpicture.showname)!="undefined" && cutpicture.showname!=""){
 			editor.picture = cutpicture.showname;
 		}else{

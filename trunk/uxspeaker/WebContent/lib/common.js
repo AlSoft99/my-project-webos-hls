@@ -33,6 +33,9 @@ $.extend({
     	return sum;  
     },
     swfupload : function(option){
+    	if($("#SWFUpload_"+SWFUpload.movieCount).length>0){
+    		$("#SWFUpload_"+SWFUpload.movieCount).remove();
+    	}
     	var v = {
 			// 处理文件上传的url  ${pageContext.request.contextPath}
 			upload_url : "uploadphoto.head", // 路径写全，否则Firefox下会出现404错误。自由修改处一：处理文件上传的url路径，注意还要写全部

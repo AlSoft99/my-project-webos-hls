@@ -164,16 +164,16 @@ h3 {
 }
 
 #main table {
-	border-top: 1px solid #ddd;
+	/* border-top: 1px solid #ddd; */
 	width: 100%;
 }
 
 #main table tr td {
-	background: #f6f6f6;
+	/* background: #f6f6f6;
 	padding: 0px 20px;
 	height: 29px;
 	line-height: 29px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ddd; */
 }
 
 #main table tr.odd td {
