@@ -16,7 +16,7 @@ public class CheckVo {
 	private UserInfoDao userInfoDao;
 	
 	@RequestMapping(value="/checkid.do",method=RequestMethod.GET)
-	public @ResponseBody String checkId(@RequestParam(value="userid",required=true) String userid){
+	public @ResponseBody String checkId(@RequestParam(value="email",required=true) String userid){
 		if(userInfoDao.checkId(userid)){
 			return "success";
 		}

@@ -41,6 +41,15 @@ public class ArticleInfo implements Serializable {
 	@Type(type = "org.hibernate.type.StringClobType") 
 	@Column(name = "content",columnDefinition="longtext", nullable = true)
 	private String content;
+	//开头部分文章
+	@Column(name = "text", nullable = true,length=500)
+	private String text;
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
 	//标签
 	@Column(name = "tag", nullable = true,length=50)
 	private String tag;

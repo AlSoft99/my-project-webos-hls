@@ -22,8 +22,8 @@ public class UserInfo implements Serializable {
     @Column(name = "id", nullable = false)   
     private Integer id;
 	//邮箱
-	@Column(name = "userid", nullable = false,length=30,unique=true)
-	private String userid;
+	@Column(name = "email", nullable = false,length=30,unique=true)
+	private String email;
 	//用户名
 	@Column(name = "username", nullable = false,length=30)
 	private String username;
@@ -85,11 +85,11 @@ public class UserInfo implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getUserid() {
-		return userid;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getUsername() {
 		return username;

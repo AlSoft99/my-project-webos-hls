@@ -32,13 +32,13 @@ public class RegisterVo {
 	}
 	@RequestMapping(value="/register.do",method=RequestMethod.GET, params="method=login")
 	public @ResponseBody String login(UserInfo userInfo, HttpServletRequest request){
-		List<UserInfo> list = userInfoDao.checkIsExist(userInfo.getUserid(), userInfo.getPassword());
+		List<UserInfo> list = userInfoDao.checkIsExist(userInfo.getEmail(), userInfo.getPassword());
 		Map<String,String> map = new HashMap<String, String>();
 		if(list.size()>0){
 			request.getSession().setAttribute("userinfo", list.get(0));
 			map.put("status", "success");
 			map.put("username", list.get(0).getUsername());
-			map.put("userid", list.get(0).getUserid());
+			map.put("userid", list.get(0).getId()+"");
 		}else{
 			map.put("status", "failure");
 		}
