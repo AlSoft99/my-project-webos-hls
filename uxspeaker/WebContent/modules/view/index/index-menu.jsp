@@ -14,7 +14,7 @@ if(userInfo!=null){
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
 			<tr>
-				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" id="userid" name="userid"  validate="email" validateAjax="checkid.do" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;"></td>
+				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" id="email" name="email"  validate="email" validateAjax="checkid.do" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;"></td>
 			</tr>
 			<tr>
 				<td style="width:90px;">姓名</td><td><input type="text" class="ui-input" id="username" name="username"  validate="default" isnull=true maxlength="20" minlength="0" placeholder="输入用户姓名" style="width: 380px;"></td>
@@ -32,7 +32,7 @@ if(userInfo!=null){
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
 			<tr>
-				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" id="userid" name="userid"  validate="email" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;"></td>
+				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" id="email" name="email"  validate="email" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;"></td>
 			</tr>
 			<tr>
 				<td style="width:90px;">密码</td><td><input type="password" class="ui-input" id="password" name="password" validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入密码" style="width: 380px;"></td>
@@ -42,7 +42,7 @@ if(userInfo!=null){
 </div>
 <div class="index-title">
 	<div class="index-title-frame">
-		<div class="float"><a class="logo float" style="margin-top: 10px;" href="#"></a>&nbsp;&nbsp;<span <% if(userInfo!=null) {%>style="display:none;"<%}%> id="registerfield"><a class="float index-logo" id="register-btn" style="padding-left: 10px;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></span><span id="loginfield" <% if(userInfo==null) {%>style="display:none;"<%}%>><label id="loginname" class="float" style="padding:30px 0 10px 10px;font-size: 13px;" ><%=username %></label><label class="float" style="padding:30px 0 10px;font-size: 13px;" > ,欢迎您登陆本Bolog</label><a class="float index-logo" style="padding-left: 10px;" href="main">我的后台</a><a class="float index-logo" id="logout-btn" style="padding-left: 10px;" href="#">退出</a></span></div>
+		<div class="float"><a class="logo float" style="margin-top: 10px;" href="index"></a>&nbsp;&nbsp;<span <% if(userInfo!=null) {%>style="display:none;"<%}%> id="registerfield"><a class="float index-logo" id="register-btn" style="padding-left: 10px;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></span><span id="loginfield" <% if(userInfo==null) {%>style="display:none;"<%}%>><label id="loginname" class="float" style="padding:30px 0 10px 10px;font-size: 13px;" ><%=username %></label><label class="float" style="padding:30px 0 10px;font-size: 13px;" > ,欢迎您登陆本Bolog</label><a class="float index-logo" style="padding-left: 10px;" href="main">我的后台</a><a class="float index-logo" id="logout-btn" style="padding-left: 10px;" href="#">退出</a></span></div>
 		<div class="float-right index-menu">
 			<ul class="float-right">
 				<li class="select"><a href="index" >首页</a></li>

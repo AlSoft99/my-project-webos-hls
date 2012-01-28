@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.frame.servlet.ServletFactory" %>
+<%@ page import="com.ux.dao.ArticleDao" %>
+<%@ page import="com.ux.entity.ArticleInfo" %>
 <% 
-
+String id = request.getParameter("id");
+ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
+ArticleInfo info = dao.queryEntity(id);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,7 +27,7 @@
 	<%@ include file="index-menu.jsp" %>
 	<div class="index-body">
 		<div class="index-navigation" style="padding-top:25px;">
-			<a href="#">首页</a> > <a href="#">视觉设计</a> > <span>情感化设计中的手绘应用表现</span>
+			<a href="index">首页</a> > <a href="#">视觉设计</a> > <span><%=info.getTitle()%></span>
 		</div>
 		<div class="float index-content">
 			<!-- 文章内容开始 -->
@@ -29,9 +35,9 @@
 				<div>
 					<dl class="dl-user">
 						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><span class="dl-user-title">情感化设计中的手绘应用表现</span></dt>
+						<dt><span class="dl-user-title"><%=info.getTitle()%></span></dt>
 						<dd class="dl-user-tips">
-							<a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span>2011.12.28</span>&nbsp;<span>/</span>
+							<a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span><%=info.getFirstDate()%></span>&nbsp;<span>/</span>
 							&nbsp;<span>相关标签</span>
 							&nbsp;<a href="#">情感化</a>
 							&nbsp;<a href="#">手绘</a>
@@ -40,22 +46,17 @@
 					</dl>
 				</div>
 				<div class="index-content-photo">
-					<img src="stylesheet/img/index/banner4.jpg" />
+					<img width="720" height="255" src="<%=info.getPicture()%>" />
 				</div>
 				<div class="index-content-text">
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
-					<p>    这篇分享是我最近读《情感化设计》的一点小感悟及关注的那些事儿。在这里与大家分享下。欢迎大家多多指教和交流。...</p>
+					<%=info.getContent()%>
 				</div>
 				<div class="index-toolbar">
 					<ul class="float">
 						<li><span style="color:red;">本文出自HP UX Blog，转载时请注明出处</span></li>
 					</ul>
 					<a href="#" class="float-right" style="font-size: 12px;line-height: 20px;padding:0 5px;">给好文加心!</a>
-					<span class="float-right">19</span>
+					<span class="float-right"><%=info.getLove() %></span>
 					<span class="icon index-love float-right"></span>
 					<div class="clear"></div>
 				</div>

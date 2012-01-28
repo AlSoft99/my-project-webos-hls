@@ -1,6 +1,6 @@
 #search-user { width: 25em; }
 #main .bl-friend-table{
-	border-bottom: 1px solid #DDD;
+	/* border-bottom: 1px solid #DDD; */
 }
 #main .bl-friend-table td{
 	vertical-align:middle;

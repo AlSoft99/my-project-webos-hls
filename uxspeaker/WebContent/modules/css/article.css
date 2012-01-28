@@ -4,7 +4,7 @@
 	padding:10px 20px;
 }
 #main .ui-table-custom{
-	border-bottom: 1px solid #DDD;
+	/* border-bottom: 1px solid #DDD; */
 }
 .bl-article-photo{
 	padding:5px;border: 1px solid #CACACA;margin-top: 20px;box-shadow:1px 1px 3px #D8D8D8;display: table-cell;vertical-align: middle;
