@@ -3,7 +3,9 @@ $(function(){
 		$("#index-menu .select").removeClass("select");
 		$(this).addClass("select");
 	});
-	$("#page-foot").pageFoot({createdate:"20110802",total:1,current:1},function(o){
+	var total = $("#index").attr("total");
+	var currentPage = $("#index").attr("currentPage");
+	$("#page-foot").pageFoot({total:total,current:currentPage},function(o){
 		//console.log(o.current);
 	});
 	$("body").ajaxError(function(e, xhr, settings, exception){

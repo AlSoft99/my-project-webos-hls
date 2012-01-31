@@ -6,7 +6,9 @@
 <% 
 String id = request.getParameter("id");
 ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
-ArticleInfo info = dao.queryEntity(id);
+Map<String,Object> info = dao.queryMapById(id);
+String[] tagname = info.get("tagname").toString().split(",");
+dao.updateBrower(id);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,38 +27,53 @@ ArticleInfo info = dao.queryEntity(id);
 </head>
 <body>
 	<%@ include file="index-menu.jsp" %>
-	<div class="index-body">
+	<div class="index-body" id="article-index" articleid="<%=id %>">
 		<div class="index-navigation" style="padding-top:25px;">
-			<a href="index">首页</a> > <a href="#">视觉设计</a> > <span><%=info.getTitle()%></span>
+			<a href="index">首页</a> > <a href="#"><%=info.get("type")%></a> > <span><%=info.get("title")%></span>
 		</div>
 		<div class="float index-content">
 			<!-- 文章内容开始 -->
 			<div class="index-content-item">
 				<div>
 					<dl class="dl-user">
+						<% 
+						if(info.get("picture")==null || "".equals(info.get("picture"))){
+						%>
 						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><span class="dl-user-title"><%=info.getTitle()%></span></dt>
+						<% 
+						}else{
+						%>
+						<dd class="dl-user-photo"><a href="#"><img src="<%=info.get("userpicture")%>" /></a></dd>
+						<%
+						}
+						%>
+						<dt><span class="dl-user-title"><%=info.get("title")%></span></dt>
 						<dd class="dl-user-tips">
-							<a href="#">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="#">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span><%=info.getFirstDate()%></span>&nbsp;<span>/</span>
+							<a href="#"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="#"><%=info.get("type")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate")%></span>&nbsp;<span>/</span>
 							&nbsp;<span>相关标签</span>
-							&nbsp;<a href="#">情感化</a>
-							&nbsp;<a href="#">手绘</a>
+							<% 
+							for(int i=0;i<tagname.length;i++){
+							%>
+							&nbsp;<a href="#"><%=tagname[i]%></a>
+							<%
+							}
+							%>
 						</dd>
 						<dd class="clear"></dd>
 					</dl>
 				</div>
 				<div class="index-content-photo">
-					<img width="720" height="255" src="<%=info.getPicture()%>" />
+					<img width="720" height="255" src="<%=info.get("picture")%>" />
 				</div>
 				<div class="index-content-text">
-					<%=info.getContent()%>
+					<%=info.get("content")%>
 				</div>
 				<div class="index-toolbar">
 					<ul class="float">
 						<li><span style="color:red;">本文出自HP UX Blog，转载时请注明出处</span></li>
 					</ul>
-					<a href="#" class="float-right" style="font-size: 12px;line-height: 20px;padding:0 5px;">给好文加心!</a>
-					<span class="float-right"><%=info.getLove() %></span>
+					<a href="#" id="add-love" class="float-right" style="font-size: 12px;line-height: 20px;padding:0 5px;">给好文加心!</a><div id="have-love" class="float-right" style="display:none;font-size: 12px;line-height: 20px;padding:0 5px;color:#777;">该文章已加心!</div>
+					<span id="add-love-number" class="float-right"><%=info.get("love") %></span>
 					<span class="icon index-love float-right"></span>
 					<div class="clear"></div>
 				</div>
@@ -64,7 +81,7 @@ ArticleInfo info = dao.queryEntity(id);
 					<div class="discuss-frame">
 						<h5 class="discuss-sum">评论 (<span>1</span> 个评论)</h5>
 						<div class="discuss-list">
-							<div class="discuss-item">
+							<div class="discuss-item" id="discuss-item">
 								<dl>
 									<dd class="discuss-photo float"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
 									<dt><a href="#" style="font-weight: bold;">rayln</a>&nbsp;<span>2011-12-28 09:22</span><a class="float-right" href="#">删除</a><a class="float-right" href="#">编辑</a></dt>
@@ -79,17 +96,22 @@ ArticleInfo info = dao.queryEntity(id);
 								</dl>
 							</div>
 						</div>
-						<div class="discuss-submit">
-							<h5 class="discuss-sum">提交评论 </h5>
-							<p><textarea style="width: 99.5%;height:80px;"></textarea></p>
-							<p id="checkcode-field">
-								<span>验证码  </span><span style="padding: 0 7px;"><input type="text" class="ui-input" id="checkcode"/></span><input type="button" value="提交"/>
-							</p>
-							<div class="checkcode-frame" id="index-checkcode" style="position: absolute;z-index: 100;display:none;">
-								<a href="#" id="refresh-checkcode">刷新验证码</a>
-								<img id="checkcode-image" src="" style="display:none;"/>
+						<form id="comment-form">
+							<input type="hidden" name="articleid" id="articleid" value="<%=id %>"/>
+							<input type="hidden" name="receiver" id="receiver" value=""/>
+							<div class="discuss-submit">
+								<h5 class="discuss-sum">提交评论 </h5>
+								<p id="callname" ><input id="commentuser" name="commentuser" placeholder="称呼" type="text" validate="default" isnull=true maxlength="30" minlength="0" class="ui-input" value="<%=username%>" <%if(userInfo!=null){%>userid="<%=userInfo.getId()%>"<%} %>/>&nbsp;&nbsp;<span style="color:red;">(如果您未登陆, 请填写称呼)</span></p>
+								<p><textarea id="comment" name="comment" style="width: 96%;height:80px;" validate="default" isnull=true maxlength="100" minlength="0"></textarea></p>
+								<p id="checkcode-field">
+									<span>验证码  </span><span style="padding: 0 7px;"><input type="text" class="ui-input" id="checkcode" name="checkcode" validate="default" validateAjax="checkcode-logout.do" isnull=true maxlength="4" minlength="0"/></span><input id="comment-submit" type="button" value="提交"/>
+								</p>
+								<div class="checkcode-frame" id="index-checkcode" style="position: absolute;z-index: 100;display:none;">
+									<a href="#" id="refresh-checkcode">刷新验证码</a>
+									<img id="checkcode-image" src="" style="display:none;"/>
+								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 					
 				</div>

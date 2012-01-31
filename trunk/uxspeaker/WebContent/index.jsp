@@ -5,7 +5,12 @@
 <%@ page import="com.ux.entity.ArticleInfo" %>
 <% 
 ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
-List<ArticleInfo> list = dao.queryArticle(0,5);
+List<Map<String,Object>> list = dao.queryArticleMap(0,5);
+int count = (int)dao.getCount();
+String currentPage = request.getParameter("current");
+if(currentPage==null || "".equals(currentPage)){
+	currentPage = "1";
+};
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,35 +29,38 @@ List<ArticleInfo> list = dao.queryArticle(0,5);
 	<!-- div class="index-title" style="background-color: #3E5819;">
 		<div style="margin: auto;width:990px;"><img src="stylesheet/img/index/title.png" style="width:990px;height:340px;"/></div>
 	</div> -->
-	<div class="index-body">
+	<div class="index-body" id="index" total="<%=count%>" currentPage="<%=currentPage%>">
 		<div class="float index-content">
 			<% 
-			for(ArticleInfo info : list){
-				
+			for(Map<String,Object> info : list){
+				String userpicture = (String)info.get("userpicture");
+				if(userpicture==null || "".equals(userpicture)){
+					userpicture = "stylesheet/img/120_0_0.gif";
+				}
 			%>
 			<!-- 文章内容开始 -->
 			<div class="index-content-item">
 				<div>
 					<dl class="dl-user">
-						<dd class="dl-user-photo"><a href="author"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-						<dt><a href="article?id=<%=info.getId()%>"><%=info.getTitle() %></a></dt>
-						<dd class="dl-user-tips"><a href="author">xiaoT</a>&nbsp;<span>/</span>&nbsp;<a href="type">视觉设计</a>&nbsp;<span>/</span>&nbsp;<span><%=info.getFirstDate() %></span></dd>
+						<dd class="dl-user-photo"><a href="author"><img src="<%=userpicture %>" /></a></dd>
+						<dt><a href="article?id=<%=info.get("id")%>"><%=info.get("title") %></a></dt>
+						<dd class="dl-user-tips"><a href="author"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="type"><%=info.get("type")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate") %></span></dd>
 						<dd class="clear"></dd>
 					</dl>
 				</div>
 				<div class="index-content-photo">
-					<a href="article?id=<%=info.getId()%>"><img width="720" height="255" src="<%=info.getPicture() %>" /></a>
+					<a href="article?id=<%=info.get("id")%>"><img width="720" height="255" src="<%=info.get("picture") %>" /></a>
 				</div>
 				<div class="index-content-text">
-					<%=info.getText() %>
+					<%=info.get("text") %>
 				</div>
 				<div class="index-toolbar">
 					<ul class="float">
-						<li><span class="ux-icon index-search float"></span>&nbsp;<span><%=info.getBrower() %></span></li>
-						<li><span class="ux-icon index-like float"></span>&nbsp;<span><%=info.getLove() %></span></li>
-						<li><span class="ux-icon index-comment float"></span>&nbsp;<span>400400400400</span></li>
+						<li><span class="ux-icon index-search float"></span>&nbsp;<span><%=info.get("brower") %></span></li>
+						<li><span class="ux-icon index-like float"></span>&nbsp;<span><%=info.get("love") %></span></li>
+						<li><span class="ux-icon index-comment float"></span>&nbsp;<span><%=info.get("love") %></span></li>
 					</ul>
-					<a href="article?id=<%=info.getId()%>" class="float-right">> 阅读全文</a>
+					<a href="article?id=<%=info.get("id")%>" class="float-right">> 阅读全文</a>
 					<div class="clear"></div>
 				</div>
 				<div class="index-foot-line"></div>
