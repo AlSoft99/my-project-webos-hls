@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  	http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  	http://www.springframework.org/schema/tx 
+  	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  	http://www.springframework.org/schema/context 
+  	http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+  	> 
+	<bean id="queryUtil" class="com.ux.util.QueryUtil">
+		<property name="querylist">
+			<map>
+				<entry key="SQL1">
+					<value>
+						<![CDATA[
+							select new map(a.id as id,a.articleid as articleid,a.userid as userid,a.commentuser as commentuser,a.comment as comment,a.receiver as receiver,a.approve as approve,a.oppose as oppose,a.currentDate as currentDate,(select b.username from UserInfo b where b.id=a.userid) as username,(select b.picture from UserInfo b where b.id=a.userid) as picture ) from CommentInfo a where a.articleid='{0}' order by a.currentDate desc
+						]]>
+					</value>
+				</entry>
+				<entry key="SQL2">
+					<value>
+						<![CDATA[
+						]]>
+					</value>
+				</entry>
+				<entry key="SQL3">
+					<value>
+						<![CDATA[
+						]]>
+					</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

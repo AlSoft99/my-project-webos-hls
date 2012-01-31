@@ -3,13 +3,16 @@
 <% 
 UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
 String username = "";
+String userid = "";
 if(userInfo!=null){
 	username = userInfo.getUsername();
+	userid = userInfo.getId()+"";
 }
 %>
 <link type="text/css" rel="stylesheet" href="lib/plugin/colortip/colortip.jquery.css" media="screen" />
 <script type="text/javascript" src="lib/plugin/colortip/colortip.jquery.js"></script>
 <script type="text/javascript" src="lib/plugin/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/plugin/jquery.cookie.js"></script>
 <div id="dialog-register" style="display: none;" title="<span style='padding:3px 0;float:left;'>注册</span>">
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
@@ -42,7 +45,7 @@ if(userInfo!=null){
 </div>
 <div class="index-title">
 	<div class="index-title-frame">
-		<div class="float"><a class="logo float" style="margin-top: 10px;" href="index"></a>&nbsp;&nbsp;<span <% if(userInfo!=null) {%>style="display:none;"<%}%> id="registerfield"><a class="float index-logo" id="register-btn" style="padding-left: 10px;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></span><span id="loginfield" <% if(userInfo==null) {%>style="display:none;"<%}%>><label id="loginname" class="float" style="padding:30px 0 10px 10px;font-size: 13px;" ><%=username %></label><label class="float" style="padding:30px 0 10px;font-size: 13px;" > ,欢迎您登陆本Bolog</label><a class="float index-logo" style="padding-left: 10px;" href="main">我的后台</a><a class="float index-logo" id="logout-btn" style="padding-left: 10px;" href="#">退出</a></span></div>
+		<div class="float"><a class="logo float" style="margin-top: 10px;" href="index"></a>&nbsp;&nbsp;<span <% if(userInfo!=null) {%>style="display:none;"<%}%> id="registerfield"><a class="float index-logo" id="register-btn" style="padding-left: 10px;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></span><span id="loginfield" <% if(userInfo==null) {%>style="display:none;"<%}%>><label id="loginname" class="float" loginid="<%=userid %>" style="padding:30px 0 10px 10px;font-size: 13px;" ><%=username %></label><label class="float" style="padding:30px 0 10px;font-size: 13px;" > ,欢迎您登陆本Bolog</label><a class="float index-logo" style="padding-left: 10px;" href="main">我的后台</a><a class="float index-logo" id="logout-btn" style="padding-left: 10px;" href="#">退出</a></span></div>
 		<div class="float-right index-menu">
 			<ul class="float-right">
 				<li class="select"><a href="index" >首页</a></li>
@@ -56,6 +59,17 @@ if(userInfo!=null){
 	</div>
 </div>
 <script>
+var loginFunction = {
+	login: function(){
+		var loginname=$("#loginname").text();
+		//$("#callname").hide();
+		$("#commentuser").val(loginname);
+	},
+	logout: function(){
+		$("#callname").show();
+		$("#commentuser").val("");
+	}
+}
 $(function(){
 	$("#dialog-register form, #dialog-login form").validateInit();
 	function register(){
@@ -94,7 +108,7 @@ $(function(){
 					$("#loginname").text(val.username);
 					$("#registerfield").hide();
 					$("#loginfield").show();
-					
+					loginFunction.login();
 				}else{
 					$.toast("登陆失败, 请确认邮箱和密码!");
 				}
@@ -160,6 +174,7 @@ $(function(){
 				$.toast("退出成功!");
 				$("#registerfield").show();
 				$("#loginfield").hide();
+				loginFunction.logout();
 			}
 		});
 	});

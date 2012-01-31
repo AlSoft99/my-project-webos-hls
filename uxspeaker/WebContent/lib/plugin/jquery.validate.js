@@ -12,9 +12,13 @@ $.fn.extend({
 		var val = true;
 		$(this).find("input[validate],select[validate],textarea[validate]").each(function(){
 			var pass = $(this).attr("validate-pass");
-			if(typeof(pass)=="undefined" || pass=="false" || pass==false){
+			if(typeof(pass)=="undefined"){
+				val = $(this).validate();
+				if(!val){
+					return false;
+				}
+			}else if(pass=="false" || pass==false){
 				val = false;
-				$(this).validate();
 				return false;
 			}
 		});

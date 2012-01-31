@@ -27,6 +27,7 @@ public class RegisterVo {
 	public @ResponseBody String register(@RequestParam(value="username",required=true) String username,UserInfo userInfo){
 		Date date = new Date();
 		userInfo.setCurrentdate(date);
+		System.out.println("userInfo:"+userInfo.getUsername());
 		userInfoDao.save(userInfo);
 		return "success";
 	}

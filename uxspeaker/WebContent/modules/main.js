@@ -60,4 +60,7 @@ $(function(){
 		$.toast(error);
 		$("body").loading("close");
 	});
+	$('body').ajaxSend(function(e, xhr, settings) {
+		$("body").loading("open");
+	});
 });

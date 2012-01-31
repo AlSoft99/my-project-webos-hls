@@ -17,7 +17,7 @@ public class MvcInterceptor extends HandlerInterceptorAdapter {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		String uri = request.getServletPath();
-		if(uri.equals("/register.do") || uri.equals("/checkid.do")){
+		if(uri.equals("/register.do") || uri.equals("/checkid.do") || uri.indexOf("-logout")>0){
 			return true;
 		}else{
 			UserInfo userinfo = (UserInfo)request.getSession().getAttribute("userinfo");

@@ -1,3 +1,20 @@
+$(function(){
+	$("body").ajaxError(function(e, xhr, settings, exception){
+		var error = exception+" "+xhr.status;
+		$.toast(error);
+		$("body").loading("close");
+	});
+	$('body').ajaxSend(function(e, xhr, settings) {
+		if(settings.url.indexOf("noloading=true")<0){
+			$("body").loading("open");
+		}
+		
+	});
+	$('body').ajaxComplete(function(e, xhr, settings) {
+		//console.log("close");
+		$("body").loading("close");
+	});
+});
 $.extend({
 	/*parseWindowUrl: function(url){
 		return url.substring(url.indexOf("#")+1)+".html";
@@ -7,7 +24,7 @@ $.extend({
 		if(typeof(duration)!="undefined"){
 			time = duration;
 		}
-		var obj = $("<div style='position: absolute;top:50%;left:48%;z-index:99999;border:1px solid #EADFCF;padding:10px;background-color:#F9F9F5;border-radius:5px;box-shadow:1px 1px 3px #F2EDE4;visibility: hidden;'>"+msg+"</div>");
+		var obj = $("<div style='position: fixed;top:50%;left:48%;z-index:99999;border:1px solid #EADFCF;padding:10px;background-color:#F9F9F5;border-radius:5px;box-shadow:1px 1px 3px #F2EDE4;visibility: hidden;'>"+msg+"</div>");
 		$("body").append(obj);
 		var left = ($(document).width()-obj.innerWidth())/2;
 		obj.css("left",left+"px").css("display","none").css("visibility","visible");
@@ -80,12 +97,30 @@ $.extend({
     	$.extend(true,v,option);
     	var upload = new SWFUpload(v);
     	return upload;
+    },
+    queryData: function(option,fn){
+    	/**
+    	 * {start:1,row:5,sql:xxx,logout:true}
+    	 */
+    	var url = "query";
+    	if(option.logout!=null || $.type(option.logout)!="undefined"){
+    		url += "-logout";
+    	}
+    	$.ajax({
+    		url:url+".do",
+    		dataType: 'json',
+    		data: option,
+    		async : false,
+    		success: function(data){
+    			fn(data);
+    		}
+    	});
     }
 });
 $.fn.extend({
 	loading : function(fn){
 		if(fn=="open"){
-			var obj = $("<div class='loading wait-loading' style='width:100%;height:100%;position: absolute;z-index:9999;background-position:center center;filter:Alpha(opacity=40);background-color:white;top:0;opacity:.4;background-repeat:no-repeat;'></div>");
+			var obj = $("<div class='loading wait-loading' style='width:100%;height:100%;position: fixed;z-index:9999;background-position:center center;filter:Alpha(opacity=40);background-color:white;top:0;opacity:.4;background-repeat:no-repeat;'></div>");
 			$("body").append(obj);
 		}else if(fn=="close"){
 			$("body").find(".wait-loading").remove();
@@ -103,7 +138,7 @@ $.fn.extend({
 		};
 		$(this).each(function(){
 			var value = parseVal($(this).attr(attr));
-			if(value!=""){
+			if(value!="" && $(this).val()==""){
 				$(this).val(value);
 				$(this).addClass(className);
 			}
