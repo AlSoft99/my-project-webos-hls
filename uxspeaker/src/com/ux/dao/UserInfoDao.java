@@ -25,4 +25,8 @@ public class UserInfoDao extends BaseDao{
 	public void update(UserInfo userinfo){
 		getHibernateTemplate().update(userinfo);
 	}
+	public UserInfo getUserInfo(Integer id){
+		UserInfo userinfo = getHibernateTemplate().get(UserInfo.class, id);
+		return userinfo;
+	}
 }

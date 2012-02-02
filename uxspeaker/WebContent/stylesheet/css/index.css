@@ -110,10 +110,10 @@
 	display: inline-block;background-position: 0px 0px;height:12px;width:12px;margin-top: 4px;
 }
 .index-like{
-	display: inline-block;background-position: 0px -12px;height:12px;width:12px;margin-top: 4px;
+	display: inline-block;background-position: -12px -12px;height:12px;width:17px;margin-top: 4px;
 }
 .index-comment{
-	display: inline-block;background-position: -12px -12px;height:12px;width:17px;margin-top: 4px;
+	display: inline-block;background-position: 0px -12px;height:12px;width:12px;margin-top: 4px;
 }
 .index-foot{
 	height:150px;

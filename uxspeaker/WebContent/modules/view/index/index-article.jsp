@@ -14,8 +14,8 @@ dao.updateBrower(id);
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-<title>官家部落格</title>
+<meta http-equiv="X-UA-Compatible" />
+<title>UXSPEAKER</title>
 
 <!-- CSS ../../../-->
 <%@ include file="../include.html" %>
@@ -27,6 +27,9 @@ dao.updateBrower(id);
 </head>
 <body>
 	<%@ include file="index-menu.jsp" %>
+	<div id="dialog-confirm" title="删除?">
+		<p>是否确定删除该评论?</p>
+	</div>
 	<div class="index-body" id="article-index" articleid="<%=id %>">
 		<div class="index-navigation" style="padding-top:25px;">
 			<a href="index">首页</a> > <a href="#"><%=info.get("type")%></a> > <span><%=info.get("title")%></span>
@@ -39,17 +42,17 @@ dao.updateBrower(id);
 						<% 
 						if(info.get("picture")==null || "".equals(info.get("picture"))){
 						%>
-						<dd class="dl-user-photo"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
+						<dd class="dl-user-photo"><a href="author?id=<%=info.get("userid")%>"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
 						<% 
 						}else{
 						%>
-						<dd class="dl-user-photo"><a href="#"><img src="<%=info.get("userpicture")%>" /></a></dd>
+						<dd class="dl-user-photo"><a href="author?id=<%=info.get("userid")%>"><img src="<%=info.get("userpicture")%>" /></a></dd>
 						<%
 						}
 						%>
 						<dt><span class="dl-user-title"><%=info.get("title")%></span></dt>
 						<dd class="dl-user-tips">
-							<a href="#"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="#"><%=info.get("type")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate")%></span>&nbsp;<span>/</span>
+							<a href="author?id=<%=info.get("userid")%>"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="#"><%=info.get("type")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate")%></span>&nbsp;<span>/</span>
 							&nbsp;<span>相关标签</span>
 							<% 
 							for(int i=0;i<tagname.length;i++){
@@ -79,13 +82,14 @@ dao.updateBrower(id);
 				</div>
 				<div class="bl-index-content-discuss">
 					<div class="discuss-frame">
-						<h5 class="discuss-sum">评论 (<span>1</span> 个评论)</h5>
+						<h5 class="discuss-sum">评论 (<span id="comment-count">1</span> 个评论)</h5>
 						<div class="discuss-list">
 							<div class="discuss-item" id="discuss-item">
-								<dl>
+								<!-- <dl>
 									<dd class="discuss-photo float"><a href="#"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
-									<dt><a href="#" style="font-weight: bold;">rayln</a>&nbsp;<span>2011-12-28 09:22</span><a class="float-right" href="#">删除</a><a class="float-right" href="#">编辑</a></dt>
-									<dd class="discuss-content">离线编辑器开放接口所使用的。其中RSD是一个广义的接口，wlwmanifest是针对微软Live Writer编辑器的。有了这两个接口，在使用离线编辑器撰写博客的时候，就可以直接在软件中选择分类，标签等等内容了</dd>
+									<dt><a href="#" style="font-weight: bold;">rayln</a>&nbsp;<span>2011-12-28 09:22</span><a class="float-right index-article-edit" href="#">删除</a><a class="float-right index-article-edit" href="#">编辑</a></dt>
+									<dd class="discuss-content index-article-content" style="display:none;">离线编辑器开放接口所使用的。其中RSD是一个广义的接口，wlwmanifest是针对微软Live Writer编辑器的。有了这两个接口，在使用离线编辑器撰写博客的时候，就可以直接在软件中选择分类，标签等等内容了</dd>
+									<dd class="discuss-content index-article-content-edit"><textarea style="width:100%;height:60px;">离线编辑器开放接口所使用的。其中RSD是一个广义的接口，wlwmanifest是针对微软Live Writer编辑器的。有了这两个接口，在使用离线编辑器撰写博客的时候，就可以直接在软件中选择分类，标签等等内容了</textarea></dd>
 									<dd class="clear"></dd>
 								</dl>
 								<dl>
@@ -93,7 +97,7 @@ dao.updateBrower(id);
 									<dt><a href="#" style="font-weight: bold;">rayln</a>&nbsp;<span>2011-12-28 09:22</span><a class="float-right" href="#">删除</a><a class="float-right" href="#">编辑</a></dt>
 									<dd class="discuss-content">离线编辑器开放接口所使用的。其中RSD是一个广义的接口，wlwmanifest是针对微软Live Writer编辑器的。有了这两个接口，在使用离线编辑器撰写博客的时候，就可以直接在软件中选择分类，标签等等内容了</dd>
 									<dd class="clear"></dd>
-								</dl>
+								</dl> -->
 							</div>
 						</div>
 						<form id="comment-form">
@@ -102,7 +106,7 @@ dao.updateBrower(id);
 							<div class="discuss-submit">
 								<h5 class="discuss-sum">提交评论 </h5>
 								<p id="callname" ><input id="commentuser" name="commentuser" placeholder="称呼" type="text" validate="default" isnull=true maxlength="30" minlength="0" class="ui-input" value="<%=username%>" <%if(userInfo!=null){%>userid="<%=userInfo.getId()%>"<%} %>/>&nbsp;&nbsp;<span style="color:red;">(如果您未登陆, 请填写称呼)</span></p>
-								<p><textarea id="comment" name="comment" style="width: 96%;height:80px;" validate="default" isnull=true maxlength="100" minlength="0"></textarea></p>
+								<p><textarea id="comment" name="comment" style="width: 96%;height:80px;" validate="default" isnull=true maxlength="1000" minlength="0"></textarea></p>
 								<p id="checkcode-field">
 									<span>验证码  </span><span style="padding: 0 7px;"><input type="text" class="ui-input" id="checkcode" name="checkcode" validate="default" validateAjax="checkcode-logout.do" isnull=true maxlength="4" minlength="0"/></span><input id="comment-submit" type="button" value="提交"/>
 								</p>

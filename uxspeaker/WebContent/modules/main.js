@@ -40,7 +40,7 @@ var main = {
 		$("#main").empty();
 		$("#main").append("<div class='loading' style='width:31px;height:31px;margin:200px auto;'></div>");
 		$("body > *[id!=wrapper]").remove();
-		$("#main").load(url,function(){
+		$("#main").load(url+"?noloading=true",function(){
 			$("#main").css("opacity",0);
 			$(this).animate({opacity:1},500);
 			$("input[type=button],button").button();
@@ -54,13 +54,5 @@ $(function(){
 	main.sessionParse(sessionStr);
 	$("#user_page,#user_item").click(function(){
 		main.loadingWay(viewpath + main.parseWindowUrl($(this).attr("href")));
-	});
-	$("body").ajaxError(function(e, xhr, settings, exception){
-		var error = exception+" "+xhr.status;
-		$.toast(error);
-		$("body").loading("close");
-	});
-	$('body').ajaxSend(function(e, xhr, settings) {
-		$("body").loading("open");
 	});
 });
