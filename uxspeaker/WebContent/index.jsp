@@ -65,8 +65,8 @@ int count = (int)dao.getCount();
 				<div class="index-toolbar">
 					<ul class="float">
 						<li><span class="ux-icon index-search float"></span>&nbsp;<span><%=info.get("brower") %></span></li>
-						<li><span class="ux-icon index-like float"></span>&nbsp;<span><%=info.get("commentsum") %></span></li>
-						<li><span class="ux-icon index-comment float"></span>&nbsp;<span><%=info.get("love") %></span></li>
+						<li><span class="ux-icon index-like float"></span>&nbsp;<span><%=info.get("love") %></span></li>
+						<li><span class="ux-icon index-comment float"></span>&nbsp;<span><%=info.get("commentsum") %></span></li>
 					</ul>
 					<a href="article?id=<%=info.get("id")%>" class="float-right">> 阅读全文</a>
 					<div class="clear"></div>

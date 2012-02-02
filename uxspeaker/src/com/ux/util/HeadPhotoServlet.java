@@ -34,27 +34,38 @@ public class HeadPhotoServlet extends HttpServlet{
 		/*List<FileEntity> file = upload.upload(request, response,"head"+"/");*/
 		String url = "tmp/head/";
 		String path = System.getProperty("webapp.root")+url;
+		String reduce = request.getParameter("reduce");
+		FileEntity entity = null;
 		File min = new File(path);
 		if(!min.exists()){
 			min.mkdirs();
 		}
-		
-		FileEntity entity = upload.getInputStream(request);
-		entity.setUploadurl(url);
-		BufferedImage image = ImageIO.read(entity.getStream());
-    	float w = image.getWidth();
-    	float h = image.getHeight();
+		if(!"false".equals(reduce)){
+			entity = upload.getInputStream(request);
+			entity.setUploadurl(url);
+			BufferedImage image = ImageIO.read(entity.getStream());
+	    	float w = image.getWidth();
+	    	float h = image.getHeight();
 
-    	if(w<h){
-    		w = (300/h)*w;
-    		h = 300;
-    	}else{
-    		h = (300*h)/w;
-    		w = 300;
-    	}
-    	int intW = (int)w;
-    	int intH = (int)h;
-		Utils.reduceImg(image, path+entity.getUploadname(), intW, intH);
+	    	if(w<h){
+	    		w = (300/h)*w;
+	    		h = 300;
+	    	}else{
+	    		h = (300*h)/w;
+	    		w = 300;
+	    	}
+	    	int intW = (int)w;
+	    	int intH = (int)h;
+			Utils.reduceImg(image, path+entity.getUploadname(), intW, intH);
+		}else{
+			List<FileEntity> file = upload.upload(request, response,url);
+			if(file.size()>0){
+				entity = file.get(0);
+			}
+			System.out.println("entity:"+entity.getUploadurl());
+		}
+			
+		
 		Gson gson = new Gson();
 		java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<FileEntity>() {}.getType();    
         String beanListToJson = gson.toJson(entity,type);

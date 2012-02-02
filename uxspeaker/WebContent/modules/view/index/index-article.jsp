@@ -9,6 +9,7 @@ ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",A
 Map<String,Object> info = dao.queryMapById(id);
 String[] tagname = info.get("tagname").toString().split(",");
 dao.updateBrower(id);
+System.out.println("info.get(picture): "+info.get("picture"));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -40,7 +41,7 @@ dao.updateBrower(id);
 				<div>
 					<dl class="dl-user">
 						<% 
-						if(info.get("picture")==null || "".equals(info.get("picture"))){
+						if(info.get("userpicture")==null || "".equals(info.get("userpicture"))){
 						%>
 						<dd class="dl-user-photo"><a href="author?id=<%=info.get("userid")%>"><img src="stylesheet/img/120_0_0.gif" /></a></dd>
 						<% 

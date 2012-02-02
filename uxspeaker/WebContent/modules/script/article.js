@@ -25,7 +25,7 @@ $(function(){
 	$("#type").selectmenu();
 	var cutpicture = {};
 	$.swfupload({
-		upload_url : "uploadphoto.head",
+		upload_url : "uploadphoto.head?reduce=false",
 		upload_progress_handler : uploadProgress,
 		upload_success_handler : uploadSuccess,
 		file_queue_limit : "1",
@@ -51,10 +51,14 @@ $(function(){
 		imgLoad(returnVal.uploadurl + returnVal.uploadname,function(image){
 			cutpicture["w"] = 0;
 			image.id = "upload-photo";
+			var imageWidth = image.width;
+			var imageHeight = image.height;
 			if(image.width < image.height){
 				image.height = 300;
+				cutpicture["pro"] = 300/imageHeight;
 			}else{
 				image.width = 300;
+				cutpicture["pro"] = 300/imageWidth;
 			}
 			
 			$("#bl-article-loading").hide();
@@ -121,6 +125,12 @@ $(function(){
 				}
 				console.log("cutpicture.uploadname:==="+cutpicture.uploadname);
 				$("body").loading("open");
+				if(cutpicture.w!=0){
+					cutpicture.w = Math.round(cutpicture.w/cutpicture.pro);
+					cutpicture.h = Math.round(cutpicture.h/cutpicture.pro);
+					cutpicture.x = Math.round(cutpicture.x/cutpicture.pro);
+					cutpicture.y = Math.round(cutpicture.y/cutpicture.pro);
+				}
 				var cut = $.param(cutpicture);
 				$.get("article-upload.do?"+cut,function(data){
 					$("#article-photo-info").attr("src",data).attr("width",226).attr("height",80);

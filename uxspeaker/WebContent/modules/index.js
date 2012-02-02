@@ -32,8 +32,8 @@ var index = {
 								'<div class="index-toolbar">'+
 								  '<ul class="float">'+
 								    '<li><span class="ux-icon index-search float"></span>&nbsp;<span>'+data[i].brower+'</span></li>'+
-								    '<li><span class="ux-icon index-like float"></span>&nbsp;<span>'+data[i].commentsum+'</span></li>'+
-								    '<li><span class="ux-icon index-comment float"></span>&nbsp;<span>'+data[i].love+'</span></li>'+
+								    '<li><span class="ux-icon index-like float"></span>&nbsp;<span>'+data[i].love+'</span></li>'+
+								    '<li><span class="ux-icon index-comment float"></span>&nbsp;<span>'+data[i].commentsum+'</span></li>'+
 								  '</ul>'+
 								  '<a href="article?id='+data[i].id+'" class="float-right">> 阅读全文</a>'+
 								  '<div class="clear"></div>'+

@@ -18,7 +18,7 @@ if(currentPage==null || "".equals(currentPage)){
 List<Map<String,Object>> list = dao.queryArticleMap((Integer.parseInt(currentPage)-1)*rownumber,rownumber," and a.userid='"+id+"' ");
 int count = (int)dao.getCount();
 UserInfo userinfo = userdao.getUserInfo(Integer.valueOf(id));
-if(userinfo.getPicture().equals("") || userinfo.getPicture()==null){
+if("".equals(userinfo.getPicture()) || userinfo.getPicture()==null){
 	picture = "stylesheet/img/120_0_0.gif";
 }else{
 	picture = userinfo.getPicture();
@@ -91,8 +91,8 @@ if(userinfo.getPicture().equals("") || userinfo.getPicture()==null){
 					<div class="index-toolbar">
 						<ul class="float">
 							<li><span class="ux-icon index-search float"></span>&nbsp;<span><%=info.get("brower") %></span></li>
-							<li><span class="ux-icon index-like float"></span>&nbsp;<span><%=info.get("commentsum") %></span></li>
-							<li><span class="ux-icon index-comment float"></span>&nbsp;<span><%=info.get("love") %></span></li>
+							<li><span class="ux-icon index-like float"></span>&nbsp;<span><%=info.get("love") %></span></li>
+							<li><span class="ux-icon index-comment float"></span>&nbsp;<span><%=info.get("commentsum") %></span></li>
 						</ul>
 						<a href="article?id=<%=info.get("id")%>" class="float-right">> 阅读全文</a>
 						<div class="clear"></div>
