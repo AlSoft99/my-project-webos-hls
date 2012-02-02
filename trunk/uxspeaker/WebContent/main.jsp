@@ -41,7 +41,7 @@ window.sessionStr = '<%=sessionStr%>';
 <body>
 	<div id="wrapper">
     	<!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
-    	<div style="height: 55px;"><a class="logo float" style="margin-top: 10px;" href="#"></a><span class="clear"></span></div>
+    	<div style="height: 55px;"><a class="logo float" style="margin-top: 10px;" href="index"></a><span class="clear"></span></div>
         
         <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
         <div class="sideTitle">

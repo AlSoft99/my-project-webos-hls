@@ -76,6 +76,6 @@
 	
 	<!-- 配置上传文件的类路径, 可以删掉 -->
 	<bean id="fileUpload" class="com.frame.util.FileUpload">
-		<property name="filepath" value="upload/"/>
+		<property name="filepath" value=""/>
 	</bean>
 </beans>
