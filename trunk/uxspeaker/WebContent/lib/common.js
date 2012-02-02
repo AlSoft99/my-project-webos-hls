@@ -112,7 +112,9 @@ $.extend({
     		data: option,
     		async : false,
     		success: function(data){
-    			fn(data);
+    			if($.isFunction(fn)){
+    				fn(data);
+    			}
     		}
     	});
     }
@@ -156,6 +158,16 @@ $.fn.extend({
 				$(this).addClass(className);
 			}
 		});
+		/*$(this).bind("change",function(){
+			var value = parseVal($(this).attr(attr));
+			if($.trim($(this).val())=="" && value!=""){
+				var value = parseVal($(this).attr(attr));
+				$(this).val(value);
+				$(this).addClass(className);
+			}else{
+				$(this).removeClass(className);
+			}
+		});*/
 	},
 	searchInput: function(){
 		$(this).wrap("<div class='ui-input-search'></div>");
@@ -344,6 +356,10 @@ $.fn.extend({
 			return;
 		}
 		goCurrent(option);
+	},
+	getCurrentPageNo:function(){
+		var o = $(this).find(".common-page-no.select");
+		return o.text();
 	},
 	//判断中文长度
 	getLength:function(strTemp){

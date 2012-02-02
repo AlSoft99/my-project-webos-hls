@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<meta http-equiv="X-UA-Compatible" />
 <title>官家部落格</title>
 <!-- CSS ../../../-->
 <link type="text/css" rel="stylesheet" href="stylesheet/css/main.css" media="screen" />

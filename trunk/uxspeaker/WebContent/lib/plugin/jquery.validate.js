@@ -229,6 +229,6 @@ $.fn.extend({
 	},
 	reset : function(){
 		$(this).find(".vaildate-error,.vaildate-correct").remove();
-		$(this).find("[validate-pass]").attr("validate-pass","false");
+		$(this).find("[validate-pass]").removeAttr("validate-pass");
 	}
 });

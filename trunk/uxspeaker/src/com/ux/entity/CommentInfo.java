@@ -31,7 +31,7 @@ public class CommentInfo implements Serializable {
 	@Column(name = "commentuser", nullable = true,length=30)
 	private String commentuser;
 	//评论
-	@Column(name = "comment", nullable = false,length=100)   
+	@Column(name = "comment", nullable = false,length=1000)   
 	private String comment;
 	//回复
 	@Column(name = "receiver", nullable = true,length=30)   

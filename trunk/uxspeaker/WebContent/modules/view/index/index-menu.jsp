@@ -61,13 +61,10 @@ if(userInfo!=null){
 <script>
 var loginFunction = {
 	login: function(){
-		var loginname=$("#loginname").text();
-		//$("#callname").hide();
-		$("#commentuser").val(loginname);
+		
 	},
 	logout: function(){
-		$("#callname").show();
-		$("#commentuser").val("");
+		
 	}
 }
 $(function(){
@@ -85,6 +82,7 @@ $(function(){
 				}else{
 					$.toast("注册失败, 请联系管理员!");
 				}
+				$("#dialog-register input").val("");
 				$("body").loading("close");
 			});
 			/* $.ajax({
@@ -100,19 +98,19 @@ $(function(){
 	function login(){
 		var check = $("#dialog-login form").validateForm();
 		if(check){
-			$("body").loading("open");
 			$.getJSON("register.do?method=login&"+$("#dialog-login form").serialize(),function(val){
 				if(val.status=="success"){
 					$.toast("登陆成功!");
 					$( "#dialog-login" ).dialog( "close" );
 					$("#loginname").text(val.username);
+					$("#loginname").attr("loginid",val.userid);
 					$("#registerfield").hide();
 					$("#loginfield").show();
-					loginFunction.login();
+					$("#dialog-login form").reset();
 				}else{
 					$.toast("登陆失败, 请确认邮箱和密码!");
 				}
-				$("body").loading("close");
+				$("#dialog-login input").val("");
 			});
 			/* $.ajax({
 				  url: "register.do?method=add&"+$("#dialog-register form").serialize(),
@@ -122,6 +120,7 @@ $(function(){
 			}); */
 		}
 	}
+	
 	$( "#dialog-register" ).dialog({
 		resizable: true,
 		height:280,
@@ -174,7 +173,8 @@ $(function(){
 				$.toast("退出成功!");
 				$("#registerfield").show();
 				$("#loginfield").hide();
-				loginFunction.logout();
+				$("#loginname").text("");
+				$("#loginname").attr("loginid","");
 			}
 		});
 	});
