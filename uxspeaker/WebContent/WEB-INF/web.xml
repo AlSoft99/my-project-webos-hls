@@ -32,6 +32,10 @@
 	    <servlet-name>HeadPhotoServlet</servlet-name>
 	    <servlet-class>com.ux.util.HeadPhotoServlet</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>KindeditorServlet</servlet-name>
+	    <servlet-class>com.ux.util.KindeditorServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 	    <servlet-name>ImageServlet</servlet-name>
@@ -56,6 +60,10 @@
 	<servlet-mapping>
 		<servlet-name>HeadPhotoServlet</servlet-name>
 		<url-pattern>*.head</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>KindeditorServlet</servlet-name>
+		<url-pattern>*.php</url-pattern>
 	</servlet-mapping>
 	<!-- ************************context start *****************************-->
 	<context-param>
