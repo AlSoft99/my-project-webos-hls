@@ -7,6 +7,7 @@
 <script type="text/javascript" src="lib/swfupload/swfupload.js"></script>
 <script type="text/javascript" src="lib/swfupload/handlers.js"></script> 
 <script type="text/javascript" src="lib/plugin/jcrop/jquery.jcrop.min.js" ></script>
+<script type="text/javascript" src="lib/plugin/jquery.validate.js"></script>
 <script type="text/javascript" src="modules/script/article.js"></script> 
 <!-- <script type="text/javascript" src="lib/plugin/jquery.combobox.js"></script> -->
 <!-- <script type="text/javascript" src="lib/kindeditor/kindeditor-min.js"></script>
@@ -31,7 +32,7 @@
 			<li><a href="modules/view/friend/friend-invite.html">修改</a></li>
 		</ul>
 		<div id="tabs-1">
-			<form class="ui-form" action="article-add.do" method="get">
+			<form class="ui-form" id="article-add-form" action="article-add.do" method="get">
 				<table class="ui-table-custom" id="article-form" style="margin-top:35px;">
 					<!-- tr>
 						<td align="right">日期:</td><td><input id="articledate" type="text" class="ui-input" style="width:227px;" /></td>
@@ -40,7 +41,6 @@
 						<td align="right">类别:</td>
 						<td>
 							<select id="type" name="type" style="width:225px;">
-								<option value="">Select one...</option>
 								<option value="ActionScript">ActionScript</option>
 								<option value="AppleScript">AppleScript</option>
 								<option value="Asp">Asp</option>
@@ -51,7 +51,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="right">标题:</td><td><input id="title" name="title" type="text" class="ui-input" style="width:600px;" placeholder="请输入文章标题"/></td>
+						<td align="right">标题:</td><td><input id="title" name="title" type="text" class="ui-input" validate="default" isnull=true maxlength="50" minlength="0" style="width:600px;" placeholder="请输入文章标题"/></td>
 					</tr>
 					<tr>
 						<td align="right">首图:</td>
@@ -68,7 +68,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="right">标签:</td><td><input id="tag" name="tag" type="text" class="ui-input" style="width:600px;" placeholder="请输入标签,多标签','隔开"/></td>
+						<td align="right">标签:</td><td><input id="tag" name="tag" type="text" class="ui-input" validate="default" isnull=true maxlength="200" minlength="0" style="width:600px;" placeholder="请输入标签,多标签','隔开"/></td>
 					</tr>
 					<tr>
 						<td></td>
