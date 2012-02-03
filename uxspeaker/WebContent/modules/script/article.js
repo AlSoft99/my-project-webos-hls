@@ -25,6 +25,7 @@ $(function(){
 	/*$("#articledate").datepicker();*/
 	//$("#articletype").createCombobox("#articletype");
 	$("#type").selectmenu();
+	$("#article-add-form").validateInit();
 	var cutpicture = {};
 	$.swfupload({
 		upload_url : "uploadphoto.head?reduce=false",
@@ -153,6 +154,26 @@ $(function(){
 		$( "#dialog-upload" ).dialog("open");
 	});
 	$("#submitarticle").click(function(){
+		var validate = $("#article-add-form").validateForm();
+		var validate_content = $.trim(article.editor.html());
+		if(validate){
+			if(!validate_content){
+				$.toast("文章请不要为空!");
+				return false;
+			}
+			var tag = $("#tag").val();
+			if(tag!=""){
+				var tmp = tag.split(",");
+				for(var i = 0 ; i < tmp.length; i++){
+					if($.getLength(tmp[i])>30){
+						$.toast("每个标签请不要超过30个字母!");
+						return false;
+					}
+				}
+			}
+		}else{
+			return false;
+		}
 		var sublength = 250;
 		var param = $(".ui-form").serialize();
 		var editor = {};
@@ -174,8 +195,9 @@ $(function(){
 		/*$(".ui-form").submit();*/
 		$.post("article-add.do",param,function(data){
 			$.toast("文章提交成功!");
-			$("#article-form input").val("");
+			$("#article-form input[type=text]").val("");
 			$("#type").selectmenu("index",1);
+			$("#article-add-form").reset();
 			article.editor.html("");
 		});
 	});

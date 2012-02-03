@@ -1,7 +1,13 @@
 $(function(){
 	$("body").ajaxError(function(e, xhr, settings, exception){
 		var error = exception+" "+xhr.status;
-		$.toast(error);
+		var content = xhr.responseText;
+		if(content.indexOf("session")>=0){
+			$.toast("请求已过期, 请重新登陆!");
+		}else{
+			$.toast(error);
+		}
+		
 		$("body").loading("close");
 	});
 	$('body').ajaxSend(function(e, xhr, settings) {
