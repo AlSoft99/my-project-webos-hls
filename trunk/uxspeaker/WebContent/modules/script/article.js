@@ -10,7 +10,9 @@ var article = {
 	initKindEditor: function(){
 		$.getScript('lib/kindeditor/kindeditor-min.js', function() {
 			KindEditor.basePath = article.basePath;
-			article.editor = KindEditor.create('textarea[id="articlecontent"]');
+			article.editor = KindEditor.create('textarea[id="articlecontent"]',{
+				uploadJson : 'upload_json.php',
+			});
 		});
 	}
 };
@@ -123,7 +125,6 @@ $(function(){
 					$.toast("请选择图片再上传");
 					return;
 				}
-				console.log("cutpicture.uploadname:==="+cutpicture.uploadname);
 				$("body").loading("open");
 				if(cutpicture.w!=0){
 					cutpicture.w = Math.round(cutpicture.w/cutpicture.pro);
@@ -164,7 +165,6 @@ $(function(){
 		
 		editor["content"] = article.editor.html();
 		editor["text"] = text;
-		console.log(editor);
 		if(typeof(cutpicture.showname)!="undefined" && cutpicture.showname!=""){
 			editor.picture = cutpicture.showname;
 		}else{
@@ -173,7 +173,10 @@ $(function(){
 		param = param +"&"+$.param(editor);
 		/*$(".ui-form").submit();*/
 		$.post("article-add.do",param,function(data){
-			console.log(data);
+			$.toast("文章提交成功!");
+			$("#article-form input").val("");
+			$("#type").selectmenu("index",1);
+			article.editor.html("");
 		});
 	});
 });

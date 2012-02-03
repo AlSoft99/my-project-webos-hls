@@ -33,10 +33,10 @@ public class HeadPhotoServlet extends HttpServlet{
 		FileUpload upload = ServletFactory.newInstant().getFactory().getBean("fileUpload", FileUpload.class);
 		/*List<FileEntity> file = upload.upload(request, response,"head"+"/");*/
 		String url = "tmp/head/";
-		String path = System.getProperty("webapp.root")+url;
+		String path = "/"+url;
 		String reduce = request.getParameter("reduce");
 		FileEntity entity = null;
-		File min = new File(path);
+		File min = new File(url);
 		if(!min.exists()){
 			min.mkdirs();
 		}
@@ -62,9 +62,7 @@ public class HeadPhotoServlet extends HttpServlet{
 			if(file.size()>0){
 				entity = file.get(0);
 			}
-			System.out.println("entity:"+entity.getUploadurl());
 		}
-			
 		
 		Gson gson = new Gson();
 		java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<FileEntity>() {}.getType();    
