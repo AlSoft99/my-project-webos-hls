@@ -24,8 +24,16 @@ $(function(){
 	$("textarea, input[type=text]").defaultMsg();
 	/*$("#articledate").datepicker();*/
 	//$("#articletype").createCombobox("#articletype");
-	$("#type").selectmenu();
 	$("#article-add-form").validateInit();
+	var option = {logout:true,sql:"SQL3",where:"2"};
+	$.queryData(option,function(data){
+		$("#type").empty();
+		data.pop();
+		for (var i = 0; i < data.length; i++) {
+			$("#type").append("<option value='"+data[i].id+"'>"+data[i].typename+"</option>");
+		}
+		$("#type").selectmenu();
+	});
 	var cutpicture = {};
 	$.swfupload({
 		upload_url : "uploadphoto.head?reduce=false",
@@ -49,7 +57,6 @@ $(function(){
 	function uploadSuccess(file, serverData){
 		//console.log(a);
 		var returnVal = $.parseJSON(serverData);
-		console.log("returnVal.uploadname:"+returnVal.uploadname);
 		cutpicture["uploadname"] = returnVal.uploadname;
 		imgLoad(returnVal.uploadurl + returnVal.uploadname,function(image){
 			cutpicture["w"] = 0;
@@ -196,7 +203,7 @@ $(function(){
 		$.post("article-add.do",param,function(data){
 			$.toast("文章提交成功!");
 			$("#article-form input[type=text]").val("");
-			$("#type").selectmenu("index",1);
+			$("#type").selectmenu("index",0);
 			$("#article-add-form").reset();
 			article.editor.html("");
 		});

@@ -5,11 +5,10 @@
 <%@ page import="com.ux.entity.ArticleInfo" %>
 <% 
 String id = request.getParameter("id");
-ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
+ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class); 
 Map<String,Object> info = dao.queryMapById(id);
 String[] tagname = info.get("tagname").toString().split(",");
 dao.updateBrower(id);
-System.out.println("info.get(picture): "+info.get("picture"));
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,7 +32,7 @@ System.out.println("info.get(picture): "+info.get("picture"));
 	</div>
 	<div class="index-body" id="article-index" articleid="<%=id %>">
 		<div class="index-navigation" style="padding-top:25px;">
-			<a href="index">首页</a> > <a href="#"><%=info.get("type")%></a> > <span><%=info.get("title")%></span>
+			<a href="index">首页</a> > <a href="type?typeid=<%=info.get("type")%>"><%=info.get("typename")%></a> > <span><%=info.get("title")%></span>
 		</div>
 		<div class="float index-content">
 			<!-- 文章内容开始 -->
@@ -53,7 +52,7 @@ System.out.println("info.get(picture): "+info.get("picture"));
 						%>
 						<dt><span class="dl-user-title"><%=info.get("title")%></span></dt>
 						<dd class="dl-user-tips">
-							<a href="author?id=<%=info.get("userid")%>"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="#"><%=info.get("type")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate")%></span>&nbsp;<span>/</span>
+							<a href="author?id=<%=info.get("userid")%>"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="type?typeid=<%=info.get("type")%>"><%=info.get("typename")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate")%></span>&nbsp;<span>/</span>
 							&nbsp;<span>相关标签</span>
 							<% 
 							for(int i=0;i<tagname.length;i++){
@@ -66,9 +65,16 @@ System.out.println("info.get(picture): "+info.get("picture"));
 						<dd class="clear"></dd>
 					</dl>
 				</div>
-				<div class="index-content-photo">
-					<img width="720" height="255" src="<%=info.get("picture")%>" />
-				</div>
+				<% 
+				if(info.get("picture")!=null && !"".equals(info.get("picture"))){
+				%>
+					<div class="index-content-photo">
+						<img width="720" height="255" src="<%=info.get("picture")%>" />
+					</div>
+				<%
+				}
+				%>
+				
 				<div class="index-content-text">
 					<%=info.get("content")%>
 				</div>
