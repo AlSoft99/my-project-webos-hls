@@ -271,7 +271,7 @@ $.fn.extend({
 			_this.find(".common-page-foot").remove();
 		}
 		function bindEvent(){
-			_this.find("span").bind("click",function(){
+			_this.find(".common-page-foot").find("span").bind("click",function(){
 				var current = 0;
 				var number = Math.ceil(option.total / option.pagenumber);
 				if($(this).hasClass("select")){

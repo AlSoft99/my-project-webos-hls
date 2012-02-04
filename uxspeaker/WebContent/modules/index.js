@@ -14,18 +14,22 @@ var index = {
 				if(userpicture=="" || userpicture==null || $.type(userpicture)=="undefined"){
 					userpicture = "stylesheet/img/120_0_0.gif";
 				}
+				var picturecontent = "";
+				if(data[i].picture!="" && data[i].picture!=null && typeof(data[i].picture)!="undefined"){
+					picturecontent = '<div class="index-content-photo">'+
+					  					'<a href="article?id='+data[i].id+'"><img width="720" height="255" src="'+data[i].picture+'" /></a>'+
+					  				 '</div>';
+				}
 				var content = '<div class="index-content-item">'+
 								'<div>'+
 								   '<dl class="dl-user">'+
-								     '<dd class="dl-user-photo"><a href="author"><img src="'+userpicture+'" /></a></dd>'+
+								     '<dd class="dl-user-photo"><a href="author?id='+data[i].userid+'"><img src="'+userpicture+'" /></a></dd>'+
 								     '<dt><a href="article?id='+data[i].id+'">'+data[i].title+'</a></dt>'+
-								     '<dd class="dl-user-tips"><a href="author">'+data[i].username+'</a>&nbsp;<span>/</span>&nbsp;<a href="type">'+data[i].type+'</a>&nbsp;<span>/</span>&nbsp;<span>'+data[i].firstDate+'</span></dd>'+
+								     '<dd class="dl-user-tips"><a href="author?id='+data[i].userid+'">'+data[i].username+'</a>&nbsp;<span>/</span>&nbsp;<a href="type?typeid='+data[i].type+'">'+data[i].typename+'</a>&nbsp;<span>/</span>&nbsp;<span>'+data[i].firstDate+'</span></dd>'+
 								     '<dd class="clear"></dd>'+
 								   '</dl>'+
 								'</div>'+
-								'<div class="index-content-photo">'+
-								  '<a href="article?id='+data[i].id+'"><img width="720" height="255" src="'+data[i].picture+'" /></a>'+
-								'</div>'+
+								picturecontent+
 								'<div class="index-content-text">'+
 									data[i].text+
 								'</div>'+

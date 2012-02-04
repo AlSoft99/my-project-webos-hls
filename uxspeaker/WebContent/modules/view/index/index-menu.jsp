@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@page import="com.ux.entity.UserInfo"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.ux.entity.UserInfo"%>
+<%@ page import="com.frame.servlet.ServletFactory" %>
+<%@ page import="com.ux.dao.QueryDao"%>
 <% 
 UserInfo userInfo = (UserInfo)request.getSession().getAttribute("userinfo");
 String username = "";
@@ -8,11 +11,15 @@ if(userInfo!=null){
 	username = userInfo.getUsername();
 	userid = userInfo.getId()+"";
 }
+QueryDao queryDao = ServletFactory.newInstant().getFactory().getBean("queryDao",QueryDao.class);
+List<Map<String,Object>> paramsList = queryDao.queryByPage("SQL3", "1");
 %>
 <link type="text/css" rel="stylesheet" href="lib/plugin/colortip/colortip.jquery.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/ui/css/base/jquery.ui.selectmenu.css" media="screen" />
 <script type="text/javascript" src="lib/plugin/colortip/colortip.jquery.js"></script>
 <script type="text/javascript" src="lib/plugin/jquery.validate.js"></script>
 <script type="text/javascript" src="lib/plugin/jquery.cookie.js"></script>
+<script type="text/javascript" src="lib/ui/web/jquery.ui.selectmenu.js"></script>
 <div id="dialog-register" style="display: none;" title="<span style='padding:3px 0;float:left;'>注册</span>">
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
@@ -21,6 +28,21 @@ if(userInfo!=null){
 			</tr>
 			<tr>
 				<td style="width:90px;">姓名</td><td><input type="text" class="ui-input" id="username" name="username"  validate="default" isnull=true maxlength="20" minlength="0" placeholder="输入用户姓名" style="width: 380px;"></td>
+			</tr>
+			<tr>
+				<td style="width:90px;">职位</td>
+				<td>
+					<select id="job" name="job" style="width:380px;">
+						<% 
+						for(Map<String,Object> map : paramsList){
+						%>
+						<option value="<%=map.get("id")%>"><%=map.get("typename")%></option>
+						<%
+						}
+						%>
+						
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td style="width:90px;">密码</td><td><input type="password" class="ui-input" id="password" name="password" confirm="con-password"  validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入密码" style="width: 380px;"></td>
@@ -69,6 +91,7 @@ var loginFunction = {
 }
 $(function(){
 	$("#dialog-register form, #dialog-login form").validateInit();
+	$("#job").selectmenu();
 	function register(){
 		var check = $("#dialog-register form").validateForm();
 		if(check){
@@ -123,7 +146,7 @@ $(function(){
 	
 	$( "#dialog-register" ).dialog({
 		resizable: true,
-		height:280,
+		height:310,
 		width:565,
 		autoOpen: false,
 		modal: true,

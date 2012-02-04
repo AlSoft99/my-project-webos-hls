@@ -27,8 +27,8 @@ public class ParamsType {
 	@Column(name = "typename", nullable = false,length=20)   
 	private String typename;
 	//参数类型描述
-	@Column(name = "desc", nullable = false,length=50)   
-	private String desc;
+	@Column(name = "typedesc", nullable = false,length=40)   
+	private String typedesc;
 	//更新人
 	@Column(name = "updtuser", nullable = false,length=30)   
 	private String updtuser;
@@ -53,11 +53,11 @@ public class ParamsType {
 	public void setTypename(String typename) {
 		this.typename = typename;
 	}
-	public String getDesc() {
-		return desc;
+	public String getTypedesc() {
+		return typedesc;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setTypedesc(String typedesc) {
+		this.typedesc = typedesc;
 	}
 	public String getUpdtuser() {
 		return updtuser;

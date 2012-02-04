@@ -36,6 +36,7 @@ public class UserInfo implements Serializable {
 	//职位
 	@Column(name = "job", nullable = true,length=30)
 	private String job;
+	private String jobname;
 	//个人简介
 	@Column(name = "intro", nullable = true,length=200)
 	private String intro;
@@ -53,6 +54,12 @@ public class UserInfo implements Serializable {
 	}
 	public void setSign(String sign) {
 		this.sign = sign;
+	}
+	public String getJobname() {
+		return jobname;
+	}
+	public void setJobname(String jobname) {
+		this.jobname = jobname;
 	}
 	public String getJob() {
 		return job;

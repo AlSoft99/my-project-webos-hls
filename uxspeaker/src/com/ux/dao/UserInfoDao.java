@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.frame.dao.BaseDao;
+import com.ux.entity.ParamsType;
 import com.ux.entity.UserInfo;
 @Repository
 public class UserInfoDao extends BaseDao{
@@ -28,5 +29,9 @@ public class UserInfoDao extends BaseDao{
 	public UserInfo getUserInfo(Integer id){
 		UserInfo userinfo = getHibernateTemplate().get(UserInfo.class, id);
 		return userinfo;
+	}
+	public String getJobname(String job){
+		ParamsType type = getHibernateTemplate().get(ParamsType.class, Integer.valueOf(job));
+		return type.getTypename()+"";
 	}
 }

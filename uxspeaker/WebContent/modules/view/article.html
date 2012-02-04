@@ -41,17 +41,14 @@
 						<td align="right">类别:</td>
 						<td>
 							<select id="type" name="type" style="width:225px;">
-								<option value="ActionScript">ActionScript</option>
-								<option value="AppleScript">AppleScript</option>
-								<option value="Asp">Asp</option>
-								<option value="BASIC">BASIC</option>
-								<option value="C">C</option>
-								<option value="C++">C++</option>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td align="right">标题:</td><td><input id="title" name="title" type="text" class="ui-input" validate="default" isnull=true maxlength="50" minlength="0" style="width:600px;" placeholder="请输入文章标题"/></td>
+					</tr>
+					<tr>
+						<td align="right">标签:</td><td><input id="tag" name="tag" type="text" class="ui-input" validate="default" isnull=true maxlength="200" minlength="0" style="width:600px;" placeholder="请输入标签,多标签','隔开"/></td>
 					</tr>
 					<tr>
 						<td align="right">首图:</td>
@@ -62,14 +59,12 @@
 						</td>
 					</tr>
 					<tr>
-						<td align="right">内容:</td>
-						<td>
-							<textarea id="articlecontent" name="articlecontent" style="visibility: hidden;width:600px;height:400px;"></textarea>
+						
+						<td colspan="2">
+							<textarea id="articlecontent" name="articlecontent" style="visibility: hidden;width:700px;height:400px;"></textarea>
 						</td>
 					</tr>
-					<tr>
-						<td align="right">标签:</td><td><input id="tag" name="tag" type="text" class="ui-input" validate="default" isnull=true maxlength="200" minlength="0" style="width:600px;" placeholder="请输入标签,多标签','隔开"/></td>
-					</tr>
+					
 					<tr>
 						<td></td>
 						<td><input type="button" id="submitarticle" value="提交文章"/></td>

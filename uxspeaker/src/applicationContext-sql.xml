@@ -27,17 +27,122 @@
 				<entry key="SQL2">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.userid as userid,a.type as type,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b where a.userid = b.id {0} order by a.firstDate desc
+							select new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c where c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
 						]]>
 					</value>
 				</entry>
 				<entry key="SQL3">
 					<value>
 						<![CDATA[
+							select new map(id as id,typeid as typeid,typename as typename,typedesc as typedesc,updtuser as updtuser,updttime as updttime) from ParamsType where typeid='{0}'
 						]]>
 					</value>
 				</entry>
+				<entry key="SQL4">
+					<value>
+						<![CDATA[
+							select new map(a.id as id,a.articleid as articleid,a.userid as userid,a.commentuser as commentuser,a.comment as comment,a.receiver as receiver,a.approve as approve,a.oppose as oppose,a.currentDate as currentDate,(select b.username from UserInfo b where b.id=a.userid) as username,(select b.picture from UserInfo b where b.id=a.userid) as picture ) from CommentInfo a order by a.currentDate desc
+						]]>
+					</value>
+				</entry>
+				<!-- <entry key="SQL3">
+					<value>
+						<![CDATA[
+						]]>
+					</value>
+				</entry> -->
 			</map>
 		</property>
 	</bean>
+	<bean id="importDataUtil" class="com.ux.util.ImportDataUtil" init-method="importData">
+		<!-- 如果该属性为true,将删除所有数据, 重置初始化数据 -->
+		<property name="isReset" value="false"/>
+		<property name="paramsList">
+			<list>
+				<bean class="com.ux.entity.ParamsList">
+					<property name="id" value="1" />
+					<property name="typename" value="职业" />
+					<property name="typedesc" value="用户职业" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsList">
+					<property name="id" value="2" />
+					<property name="typename" value="类型" />
+					<property name="typedesc" value="文章类型" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+			</list>
+		</property>
+		<property name="paramsType">
+			<list>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="1" />
+					<property name="typeid" value="1" />
+					<property name="typename" value="视觉设计师" />
+					<property name="typedesc" value="前端设计师" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="2" />
+					<property name="typeid" value="1" />
+					<property name="typename" value="交互设计师" />
+					<property name="typedesc" value="交互设计师" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="3" />
+					<property name="typeid" value="1" />
+					<property name="typename" value="前端开发工程师" />
+					<property name="typedesc" value="前端开发工程师" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="4" />
+					<property name="typeid" value="1" />
+					<property name="typename" value="后台开发工程师" />
+					<property name="typedesc" value="后台开发工程师" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="5" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="视觉设计" />
+					<property name="typedesc" value="视觉设计" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="6" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="交互设计" />
+					<property name="typedesc" value="交互设计" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="7" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="前端开发" />
+					<property name="typedesc" value="前端开发" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="8" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="后台开发" />
+					<property name="typedesc" value="后台开发" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean name="currentDate" class="java.util.Date"/>
 </beans>

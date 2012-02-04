@@ -10,7 +10,7 @@ String id = request.getParameter("id");
 String picture = "";
 ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
 UserInfoDao userdao = ServletFactory.newInstant().getFactory().getBean("userInfoDao",UserInfoDao.class);
-int rownumber = 2;
+int rownumber = com.ux.util.Constant.ROW_NUMBER;
 String currentPage = request.getParameter("current");
 if(currentPage==null || "".equals(currentPage)){
 	currentPage = "1";
@@ -18,6 +18,7 @@ if(currentPage==null || "".equals(currentPage)){
 List<Map<String,Object>> list = dao.queryArticleMap((Integer.parseInt(currentPage)-1)*rownumber,rownumber," and a.userid='"+id+"' ");
 int count = (int)dao.getCount();
 UserInfo userinfo = userdao.getUserInfo(Integer.valueOf(id));
+String jobname = userdao.getJobname(userinfo.getJob());
 if("".equals(userinfo.getPicture()) || userinfo.getPicture()==null){
 	picture = "stylesheet/img/120_0_0.gif";
 }else{
@@ -50,7 +51,7 @@ if("".equals(userinfo.getPicture()) || userinfo.getPicture()==null){
 					<dl class="dl-user">
 						<dd class="dl-user-photo"><a href="author?id=<%=userinfo.getId()%>"><img src="<%=picture %>" /></a></dd>
 						<dt><a href="author?id=<%=userinfo.getId()%>"><%=userinfo.getUsername() %></a></dt>
-						<dd class="dl-user-tips"><span><%=userinfo.getSign() %></span>&nbsp;</dd>
+						<dd class="dl-user-tips"><span><%=jobname %></span>&nbsp;</dd>
 						<dd class="clear"></dd>
 					</dl>
 				</div>

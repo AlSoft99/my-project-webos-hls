@@ -36,6 +36,8 @@ public class RegisterVo {
 		List<UserInfo> list = userInfoDao.checkIsExist(userInfo.getEmail(), userInfo.getPassword());
 		Map<String,String> map = new HashMap<String, String>();
 		if(list.size()>0){
+			String jobname = userInfoDao.getJobname(list.get(0).getJob());
+			list.get(0).setJobname(jobname);
 			request.getSession().setAttribute("userinfo", list.get(0));
 			map.put("status", "success");
 			map.put("username", list.get(0).getUsername());

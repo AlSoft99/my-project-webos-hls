@@ -5,7 +5,7 @@
 <%@ page import="com.ux.entity.ArticleInfo" %>
 <% 
 ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
-int rownumber = 5;
+int rownumber = com.ux.util.Constant.ROW_NUMBER;
 String currentPage = request.getParameter("current");
 if(currentPage==null || "".equals(currentPage)){
 	currentPage = "1";
@@ -46,7 +46,7 @@ int count = (int)dao.getCount();
 					<dl class="dl-user">
 						<dd class="dl-user-photo"><a href="author?id=<%=info.get("userid")%>"><img src="<%=userpicture %>" /></a></dd>
 						<dt><a href="article?id=<%=info.get("id")%>"><%=info.get("title") %></a></dt>
-						<dd class="dl-user-tips"><a href="author?id=<%=info.get("userid")%>"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="type"><%=info.get("type")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate") %></span></dd>
+						<dd class="dl-user-tips"><a href="author?id=<%=info.get("userid")%>"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="type?typeid=<%=info.get("type")%>"><%=info.get("typename")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate") %></span></dd>
 						<dd class="clear"></dd>
 					</dl>
 				</div>

@@ -46,9 +46,9 @@ public class QueryVo {
 		map.put("rowcount",row);
 		list.add(map);
 		Gson gson = new Gson();
-		System.out.println("gson.toJson(list):"+gson.toJson(list));
 		return gson.toJson(list);
 	}
+	
 	private String getSql(String sql, String where){
 		QueryUtil query = ServletFactory.newInstant().getFactory().getBean("queryUtil", QueryUtil.class);
 		String allsql = query.getSql(sql).trim();
