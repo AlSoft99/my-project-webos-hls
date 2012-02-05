@@ -38,7 +38,7 @@ public class FileUpload {
 		//upload.setHeaderEncoding("UTF-8");
 		List<FileEntity> result = new ArrayList<FileEntity>();
 		downloalpath = filepath+path;
-		File file = new File("/"+downloalpath);
+		File file = new File(System.getProperty("webapp.root")+"/"+downloalpath);
 		if(!file.exists()){
 			file.mkdirs();
 		}
