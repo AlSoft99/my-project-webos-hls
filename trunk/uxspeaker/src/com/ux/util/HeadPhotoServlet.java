@@ -36,11 +36,12 @@ public class HeadPhotoServlet extends HttpServlet{
 		String path = "/"+url;
 		String reduce = request.getParameter("reduce");
 		FileEntity entity = null;
-		File min = new File(url);
-		if(!min.exists()){
-			min.mkdirs();
-		}
+		
 		if(!"false".equals(reduce)){
+			File min = new File(System.getProperty("webapp.root")+path);
+			if(!min.exists()){
+				min.mkdirs();
+			}
 			entity = upload.getInputStream(request);
 			entity.setUploadurl(url);
 			BufferedImage image = ImageIO.read(entity.getStream());
@@ -56,7 +57,7 @@ public class HeadPhotoServlet extends HttpServlet{
 	    	}
 	    	int intW = (int)w;
 	    	int intH = (int)h;
-			Utils.reduceImg(image, path+entity.getUploadname(), intW, intH);
+			Utils.reduceImg(image, System.getProperty("webapp.root")+path+entity.getUploadname(), intW, intH);
 		}else{
 			List<FileEntity> file = upload.upload(request, response,url);
 			if(file.size()>0){
