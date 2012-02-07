@@ -45,6 +45,13 @@
 						]]>
 					</value>
 				</entry>
+				<entry key="SQL5">
+					<value>
+						<![CDATA[
+							select new map(count(*) as count, tagname as tagname, id as id, articleid as articleid) from TagInfo group by tagname order by count(*) desc
+						]]>
+					</value>
+				</entry>
 				<!-- <entry key="SQL3">
 					<value>
 						<![CDATA[

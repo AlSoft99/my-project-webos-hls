@@ -12,7 +12,7 @@ if(currentPage==null || "".equals(currentPage)){
 };
 List<Map<String,Object>> list = dao.queryArticleMap((Integer.parseInt(currentPage)-1)*rownumber,rownumber);
 int count = (int)dao.getCount();
-
+System.out.println("list:"+list);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

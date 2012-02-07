@@ -44,7 +44,7 @@ public class CutImage {
 	/**
 	 * 对图片裁剪，并把裁剪完蛋新图片保存 。
 	 */
-	public void cut() throws IOException {
+	public void cut(String type) throws IOException {
 
 		FileInputStream is = null;
 		ImageInputStream iis = null;
@@ -58,7 +58,7 @@ public class CutImage {
 			 * 参数：formatName - 包含非正式格式名称 .（例如 "jpeg" 或 "tiff"）等 。
 			 */
 			Iterator<ImageReader> it = ImageIO
-					.getImageReadersByFormatName("jpg");
+					.getImageReadersByFormatName(type);
 			ImageReader reader = it.next();
 			// 获取图片流
 			iis = ImageIO.createImageInputStream(is);
@@ -92,7 +92,7 @@ public class CutImage {
 			BufferedImage bi = reader.read(0, param);
 
 			// 保存新图片
-			ImageIO.write(bi, "jpg", new File(subpath));
+			ImageIO.write(bi, type, new File(subpath));
 		}
 
 		finally {
@@ -102,6 +102,10 @@ public class CutImage {
 				iis.close();
 		}
 
+	}
+	public String getType(String filename){
+		int index = filename.lastIndexOf(".");
+		return filename.substring(index+1);
 	}
 
 	public int getHeight() {
@@ -154,12 +158,14 @@ public class CutImage {
 
 	public static void main(String[] args) throws Exception {
 
-		String name = "C:/Users/guanr/Pictures/newbee-bug-1.PNG";
+		String name = "d:/frame.PNG";
 
 		CutImage o = new CutImage(0, 0, 640, 640);
 		o.setSrcpath(name);
-		o.setSubpath("F:/2.jpg");
-		o.cut();
+		o.setSubpath("d:/2.png");
+		int index = name.lastIndexOf(".");
+		System.out.println(name.substring(index));
+		//o.cut("png");
 
 	}
 
