@@ -130,7 +130,7 @@
 	</jsp-config>
 	<!-- jsp include编码 -->
 	<welcome-file-list>
-		<welcome-file>main.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
 	<servlet>
