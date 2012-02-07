@@ -30,7 +30,7 @@ public class ArticleVo {
 	private TagInfoDao tagInfoDao;
 	
 	@RequestMapping(value="/article-upload.do",method=RequestMethod.GET)
-	public @ResponseBody String checkId(CutPhoto cut,HttpSession session) throws IOException{
+	public @ResponseBody String cutArticle(CutPhoto cut,HttpSession session) throws IOException{
 		UserInfo userinfo = (UserInfo)session.getAttribute("userinfo");
 		String name = System.getProperty("webapp.root")+"/tmp/head/";
 		String out = System.getProperty("webapp.root")+"/upload/"+userinfo.getEmail()+"/article/";
@@ -39,7 +39,7 @@ public class ArticleVo {
 			CutImage o = new CutImage(cut.getX(), cut.getY(), cut.getW(), cut.getH());
 			o.setSrcpath(name+cut.getUploadname());
 			o.setSubpath(out+cut.getUploadname());
-			o.cut();
+			o.cut(o.getType(cut.getUploadname()));
 		}else{
 			FileOperate o = new FileOperate();
 			o.copyFile(name+cut.getUploadname(), out+cut.getUploadname());

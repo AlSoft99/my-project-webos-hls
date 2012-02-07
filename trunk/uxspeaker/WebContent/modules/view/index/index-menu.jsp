@@ -57,10 +57,10 @@ List<Map<String,Object>> paramsList = queryDao.queryByPage("SQL3", "1");
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
 			<tr>
-				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" id="email" name="email"  validate="email" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;"></td>
+				<td style="width:90px;">邮箱</td><td><input type="text" class="ui-input" id="email" name="email"  validate="email" isnull=true maxlength="100" minlength="0" placeholder="输入邮箱" style="width: 380px;" ></td>
 			</tr>
 			<tr>
-				<td style="width:90px;">密码</td><td><input type="password" class="ui-input" id="password" name="password" validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入密码" style="width: 380px;"></td>
+				<td style="width:90px;">密码</td><td><input type="password" class="ui-input" id="password" name="password" validate="password" isnull=true maxlength="20" minlength="0" placeholder="输入密码" style="width: 380px;" ></td>
 			</tr>
 		</table>
 	</form>
@@ -200,6 +200,11 @@ $(function(){
 				$("#loginname").attr("loginid","");
 			}
 		});
+	});
+	$("#dialog-login form input").keydown(function(e){
+		if (e.keyCode == 13) {
+			login();
+		}
 	});
 });
 </script>

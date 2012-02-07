@@ -41,7 +41,7 @@
 	width:220px;padding-top: 20px;
 }
 .index-content-photo{
-	padding-bottom:20px; background: url("../img/index/hatching_line.png") repeat-x left bottom;
+	padding-bottom:20px; /* background: url("../img/index/hatching_line.png") repeat-x left bottom; */
 }
 .index-content-photo img{
 	border-width: 0px;

@@ -39,7 +39,7 @@ public class UpdateUserInfoVo {
 			CutImage o = new CutImage(cut.getX(), cut.getY(), cut.getW(), cut.getH());
 			o.setSrcpath(name+cut.getUploadname());
 			o.setSubpath(out+cut.getUploadname());
-			o.cut();
+			o.cut(o.getType(cut.getUploadname()));
 		}else{
 			FileOperate o = new FileOperate();
 			o.copyFile(name+cut.getUploadname(), out+cut.getUploadname());
