@@ -13,7 +13,12 @@ if(currentPage==null || "".equals(currentPage)){
 List<Map<String,Object>> list = queryType.queryByPage("SQL2", " and a.type='"+typeid+"' ",(Integer.parseInt(currentPage)-1)*rownumber,rownumber);
 //List<Map<String,Object>> list = dao.queryArticleMap((Integer.parseInt(currentPage)-1)*rownumber,rownumber);
 int count = (int)queryType.getCount("SQL2", " and a.type='"+typeid+"'");
-
+String atricleType = "";
+if(count==0){
+	atricleType = "暂无文章";
+}else{
+	atricleType = list.get(0).get("typename").toString();
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,6 +38,9 @@ int count = (int)queryType.getCount("SQL2", " and a.type='"+typeid+"'");
 		<div style="margin: auto;width:990px;"><img src="stylesheet/img/index/title.png" style="width:990px;height:340px;"/></div>
 	</div> -->
 	<div class="index-body" id="index" total="<%=count%>" currentPage="<%=currentPage%>" rownumber="<%=rownumber%>" typeid="<%=typeid%>">
+		<div class="index-navigation" style="padding-top:25px;">
+			<a href="index">首页</a> > <span><%=atricleType%></span>
+		</div>
 		<div class="float index-content" id="index-content">
 			<% 
 			for(Map<String,Object> info : list){
