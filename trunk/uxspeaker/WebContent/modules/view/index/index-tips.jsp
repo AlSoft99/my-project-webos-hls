@@ -10,6 +10,14 @@ List<Map<String,Object>> paramsComment = queryTips.queryByPage("SQL4", "",0,5);
 TagInfoDao tagInfoDao = ServletFactory.newInstant().getFactory().getBean("tagInfoDao",TagInfoDao.class);
 List<List<String>> taglist = tagInfoDao.getTagList();
 System.out.println(taglist);
+String tagtmp = "";
+for(int i=0; i < taglist.size();i++){
+	List<String> flaglist = taglist.get(i);
+	for(String tagname: flaglist){
+		tagtmp += tagname+",";
+	}
+}
+tagtmp = tagtmp.substring(0, tagtmp.length()-1);
 %>
 <style type="text/css">
 .lastest-comment{
@@ -32,13 +40,13 @@ System.out.println(taglist);
 	border-bottom:0px;line-height: 20px;
 }
 .index-tips ul .index-tag-level-1 a{
-	font-size:16px;line-height: 20px;height:20px;
+	font-size:16px;line-height: 25px;height:20px;padding:0 4px;
 }
 .index-tips ul .index-tag-level-2 a{
-	font-size:14px;line-height: 18px;height:18px;
+	font-size:14px;line-height: 22px;height:18px;padding:0 4px;
 }
 .index-tips ul .index-tag-level-3 a{
-	font-size:12px;line-height: 16px;height:16px;
+	font-size:12px;line-height: 20px;height:16px;padding:0 4px;
 }
 </style>
 <p><input type="text" class="ui-input" id="search" style="width:195px;" placeholder="搜索文章"/></p>
@@ -53,32 +61,7 @@ System.out.println(taglist);
 	%>
 </ul>
 <div class="index-type"><h1>热门标签</h1></div>
-<ul class="index-tag">
-	<% 
-	for(int i=0; i < taglist.size();i++){
-		List<String> flaglist = taglist.get(i);
-		String classname = "";
-		if(i<=1){
-			classname = "index-tag-level-1";
-		}else if(i>=taglist.size()-2){
-			classname = "index-tag-level-3";
-		}else{
-			classname = "index-tag-level-2";
-		}
-	%>
-		<li class='<%=classname %>'>
-		<% 
-		for(String tagname: flaglist){
-		%>
-			&nbsp;<a href="#"><%=tagname %></a>&nbsp;
-		<%	
-		}
-		%>
-		</li>
-	<%
-	}
-	%>
-</ul>
+<ul class="index-tag" id="index-tag"></ul>
 <div class="index-type"><h1>最新评论</h1></div>
 <ul>
 	<% 
@@ -111,7 +94,39 @@ System.out.println(taglist);
 </ul>
 <script>
 $(function(){
+	function createTag(){
+		var tag = '<%=tagtmp%>';
+		var taglist = tag.split(",");
+		var isNext = true;
+		var rownumber = 0;
+		for(var i=0;i<taglist.length;i++){
+			if(isNext){
+				if(rownumber<2){
+					var o = $('<li class="index-tag-level-1" style="display:table;"></li>');
+					$("#index-tag").append(o);
+				}else if(rownumber>=2 && rownumber<=5){
+					var o = $('<li class="index-tag-level-2" style="display:table;"></li>');
+					$("#index-tag").append(o);
+				}else{
+					var o = $('<li class="index-tag-level-3" style="display:table;"></li>');
+					$("#index-tag").append(o);
+				}
+				isNext = false;
+				rownumber++;
+			}
+			var o = $('<a href="#">'+taglist[i]+'</a>');
+			$("#index-tag li:last").append(o);
+			console.log($("#index-tag li:last").innerWidth());
+			if($("#index-tag li:last").innerWidth()>210){
+				$("#index-tag li:last a:last").remove();
+				i--;
+				isNext=true;
+			}
+		}
+	}
 	$("#search").searchInput();
 	$("input[type=text]").defaultMsg();
+	createTag();
+	
 });
 </script>
