@@ -21,11 +21,11 @@ public class TagInfoDao extends BaseDao{
 		List<ArticleInfo> list = getHibernateTemplate().find("from TagInfo where articleid='"+id+"'");
 		return list.get(0);
 	}
-	public List<List<String>> getTagList(){
+	public List<Map<String,Object>> getTagList(){
 		QueryDao queryTips = ServletFactory.newInstant().getFactory().getBean("queryDao",QueryDao.class);
-		List<Map<String,Object>> paramsTag = queryTips.queryByPage("SQL5", "",0,30);
+		List<Map<String,Object>> paramsTag = queryTips.queryByPage("SQL5", "",0,40);
 		System.out.println("paramsTag:"+paramsTag);
-		int[] lvMax = {15,15,18,18,18,20,20};
+		/*int[] lvMax = {15,15,18,18,18,20,20};
 		List<List<String>> lv = new ArrayList<List<String>>();
 		List<String> nowLv = new ArrayList<String>();
 		int flag = 0;
@@ -52,7 +52,7 @@ public class TagInfoDao extends BaseDao{
 				actual = tagname.length()+1;
 			}
 			
-		}
-		return lv;
+		}*/
+		return paramsTag;
 	}
 }
