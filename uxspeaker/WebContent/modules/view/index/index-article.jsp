@@ -7,7 +7,7 @@
 String id = request.getParameter("id");
 ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class); 
 Map<String,Object> info = dao.queryMapById(id);
-String[] tagname = info.get("tagname").toString().split(",");
+String[] tagnameGroup = info.get("tagname").toString().split(",");
 dao.updateBrower(id);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -55,9 +55,9 @@ dao.updateBrower(id);
 							<a href="author?id=<%=info.get("userid")%>"><%=info.get("username")%></a>&nbsp;<span>/</span>&nbsp;<a href="type?typeid=<%=info.get("type")%>"><%=info.get("typename")%></a>&nbsp;<span>/</span>&nbsp;<span><%=info.get("firstDate")%></span>&nbsp;<span>/</span>
 							&nbsp;<span>相关标签</span>
 							<% 
-							for(int i=0;i<tagname.length;i++){
+							for(int i=0;i<tagnameGroup.length;i++){
 							%>
-							&nbsp;<a href="#"><%=tagname[i]%></a>
+							&nbsp;<a href="tag?tagname=<%=tagnameGroup[i]%>"><%=tagnameGroup[i]%></a>
 							<%
 							}
 							%>

@@ -74,7 +74,7 @@
 	color: red;
 }
 .index-foot-line{
-	background: url("../img/index/content_text_line.png") repeat-x left;height:6px;
+	/* background: url("../img/index/content_text_line.png") repeat-x left; */height:2px;background-color: #E2E2E2;
 }
 .index-type{
 	padding:10px;background-color: #F5F5F5;border-radius:3px 3px 0 0;margin-top: 30px;

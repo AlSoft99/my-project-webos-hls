@@ -190,7 +190,7 @@ $(function(){
 		}else{
 			text = article.editor.text();
 		}
-		
+		text = text.replace(/<[^>]+>/g,"");
 		editor["content"] = article.editor.html();
 		editor["text"] = text;
 		if(typeof(cutpicture.showname)!="undefined" && cutpicture.showname!=""){

@@ -8,14 +8,12 @@ QueryDao queryTips = ServletFactory.newInstant().getFactory().getBean("queryDao"
 List<Map<String,Object>> paramsTips = queryTips.queryByPage("SQL3", "2");
 List<Map<String,Object>> paramsComment = queryTips.queryByPage("SQL4", "",0,5);
 TagInfoDao tagInfoDao = ServletFactory.newInstant().getFactory().getBean("tagInfoDao",TagInfoDao.class);
-List<List<String>> taglist = tagInfoDao.getTagList();
-System.out.println(taglist);
+List<Map<String,Object>> taglist = tagInfoDao.getTagList();
 String tagtmp = "";
 for(int i=0; i < taglist.size();i++){
-	List<String> flaglist = taglist.get(i);
-	for(String tagname: flaglist){
-		tagtmp += tagname+",";
-	}
+	Map<String,Object> flaglist = taglist.get(i);
+	String tagname = flaglist.get("tagname").toString();
+	tagtmp += tagname+",";
 }
 tagtmp = tagtmp.substring(0, tagtmp.length()-1);
 %>
@@ -99,6 +97,7 @@ $(function(){
 		var taglist = tag.split(",");
 		var isNext = true;
 		var rownumber = 0;
+		var max_rownumber = 7;
 		for(var i=0;i<taglist.length;i++){
 			if(isNext){
 				if(rownumber<2){
@@ -107,16 +106,17 @@ $(function(){
 				}else if(rownumber>=2 && rownumber<=5){
 					var o = $('<li class="index-tag-level-2" style="display:table;"></li>');
 					$("#index-tag").append(o);
-				}else{
+				}else if(rownumber<=max_rownumber){
 					var o = $('<li class="index-tag-level-3" style="display:table;"></li>');
 					$("#index-tag").append(o);
+				}else{
+					return;
 				}
 				isNext = false;
 				rownumber++;
 			}
-			var o = $('<a href="#">'+taglist[i]+'</a>');
+			var o = $('<a href="tag?tagname='+taglist[i]+'">'+taglist[i]+'</a>');
 			$("#index-tag li:last").append(o);
-			console.log($("#index-tag li:last").innerWidth());
 			if($("#index-tag li:last").innerWidth()>210){
 				$("#index-tag li:last a:last").remove();
 				i--;

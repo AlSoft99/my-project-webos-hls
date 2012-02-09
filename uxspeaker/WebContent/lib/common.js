@@ -109,7 +109,7 @@ $.extend({
     	 * {start:1,row:5,sql:xxx,logout:true}
     	 */
     	var url = "query";
-    	if(option.logout!=null || $.type(option.logout)!="undefined"){
+    	if(option.logout!=null && $.type(option.logout)!="undefined" && option.logout){
     		url += "-logout";
     	}
     	$.ajax({
@@ -126,6 +126,57 @@ $.extend({
     }
 });
 $.fn.extend({
+	/**
+	 * th		{'column1':'innerText1','column2':'innerText2','column3':'innerText3'}
+	 * option 	{start:1,row:5,sql:xxx,logout:true}
+	 */
+	queryData: function(th,option){
+		var _this = $(this);
+		if(!_this.hasClass("grid-table")){
+			_this.addClass("grid-table");
+		}
+		_this.empty();
+		_this.append("<thead><tr></tr></thead>");
+		_this.hide();
+		_this.fadeIn(500);
+		(function createThead(){
+			var thead = _this.find("thead").find("tr");
+			for ( var key in th) {
+				if(key!='{template}'){
+					thead.append("<td>"+th[key]+"</td>");
+				}else{
+					var content = th[key]("thead");
+					thead.append("<td>"+content+"</td>");
+				}
+				
+			}
+		})();
+		$.queryData(option,function(data){
+			var foot = data.pop();
+			_this.append("<tbody></tbody>");
+			var tbody = _this.find("tbody");
+			for(var i=0; i<data.length;i++){
+				tbody.append("<tr></tr>");
+				var tr = tbody.find("tr:last");
+				for ( var key in th) {
+					if(key!='{template}'){
+						tr.append("<td>"+data[i][key]+"</td>");
+					}else{
+						var content = th[key]("tbody");
+						tr.append("<td>"+content+"</td>");
+					}
+				}
+			};
+			_this.find("input[type=button]").button();
+			_this.append("<tfoot><tr><td colspan='99'></td></tr></tfoot>");
+			_this.find("tfoot").find("td").pageFoot({total:foot.total,current:(foot.start/foot.rowcount+1),pagenumber:foot.rowcount},function(o){
+				var start = (o.current-1)*foot.rowcount;
+				option.start = start;
+				_this.queryData(th,option);
+				return false;
+			});
+		});
+	},
 	loading : function(fn){
 		if(fn=="open"){
 			var obj = $("<div class='loading wait-loading' style='width:100%;height:100%;position: fixed;z-index:9999;background-position:center center;filter:Alpha(opacity=40);background-color:white;top:0;opacity:.4;background-repeat:no-repeat;'></div>");

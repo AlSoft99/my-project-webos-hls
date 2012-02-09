@@ -49,6 +49,31 @@ public class QueryVo {
 		return gson.toJson(list);
 	}
 	
+	@RequestMapping(value="/query.do",method=RequestMethod.GET)
+	public @ResponseBody String queryLogin(@RequestParam(value="sql") String sql,@RequestParam(value="where") String where,HttpSession session) throws IOException{
+		String allsql = getSql(sql, where);
+		List<Map<String,Object>> list = queryDao.query(allsql);
+		Map<String,Object> map = new HashMap<String,Object>();
+		int count = queryDao.getCount(allsql);
+		map.put("total", count);
+		list.add(map);
+		Gson gson = new Gson();
+		return gson.toJson(list);
+	}
+	@RequestMapping(value="/query.do",method=RequestMethod.GET, params="start")
+	public @ResponseBody String queryByPageLogin(@RequestParam(value="start") int start,@RequestParam(value="row",required=false) int row,@RequestParam(value="sql") String sql,@RequestParam(value="where") String where,HttpSession session) throws IOException{
+		String allsql = getSql(sql, where);
+		List<Map<String,Object>> list = queryDao.query(allsql,start,row);
+		Map<String,Object> map = new HashMap<String,Object>();
+		int count = queryDao.getCount(allsql);
+		map.put("total", count);
+		map.put("start", start);
+		map.put("rowcount",row);
+		list.add(map);
+		Gson gson = new Gson();
+		return gson.toJson(list);
+	}
+	
 	private String getSql(String sql, String where){
 		QueryUtil query = ServletFactory.newInstant().getFactory().getBean("queryUtil", QueryUtil.class);
 		String allsql = query.getSql(sql).trim();

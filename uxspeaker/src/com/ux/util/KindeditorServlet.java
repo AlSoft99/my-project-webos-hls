@@ -40,7 +40,6 @@ public class KindeditorServlet extends HttpServlet{
 		JSONObject obj = new JSONObject();
 		obj.put("error", 0);
 		obj.put("url", responseUrl);
-		System.out.println("obj.toJSONString(): "+obj.toJSONString());
 		response.getWriter().print(obj.toJSONString());
 	}
 }

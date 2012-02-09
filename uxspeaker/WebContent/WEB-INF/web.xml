@@ -173,5 +173,13 @@
 		<servlet-name>MainUrl</servlet-name>
 		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>TagUrl</servlet-name>
+		<jsp-file>/modules/view/index/index-tag.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TagUrl</servlet-name>
+		<url-pattern>/tag</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

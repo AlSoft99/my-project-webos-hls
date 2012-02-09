@@ -1,7 +1,8 @@
 @import url("reset.css");
 @import url("layout.css");
 @import url("../../../stylesheet/css/main.css");
-@import url("../../ui/css/redmond/jquery-ui-custom.css");
+@import url("../../ui/css/smoothness/jquery-ui-custom.css");
 @import url("../../../stylesheet/css/jquery-ui-cover.css");
 @import url("../../../stylesheet/css/pagefoot.css");
 @import url("../../plugin/colortip/colortip.jquery.css");
+@import url("../../../stylesheet/css/grid-table.css");

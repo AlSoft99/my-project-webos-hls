@@ -162,10 +162,10 @@ public class CutImage {
 
 		CutImage o = new CutImage(0, 0, 640, 640);
 		o.setSrcpath(name);
-		o.setSubpath("d:/2.png");
+		o.setSubpath("d:/3.png");
 		int index = name.lastIndexOf(".");
 		System.out.println(name.substring(index));
-		//o.cut("png");
+		o.cut("png");
 
 	}
 
