@@ -31,8 +31,36 @@ $(function(){
 			return false;
 		});
 		_this.find("a.delete").click(function(){
-			
+			var _d_this = $(this);
+			$( "#dialog-confirm" ).dialog({ buttons: [{
+			        text: "删除",
+			        click: function() { 
+			      	  	$(this).dialog("close");
+						var articleid = _d_this.attr("articleid");
+						$.get("article-delete.do?id="+articleid,function(data){
+							if(data=="success"){
+								$.toast("删除成功!");
+							}else{
+								$.toast("删除失败!");
+							}
+						});
+			        }
+			    },{
+			        text: "取消",
+			        click: function() { 
+			      	  $(this).dialog("close"); 
+			        }
+			    }
+			]});
+			$( "#dialog-confirm" ).dialog("open");
 			return false;
 		});
 	});
+	$( "#dialog-confirm" ).dialog({
+		resizable: false,
+		autoOpen: false,
+		height:150,
+		modal: true
+	});
+	
 });

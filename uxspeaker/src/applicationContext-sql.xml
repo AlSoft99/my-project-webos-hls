@@ -62,7 +62,21 @@
 				<entry key="SQL7">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,ParamsType b where a.type=b.id {0} order by a.currentDate desc
+							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,ParamsType b where a.type=b.id {0} order by a.firstDate desc
+						]]>
+					</value>
+				</entry>
+				<entry key="SQL8">
+					<value>
+						<![CDATA[
+							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum,a.content as content,a.picture as picture) from ArticleInfo a,ParamsType b where a.type=b.id {0} order by a.currentDate desc
+						]]>
+					</value>
+				</entry>
+				<entry key="SQL9">
+					<value>
+						<![CDATA[
+							select new map(a.tagname as tagname, a.id as id, a.articleid as articleid) from TagInfo a where {0} order by a.id desc
 						]]>
 					</value>
 				</entry>
