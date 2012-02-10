@@ -1,9 +1,13 @@
 package com.ux.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.stereotype.Repository;
 
 import com.frame.dao.BaseDao;
@@ -15,6 +19,20 @@ import com.ux.entity.TagInfo;
 public class TagInfoDao extends BaseDao{
 	public void save(TagInfo entity){
 		getHibernateTemplate().save(entity);
+	}
+	public void deleteByArticleId(final String id){
+		getHibernateTemplate().execute(new HibernateCallback<Boolean>() {
+			@Override
+			public Boolean doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				int flag = session.createQuery("delete from TagInfo where articleid='"+id+"'").executeUpdate();
+				if(flag==0){
+					return false;
+				}
+				return true;
+			}
+			
+		});
 	}
 	
 	public ArticleInfo queryEntity(String id){

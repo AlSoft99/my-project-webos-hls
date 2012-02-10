@@ -19,6 +19,28 @@ public class ArticleDao extends BaseDao{
 	public void save(ArticleInfo entity){
 		getHibernateTemplate().save(entity);
 	}
+	public void update(ArticleInfo entity){
+		getHibernateTemplate().update(entity);
+	}
+	public ArticleInfo getArticleInfo(Integer id){
+		return getHibernateTemplate().get(ArticleInfo.class, id);
+	}
+	public boolean delete(ArticleInfo info){
+		return this.deleteByWhere("where id="+info.getId());
+	}
+	public boolean deleteByWhere(final String where){
+		return getHibernateTemplate().execute(new HibernateCallback<Boolean>() {
+			@Override
+			public Boolean doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				int flag = session.createQuery("delete from ArticleInfo "+where).executeUpdate();
+				if (flag<=0) {
+					return false;
+				}
+				return true;
+			}
+		});
+	}
 	public List<ArticleInfo> queryArticle(final int first, final int result){
 		//List<ArticleInfo> list = getHibernateTemplate().find("from ArticleInfo where userid='"+userid+"' order by firstDate desc");
 		List<ArticleInfo> list = getHibernateTemplate().executeFind(new HibernateCallback<List<ArticleInfo>>(){

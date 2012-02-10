@@ -66,10 +66,40 @@ public class ArticleVo {
 				tagInfo.setUserid(userinfo.getId()+"");
 				tagInfoDao.save(tagInfo);
 			}
-			
 		}
-		
-		
 		return "success";
+	}
+	@RequestMapping(value="/article-edit.do",method=RequestMethod.POST)
+	public @ResponseBody String editArticle(ArticleInfo info,@RequestParam(value="tag") String tag,HttpSession session) throws IOException{
+		UserInfo userinfo = (UserInfo)session.getAttribute("userinfo");
+		ArticleInfo getInfo = articleDao.getArticleInfo(info.getId());
+		getInfo.setUserid(userinfo.getId()+"");
+		getInfo.setCurrentDate(new Date());
+		getInfo.setPicture(info.getPicture());
+		getInfo.setContent(info.getContent());
+		getInfo.setText(info.getText());
+		getInfo.setTitle(info.getTitle());
+		getInfo.setType(info.getType());
+		articleDao.update(getInfo);
+		tagInfoDao.deleteByArticleId(info.getId()+"");
+		if(!tag.equals("")){
+			String[] taglist = tag.split(",");
+			for (int i = 0; i < taglist.length; i++) {
+				TagInfo tagInfo = new TagInfo();
+				tagInfo.setArticleid(info.getId()+"");
+				tagInfo.setCurrentDate(new Date());
+				tagInfo.setTagname(taglist[i]);
+				tagInfo.setUserid(userinfo.getId()+"");
+				tagInfoDao.save(tagInfo);
+			}
+		}
+		return "success";
+	}
+	@RequestMapping(value="/article-delete.do",method=RequestMethod.GET)
+	public @ResponseBody String deleteArticle(ArticleInfo info,HttpSession session) throws IOException{
+		if(articleDao.delete(info)){
+			return "success";
+		}
+		return "failure";
 	}
 }
