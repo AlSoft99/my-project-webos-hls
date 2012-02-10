@@ -127,10 +127,18 @@ $.extend({
 });
 $.fn.extend({
 	/**
-	 * th		{'column1':'innerText1','column2':'innerText2','column3':'innerText3'}
-	 * option 	{start:1,row:5,sql:xxx,logout:true}
+	 * th		[{id:"id",text:"ID",width:20,align:"center"},{id:"typename",text:"类型",width:70,align:"center"},{id:"title",text:"标题",width:300},{id:"love",text:"喜爱数",width:70,align:"center"},{id:"brower",text:"浏览数",width:70,align:"center"},{id:"commentsum",text:"评论数",width:70,align:"center"},
+	          {id:'{template}',align:"center",callback:function(o){
+	        	  if(o=="thead"){
+	        		  return "操作";
+	        	  }else{
+	        		  var button = '<a class="grid-table-link edit" href="#">修改</a>&nbsp;<a class="grid-table-link delete" href="#">删除</a>';
+	        		  return button;
+	        	  }
+	          }}];
+	 * option 	{start:0,row:5,sql:xxx,logout:true}
 	 */
-	queryData: function(th,option){
+	queryData: function(th,option,queryCallback){
 		var _this = $(this);
 		if(!_this.hasClass("grid-table")){
 			_this.addClass("grid-table");
@@ -139,14 +147,27 @@ $.fn.extend({
 		_this.append("<thead><tr></tr></thead>");
 		_this.hide();
 		_this.fadeIn(500);
+		var getStyle = function(o){
+			var tdWidth = "";
+			var tdAlign = "";
+			if($.type(o.width)!="undefined" && o.width!=null){
+				tdWidth = "width:"+o.width+"px;";
+			}
+			if($.type(o.align)!="undefined" && o.align!=null){
+				tdAlign = "text-align:"+o.align+";";
+			}
+			return tdWidth+tdAlign;
+		};
 		(function createThead(){
 			var thead = _this.find("thead").find("tr");
-			for ( var key in th) {
+			for ( var i=0;i<th.length;i++ ) {
+				var key = th[i].id;
+				
 				if(key!='{template}'){
-					thead.append("<td>"+th[key]+"</td>");
+					thead.append("<td style='"+getStyle(th[i])+"'>"+th[i].text+"</td>");
 				}else{
-					var content = th[key]("thead");
-					thead.append("<td>"+content+"</td>");
+					var content = th[i].callback("thead",th);
+					thead.append("<td style='"+getStyle(th[i])+"'>"+content+"</td>");
 				}
 				
 			}
@@ -158,12 +179,13 @@ $.fn.extend({
 			for(var i=0; i<data.length;i++){
 				tbody.append("<tr></tr>");
 				var tr = tbody.find("tr:last");
-				for ( var key in th) {
+				for ( var j=0;j<th.length;j++ ) {
+					var key = th[j].id;
 					if(key!='{template}'){
-						tr.append("<td>"+data[i][key]+"</td>");
+						tr.append("<td style='"+getStyle(th[j])+"'>"+data[i][key]+"</td>");
 					}else{
-						var content = th[key]("tbody");
-						tr.append("<td>"+content+"</td>");
+						var content = th[j].callback("tbody",data[i]);
+						tr.append("<td style='"+getStyle(th[j])+"'>"+content+"</td>");
 					}
 				}
 			};
@@ -172,10 +194,13 @@ $.fn.extend({
 			_this.find("tfoot").find("td").pageFoot({total:foot.total,current:(foot.start/foot.rowcount+1),pagenumber:foot.rowcount},function(o){
 				var start = (o.current-1)*foot.rowcount;
 				option.start = start;
-				_this.queryData(th,option);
+				_this.queryData(th,option,queryCallback);
 				return false;
 			});
 		});
+		if($.isFunction(queryCallback)){
+			queryCallback(_this);
+		}
 	},
 	loading : function(fn){
 		if(fn=="open"){

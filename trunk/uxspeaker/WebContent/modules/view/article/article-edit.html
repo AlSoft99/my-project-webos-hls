@@ -1,0 +1,63 @@
+<link type="text/css" rel="stylesheet" href="modules/css/article/article-edit.css" media="screen" />
+<script type="text/javascript" src="modules/script/article/article-edit.js"></script> 
+<div id="dialog-edit-upload" style="display: none;" title="<span style='padding:3px 0;float:left;'>上传图片</span>">
+	<div class="flash" id="fsUploadProgress" style="display:none;"></div>
+	<div style="padding-left: 5px;padding-bottom: 10px;">
+		<span id="spanButtonPlaceholder"></span> <input id="btnCancel"
+			type="button" value="取消" onclick="cancelQueue(upload);"
+			disabled="disabled"
+			style="margin-left: 2px; height: 22px; font-size: 8pt;display: none;" />
+	</div>
+	<div class="bl-article-photo" id="bl-article-head-edit" style="text-align: center;display:none;">
+		<div class="loading bl-article-loading" id="bl-article-loading-edit" style="display: none;"><span id="update-loading-edit"></span></div>
+	</div>
+</div>
+<form class="ui-form" id="article-edit-form" action="article-edit.do" method="get">
+	<table class="ui-table-custom" style="margin-top:35px;">
+		<!-- tr>
+			<td align="right">日期:</td><td><input id="articledate" type="text" class="ui-input" style="width:227px;" /></td>
+		</tr> -->
+		<tr>
+			<td align="right">ID:</td>
+			<td>
+				<span id="article-edit-id"></span>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">类别:</td>
+			<td>
+				<select id="type" name="type" style="width:225px;">
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td align="right">标题:</td><td><input id="title" name="title" type="text" class="ui-input" validate="default" isnull=true maxlength="50" minlength="0" style="width:600px;" placeholder="请输入文章标题"/></td>
+		</tr>
+		<tr>
+			<td align="right">标签:</td><td><input id="tag" name="tag" type="text" class="ui-input" validate="default" isnull=true maxlength="200" minlength="0" style="width:600px;" placeholder="请输入标签,多标签','隔开"/></td>
+		</tr>
+		<tr>
+			<td align="right">首图:</td>
+			<td>
+				<div class="bl-article-photo" id="article-photo" style="text-align: center">
+					<img style="cursor: pointer;width:226px;height:80px;" src="stylesheet/img/question-mark.png" id="article-photo-info" >
+				</div>
+			</td>
+		</tr>
+		<tr>
+			
+			<td colspan="2">
+				<textarea id="articlecontent-edit" name="articlecontent" style="visibility: hidden;width:700px;height:400px;"></textarea>
+			</td>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td><input type="button" id="submitarticle-edit" value="修改文章"/></td>
+		</tr>
+		<tr style="height:150px;">
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</form>
