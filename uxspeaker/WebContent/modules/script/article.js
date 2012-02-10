@@ -6,6 +6,7 @@
 });*/
 var article = {
 	editor : "",
+	editorModify : "",
 	basePath : projectname+'/lib/kindeditor/',
 	initKindEditor: function(){
 		$.getScript('lib/kindeditor/kindeditor-min.js', function() {
@@ -14,12 +15,33 @@ var article = {
 				uploadJson : 'upload_json.php',
 			});
 		});
-	}
+	},
+	initEditKindEditor: function(){
+		/*$.getScript('lib/kindeditor/kindeditor-min.js', function() {
+			KindEditor.basePath = article.basePath;
+			article.editorModify = KindEditor.create('textarea[id="articlecontent-edit"]',{
+				uploadJson : 'upload_json.php',
+			});
+		});*/
+		$.ajax({
+			url: 'lib/kindeditor/kindeditor-min.js',
+			dataType: 'script',
+			async: false,
+			success: function(){
+				KindEditor.basePath = article.basePath;
+				article.editorModify = KindEditor.create('textarea[id="articlecontent-edit"]',{
+					uploadJson : 'upload_json.php',
+				});
+			}
+		});
+	},
+	currentArticleid:""
 };
 
 $(function(){
 	article.initKindEditor();
 	$("#article-tabs").tabs();
+	$("#article-tabs").tabs( "option", "disabled", [2] );
 	$("input[type=button],button").button(); 
 	$("textarea, input[type=text]").defaultMsg();
 	/*$("#articledate").datepicker();*/
@@ -182,7 +204,7 @@ $(function(){
 			return false;
 		}
 		var sublength = 250;
-		var param = $(".ui-form").serialize();
+		var param = $("#article-add-form").serialize();
 		var editor = {};
 		var text = "";
 		if(article.editor.text().length>sublength){
