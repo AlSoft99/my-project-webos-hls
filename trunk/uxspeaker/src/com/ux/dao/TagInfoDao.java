@@ -42,7 +42,6 @@ public class TagInfoDao extends BaseDao{
 	public List<Map<String,Object>> getTagList(){
 		QueryDao queryTips = ServletFactory.newInstant().getFactory().getBean("queryDao",QueryDao.class);
 		List<Map<String,Object>> paramsTag = queryTips.queryByPage("SQL5", "",0,40);
-		System.out.println("paramsTag:"+paramsTag);
 		/*int[] lvMax = {15,15,18,18,18,20,20};
 		List<List<String>> lv = new ArrayList<List<String>>();
 		List<String> nowLv = new ArrayList<String>();

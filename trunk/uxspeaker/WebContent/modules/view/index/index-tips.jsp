@@ -15,7 +15,10 @@ for(int i=0; i < taglist.size();i++){
 	String tagname = flaglist.get("tagname").toString();
 	tagtmp += tagname+",";
 }
-tagtmp = tagtmp.substring(0, tagtmp.length()-1);
+if(!"".equals(tagtmp)){
+	tagtmp = tagtmp.substring(0, tagtmp.length()-1);
+}
+
 %>
 <style type="text/css">
 .lastest-comment{
@@ -47,7 +50,7 @@ tagtmp = tagtmp.substring(0, tagtmp.length()-1);
 	font-size:12px;line-height: 20px;height:16px;padding:0 4px;
 }
 </style>
-<p><input type="text" class="ui-input" id="search" style="width:195px;" placeholder="搜索文章"/></p>
+<p><input type="text" class="ui-input float" id="search" style="width:185px;" placeholder="搜索文章"/></p>
 <div class="index-type"><h1>文章分类</h1></div>
 <ul>
 	<%
@@ -124,7 +127,15 @@ $(function(){
 			}
 		}
 	}
-	$("#search").searchInput();
+	$("#search").searchInputBtn(function(value){
+		if($.trim(value)==""){
+			$.toast("搜索请不要为空!");
+			return false;
+		}
+		var obj = {search:value};
+		var hreObj = $.param(obj, true);
+		window.location = "search?"+hreObj;
+	});
 	$("input[type=text]").defaultMsg();
 	createTag();
 	

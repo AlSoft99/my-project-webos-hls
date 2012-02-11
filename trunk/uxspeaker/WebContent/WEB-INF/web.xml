@@ -181,5 +181,13 @@
 		<servlet-name>TagUrl</servlet-name>
 		<url-pattern>/tag</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>SearchUrl</servlet-name>
+		<jsp-file>/modules/view/index/index-search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchUrl</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

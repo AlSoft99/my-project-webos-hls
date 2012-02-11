@@ -4,7 +4,7 @@
 <%@ page import="com.ux.dao.QueryDao"%>
 <% 
 QueryDao queryType = ServletFactory.newInstant().getFactory().getBean("queryDao",QueryDao.class);
-int rownumber = 2;
+int rownumber = com.ux.util.Constant.ROW_NUMBER;
 String currentPage = request.getParameter("current");
 String tagnameTmp = request.getParameter("tagname");
 if(currentPage==null || "".equals(currentPage)){

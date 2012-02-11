@@ -1,17 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="com.frame.servlet.ServletFactory" %>
-<%@ page import="com.ux.dao.ArticleDao" %>
-<%@ page import="com.ux.entity.ArticleInfo" %>
+<%@ page import="com.ux.dao.QueryDao"%>
 <% 
-ArticleDao dao = ServletFactory.newInstant().getFactory().getBean("articleDao",ArticleDao.class);
+QueryDao queryType = ServletFactory.newInstant().getFactory().getBean("queryDao",QueryDao.class);
 int rownumber = com.ux.util.Constant.ROW_NUMBER;
 String currentPage = request.getParameter("current");
+String search = request.getParameter("search");
 if(currentPage==null || "".equals(currentPage)){
 	currentPage = "1";
 };
-List<Map<String,Object>> list = dao.queryArticleMap((Integer.parseInt(currentPage)-1)*rownumber,rownumber);
-int count = (int)dao.getCount();
+List<Map<String,Object>> list = queryType.queryByPage("SQL6", " and (d.tagname like '%"+search+"%' or a.title like '%"+search+"%' or a.content like '%"+search+"%' ) ",(Integer.parseInt(currentPage)-1)*rownumber,rownumber);
+//List<Map<String,Object>> list = dao.queryArticleMap((Integer.parseInt(currentPage)-1)*rownumber,rownumber);
+int count = (int)queryType.getCount("SQL6", " and (d.tagname like '%"+search+"%' or a.title like '%"+search+"%' or a.content like '%"+search+"%' ) ");
+String atricleType = "";
+if(count==0){
+	atricleType = "暂无文章";
+}else{
+	atricleType = search;
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,18 +26,21 @@ int count = (int)dao.getCount();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>UXSPEAKER</title>
-<%@ include file="modules/view/include.html" %>
+<%@ include file="../include.html" %>
 <!-- CSS -->
 <link type="text/css" rel="stylesheet" href="stylesheet/css/index.css" media="screen" />
 <!-- JavaScripts-->
-<script type="text/javascript" src="modules/index.js"></script>
+<script type="text/javascript" src="modules/script/index/index-search.js"></script>
 </head>
 <body>
-	<%@ include file="modules/view/index/index-menu.jsp" %>
+	<%@ include file="index-menu.jsp" %>
 	<!-- div class="index-title" style="background-color: #3E5819;">
 		<div style="margin: auto;width:990px;"><img src="stylesheet/img/index/title.png" style="width:990px;height:340px;"/></div>
 	</div> -->
-	<div class="index-body" id="index" total="<%=count%>" currentPage="<%=currentPage%>" rownumber="<%=rownumber%>">
+	<div class="index-body" id="index" total="<%=count%>" currentPage="<%=currentPage%>" rownumber="<%=rownumber%>" search="<%=search%>">
+		<div class="index-navigation" style="padding-top:25px;">
+			<a href="index">首页</a> > <span><%=atricleType%></span>
+		</div>
 		<div class="float index-content" id="index-content">
 			<% 
 			for(Map<String,Object> info : list){
@@ -82,10 +92,10 @@ int count = (int)dao.getCount();
 		</div>
 		<div id="page-foot" style="margin-top: 20px;"></div>
 		<div class="float-right index-tips">
-			<%@ include file="modules/view/index/index-tips.jsp" %>
+			<%@ include file="index-tips.jsp" %>
 		</div>
 		<div class="clear"></div>
 	</div>
-	<%@ include file="modules/view/foot.html" %>
+	<%@ include file="../foot.html" %>
 </body>
 </html>

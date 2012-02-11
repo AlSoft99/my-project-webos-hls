@@ -25,7 +25,6 @@ public class TestVo implements BaseVo {
 	@Override
 	public Request execute(Request request) throws Exception {
 		UserInfoTest userInfo = (UserInfoTest)request.getEntity();
-		System.out.println("test.name:"+userInfo.getUsername());
 		userInfoTestDao.save(userInfo);
 		/*userInfo.setUsername("name1");
 		userInfoDao.save(userInfo);

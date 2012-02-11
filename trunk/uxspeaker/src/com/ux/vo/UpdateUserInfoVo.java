@@ -37,11 +37,8 @@ public class UpdateUserInfoVo {
 		String out = System.getProperty("webapp.root")+"/upload/head/";
 		if(cut.getW()!=0){
 			CutImage o = new CutImage(cut.getX(), cut.getY(), cut.getW(), cut.getH());
-			System.out.println("name+cut.getUploadname():"+name+cut.getUploadname());
-			System.out.println("out+cut.getUploadname():"+out+cut.getUploadname());
 			o.setSrcpath(name+cut.getUploadname());
 			o.setSubpath(out+cut.getUploadname());
-			System.out.println("o.getType(cut.getUploadname()):"+o.getType(cut.getUploadname()));
 			o.cut("jpg");
 		}else{
 			FileOperate o = new FileOperate();

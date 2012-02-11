@@ -7,3 +7,18 @@
 .ui-input-search input{
 	border:0px;outline-style:none;padding:4px 0;margin: 0;
 }
+.ui-input-search-btn{
+	border:1px solid #BFBFBF; height:25px;
+}
+.ui-input-search-btn input{
+	border:0px;outline-style:none;padding:4px 0 4px 4px;margin: 0;
+}
+.ui-input-search-btn-picture{
+	background:url(../img/index/btn_search.png) no-repeat 100% 0;width:25px;height:25px;
+}
+.ui-input-search-btn-picture:hover{
+	background-position: 100% -25px;
+}
+.ui-input-search-btn-picture:active{
+	background-position: 100% -50px;
+}

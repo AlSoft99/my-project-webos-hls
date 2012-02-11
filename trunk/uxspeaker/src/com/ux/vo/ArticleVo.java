@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.frame.util.CutImage;
 import com.frame.util.Utils;
 import com.ux.dao.ArticleDao;
+import com.ux.dao.CommentInfoDao;
 import com.ux.dao.TagInfoDao;
 import com.ux.entity.ArticleInfo;
 import com.ux.entity.CutPhoto;
@@ -28,6 +29,8 @@ public class ArticleVo {
 	private ArticleDao articleDao;
 	@Resource
 	private TagInfoDao tagInfoDao;
+	@Resource
+	private CommentInfoDao commentInfoDao;
 	
 	@RequestMapping(value="/article-upload.do",method=RequestMethod.GET)
 	public @ResponseBody String cutArticle(CutPhoto cut,HttpSession session) throws IOException{
@@ -98,6 +101,8 @@ public class ArticleVo {
 	@RequestMapping(value="/article-delete.do",method=RequestMethod.GET)
 	public @ResponseBody String deleteArticle(ArticleInfo info,HttpSession session) throws IOException{
 		if(articleDao.delete(info)){
+			tagInfoDao.deleteByArticleId(info.getId()+"");
+			commentInfoDao.deleteByCommentId(info.getId()+"");
 			return "success";
 		}
 		return "failure";

@@ -201,6 +201,12 @@ $.fn.extend({
 		if($.isFunction(queryCallback)){
 			queryCallback(_this);
 		}
+		return {
+			refresh: function(){
+				console.log("option.start:"+option.start);
+				_this.queryData(th,option,queryCallback);
+			}
+		};
 	},
 	loading : function(fn){
 		if(fn=="open"){
@@ -253,6 +259,21 @@ $.fn.extend({
 	},
 	searchInput: function(){
 		$(this).wrap("<div class='ui-input-search'></div>");
+	},
+	searchInputBtn: function(callback){
+		$(this).wrap("<div class='ui-input-search-btn'></div>");
+		$(this).parent().append("<span class='ui-input-search-btn-picture float-right'></span>");
+		if($.isFunction(callback)){
+			var _this = $(this);
+			$(this).parent().find(".ui-input-search-btn-picture").click(function(){
+				if(_this.hasClass("default-msg")){
+					callback("");
+				}else{
+					callback(_this.val());
+				}
+				
+			});
+		}
 	},
 	/**
 	 * 参数说明:
