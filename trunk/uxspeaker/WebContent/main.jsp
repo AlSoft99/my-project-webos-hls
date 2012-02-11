@@ -47,10 +47,10 @@ window.sessionStr = '<%=sessionStr%>';
         <div class="sideTitle">
 	        <ul id="mainNav">
 	        	<li><a href="#userinfo" class="active" >首页</a></li> <!-- Use the "active" class for the active menu item  -->
-	        	<li><a href="#friend" >好友</a></li>
+	        	<!-- <li><a href="#friend" >好友</a></li>
 	        	<li><a href="#userinfo2" >消息</a></li>
-	        	<li><a href="#userinfo3" >资料</a></li>
-	        	<li class="logout"><a href="#">登出</a></li>
+	        	<li><a href="#userinfo3" >资料</a></li> -->
+	        	<li class="logout"><a href="#logout">登出</a></li>
 	        </ul>
         </div>
         <!-- // #end mainNav -->
@@ -60,12 +60,12 @@ window.sessionStr = '<%=sessionStr%>';
         		<div id="sidebar">
                 	<ul class="sideNav">
                 		<li><a href="#article">文章</a></li>
-                    	<li><a href="#picture">照片</a></li>
+                    	<!-- <li><a href="#picture">照片</a></li>
                     	<li><a href="#userinfo5">日记</a></li>
                     	<li><a href="#userinfo6">音乐</a></li>
                     	<li><a href="#userinfo7">电影</a></li>
                     	<li><a href="#userinfo8">书籍</a></li>
-                    	<li><a href="#userinfo9">网盘</a></li>
+                    	<li><a href="#userinfo9">网盘</a></li> -->
                     </ul>
                     <!-- // .sideNav -->
                 </div>    
@@ -84,8 +84,6 @@ window.sessionStr = '<%=sessionStr%>';
             <!-- // #container -->
         </div>	
         <!-- // #containerHolder -->
-        
-        <p id="footer">Feel free to use and customize it. <a href="http://www.perspectived.com">Credit is appreciated.</a></p>
     </div>
     <!-- // #wrapper -->
 </body>
