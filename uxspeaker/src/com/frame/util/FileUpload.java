@@ -55,16 +55,18 @@ public class FileUpload {
 						String type = item.getName().split("\\.")[1].toLowerCase();//获取文件类型
 						//String file = root + path +"/"+uuid + "." + type;
 						String name = uuid + "." + type;
+						FileEntity entity = new FileEntity();
 						if(type.equals("jpg") || type.equals("gif") ||type.equals("png")){
 							savePngImage(item.getInputStream(),name);
+							entity.setStream(item.getInputStream());
 						}else{
 							saveFile(item,name);
 						}
-						FileEntity entity = new FileEntity();
+						
 						entity.setSourcename(item.getName());
 						entity.setUploadname(name);
 						entity.setUploadurl(downloalpath);
-						entity.setStream(item.getInputStream());
+						
 						result.add(entity);
 					}
 				}

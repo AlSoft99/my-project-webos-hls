@@ -51,11 +51,8 @@ public class Utils {
 	 */
 	public static void reduceImg(InputStream stream, String imgdist, int widthdist, int heightdist) {   
 	    try {   
-	    	System.out.println("stream:"+stream);
 	        Image src = javax.imageio.ImageIO.read(stream);   
 	        BufferedImage tag= new BufferedImage((int) widthdist, (int) heightdist, BufferedImage.TYPE_INT_RGB);   
-	        System.out.println("src:"+src);
-	        System.out.println("tag.getGraphics():"+tag.getGraphics());
 	        tag.getGraphics().drawImage(src.getScaledInstance(widthdist, heightdist,  Image.SCALE_SMOOTH), 0, 0,  null);   
 	        FileOutputStream out = new FileOutputStream(imgdist);   
 	        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);   

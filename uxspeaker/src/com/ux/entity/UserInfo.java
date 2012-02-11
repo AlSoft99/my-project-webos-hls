@@ -30,6 +30,9 @@ public class UserInfo implements Serializable {
 	//密码
 	@Column(name = "password", nullable = false,length=30)
 	private String password;
+	//角色
+	@Column(name = "role", nullable = true,length=10)
+	private String role;
 	//签名
 	@Column(name = "sign", nullable = true,length=100)
 	private String sign;
@@ -115,6 +118,12 @@ public class UserInfo implements Serializable {
 	}
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }

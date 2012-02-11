@@ -20,7 +20,7 @@ $(function(){
 	        	  }
 	          }}];
 	var op = {start:0,row:10,sql:"SQL7",logout:false,where:" and a.userid='"+main.session.id+"'"};
-	$("#article-query-table").queryData(th,op,function(_this){
+	var query = $("#article-query-table").queryData(th,op,function(_this){
 		_this.find("a.edit").click(function(){
 			//$("#article-tabs").tabs("enable");
 			//$( "#article-tabs" ).tabs( "option", "enabled", true );
@@ -40,6 +40,7 @@ $(function(){
 						$.get("article-delete.do?id="+articleid,function(data){
 							if(data=="success"){
 								$.toast("删除成功!");
+								query.refresh();
 							}else{
 								$.toast("删除失败!");
 							}

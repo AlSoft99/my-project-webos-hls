@@ -108,6 +108,13 @@
 					<property name="updtuser" value="system" />
 					<property name="updttime" ref="currentDate" />
 				</bean>
+				<bean class="com.ux.entity.ParamsList">
+					<property name="id" value="3" />
+					<property name="typename" value="角色" />
+					<property name="typedesc" value="用户角色" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
 			</list>
 		</property>
 		<property name="paramsType">
@@ -173,6 +180,70 @@
 					<property name="typeid" value="2" />
 					<property name="typename" value="后台开发" />
 					<property name="typedesc" value="后台开发" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="9" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="超级管理员" />
+					<property name="typedesc" value="超级管理员" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="10" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="管理员" />
+					<property name="typedesc" value="管理员" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="11" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="钻石会员" />
+					<property name="typedesc" value="钻石会员" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="12" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="黄金会员" />
+					<property name="typedesc" value="黄金会员" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="13" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="白银会员" />
+					<property name="typedesc" value="白银会员" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="14" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="高级会员" />
+					<property name="typedesc" value="高级会员" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="15" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="普通会员" />
+					<property name="typedesc" value="普通会员" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="16" />
+					<property name="typeid" value="3" />
+					<property name="typename" value="新手" />
+					<property name="typedesc" value="新手" />
 					<property name="updtuser" value="system" />
 					<property name="updttime" ref="currentDate" />
 				</bean>

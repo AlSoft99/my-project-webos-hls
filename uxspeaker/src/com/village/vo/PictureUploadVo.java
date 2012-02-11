@@ -12,9 +12,7 @@ public class PictureUploadVo implements BaseVo{
 
 	@Override
 	public Request execute(Request request) throws Exception {
-		System.out.println("in class");
 		FileUpload file = ServletFactory.newInstant().getFactory().getBean("fileUpload", FileUpload.class);
-		System.out.println("path:"+file.getFilepath());
 		
 		return request;
 	}

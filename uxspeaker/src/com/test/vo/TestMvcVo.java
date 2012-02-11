@@ -18,7 +18,6 @@ public class TestMvcVo {
 	
 	@RequestMapping(value="/test.do",method=RequestMethod.GET, params="method=add")
 	public @ResponseBody String test(@RequestParam(value="username",required=true) String username){
-		System.out.println("test start!username:"+username);
 		TestEntity userInfo = new TestEntity();
 		userInfo.setUser("guanrl");
 		userInfo.setPsw("guanrlguanrl");
