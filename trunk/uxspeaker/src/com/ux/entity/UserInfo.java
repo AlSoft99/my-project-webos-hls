@@ -9,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 
 @Entity  
 @Table(name = "ux_user_info")
@@ -41,7 +44,9 @@ public class UserInfo implements Serializable {
 	private String job;
 	private String jobname;
 	//个人简介
-	@Column(name = "intro", nullable = true,length=200)
+	@Lob()
+	@Type(type = "org.hibernate.type.StringClobType") 
+	@Column(name = "intro",columnDefinition="longtext", nullable = true)
 	private String intro;
 	//电话
 	@Column(name = "phone", nullable = true,length=30)
