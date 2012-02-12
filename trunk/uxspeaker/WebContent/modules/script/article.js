@@ -56,6 +56,15 @@ $(function(){
 		}
 		$("#type").selectmenu();
 	});
+	var optionStatus = {logout:true,sql:"SQL3",where:"4"};
+	$.queryData(optionStatus,function(data){
+		$("#status").empty();
+		data.pop();
+		for (var i = 0; i < data.length; i++) {
+			$("#status").append("<option value='"+data[i].id+"'>"+data[i].typename+"</option>");
+		}
+		$("#status").selectmenu();
+	});
 	var cutpicture = {};
 	$.swfupload({
 		upload_url : "uploadphoto.head?reduce=false",

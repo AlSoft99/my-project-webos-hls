@@ -83,6 +83,7 @@ public class ArticleVo {
 		getInfo.setText(info.getText());
 		getInfo.setTitle(info.getTitle());
 		getInfo.setType(info.getType());
+		getInfo.setStatus(info.getStatus());
 		articleDao.update(getInfo);
 		tagInfoDao.deleteByArticleId(info.getId()+"");
 		if(!tag.equals("")){
