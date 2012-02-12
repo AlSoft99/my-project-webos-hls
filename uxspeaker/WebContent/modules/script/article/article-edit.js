@@ -12,19 +12,19 @@ $(function(){
 	$("#bl-article-head-edit img,#bl-article-head-edit .jcrop-holder").remove();
 	$("#bl-article-head-edit").hide();
 	$("#article-edit-form").validateInit();
-	var createSelect = function(type){
-		var option = {logout:true,sql:"SQL3",where:"2"};
+	var createSelect = function(type,id,where){
+		var option = {logout:true,sql:"SQL3",where:where};
 		$.queryData(option,function(data){
-			$("#article-edit-form #type").empty();
+			$("#article-edit-form #"+id).empty();
 			data.pop();
 			for (var i = 0; i < data.length; i++) {
 				if(type==data[i].id){
-					$("#article-edit-form #type").append("<option value='"+data[i].id+"' selected>"+data[i].typename+"</option>");
+					$("#article-edit-form #"+id).append("<option value='"+data[i].id+"' selected>"+data[i].typename+"</option>");
 				}else{
-					$("#article-edit-form #type").append("<option value='"+data[i].id+"'>"+data[i].typename+"</option>");
+					$("#article-edit-form #"+id).append("<option value='"+data[i].id+"'>"+data[i].typename+"</option>");
 				}
 			}
-			$("#article-edit-form #type").selectmenu();
+			$("#article-edit-form #"+id).selectmenu();
 		});
 	};
 	var option = {logout:true,sql:"SQL9",where:" a.articleid='"+article.currentArticleid+"' "};
@@ -38,10 +38,11 @@ $(function(){
 		$("#article-edit-form #tag").val(tagname);
 	});
 	var cutpictureEdit = {};
-	var option = {logout:true,sql:"SQL8",where:" and a.id="+article.currentArticleid+" "};
+	var option = {logout:true,sql:"SQL10",where:" and a.id="+article.currentArticleid+" "};
 	$.queryData(option,function(data){
 		var type = data[0].type;
-		createSelect(type);
+		createSelect(type,"type","2");
+		createSelect(data[0].status,"status","4");
 		$("#article-edit-form #title").val(data[0].title);
 		$("#article-edit-form #article-photo img").attr("src", data[0].picture);
 		cutpictureEdit.showname = data[0].picture;
@@ -218,6 +219,7 @@ $(function(){
 			$.toast("文章修改成功!");
 			$("#article-edit-form input[type=text]").val("");
 			$("#article-edit-form #type").selectmenu("index",0);
+			$("#article-edit-form #status").selectmenu("index",0);
 			$("#article-edit-form").reset();
 			article.editorModify.html("");
 			$("#article-tabs").tabs( "option", "selected", 1 );

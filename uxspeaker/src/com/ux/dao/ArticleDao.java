@@ -65,7 +65,7 @@ public class ArticleDao extends BaseDao{
 			@Override
 			public List<Map<String,Object>> doInHibernate(Session session)
 					throws HibernateException, SQLException {
-				Query q = session.createQuery("select new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.content as content,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c where c.typeid='2' and c.id=a.type and a.userid = b.id "+where+" order by a.firstDate desc").setFirstResult(first).setMaxResults(result);
+				Query q = session.createQuery("select new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.content as content,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c where a.status='17' and c.typeid='2' and c.id=a.type and a.userid = b.id "+where+" order by a.firstDate desc").setFirstResult(first).setMaxResults(result);
 				List<Map<String,Object>> list = q.list();
 				for (int i = 0; i < list.size(); i++) {
 					String date = list.get(i).get("firstDate").toString().substring(0, 10);

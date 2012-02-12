@@ -30,6 +30,9 @@ public class ArticleInfo implements Serializable {
 	//类别
 	@Column(name = "type", nullable = false,length=10)
 	private String type;
+	//状态(好友可见, 私有, 垃圾箱...)
+	@Column(name = "status", nullable = false,length=10)
+	private String status;
 	//题目
 	@Column(name = "title", nullable = false,length=50)
 	private String title;
@@ -130,6 +133,12 @@ public class ArticleInfo implements Serializable {
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

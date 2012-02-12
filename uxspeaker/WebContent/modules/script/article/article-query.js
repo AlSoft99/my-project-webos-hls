@@ -10,7 +10,7 @@ $(function(){
 		}
 		
 	}};*/
-	var th = [{id:"id",text:"ID",width:20,align:"center"},{id:"typename",text:"类型",width:70,align:"center"},{id:"title",text:"标题",width:300},{id:"love",text:"喜爱数",width:70,align:"center"},{id:"brower",text:"浏览数",width:70,align:"center"},{id:"commentsum",text:"评论数",width:70,align:"center"},
+	var th = [{id:"id",text:"ID",width:20,align:"center"},{id:"typename",text:"类型",width:70,align:"center"},{id:"statusname",text:"状态",width:70,align:"center"},{id:"title",text:"标题",width:240},{id:"love",text:"喜爱数",width:70,align:"center"},{id:"brower",text:"浏览数",width:70,align:"center"},{id:"commentsum",text:"评论数",width:70,align:"center"},
 	          {id:'{template}',align:"center",callback:function(o,data){
 	        	  if(o=="thead"){
 	        		  return "操作";

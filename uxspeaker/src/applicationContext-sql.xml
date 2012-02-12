@@ -27,7 +27,7 @@
 				<entry key="SQL2">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c where c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
+							select new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c where a.status='17' and c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
 						]]>
 					</value>
 				</entry>
@@ -41,7 +41,7 @@
 				<entry key="SQL4">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.articleid as articleid,a.userid as userid,a.commentuser as commentuser,a.comment as comment,a.receiver as receiver,a.approve as approve,a.oppose as oppose,a.currentDate as currentDate,(select b.username from UserInfo b where b.id=a.userid) as username,(select b.picture from UserInfo b where b.id=a.userid) as picture ) from CommentInfo a order by a.currentDate desc
+							select new map(a.id as id,a.articleid as articleid,a.userid as userid,a.commentuser as commentuser,a.comment as comment,a.receiver as receiver,a.approve as approve,a.oppose as oppose,a.currentDate as currentDate,(select b.username from UserInfo b where b.id=a.userid) as username,(select b.picture from UserInfo b where b.id=a.userid) as picture ) from CommentInfo a,ArticleInfo b where a.articleid=b.id and b.status='17' order by a.currentDate desc
 						]]>
 					</value>
 				</entry>
@@ -55,21 +55,21 @@
 				<entry key="SQL6">
 					<value>
 						<![CDATA[
-							select distinct new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c,TagInfo d where a.id=d.articleid and c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
+							select distinct new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c,TagInfo d where a.status='17' and a.id=d.articleid and c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
 						]]>
 					</value>
 				</entry>
 				<entry key="SQL7">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,ParamsType b where a.type=b.id {0} order by a.firstDate desc
+							select new map(a.id as id,a.type as type,a.status as status,c.typename as statusname,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,ParamsType b,ParamsType c where a.type=b.id and a.status=c.id {0} order by a.firstDate desc
 						]]>
 					</value>
 				</entry>
 				<entry key="SQL8">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum,a.content as content,a.picture as picture) from ArticleInfo a,ParamsType b where a.type=b.id {0} order by a.currentDate desc
+							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.status as status,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum,a.content as content,a.picture as picture) from ArticleInfo a,ParamsType b where a.status='17' and a.type=b.id {0} order by a.currentDate desc
 						]]>
 					</value>
 				</entry>
@@ -77,6 +77,13 @@
 					<value>
 						<![CDATA[
 							select new map(a.tagname as tagname, a.id as id, a.articleid as articleid) from TagInfo a where {0} order by a.id desc
+						]]>
+					</value>
+				</entry>
+				<entry key="SQL10">
+					<value>
+						<![CDATA[
+							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.status as status,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum,a.content as content,a.picture as picture) from ArticleInfo a,ParamsType b where a.type=b.id {0} order by a.currentDate desc
 						]]>
 					</value>
 				</entry>
@@ -112,6 +119,13 @@
 					<property name="id" value="3" />
 					<property name="typename" value="角色" />
 					<property name="typedesc" value="用户角色" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsList">
+					<property name="id" value="4" />
+					<property name="typename" value="状态" />
+					<property name="typedesc" value="文章状态" />
 					<property name="updtuser" value="system" />
 					<property name="updttime" ref="currentDate" />
 				</bean>
@@ -244,6 +258,46 @@
 					<property name="typeid" value="3" />
 					<property name="typename" value="新手" />
 					<property name="typedesc" value="新手" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="17" />
+					<property name="typeid" value="4" />
+					<property name="typename" value="公开" />
+					<property name="typedesc" value="公开" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<!-- <bean class="com.ux.entity.ParamsType">
+					<property name="id" value="18" />
+					<property name="typeid" value="4" />
+					<property name="typename" value="好友可见" />
+					<property name="typedesc" value="好友可见" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean> -->
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="19" />
+					<property name="typeid" value="4" />
+					<property name="typename" value="私有" />
+					<property name="typedesc" value="私有" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="20" />
+					<property name="typeid" value="4" />
+					<property name="typename" value="草稿" />
+					<property name="typedesc" value="草稿" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="21" />
+					<property name="typeid" value="4" />
+					<property name="typename" value="回收站" />
+					<property name="typedesc" value="回收站" />
 					<property name="updtuser" value="system" />
 					<property name="updttime" ref="currentDate" />
 				</bean>
