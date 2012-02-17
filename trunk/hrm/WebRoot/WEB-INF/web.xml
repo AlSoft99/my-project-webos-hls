@@ -117,7 +117,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<!-- axis配置开始 -->
-	<servlet>
+	<!-- <servlet>
 		<servlet-name>axis</servlet-name>
 		<servlet-class>
 			org.apache.axis.transport.http.AxisServlet
@@ -127,6 +127,6 @@
 	<servlet-mapping>
 		<servlet-name>axis</servlet-name>
 		<url-pattern>/ws/*</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 	<!-- axis配置结束 -->
 </web-app>
