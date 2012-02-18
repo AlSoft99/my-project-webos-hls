@@ -124,9 +124,9 @@ var comboBoxList = {
 				    {name:"text"}
 				]),
 				listeners:{
-					load:function(){
+					load:function(store,record,opts){
 						if(typeof(fnt)!="undefined"){
-							new fnt();
+							new fnt(store,record,opts);
 						}
 					}
 				}
@@ -141,6 +141,27 @@ var comboBoxList = {
 		  	displayField: "text",
 		  	hiddenName: fieldName
 		});
+	},
+	getValue:function(array,key){
+		for(var i = 0 ; i < array.length;i++ ){
+			var temp = array[i];
+			if(temp[0]==key){
+				return temp[1];
+			}
+		}
+		return "";
+	},
+	getKey:function(array,value){
+		for(var i = 0 ; i < array.length;i++ ){
+			var temp = array[i];
+			if(temp[1]==value){
+				return temp[0];
+			}
+		}
+		return "";
+	},
+	getArray:function(combobox){
+		return combobox.getStore().reader.arrayData;
 	}
 }
 var trans = {
