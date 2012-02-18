@@ -184,4 +184,23 @@
   			<ref bean="HibernateSessionDAO"/>
   		</property>
   	</bean>
+  	<bean id="footTypeVo" class="com.hrm.vo.FootTypeVo">
+  		<property name="footTypeDAO">
+  			<ref bean="FootTypeDAO"/>
+  		</property>
+  		<property name="footListDAO">
+  			<ref bean="FootListDAO"/>
+  		</property>
+  		<property name="footMaterialDAO">
+  			<ref bean="FootMaterialDAO"/>
+  		</property>
+  	</bean>
+  	<bean id="materialTypeVo" class="com.hrm.vo.MaterialTypeVo">
+  		<property name="materialTypeDAO">
+  			<ref bean="MaterialTypeDAO"/>
+  		</property>
+  		<property name="materialListDAO">
+  			<ref bean="MaterialListDAO"/>
+  		</property>
+  	</bean>
 </beans>

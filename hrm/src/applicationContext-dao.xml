@@ -170,4 +170,34 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
+	<bean id="FootListDAO"
+		class="com.hrm.dao.FootListDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="FootTypeDAO"
+		class="com.hrm.dao.FootTypeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="FootMaterialDAO"
+		class="com.hrm.dao.FootMaterialDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MaterialListDAO"
+		class="com.hrm.dao.MaterialListDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MaterialTypeDAO"
+		class="com.hrm.dao.MaterialTypeDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
 </beans>

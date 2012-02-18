@@ -398,7 +398,7 @@ public class StringUtil {
 						}else if (type.equals("Double")){
 							PropertyUtils.setProperty(classObj, key, Double.valueOf(value[0]));
 						}else if (type.equals("Date")){
-							PropertyUtils.setProperty(classObj, key, DateFormat.getDateInstance().parse(value[0]));
+							if(!"".equals(value[0])) PropertyUtils.setProperty(classObj, key, DateFormat.getDateInstance().parse(value[0]));
 						}else if (type.equals("BigDecimal")){
 							PropertyUtils.setProperty(classObj, key, new BigDecimal(value[0]));
 						}else if (type.equals("Float")){
@@ -424,6 +424,7 @@ public class StringUtil {
 			req.setHttpRequest(request);
 			req.setHttpResponse(response);
 		}catch (Exception e) {
+			e.printStackTrace();
 			if(!req.getResponse().equals("")){
 				response.getWriter().write(req.getResponse().toString());
 			}else if(req.getResponse()!=null && e.getMessage()!=null){
