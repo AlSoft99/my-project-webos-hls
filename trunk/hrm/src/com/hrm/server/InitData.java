@@ -9,10 +9,12 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.hrm.dao.HibernateSessionDAO;
 import com.hrm.dao.RoleInfoDAO;
 import com.hrm.entity.DayClearChk;
 import com.hrm.util.ClsFactory;
 import com.hrm.util.Constant;
+import com.hrm.util.InitDB;
 import com.hrm.util.StringUtil;
 
 public class InitData {
@@ -34,6 +36,7 @@ public class InitData {
 	}
 	public void init(){
 		com.hrm.util.ClsFactory.newInstance().info("开始初始化InitData类中的数据");
+		initDB();
 		initJsonRoleInfo();
 		initJsonUserInfo();
 		initJsonStoreList();
@@ -44,6 +47,14 @@ public class InitData {
 		initOutuserInfo();
 		com.hrm.util.ClsFactory.newInstance().info("InitData初始化结束");
 		
+	}
+	private void initDB(){
+		List<Long> list = roleInfoDAO.createHqlQuery("select count(*) from MenuLevelStair");
+		if(list.get(0)==0){
+			//InitDB data = new InitDB();
+			//HibernateSessionDAO dao = ClsFactory.newInstance().getFactory().getBean("HibernateSessionDAO", HibernateSessionDAO.class);
+			//data.importDB(dao);
+		}
 	}
 	public void initJsonRoleInfo(){
 		String hql = "select roleCode,roleName from RoleInfo";
