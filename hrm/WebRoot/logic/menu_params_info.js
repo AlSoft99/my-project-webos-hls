@@ -494,6 +494,7 @@ Ext.onReady(function() {
     });
 	var materialType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialType a","","");
 	var materialList = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
+	var materialListAll = materialList;
 	materialType.emptyText = "过滤货物";
 	materialType.allowBlank = true;
 	materialList.allowBlank = false;
@@ -588,16 +589,13 @@ Ext.onReady(function() {
 		return "<font color='red'>过滤货物</font>";
 	}
 	function filterUnit(content){
-		console.log(unit);
 		var arrayData = comboBoxList.getArray(unit);
-		console.log(arrayData);
 		var value = comboBoxList.getValue(arrayData,content);
-		console.log("========value=="+value);
 		//unit.selectByValue("克");
 		return value;
 	}
 	function filterMaterialName(content){
-		var arrayData = comboBoxList.getArray(materialList);
+		var arrayData = comboBoxList.getArray(materialListAll);
 		var value = comboBoxList.getValue(arrayData,content);
 		return value;
 	}
@@ -712,7 +710,7 @@ Ext.onReady(function() {
         }],
     	bbar:new Ext.PagingToolbar({
 		    pageSize:10,
-		    store:ds,
+		    store:dsm,
 		    displayInfo:true,
 		    displayMsg:"显示第{0}条到{1}条记录,一共{2}条记录",
 		    emptyMsg:"无记录"
@@ -745,8 +743,6 @@ Ext.onReady(function() {
     	},
 		updateMaterial:function(updateObj,jsonRecord){
     		var recordData = editorM.record.data;
-			console.log("=======recordData=======");
-			console.log(recordData);
     		loading.loadMask().show();
     		Ext.Ajax.request({
     			url:"footTypeVo.do?action=updateFootMaterial&entity=com.hrm.entity.FootMaterial",

@@ -3,6 +3,7 @@ package com.hrm.vo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,7 +38,7 @@ public class RoleInfoVo implements BaseVo {
 			String role_desc = request.getParamsMap().get("role_desc");
 			String role_code = request.getParamsMap().get("role_code");
 			RoleInfo info = new RoleInfo();
-			
+			info.setRoleCode(UUID.randomUUID().toString());
 			info.setRoleDesc(role_desc);
 			info.setRoleName(role_name);
 			info.setUserName("guanrl");
