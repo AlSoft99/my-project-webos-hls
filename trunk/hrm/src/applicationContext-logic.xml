@@ -203,4 +203,9 @@
   			<ref bean="MaterialListDAO"/>
   		</property>
   	</bean>
+  	<bean id="orderOutputInfoVo" class="com.hrm.vo.OrderOutputInfoVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
 </beans>
