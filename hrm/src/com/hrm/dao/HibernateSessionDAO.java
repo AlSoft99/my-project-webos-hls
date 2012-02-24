@@ -62,4 +62,12 @@ public class HibernateSessionDAO extends HibernateDaoSupport {
 			
 		});
 	}
+	
+	public void save(Object o){
+		getHibernateTemplate().save(o);
+	}
+	
+	public void update(Object o){
+		getHibernateTemplate().update(o);
+	}
 }

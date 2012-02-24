@@ -6,23 +6,54 @@ Ext.onReady(function() {
 	 * 树形
 	 */
 	var currentId = "";
+	var curentStartDate = (new Date()).clearTime().format("Y-m-d");
+	var curentEndDate = (new Date()).clearTime().format("Y-m-d");
 	var currentSalaryList ;
+	var toolbar = new Ext.Toolbar([
+		"开始:",
+		new Ext.form.DateField({
+			emptyText:"默认当天"
+		}), 
+		"结束:",
+		new Ext.form.DateField({
+			emptyText:"默认当天"
+		}),
+		{
+			text:"查询",
+			iconCls:"icon-grid",
+			handler:function(){
+				if(toolbar.getComponent(1).getValue()!=""){
+					curentStartDate = toolbar.getComponent(1).getValue().format("Y-m-d");
+				}
+				if(toolbar.getComponent(3).getValue()!=""){
+					curentEndDate = toolbar.getComponent(3).getValue().format("Y-m-d");
+				}
+				tree_menu.loader.baseParams.start = curentStartDate;
+				tree_menu.loader.baseParams.end = curentEndDate;
+				grid.addBtn.setDisabled(true);
+				tree_menu.getRootNode().reload();
+			}
+		}
+	]);
 	var tree_menu = new Ext.tree.TreePanel({
-		title:"参数类型选择",
-		width : 300,
+		title:"损耗账单选择",
+		width : 350,
 		autoScroll:true,
 		height : height-500,
+		tbar:toolbar,
 		loader : new Ext.tree.TreeLoader({
-			dataUrl : "treeInfoQuery.do?action=single",
+			dataUrl : "treeInfoQuery.do?action=singledate",
 			baseParams :{
-				parent: "select new map(id as id,typename as text,typedesc as qtip) from MaterialType"
+				start:curentStartDate,//对应{1}
+				end:curentEndDate,//对应{2}
+				parent: "select new map(id as id,id||' ['||orderdesc||']' as text,orderdesc as qtip) from OrderOutputInfo where outuser='"+document.getElementById("user_id").value+"' and outdate>'{1}' and outdate<'{2}'"
 //				child: "select new map(id as id,goodsname as text,goodsdesc as qtip,typeid as nodeId,goodsnumber as number,price as price) from GoodsList"
 			}
 		})
 	});
 	var root = new Ext.tree.AsyncTreeNode({
 		id : "0",
-		text : "种类"
+		text : "损耗账单"
 	});
 	tree_menu.setRootNode(root);
 	tree_menu.getRootNode().expand();// 2315
@@ -32,11 +63,11 @@ Ext.onReady(function() {
 			currentId = node.attributes.id;
 			ds.load({
 		  		params:{
-		  			start:0, 
-		  			limit:10,
+		  			start:-1, 
+		  			limit:-1,
 		  			action:"hql",
 					type:"entity",
-					sql:"from MaterialList where typeid='"+currentId+"'"
+					sql:"from OrderOutputList where outid='"+currentId+"'"
 		  		}
 		  	});
 		}else{
@@ -50,36 +81,29 @@ Ext.onReady(function() {
 	  	defaultType:"textfield",
 	  	labelAlign:"right",
 	  	labelWidth:80,
-	  	url:"materialTypeVo.do",
+	  	url:"orderOutputInfoVo.do",
 	  	frame:true,
 	  	width:200,
 	  	items:[{
-	    	name:"tree_name",
-	    	fieldLabel:"种类名称",
-	    	allowBlank:false,
-	    	width:150,
-	    	maxLength:50
-	  	},{
 	    	name:"tree_tips",
-	    	fieldLabel:"种类描述",
+	    	fieldLabel:"损耗备注",
 	    	allowBlank:false,
 	    	width:150,
-	    	maxLength:100,
-	    	emptyText:"默认和种类名称一致"
+	    	maxLength:200,
+	    	emptyText:"请输入损耗的必要备注"
 	  	}]
 	});
 	var node_menu = null;
 	var contextmenu = new Ext.menu.Menu({
   		items:[{
-    		text:"添加新种类",
+    		text:"添加新损耗帐单",
     		iconCls:"add",
     		handler:function(event,mouse){//bcescvr,110400
-    			form.getComponent(0).setDisabled(false);
     			var win = new Ext.Window({
 	                layout      : 'fit',
 	                width       : 300,
-	                title		: "种类添加",
-	                height  	: 160,
+	                title		: "损耗单添加",
+	                height  	: 120,
 	                modal		: true,
 	                closeAction : 'hide',
 	                allowDomMove: true,
@@ -90,30 +114,34 @@ Ext.onReady(function() {
 	                    text     : '保存',
 	                    handler	 : function(){
 	                    	if(form.getForm().isValid()){
-	                    		var tree_name = form.getComponent(0).getValue();
-		                    	var tree_tips = form.getComponent(1).getValue()==""?tree_name:form.getComponent(1).getValue();//x-tree-node-icon
+		                    	var tree_tips = form.getComponent(0).getValue();//x-tree-node-icon
 		                    	var tree_node = null;
 		                    	var isRoot = false;
 		                    	if(node_menu.isRoot){
 		                    		isRoot = true;
-		                    		tree_node = new Ext.tree.TreeNode({id:form.getComponent(0).getValue(),text:tree_name,qtip:tree_tips,leaf:true});
+		                    		tree_node = new Ext.tree.TreeNode({id:Ext.id(),text:'',qtip:tree_tips,leaf:true});
 		                    	}else{
-		                    		tree_node = new Ext.tree.TreeNode({id:form.getComponent(0).getValue(),text:tree_name,qtip:tree_tips,leaf:true});
+		                    		tree_node = new Ext.tree.TreeNode({id:Ext.id(),text:'',qtip:tree_tips,leaf:true});
 		                    	}
 		                    	var parentNodeId = node_menu.attributes.id;
 	                    		form.getForm().submit({
 	                    			success:function(form,action){
 	                    				tree_node.attributes.id = action.result.msg;
+	                    				tree_node.attributes.text = action.result.msg;
+	                    				tree_node.setText(action.result.msg+" ["+tree_tips+"]");
 				                    	node_menu.appendChild(tree_node);
 				                    	form.reset();
 				                        win.hide();
-	                    			},failure:function(form,action){
+	                    			},
+	                    			failure:function(form,action){
 	                    				Ext.MessageBox.show({
 											title:"错误提示",
 											msg:action.result.msg,
-											buttons:Ext.MessageBox.OKCANCEL,
+											buttons:Ext.MessageBox.OK,
 											icon:Ext.MessageBox.ERROR
-	                    				});
+								   		});
+								   		form.reset();
+				                        win.hide();
 	                    			},params:{
 	                    				action:"insert",
 	                    				isRoot:isRoot,
@@ -136,16 +164,15 @@ Ext.onReady(function() {
       			return true;
     		}
   		},{
-    		text:"修改种类",
+    		text:"修改损耗单",
     		iconCls:"save",
     		handler:function(event,mouse){//bcescvr,110400
-    			form.getComponent(0).setValue(node_menu.attributes.text);
-            	form.getComponent(1).setValue(node_menu.attributes.qtip);
+            	form.getComponent(0).setValue(node_menu.attributes.qtip);
     			var win = new Ext.Window({
 	                layout      : 'fit',
 	                width       : 300,
-	                title		: "种类修改",
-	                height  	: 160,
+	                title		: "损耗单修改",
+	                height  	: 120,
 	                modal		: true,
 	                closeAction : 'hide',
 	                allowDomMove: true,
@@ -156,14 +183,22 @@ Ext.onReady(function() {
 	                    text     : '保存',
 	                    handler	 : function(){
 	                    	if(form.getForm().isValid()){
-	                    		var tree_name = form.getComponent(0).getValue();
-		                    	var tree_tips = form.getComponent(1).getValue()==""?tree_name:form.getComponent(1).getValue();//x-tree-node-icon
+		                    	var tree_tips = form.getComponent(0).getValue();//x-tree-node-icon
 	                    		form.getForm().submit({
 	                    			success:function(form,action){
-				                    	node_menu.attributes.text = tree_name;
 				                    	node_menu.attributes.qtip = tree_tips;
-				                    	node_menu.setText(tree_name);
+										node_menu.setText(action.result.msg+" ["+tree_tips+"]");
 				                    	form.reset();
+				                        win.hide();
+	                    			},
+	                    			failure:function(form,action){
+	                    				Ext.MessageBox.show({
+											title:"错误提示",
+											msg:action.result.msg,
+											buttons:Ext.MessageBox.OK,
+											icon:Ext.MessageBox.ERROR
+								   		});
+								   		form.reset();
 				                        win.hide();
 	                    			},params:{
 	                    				action:"update",
@@ -194,7 +229,7 @@ Ext.onReady(function() {
   				tree_menu.getRootNode().reload();
   			}
   		},"-",{
-  			text:"删除种类",
+  			text:"删除损耗单",
   			iconCls:"remove",
   			handler:function(event,mouse){
   				Ext.MessageBox.show({
@@ -209,7 +244,7 @@ Ext.onReady(function() {
 		                    	isRoot = true;
 							}
 							Ext.Ajax.request({
-								url: "materialTypeVo.do",
+								url: "orderOutputInfoVo.do",
 							   	success: function(action){
 //							   		tree_menu.remove(node_menu);
 							   		tree_menu.getRootNode().removeChild(node_menu);
@@ -256,81 +291,144 @@ Ext.onReady(function() {
   			contextmenu.showAt(e.getXY());
   		}
 	});
-	
+	var comboBox = new Ext.form.ComboBox({
+  		name: "role_code",
+  		fieldLabel: '用户角色',
+	  	store: new Ext.data.Store({
+            proxy:new Ext.data.HttpProxy({url:"optionServlet.do?option=roleInfo"}),
+            autoLoad:true,
+			reader:new Ext.data.ArrayReader({},[
+			    {name:"value"},
+			    {name:"text"}
+			])
+        }),
+        width:150,
+	  	emptyText: "请选择",
+	  	allowBlank:false,
+	  	mode: "local",
+	  	readOnly :true,
+	  	triggerAction: "all",
+	  	valueField: "value",
+	  	displayField: "text",
+	  	hiddenName: "role_code"
+	});
 	/**
 	 * 参数明细表
 	 */
 	var editor = new Ext.ux.grid.RowEditor({
         saveText: 'Update'
     });
-	var params = Ext.data.Record.create([
+    editor.slideHide();
+	var goods = Ext.data.Record.create([
 		{name: "id", type: 'string'},
-		{name: "typeid", type: 'string'},
-		{name: "paramscode", type: 'string'},
-		{name: "paramsname", type: 'string'},
-		{name: "paramsdesc", type: 'string'},
-		{name: "updtuser", type: 'float'},
-    	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
+		{name: "outid", type: 'string'},
+		{name: "goodsid", type: 'string'},
+		{name: "optiontype", type: 'string'},
+		{name: "consumetype", type: 'string'},
+		{name: "goodsnumber", type: 'int'},
+		{name: "returnnumber", type: 'int'}
     ]);
 
+    var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from FootType a","","");
+	var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from FootList a","","");
+	var comboBoxNameAll = comboBoxName;
+	var comboBoxConsume = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='CONSUME'","","");
+	var comboBoxOption = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='OPTION'","","");
+	comboBoxType.emptyText = "过滤菜名";
+	comboBoxType.allowBlank = true;
+	comboBoxName.allowBlank = false;
+	comboBoxConsume.allowBlank = false;
 	var sm = new Ext.grid.CheckboxSelectionModel();
 	var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
-		sm,
-		{
-			header:"ID",
-			dataIndex:"id",
-			hidden:true,
-			sortable: true
+		sm,{
+			header:"损耗账单编号",
+			dataIndex:"outid",
+			width:150
 		},{
-			header:"父节点参数编号",
-			width:150,
-			sortable: true,
-			hidden:true,
-			dataIndex:"typeid"
-		},{
-    		header:"编号",
-    		dataIndex:"paramscode",
-    		sortable: true,
+    		header:"菜单种类",
+    		dataIndex:"goodstype",
     		width:150,
+    		sortable: true,
+    		renderer:filter,
+    		editor: comboBoxType
+
+    	},{
+    		header:"菜单名称",
+    		dataIndex:"goodsid",
+    		width:150,
+    		sortable: true,
+    		editor: comboBoxName,
+    		renderer:transform
+
+    	},{
+    		header:"操作类型",
+    		dataIndex:"optiontype",
+    		width:150,
+    		sortable: true,
+    		renderer:transformOption
+    	},{
+    		header:"消耗类型",
+    		dataIndex:"consumetype",
+    		width:150,
+    		sortable: true,
+    		editor: comboBoxConsume,
+    		renderer:transformConsume
+
+    	},{
+    		header:"消耗数量",
+    		dataIndex:"goodsnumber",
+    		sortable: true,
+    		editor: {
+                xtype: 'numberfield',
+                minValue: 0,
+                maxValue: 150000,
+                allowBlank: false
+            }
+
+    	},{
+    		header:"退货数量",
+    		dataIndex:"returnnumber",
+    		sortable: true,
     		hidden:true
+
     	},{
-    		header:"名称",
-    		dataIndex:"paramsname",
-    		sortable: true,
-    		width:150,
-    		editor: {
-                xtype: 'textfield',
-                maxLength:50,
-                allowBlank: false
-            }
-    	},{
-    		header:"原材料描述",
-    		dataIndex:"paramsdesc",
-    		width:250,
-    		sortable: true,
-    		editor: {
-                xtype: 'textfield',
-                maxLength:200,
-                allowBlank: false
-            }
-    	},{
-			xtype: 'datecolumn',
-			header:"最后更新时间",
-			sortable: true,
-			dataIndex:"updttime",
-			width:150,
-			format: 'Y-m-d H:i:s.u',
+			header:"明细id",
+			dataIndex:"id",
 			hidden:true
-		},{
-			header:"最后更新人",
-			sortable: true,
-			width:150,
-			hidden:true,
-			dataIndex:"updtuser"
 		}
   	]);
   	cm.defaultSortable = true;
+  	function transform(content,record){
+		var arrayData = comboBoxList.getArray(comboBoxNameAll);
+		var value = comboBoxList.getValue(arrayData,content);
+		return value;
+  		//return trans.comboBox(comboBoxName,value);
+  	}
+	function transformConsume(content,record){
+		var arrayData = comboBoxList.getArray(comboBoxConsume);
+		var value = comboBoxList.getValue(arrayData,content);
+		return value;
+  		//return trans.comboBox(comboBoxConsume,value);
+  	}
+	function transformOption(content,record){
+		var arrayData = comboBoxList.getArray(comboBoxOption);
+		var value = comboBoxList.getValue(arrayData,content);
+		return value;
+  		//return trans.comboBox(comboBoxConsume,value);
+  	}
+  	function filter(){
+		return "<font color='red'>过滤种类</font>";
+	}
+	comboBoxType.on("select",function(obj,option){
+  		var roleCode = option.data.value;
+		comboBoxName.getStore().load({
+			params:{
+				sql:"select a.id,a.paramscode || '-' || a.paramsname from FootList a where a.typeid='"+roleCode+"'"
+			}
+		});
+		comboBoxName.setValue("");
+  	});
   	var ds = new Ext.data.Store({
     	proxy: new Ext.data.HttpProxy({
     		url:"queryInfoVo.do"
@@ -338,63 +436,77 @@ Ext.onReady(function() {
 		reader: new Ext.data.JsonReader({
 			totalProperty:"totalProperty",
 			root:"root"
-		},params)
+		},goods)
   	});
-  	
   	var grid = new Ext.grid.GridPanel({
     	ds:ds,
     	cm:cm,
     	sm:sm,
     	loadMask:true,
+    	width : width-595,
     	height : height-180,
     	plugins: [editor],
     	iconCls:"icon-grid",
     	tbar:[{
     		ref: '../addBtn',
-            text:'增加原材料',
-            tooltip:'添加一条新的原材料记录',
+            text:'增加消耗品',
+            tooltip:'添加一条新的消耗品记录',
             iconCls:'add',
             disabled: true,
             handler:function(){
+            	/**
+            	 * {name: "id", type: 'string'},
+		{name: "outid", type: 'string'},
+		{name: "goodsid", type: 'string'},
+		{name: "goodsnumber", type: 'int'},
+		{name: "returnnumber", type: 'int'}
+            	 */
             	loading.loadMask().show();
             	editor.setDisabled(true);
             	var record = {
                     id: '',
-                    typeid: currentId,
-                    paramscode:'0',
-                    paramsname:'',
-                    paramsdesc:''
+                    outid: currentId,
+                    goodsid:'',
+					optiontype:"1",
+                    goodsnumber:0,
+                    returnnumber:0
                 };
                 Ext.Ajax.request({
-	        		url:"materialTypeVo.do?action=insertRecord",
+	        		url:"orderOutputInfoVo.do?action=insertRecord",
 	        		params:record,
 	        		success:function(action){
 	        			loading.loadMask().hide();
 	        			editor.setDisabled(false);
 	        			var json = eval("("+action.responseText+")");
 	        			record.id = json.msg;
-	        			var e = new params(record);
-		                editor.stopEditing();
-		                ds.insert(0, e);
-		                grid.getView().refresh();
-		                grid.getSelectionModel().selectRow(0);
-		                editor.startEditing(0);
 	    			},
 	    			failure:function(action){
-	    				return false;
+	    				var json = eval("("+action.responseText+")");
+	    				Ext.MessageBox.show({
+							title:"错误提示",
+							msg:json.msg,
+							buttons:Ext.MessageBox.OK,
+							icon:Ext.MessageBox.ERROR
+				   		});
 	    			}
 	        	});
-            	
+            	var e = new goods(record);
+                editor.stopEditing();
+                ds.insert(0, e);
+                grid.getView().refresh();
+                grid.getSelectionModel().selectRow(0);
+                editor.startEditing(0);
             }
         }, '-',{
         	ref: '../removeBtn',
-            text:'删除原材料',
-            tooltip:'删除一条原材料记录',
+            text:'删除消耗品',
+            tooltip:'删除一条消耗品记录',
             iconCls:'remove',
             disabled: true,
             handler:function(){
             	editor.stopEditing();
                 var s = grid.getSelectionModel().getSelections();
+                var id = "";
                 Ext.MessageBox.show({
 					title:"警告提示",
 					msg:"请确认是否要删除?",
@@ -402,34 +514,38 @@ Ext.onReady(function() {
 					icon:Ext.MessageBox.WARNING,
 					fn:function(btn){
 						if(btn=="ok"){
-							var id = "";
-			                for(var i = 0, r; r = s[i]; i++){
+							for(var i = 0, r; r = s[i]; i++){
 			                    ds.remove(r);
 			                    id += r.data.id+",";
 			                }
 							id = id.substring(0,id.length-1);
-//							loading.loadMask().show();
 							Ext.Ajax.request({
-				        		url:"materialTypeVo.do?action=deleteRecord",
+				        		url:"orderOutputInfoVo.do?action=deleteRecord",
 				        		params:{
 				        			id:id,
-				        			typeid:currentId
+				        			outid:currentId
 				        		},
 				        		success:function(action){
-//				        			loading.loadMask().hide();
+				        			loading.loadMask().hide();
 				        			editor.setDisabled(false);
 				        			ds.load({
 								  		params:{
-								  			start:0, 
-								  			limit:10,
+								  			start:-1, 
+								  			limit:-1,
 								  			action:"hql",
 											type:"entity",
-											sql:"from MaterialList where typeid='"+currentId+"'"
+											sql:"from OrderOutputList where outid='"+currentId+"'"
 								  		}
 								  	});
 				    			},
 				    			failure:function(action){
-				    				return false;
+				    				var json = eval("("+action.responseText+")");
+				    				Ext.MessageBox.show({
+										title:"错误提示",
+										msg:json.msg,
+										buttons:Ext.MessageBox.OK,
+										icon:Ext.MessageBox.ERROR
+							   		});
 				    			}
 				        	});
 						}
@@ -439,7 +555,7 @@ Ext.onReady(function() {
             }
         }],
     	bbar:new Ext.PagingToolbar({
-		    pageSize:10,
+//		    pageSize:10,
 		    store:ds,
 		    displayInfo:true,
 		    displayMsg:"显示第{0}条到{1}条记录,一共{2}条记录",
@@ -464,39 +580,60 @@ Ext.onReady(function() {
     		var recordData = editor.record.data;
     		loading.loadMask().show();
     		Ext.Ajax.request({
-    			url:"materialTypeVo.do?action=updateRecord",
+    			url:"orderOutputInfoVo.do?action=updateRecord",
     			params:recordData,
-    			success:function(){
+    			success:function(action){
+    				var json = eval("("+action.responseText+")");
+    				if(json.failure){
+    					Ext.MessageBox.show({
+							title:"错误提示",
+							msg:json.msg,
+							buttons:Ext.MessageBox.OK,
+							icon:Ext.MessageBox.ERROR
+				   		});
+				   		listenerEvent.loadGrid();
+    				}
     				loading.loadMask().hide();
+    			},
+    			failure:function(action){
+    				var json = eval("("+action.responseText+")");
+    				Ext.MessageBox.show({
+						title:"错误提示",
+						msg:json.msg,
+						buttons:Ext.MessageBox.OK,
+						icon:Ext.MessageBox.ERROR
+			   		});
     			}
     		});
+    		
     	},
     	loadGrid:function(){
     		ds.load({
 		  		params:{
-		  			start:0, 
-		  			limit:10,
+		  			start:-1, 
+		  			limit:-1,
 		  			action:"hql",
 					type:"entity",
-					sql:"from MaterialList where typeid='"+currentId+"'"
+					sql:"from OrderOutputList where outid='"+currentId+"'"
 		  		}
 		  	});
     	}
-    	
     }
 	editor.addListener("afteredit",listenerEvent.update);
-	
+	editor.addListener("canceledit",function(){
+		
+	});
 	new Ext.Panel({
-        title: '种类',
+        title: '损耗账单维护',
         collapsible:true,
-        renderTo: 'material_params_info_name',
-        width : 250,
+        renderTo: 'output_order_name',
+        width : 350,
         height : height-100,
         items:[
 	        new Ext.TabPanel({
 		        border:false,
 		        activeTab:0,
-		        width : 250,
+		        width : 350,
 		        height : height-180,
 		        tabPosition:'bottom',
 		        items:[
@@ -507,10 +644,10 @@ Ext.onReady(function() {
     });
     
     new Ext.Panel({
-        title: '原材料明细列表',
+        title: '损耗明细列表',
         collapsible:true,
         width : width-495,
-        renderTo: 'material_params_info_list',
+        renderTo: 'output_order_list',
         height : height-100,
         items:[grid]
     });

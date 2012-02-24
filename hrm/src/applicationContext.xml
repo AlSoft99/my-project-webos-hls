@@ -78,6 +78,8 @@
 				<value>com/hrm/entity/FootMaterial.hbm.xml</value>
 				<value>com/hrm/entity/MaterialType.hbm.xml</value>
 				<value>com/hrm/entity/MaterialList.hbm.xml</value>
+				<value>com/hrm/entity/OrderOutputInfo.hbm.xml</value>
+				<value>com/hrm/entity/OrderOutputList.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

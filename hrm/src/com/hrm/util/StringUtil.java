@@ -58,7 +58,7 @@ public class StringUtil {
 		for(Object[] string : list){
 			List<String> temp = new ArrayList<String>();
 			for (int i = 0; i < string.length; i++) {
-				temp.add("\""+string[i].toString()+"\"");
+				temp.add("\"" + (String)string[i] + "\""); 
 			}
 			result.add(temp);
 		}
