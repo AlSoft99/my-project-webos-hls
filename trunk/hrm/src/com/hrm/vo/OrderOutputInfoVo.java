@@ -106,6 +106,7 @@ public class OrderOutputInfoVo implements BaseVo {
 				OrderOutputList goods = new OrderOutputList();
 				goods.setConsumetype(request.getParamsMap().get("consumetype"));
 				goods.setOptiontype("1");
+				goods.setCheckyn("1");
 				goods.setGoodsid(request.getParamsMap().get("goodsid"));
 				goods.setGoodsnumber(Integer.parseInt(request.getParamsMap().get("goodsnumber")));
 				goods.setId(createId);
@@ -126,6 +127,7 @@ public class OrderOutputInfoVo implements BaseVo {
 				OrderOutputList goods = (OrderOutputList)hibernateSessionDAO.getHibernateTemplate().get("com.hrm.entity.OrderOutputList", request.getParamsMap().get("id"));
 				goods.setConsumetype(request.getParamsMap().get("consumetype"));
 				goods.setOptiontype("1");
+				goods.setCheckyn("1");
 				goods.setGoodsid(request.getParamsMap().get("goodsid"));
 				goods.setGoodsnumber(Integer.parseInt(request.getParamsMap().get("goodsnumber")));
 				goods.setReturnnumber(Integer.parseInt(request.getParamsMap().get("returnnumber")));

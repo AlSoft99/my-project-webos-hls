@@ -23,6 +23,10 @@
             <column name="consumetype" length="10">
             </column>
         </property>
+        <property name="checkyn" type="java.lang.String">
+            <column name="checkyn" length="10">
+            </column>
+        </property>
         <property name="goodsid" type="java.lang.String">
             <column name="goodsid" length="50" />
         </property>

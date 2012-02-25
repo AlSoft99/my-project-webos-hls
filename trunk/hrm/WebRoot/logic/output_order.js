@@ -36,7 +36,7 @@ Ext.onReady(function() {
 		}
 	]);
 	var tree_menu = new Ext.tree.TreePanel({
-		title:"损耗账单选择",
+		title:"销售账单选择",
 		width : 350,
 		autoScroll:true,
 		height : height-500,
@@ -53,7 +53,7 @@ Ext.onReady(function() {
 	});
 	var root = new Ext.tree.AsyncTreeNode({
 		id : "0",
-		text : "损耗账单"
+		text : "销售账单"
 	});
 	tree_menu.setRootNode(root);
 	tree_menu.getRootNode().expand();// 2315
@@ -86,23 +86,23 @@ Ext.onReady(function() {
 	  	width:200,
 	  	items:[{
 	    	name:"tree_tips",
-	    	fieldLabel:"损耗备注",
+	    	fieldLabel:"销售备注",
 	    	allowBlank:false,
 	    	width:150,
 	    	maxLength:200,
-	    	emptyText:"请输入损耗的必要备注"
+	    	emptyText:"请输入销售的必要备注"
 	  	}]
 	});
 	var node_menu = null;
 	var contextmenu = new Ext.menu.Menu({
   		items:[{
-    		text:"添加新损耗帐单",
+    		text:"添加新销售帐单",
     		iconCls:"add",
     		handler:function(event,mouse){//bcescvr,110400
     			var win = new Ext.Window({
 	                layout      : 'fit',
 	                width       : 300,
-	                title		: "损耗单添加",
+	                title		: "销售单添加",
 	                height  	: 120,
 	                modal		: true,
 	                closeAction : 'hide',
@@ -164,14 +164,14 @@ Ext.onReady(function() {
       			return true;
     		}
   		},{
-    		text:"修改损耗单",
+    		text:"修改销售单",
     		iconCls:"save",
     		handler:function(event,mouse){//bcescvr,110400
             	form.getComponent(0).setValue(node_menu.attributes.qtip);
     			var win = new Ext.Window({
 	                layout      : 'fit',
 	                width       : 300,
-	                title		: "损耗单修改",
+	                title		: "销售单修改",
 	                height  	: 120,
 	                modal		: true,
 	                closeAction : 'hide',
@@ -229,7 +229,7 @@ Ext.onReady(function() {
   				tree_menu.getRootNode().reload();
   			}
   		},"-",{
-  			text:"删除损耗单",
+  			text:"删除销售单",
   			iconCls:"remove",
   			handler:function(event,mouse){
   				Ext.MessageBox.show({
@@ -342,7 +342,7 @@ Ext.onReady(function() {
 	var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
 		sm,{
-			header:"损耗账单编号",
+			header:"销售账单编号",
 			dataIndex:"outid",
 			width:150
 		},{
@@ -624,7 +624,7 @@ Ext.onReady(function() {
 		
 	});
 	new Ext.Panel({
-        title: '损耗账单维护',
+        title: '销售账单维护',
         collapsible:true,
         renderTo: 'output_order_name',
         width : 350,
@@ -644,7 +644,7 @@ Ext.onReady(function() {
     });
     
     new Ext.Panel({
-        title: '损耗明细列表',
+        title: '销售明细列表',
         collapsible:true,
         width : width-495,
         renderTo: 'output_order_list',
