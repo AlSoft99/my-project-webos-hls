@@ -56,7 +56,6 @@ public class MainController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("e.getMessage():"+e.getMessage());
 			if(e.getMessage()!=null){
 				response.getWriter().write(e.getMessage());
 			}else if(!"".equals(req.getResponse())){

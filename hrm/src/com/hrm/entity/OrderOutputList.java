@@ -19,6 +19,8 @@ public class OrderOutputList implements java.io.Serializable {
 	private String optiontype;
 	//消耗类型(正常消耗, 退菜消耗)
 	private String consumetype;
+	//识别是否成功(1 是, 0否)
+	private String checkyn;
 	private Integer goodsnumber;
 	private Integer returnnumber;
 	private String updtuser;
@@ -121,6 +123,14 @@ public class OrderOutputList implements java.io.Serializable {
 
 	public void setOptiontype(String optiontype) {
 		this.optiontype = optiontype;
+	}
+
+	public String getCheckyn() {
+		return checkyn;
+	}
+
+	public void setCheckyn(String checkyn) {
+		this.checkyn = checkyn;
 	}
 
 }

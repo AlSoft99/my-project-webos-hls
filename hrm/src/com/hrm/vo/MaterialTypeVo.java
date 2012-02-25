@@ -1,8 +1,11 @@
 package com.hrm.vo;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
+import org.apache.commons.beanutils.PropertyUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.BeanFactory;
@@ -12,7 +15,9 @@ import com.hrm.control.Request;
 import com.hrm.dao.MaterialListDAO;
 import com.hrm.dao.MaterialTypeDAO;
 import com.hrm.entity.MaterialList;
+import com.hrm.entity.MaterialListHis;
 import com.hrm.entity.MaterialType;
+import com.hrm.entity.MaterialTypeHis;
 import com.hrm.entity.UserInfo;
 import com.hrm.server.InitData;
 import com.hrm.util.ClsFactory;
@@ -28,10 +33,11 @@ public class MaterialTypeVo implements BaseVo {
 		if("insert".equals(action)){
 			
 			String id = request.getParamsMap().get("tree_code");
+			String createId = StringUtil.newInstance().createId("MT");
 			//FootType type = footTypeDAO.findById(id);
 			//if(type==null){
 				MaterialType goods = new MaterialType();
-//				goods.setId(id);
+				goods.setId(createId);
 				goods.setTypedesc(request.getParamsMap().get("tree_tips"));
 				goods.setTypename(request.getParamsMap().get("tree_name"));
 				goods.setUpdttime(new Date());
@@ -58,6 +64,25 @@ public class MaterialTypeVo implements BaseVo {
 
 				public Boolean doInHibernate(Session session)
 						throws HibernateException, SQLException {
+					
+					MaterialTypeHis materialTypeHis = new MaterialTypeHis();
+					MaterialType materialType = (MaterialType)session.get(MaterialType.class, typeid);
+					try {
+						PropertyUtils.copyProperties(materialTypeHis, materialType);
+						List<MaterialList> materialListList = session.createQuery("from MaterialList where typeid='"+typeid+"'").list();
+						session.save(materialTypeHis);
+						for (MaterialList materialList : materialListList) {
+							MaterialListHis materialListHis = new MaterialListHis();
+							PropertyUtils.copyProperties(materialListHis, materialList);
+							session.save(materialListHis);
+						}
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						e.printStackTrace();
+					} catch (NoSuchMethodException e) {
+						e.printStackTrace();
+					}
 					session.createQuery("delete from MaterialList where typeid='"+typeid+"'").executeUpdate();
 					int updt = session.createQuery("delete from MaterialType where id='"+typeid+"'").executeUpdate();
 					return updt>0;
@@ -99,6 +124,19 @@ public class MaterialTypeVo implements BaseVo {
 						throws HibernateException, SQLException {
 					int updt = 0;
 					for (int i = 0; i < id.length; i++) {
+						MaterialListHis materialListHis = new MaterialListHis();
+						MaterialList materialList = (MaterialList)session.get(MaterialList.class, id[i]);
+						try {
+							PropertyUtils.copyProperties(materialListHis, materialList);
+							session.save(materialListHis);
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							e.printStackTrace();
+						} catch (NoSuchMethodException e) {
+							e.printStackTrace();
+						}
+						
 						updt = session.createQuery("delete from MaterialList where id.id ='"+id[i]+"' and id.typeid='"+typeid+"'").executeUpdate();
 					}
 					return updt>0;
