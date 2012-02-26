@@ -21,8 +21,8 @@ public class OrderOutputList implements java.io.Serializable {
 	private String consumetype;
 	//识别是否成功(1 是, 0否)
 	private String checkyn;
-	private Integer goodsnumber;
-	private Integer returnnumber;
+	private Float goodsnumber;
+	private Float returnnumber;
 	private String updtuser;
 	private Date updttime;
 
@@ -39,7 +39,7 @@ public class OrderOutputList implements java.io.Serializable {
 
 	/** full constructor */
 	public OrderOutputList(String id, String outid, String goodsid,
-			Integer goodsnumber, Integer returnnumber, String updtuser,
+			Float goodsnumber, Float returnnumber, String updtuser,
 			Date updttime) {
 		this.id = id;
 		this.outid = outid;
@@ -76,19 +76,19 @@ public class OrderOutputList implements java.io.Serializable {
 		this.goodsid = goodsid;
 	}
 
-	public Integer getGoodsnumber() {
+	public Float getGoodsnumber() {
 		return this.goodsnumber;
 	}
 
-	public void setGoodsnumber(Integer goodsnumber) {
+	public void setGoodsnumber(Float goodsnumber) {
 		this.goodsnumber = goodsnumber;
 	}
 
-	public Integer getReturnnumber() {
+	public Float getReturnnumber() {
 		return this.returnnumber;
 	}
 
-	public void setReturnnumber(Integer returnnumber) {
+	public void setReturnnumber(Float returnnumber) {
 		this.returnnumber = returnnumber;
 	}
 

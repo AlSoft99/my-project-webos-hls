@@ -28,6 +28,12 @@
                 <comment>ŚŹāśēįśŹŹŤŅį</comment>
             </column>
         </property>
+        <property name="issecond" type="java.lang.String">
+            <column name="issecond" length="10" />
+        </property>
+        <property name="secondcode" type="java.lang.String">
+            <column name="secondcode" length="10" />
+        </property>
         <property name="updtuser" type="java.lang.String">
             <column name="updtuser" length="50" />
         </property>

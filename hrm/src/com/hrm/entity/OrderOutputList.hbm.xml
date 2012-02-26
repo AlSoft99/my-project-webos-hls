@@ -30,12 +30,12 @@
         <property name="goodsid" type="java.lang.String">
             <column name="goodsid" length="50" />
         </property>
-        <property name="goodsnumber" type="java.lang.Integer">
+        <property name="goodsnumber" type="java.lang.Float">
             <column name="goodsnumber">
                 <comment>ŤīßÁČ©ŚáļŚĒģśēįťáŹ</comment>
             </column>
         </property>
-        <property name="returnnumber" type="java.lang.Integer">
+        <property name="returnnumber" type="java.lang.Float">
             <column name="returnnumber">
                 <comment>ŤīßÁČ©ťÄÄŤīßśēįťáŹ</comment>
             </column>

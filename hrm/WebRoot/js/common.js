@@ -163,6 +163,25 @@ var comboBoxList = {
 	getArray:function(combobox){
 		return combobox.getStore().reader.arrayData;
 	}
+};
+var properties = {
+	ajax : function(sql,suCallback,faCallback){
+	console.log(111111111111);
+		Ext.Ajax.request({
+		   url: 'jsonSqlServlet.do',
+		   success: function(o){
+				if(typeof(suCallback)!="undefined"){
+					suCallback(o);
+				}
+		   },
+		   failure: function(o){
+				if(typeof(faCallback)!="undefined"){
+					faCallback(o);
+				}
+		   },
+		   params: { sql: sql }
+		});
+	}
 }
 var trans = {
 	//翻译下拉框

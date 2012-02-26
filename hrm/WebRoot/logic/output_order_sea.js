@@ -325,8 +325,8 @@ Ext.onReady(function() {
 		{name: "goodsid", type: 'string'},
 		{name: "optiontype", type: 'string'},
 		{name: "consumetype", type: 'string'},
-		{name: "goodsnumber", type: 'float'},
-		{name: "returnnumber", type: 'float'}
+		{name: "goodsnumber", type: 'int'},
+		{name: "returnnumber", type: 'int'}
     ]);
 
     var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from FootType a","","");
@@ -362,7 +362,7 @@ Ext.onReady(function() {
     		renderer:transform
 
     	},{
-    		header:"销售数量",
+    		header:"消耗数量",
     		dataIndex:"goodsnumber",
     		sortable: true,
     		editor: {
@@ -429,18 +429,6 @@ Ext.onReady(function() {
 		});
 		comboBoxName.setValue("");
   	});
-	comboBoxName.on("select",function(obj,option){
-		var value = option.data.value;
-		var title = option.data.text;
-		console.log(option.data);
-		properties.ajax("select b.paramsname,0 from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+value+"' and a.issecond='1'", function(o){
-			var json = eval("("+o.responseText+")");
-			property.setSource(json);
-			console.log(property);
-			property.setTitle(title);
-			console.log(33333);
-		});
-	});
   	var ds = new Ext.data.Store({
     	proxy: new Ext.data.HttpProxy({
     		url:"queryInfoVo.do"
@@ -636,16 +624,10 @@ Ext.onReady(function() {
 	editor.addListener("canceledit",function(){
 		
 	});
-	var property = new Ext.grid.PropertyGrid({
-        title: '第二单位原料信息', 
-        closable: false,
-		height: height-100
-    });
-    //property.setSource(baseMsg);
 	new Ext.Panel({
         title: '销售账单维护',
         collapsible:true,
-        renderTo: 'output_order_name',
+        renderTo: 'output_order_sea_name',
         width : 350,
         height : height-100,
         items:[
@@ -665,18 +647,10 @@ Ext.onReady(function() {
     new Ext.Panel({
         title: '销售明细列表',
         collapsible:true,
-        width : width-950,
-        renderTo: 'output_order_list',
+        width : width-495,
+        renderTo: 'output_order_sea_list',
         height : height-100,
         items:[grid]
-    });
-	new Ext.Panel({
-        title: '第二单位列表',
-        collapsible:true,
-        width : 350,
-        renderTo: 'output_order_second_list',
-        height : height-100,
-        items:[property]
     });
     grid.getSelectionModel().on('selectionchange', function(sm){
         grid.removeBtn.setDisabled(sm.getCount() < 1);

@@ -108,10 +108,10 @@ public class OrderOutputInfoVo implements BaseVo {
 				goods.setOptiontype("1");
 				goods.setCheckyn("1");
 				goods.setGoodsid(request.getParamsMap().get("goodsid"));
-				goods.setGoodsnumber(Integer.parseInt(request.getParamsMap().get("goodsnumber")));
+				goods.setGoodsnumber(Float.valueOf(request.getParamsMap().get("goodsnumber")));
 				goods.setId(createId);
 				goods.setOutid(request.getParamsMap().get("outid"));
-				goods.setReturnnumber(Integer.parseInt(request.getParamsMap().get("returnnumber")));
+				goods.setReturnnumber(Float.valueOf(request.getParamsMap().get("returnnumber")));
 				goods.setUpdttime(new Date());
 				goods.setUpdtuser(userInfo.getUserId());
 				hibernateSessionDAO.save(goods);
@@ -129,8 +129,10 @@ public class OrderOutputInfoVo implements BaseVo {
 				goods.setOptiontype("1");
 				goods.setCheckyn("1");
 				goods.setGoodsid(request.getParamsMap().get("goodsid"));
-				goods.setGoodsnumber(Integer.parseInt(request.getParamsMap().get("goodsnumber")));
-				goods.setReturnnumber(Integer.parseInt(request.getParamsMap().get("returnnumber")));
+				System.out.println("goodsnumber:"+request.getParamsMap().get("goodsnumber"));
+				System.out.println("Float.valueOf(request.getParamsMap().get(\"goodsnumber\")): "+Float.valueOf(request.getParamsMap().get("goodsnumber")));
+				goods.setGoodsnumber(Float.valueOf(request.getParamsMap().get("goodsnumber")));
+				goods.setReturnnumber(Float.valueOf(request.getParamsMap().get("returnnumber")));
 				goods.setUpdttime(new Date());
 				goods.setUpdtuser(userInfo.getUserId());
 				hibernateSessionDAO.update(goods);
