@@ -23,6 +23,11 @@
   			<ref bean="HibernateSessionDAO"/>
   		</property>
   	</bean>
+  	<bean id="jsonSqlServlet" class="com.hrm.server.JsonSqlServlet">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
   	<bean id="userInfoQueryVo" class="com.hrm.query.UserInfoQueryVo">
   		<property name="userInfoDAO">
   			<ref bean="UserInfoDAO"/>

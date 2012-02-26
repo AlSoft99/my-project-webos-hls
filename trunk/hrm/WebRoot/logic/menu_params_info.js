@@ -494,6 +494,7 @@ Ext.onReady(function() {
     });
 	var materialType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialType a","","");
 	var materialList = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
+	
 	var materialListAll = materialList;
 	materialType.emptyText = "过滤货物";
 	materialType.allowBlank = true;
@@ -514,6 +515,19 @@ Ext.onReady(function() {
 		materialList.setValue("");
   	});
 	var unit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
+	var comboBoxYn = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='YNTYPE'","","");
+	var secondUnit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
+	
+	comboBoxYn.on("select",function(obj,option){
+  		var roleCode = option.data.value;
+		if(roleCode=="0"){
+			secondUnit.allowBlank = true;
+		}else{
+			secondUnit.allowBlank = false;
+		}
+		secondUnit.setValue("");
+  	});
+	
   	var cmm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
 		smm,
@@ -561,6 +575,20 @@ Ext.onReady(function() {
 			renderer:filterUnit,
     		editor: unit
     	},{
+    		header:"是否第二单位",
+    		dataIndex:"issecond",
+    		width:100,
+    		sortable: true,
+			renderer:filterIsSecond,
+    		editor: comboBoxYn
+    	},{
+    		header:"第二单位",
+    		dataIndex:"secondcode",
+    		width:100,
+    		sortable: true,
+			renderer:filterSecondcode,
+    		editor: secondUnit
+    	},{
 			xtype: 'datecolumn',
 			header:"最后更新时间",
 			sortable: true,
@@ -582,6 +610,8 @@ Ext.onReady(function() {
 		{name: "materialid", type: 'string'},
 		{name: "amount", type: 'string'},
 		{name: "unit", type: 'string'},
+		{name: "issecond", type: 'string'},
+		{name: "secondcode", type: 'string'},
 		{name: "updtuser", type: 'float'},
     	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
     ]);
@@ -597,6 +627,19 @@ Ext.onReady(function() {
 	function filterMaterialName(content){
 		var arrayData = comboBoxList.getArray(materialListAll);
 		var value = comboBoxList.getValue(arrayData,content);
+		return value;
+	}
+	function filterIsSecond(content){
+		var arrayData = comboBoxList.getArray(comboBoxYn);
+		var value = comboBoxList.getValue(arrayData,content);
+		return value;
+	}
+	function filterSecondcode(content){
+		var arrayData = comboBoxList.getArray(secondUnit);
+		var value = comboBoxList.getValue(arrayData,content);
+		if(value==""){
+			value = "无";
+		}
 		return value;
 	}
   	cmm.defaultSortable = true;
@@ -632,9 +675,12 @@ Ext.onReady(function() {
                     materialid: '',
                     amount:'0',
                     unit:'',
+					issecond:'0',
+					secondcode:'',
                     updttime:'',
 					updtuser:''
                 };
+				secondUnit.allowBlank = true;
                 Ext.Ajax.request({
 	        		url:"footTypeVo.do?action=insertFootMaterial&entity=com.hrm.entity.FootMaterial",
 	        		params:record,
@@ -744,6 +790,7 @@ Ext.onReady(function() {
 		updateMaterial:function(updateObj,jsonRecord){
     		var recordData = editorM.record.data;
     		loading.loadMask().show();
+			console.log(recordData);
     		Ext.Ajax.request({
     			url:"footTypeVo.do?action=updateFootMaterial&entity=com.hrm.entity.FootMaterial",
     			params:recordData,

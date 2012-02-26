@@ -15,6 +15,8 @@ public class FootMaterial implements Serializable {
     private Float amount;
 	//单位(克, 斤, 两, 个)
 	private String unit;
+	private String issecond;
+	private String secondcode;
 	//更新人
 	private String updtuser;
 	//更新时间
@@ -60,6 +62,18 @@ public class FootMaterial implements Serializable {
 	}
 	public void setUpdttime(Date updttime) {
 		this.updttime = updttime;
+	}
+	public String getIssecond() {
+		return issecond;
+	}
+	public void setIssecond(String issecond) {
+		this.issecond = issecond;
+	}
+	public String getSecondcode() {
+		return secondcode;
+	}
+	public void setSecondcode(String secondcode) {
+		this.secondcode = secondcode;
 	}
 
 	
