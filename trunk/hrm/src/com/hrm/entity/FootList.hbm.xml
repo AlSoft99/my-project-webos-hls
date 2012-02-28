@@ -28,6 +28,12 @@
                 <comment>ŚŹāśēįśŹŹŤŅį</comment>
             </column>
         </property>
+        <property name="cost" type="java.lang.Float">
+            <column name="cost" ></column>
+        </property>
+        <property name="price" type="java.lang.Float">
+            <column name="price" ></column>
+        </property>
         <property name="updtuser" type="java.lang.String">
             <column name="updtuser" length="50" />
         </property>

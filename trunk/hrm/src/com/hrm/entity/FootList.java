@@ -17,6 +17,10 @@ public class FootList implements java.io.Serializable {
 	private String paramscode;
 	private String paramsname;
 	private String paramsdesc;
+	//成本
+	private Float cost;
+	//卖出价格
+	private Float price;
 	private String updtuser;
 	private Date updttime;
 
@@ -100,6 +104,22 @@ public class FootList implements java.io.Serializable {
 
 	public void setUpdttime(Date updttime) {
 		this.updttime = updttime;
+	}
+
+	public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	public Float getCost() {
+		return cost;
+	}
+
+	public void setCost(Float cost) {
+		this.cost = cost;
 	}
 
 }

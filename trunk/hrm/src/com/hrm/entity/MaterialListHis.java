@@ -17,6 +17,7 @@ public class MaterialListHis implements java.io.Serializable {
 	private String paramscode;
 	private String paramsname;
 	private String paramsdesc;
+	private Float cost;
 	private String updtuser;
 	private Date updttime;
 
@@ -100,6 +101,14 @@ public class MaterialListHis implements java.io.Serializable {
 
 	public void setUpdttime(Date updttime) {
 		this.updttime = updttime;
+	}
+
+	public Float getCost() {
+		return cost;
+	}
+
+	public void setCost(Float cost) {
+		this.cost = cost;
 	}
 
 }
