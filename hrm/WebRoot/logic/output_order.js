@@ -316,9 +316,12 @@ Ext.onReady(function() {
 	 * 参数明细表
 	 */
 	var editor = new Ext.ux.grid.RowEditor({
-        saveText: 'Update'
+        saveText: 'Update',
+		errorSummary: false
     });
     editor.slideHide();
+	console.log(editor);
+	console.log("========editor==============");
 	var goods = Ext.data.Record.create([
 		{name: "id", type: 'string'},
 		{name: "outid", type: 'string'},
@@ -334,11 +337,34 @@ Ext.onReady(function() {
 	var comboBoxNameAll = comboBoxName;
 	var comboBoxConsume = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='CONSUME'","","");
 	var comboBoxOption = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='OPTION'","","");
+	var materialListSecond = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
 	comboBoxType.emptyText = "过滤菜名";
 	comboBoxType.allowBlank = true;
 	comboBoxName.allowBlank = false;
 	comboBoxConsume.allowBlank = false;
-	var sm = new Ext.grid.CheckboxSelectionModel();
+	var sm = new Ext.grid.CheckboxSelectionModel({
+		listeners: {
+            rowselect: function(sm, row, rec) {
+				console.log("======sm======");
+                console.log(sm);
+				console.log(row);
+				console.log(rec);
+				console.log("======rec======");
+				var goodsid = rec.data.goodsid;
+				var id = rec.data.id;
+				properties.ajax("select b.paramsname,(select c.sum from OrderSecondMaterialList c where c.id.materialid=a.materialid and c.id.outlistid='"+id+"') as sum from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+goodsid+"' and a.issecond='1'", function(o){
+					console.log("o.responseText:"+o.responseText);
+					var json = eval("("+o.responseText+")");
+					property.setSource(json);
+					
+					var arrayData = comboBoxList.getArray(comboBoxNameAll);
+					var title = comboBoxList.getKey(arrayData,goodsid);
+					property.setTitle(title);
+				});
+            }
+        }
+
+	});
 	var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
 		sm,{
@@ -432,13 +458,10 @@ Ext.onReady(function() {
 	comboBoxName.on("select",function(obj,option){
 		var value = option.data.value;
 		var title = option.data.text;
-		console.log(option.data);
 		properties.ajax("select b.paramsname,0 from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+value+"' and a.issecond='1'", function(o){
 			var json = eval("("+o.responseText+")");
 			property.setSource(json);
-			console.log(property);
 			property.setTitle(title);
-			console.log(33333);
 		});
 	});
   	var ds = new Ext.data.Store({
@@ -591,6 +614,20 @@ Ext.onReady(function() {
 	var listenerEvent = {
     	update:function(updateObj,jsonRecord){
     		var recordData = editor.record.data;
+			var source = property.getSource();
+			var secondid = "";
+			for(var key in source){
+				
+				var arrayData = comboBoxList.getArray(materialListSecond);
+				var value = comboBoxList.getKey(arrayData,key);
+				console.log(key+" == "+source[key]+" +++ "+value);
+				secondid += value+",";
+				recordData[value] = source[key];
+			}
+			secondid = secondid.substring(0,secondid.length-1);
+			recordData.secondidlist = secondid;
+			console.log(recordData);
+			console.log("===========");
     		loading.loadMask().show();
     		Ext.Ajax.request({
     			url:"orderOutputInfoVo.do?action=updateRecord",
@@ -632,9 +669,16 @@ Ext.onReady(function() {
 		  	});
     	}
     }
-	editor.addListener("afteredit",listenerEvent.update);
+	editor.addListener("validateedit",listenerEvent.update);
 	editor.addListener("canceledit",function(){
 		
+	});
+	editor.addListener("click",function(a,b,c){
+		console.log("click");
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		console.log("=====aaaa========");
 	});
 	var property = new Ext.grid.PropertyGrid({
         title: '第二单位原料信息', 

@@ -196,7 +196,7 @@ Ext.ux.grid.RowEditor = Ext.extend(Ext.Panel, {
         }
         var changes = {},
             r = this.record,
-            hasChange = false,
+            hasChange = true,
             cm = this.grid.colModel,
             fields = this.items.items;
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){

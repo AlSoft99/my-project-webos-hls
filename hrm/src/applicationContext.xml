@@ -82,6 +82,7 @@
 				<value>com/hrm/entity/MaterialListHis.hbm.xml</value>
 				<value>com/hrm/entity/OrderOutputInfo.hbm.xml</value>
 				<value>com/hrm/entity/OrderOutputList.hbm.xml</value>
+				<value>com/hrm/entity/OrderSecondMaterialList.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

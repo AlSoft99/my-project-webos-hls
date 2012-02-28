@@ -166,7 +166,6 @@ var comboBoxList = {
 };
 var properties = {
 	ajax : function(sql,suCallback,faCallback){
-	console.log(111111111111);
 		Ext.Ajax.request({
 		   url: 'jsonSqlServlet.do',
 		   success: function(o){

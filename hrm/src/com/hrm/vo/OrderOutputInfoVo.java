@@ -20,6 +20,8 @@ import com.hrm.entity.GoodsStat;
 import com.hrm.entity.GoodsStatId;
 import com.hrm.entity.OrderOutputInfo;
 import com.hrm.entity.OrderOutputList;
+import com.hrm.entity.OrderSecondMaterialId;
+import com.hrm.entity.OrderSecondMaterialList;
 import com.hrm.entity.UserInfo;
 import com.hrm.server.InitData;
 import com.hrm.util.Constant;
@@ -136,6 +138,25 @@ public class OrderOutputInfoVo implements BaseVo {
 				goods.setUpdttime(new Date());
 				goods.setUpdtuser(userInfo.getUserId());
 				hibernateSessionDAO.update(goods);
+				hibernateSessionDAO.createHqlExcute("delete from OrderSecondMaterialList where id.outlistid='"+request.getParamsMap().get("id")+"'");
+				String[] secondidlist = request.getParamsMap().get("secondidlist").split(",");
+				for (int i = 0; i < secondidlist.length; i++) {
+					if(!"".equals(secondidlist[i])){
+						OrderSecondMaterialId id = new OrderSecondMaterialId();
+						OrderSecondMaterialList list = new OrderSecondMaterialList();
+						id.setGoodsid(request.getParamsMap().get("goodsid"));
+						id.setMaterialid(secondidlist[i]);
+						id.setOutlistid(request.getParamsMap().get("id"));
+						list.setId(id);
+						list.setSum(Float.valueOf(request.getParamsMap().get(secondidlist[i])));
+						list.setUpdttime(new Date());
+						list.setUpdtuser(userInfo.getUserId());
+						hibernateSessionDAO.saveOrUpdate(list);
+					}
+					
+				}
+				
+				
 				//GoodsOutputList goods = hibernateSessionDAO.findById(request.getParamsMap().get("id"));
 				/*GoodsOutputList goods = (GoodsOutputList)hibernateSessionDAO.getHibernateTemplate().get("com.hrm.entity.GoodsOutputList", request.getParamsMap().get("id"));
 				String userlist = InitData.getUserList(userInfo.getUserId()+Constant.TAG[0]);

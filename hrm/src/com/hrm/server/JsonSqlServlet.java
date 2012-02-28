@@ -25,7 +25,6 @@ public class JsonSqlServlet implements BaseVo {
 			}
 			
 			json += "}";
-			System.out.println("json: "+json);
 			request.setResponse(json);
 			return request;
 		}else{
