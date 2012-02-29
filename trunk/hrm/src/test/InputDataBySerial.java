@@ -22,9 +22,9 @@ public class InputDataBySerial {/**
 		BeanFactory factory = new ClassPathXmlApplicationContext("refContextImpl.xml");
 		HibernateSessionDAO dao = factory.getBean("HibernateSessionDAO", HibernateSessionDAO.class);
 		//导出数据
-		data.exportDB(dao);
+		data.exportDB(dao,"WebRoot/db/db");
 		//导入数据
-		//data.importDB(dao);
+		//data.importDB(dao,"WebRoot/db/db");
 		//清除必要的数据
 		//data.clearDB(dao);
 	}

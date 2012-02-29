@@ -25,9 +25,9 @@ public class InitDB {
 	//必要的清除数据
 	private String[] need_clear_node_name = {"DayGoodsClear","GoodsMonthStat","GoodsOutputInfo","GoodsOutputList", "GoodsStat","StoreGoodsClear","StoreInputInfo","StoreInputList","StoreOutputInfo", "StoreOutputList"};
 
-	public void exportDB(HibernateSessionDAO dao ){
+	public void exportDB(HibernateSessionDAO dao, String filepath ){
 		try {
-            FileOutputStream fos = new FileOutputStream("db\\db");
+            FileOutputStream fos = new FileOutputStream(filepath);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             DBEntity entity = createEntity(dao);
             oos.writeObject(entity);
@@ -44,9 +44,9 @@ public class InitDB {
 		}
 		return dbentity;
 	}
-	public void importDB(HibernateSessionDAO dao ){
+	public void importDB(HibernateSessionDAO dao, String filepath ){
 		try {
-			FileInputStream fis = new FileInputStream("db\\db");
+			FileInputStream fis = new FileInputStream(filepath);
             ObjectInputStream ois = new ObjectInputStream(fis);
             DBEntity entity = (DBEntity)ois.readObject();
             for (int i = 0; i < need_import_node_name.length; i++) {
