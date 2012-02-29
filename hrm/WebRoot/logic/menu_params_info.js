@@ -287,7 +287,11 @@ Ext.onReady(function() {
 		listeners: {
             rowselect: function(sm, row, rec) {
                 gridMaterial.addBtn.setDisabled(false);
-				currentFootid = rec.data.id;
+                currentFootid = rec.data.id;
+                var issecond = rec.data.issecond;
+                if (issecond == "0") {
+                    secondUnit.setDisabled(false);
+                }
 				dsm.load({
 					params:{
 						start:0, 
@@ -490,7 +494,8 @@ Ext.onReady(function() {
 	/*****************************************/
 	var smm = new Ext.grid.CheckboxSelectionModel();
 	var editorM = new Ext.ux.grid.RowEditor({
-        saveText: 'Update'
+	    saveText: 'Update',
+	    errorSummary: false
     });
 	var materialType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialType a","","");
 	var materialList = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
@@ -519,11 +524,15 @@ Ext.onReady(function() {
 	var secondUnit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
 	
 	comboBoxYn.on("select",function(obj,option){
-  		var roleCode = option.data.value;
+	    var roleCode = option.data.value;
+	    console.log("secondUnit");
+	    console.log(secondUnit);
 		if(roleCode=="0"){
-			secondUnit.allowBlank = true;
+		    secondUnit.allowBlank = true;
+		    secondUnit.setDisabled(true);
 		}else{
-			secondUnit.allowBlank = false;
+		    secondUnit.allowBlank = false;
+		    secondUnit.setDisabled(false);
 		}
 		secondUnit.setValue("");
   	});
