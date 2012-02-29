@@ -1,21 +1,14 @@
 package com.hrm.server;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import com.hrm.dao.HibernateSessionDAO;
 import com.hrm.dao.RoleInfoDAO;
-import com.hrm.entity.DayClearChk;
-import com.hrm.util.ClsFactory;
 import com.hrm.util.Constant;
 import com.hrm.util.InitDB;
-import com.hrm.util.StringUtil;
 
 public class InitData {
 	//Json格式的Map, 会加"
@@ -27,6 +20,15 @@ public class InitData {
 	//存放OUT_USER_LIST表结构,key=outuser+tag,value=userlist
 	private static HashMap<String, String> outuserMap = new HashMap<String, String>();
 	private RoleInfoDAO roleInfoDAO;
+	private HibernateSessionDAO hibernateSessionDAO;
+	public HibernateSessionDAO getHibernateSessionDAO() {
+		return hibernateSessionDAO;
+	}
+
+	public void setHibernateSessionDAO(HibernateSessionDAO hibernateSessionDAO) {
+		this.hibernateSessionDAO = hibernateSessionDAO;
+	}
+
 	public RoleInfoDAO getRoleInfoDAO() {
 		return roleInfoDAO;
 	}
@@ -51,9 +53,9 @@ public class InitData {
 	private void initDB(){
 		List<Long> list = roleInfoDAO.createHqlQuery("select count(*) from MenuLevelStair");
 		if(list.get(0)==0){
-			//InitDB data = new InitDB();
-			//HibernateSessionDAO dao = ClsFactory.newInstance().getFactory().getBean("HibernateSessionDAO", HibernateSessionDAO.class);
-			//data.importDB(dao);
+			InitDB data = new InitDB();
+			String path = System.getProperty("webapp.root");
+			data.importDB(hibernateSessionDAO,path+"/db/db");
 		}
 	}
 	public void initJsonRoleInfo(){

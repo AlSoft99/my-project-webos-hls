@@ -15,6 +15,9 @@
   		<property name="roleInfoDAO">
   			<ref bean="RoleInfoDAO"/>
   		</property>
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
   	</bean>
   	<bean id="optionServlet" class="com.hrm.server.OptionServlet"/>
   	<bean id="optionsChangeServlet" class="com.hrm.server.OptionsChangeServlet"/>
