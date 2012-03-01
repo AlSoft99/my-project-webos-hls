@@ -323,7 +323,7 @@ Ext.onReady(function() {
     		header:"编号",
     		dataIndex:"paramscode",
     		sortable: true,
-    		width:150,
+    		width:70,
     		editor: {
                 xtype: 'textfield',
                 maxLength:50,
@@ -333,13 +333,39 @@ Ext.onReady(function() {
     		header:"名称",
     		dataIndex:"paramsname",
     		sortable: true,
-    		width:150,
+    		width:100,
     		editor: {
                 xtype: 'textfield',
                 maxLength:50,
                 allowBlank: false
             }
-    	},{
+        }, {
+            xtype: 'numbercolumn',
+            header: "价格",
+            dataIndex: "price",
+            sortable: true,
+            width: 100,
+            format: "￥0,0.00",
+            editor: {
+                xtype: 'numberfield',
+                minValue: 0,
+                maxValue: 150000,
+                allowBlank: false
+            }
+        }, {
+            xtype: 'numbercolumn',
+            header: "成本",
+            dataIndex: "cost",
+            sortable: true,
+            width: 100,
+            format: "￥0,0.00",
+            editor: {
+                xtype: 'numberfield',
+                minValue: 0,
+                maxValue: 150000,
+                allowBlank: false
+            }
+        }, {
     		header:"菜名描述",
     		dataIndex:"paramsdesc",
     		width:250,
@@ -492,7 +518,23 @@ Ext.onReady(function() {
 
   	});
 	/*****************************************/
-	var smm = new Ext.grid.CheckboxSelectionModel();
+  	var smm = new Ext.grid.CheckboxSelectionModel({
+  	    listeners: {
+  	        rowselect: function (sm, row, rec) {
+  	            console.log("===========CheckboxSelectionModel==========");
+  	            var issecond = rec.data.issecond;
+  	            console.log(issecond);
+  	            if (issecond == "0") {
+  	                secondUnit.setDisabled(true);
+  	                secondUnit.allowBlank = true;
+                  } else if (issecond == "1") {
+                      secondUnit.setDisabled(false);
+                      secondUnit.allowBlank = false;
+                  }
+  	        }
+  	    }
+
+  	});
 	var editorM = new Ext.ux.grid.RowEditor({
 	    saveText: 'Update',
 	    errorSummary: false

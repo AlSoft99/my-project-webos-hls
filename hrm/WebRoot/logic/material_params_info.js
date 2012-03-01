@@ -267,7 +267,8 @@ Ext.onReady(function() {
 		{name: "id", type: 'string'},
 		{name: "typeid", type: 'string'},
 		{name: "paramscode", type: 'string'},
-		{name: "paramsname", type: 'string'},
+		{ name: "paramsname", type: 'string' },
+        { name: "cost", type: 'float' },
 		{name: "paramsdesc", type: 'string'},
 		{name: "updtuser", type: 'float'},
     	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
@@ -304,7 +305,20 @@ Ext.onReady(function() {
                 maxLength:50,
                 allowBlank: false
             }
-    	},{
+        }, {
+            xtype: 'numbercolumn',
+            header: "价格",
+            dataIndex: "cost",
+            sortable: true,
+            width: 150,
+            format : "￥0,0.00",
+            editor: {
+                xtype: 'numberfield',
+                minValue: 0,
+                maxValue: 150000,
+                allowBlank: false
+            }
+        }, {
     		header:"原材料描述",
     		dataIndex:"paramsdesc",
     		width:250,
@@ -361,7 +375,8 @@ Ext.onReady(function() {
             	var record = {
                     id: '',
                     typeid: currentId,
-                    paramscode:'0',
+                    paramscode: '0',
+                    cost: '0',
                     paramsname:'',
                     paramsdesc:''
                 };
