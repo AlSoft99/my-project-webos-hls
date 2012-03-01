@@ -110,7 +110,7 @@ public class OrderOutputInfoVo implements BaseVo {
 				goods.setOptiontype("1");
 				goods.setCheckyn("1");
 				goods.setGoodsid(request.getParamsMap().get("goodsid"));
-				goods.setGoodsnumber(Float.valueOf(request.getParamsMap().get("goodsnumber")));
+				//goods.setGoodsnumber(Float.valueOf(request.getParamsMap().get("goodsnumber")));
 				goods.setId(createId);
 				goods.setOutid(request.getParamsMap().get("outid"));
 				goods.setReturnnumber(Float.valueOf(request.getParamsMap().get("returnnumber")));
