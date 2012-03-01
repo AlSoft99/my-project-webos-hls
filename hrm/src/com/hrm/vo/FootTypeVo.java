@@ -90,6 +90,9 @@ public class FootTypeVo implements BaseVo {
 			goods.setParamscode(request.getParamsMap().get("paramscode"));
 			goods.setParamsdesc(request.getParamsMap().get("paramsdesc"));
 			goods.setParamsname(request.getParamsMap().get("paramsname"));
+			System.out.println("request.getParamsMap().get(\"cost\"):"+request.getParamsMap().get("cost")+"    "+request.getParamsMap().get("price"));
+			goods.setCost(Float.valueOf(request.getParamsMap().get("cost")));
+			goods.setPrice(Float.valueOf(request.getParamsMap().get("price")));
 			goods.setUpdttime(new Date());
 			goods.setUpdtuser(userInfo.getUserId());
 			footListDAO.getHibernateTemplate().update(goods);

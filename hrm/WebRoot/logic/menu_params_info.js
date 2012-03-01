@@ -45,8 +45,8 @@ Ext.onReady(function() {
 					start:0, 
 					limit:10,
 					action:"hql",
-					type:"entity",
-					sql:"from FootMaterial where footid='"+currentFootid+"'"
+					type:"map",
+					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 				}
 			});
 		}else{
@@ -279,7 +279,9 @@ Ext.onReady(function() {
 		{name: "paramscode", type: 'string'},
 		{name: "paramsname", type: 'string'},
 		{name: "paramsdesc", type: 'string'},
-		{name: "updtuser", type: 'float'},
+		{name: "price", type: 'float'},
+		{name: "cost", type: 'float'},
+		{name: "updtuser", type: 'string'},
     	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
     ]);
 	var currentFootid = "";
@@ -297,8 +299,8 @@ Ext.onReady(function() {
 						start:0, 
 						limit:10,
 						action:"hql",
-						type:"entity",
-						sql:"from FootMaterial where footid='"+rec.data.id+"'"
+						type:"map",
+						sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+rec.data.id+"'"
 					}
 				});
             }
@@ -353,22 +355,33 @@ Ext.onReady(function() {
                 allowBlank: false
             }
         }, {
-            xtype: 'numbercolumn',
+            //xtype: 'numbercolumn',
             header: "成本",
             dataIndex: "cost",
             sortable: true,
             width: 100,
-            format: "￥0,0.00",
+            //format: "￥0,0.00",
             editor: {
                 xtype: 'numberfield',
                 minValue: 0,
                 maxValue: 150000,
                 allowBlank: false
+            },
+            renderer:function(content,a,row){
+            	var price = row.data.price;
+            	var cost = content;
+            	if((price-cost)<=0){
+            		return "<font color='red'>"+Ext.util.Format.number(content,"￥0,0.00")+"</font>";
+            	}else{
+            		
+            		return Ext.util.Format.number(content,"￥0,0.00");
+            	}
+            	
             }
         }, {
     		header:"菜名描述",
     		dataIndex:"paramsdesc",
-    		width:250,
+    		width:200,
     		sortable: true,
     		editor: {
                 xtype: 'textfield',
@@ -493,8 +506,8 @@ Ext.onReady(function() {
 								  			start:0, 
 								  			limit:10,
 								  			action:"hql",
-											type:"entity",
-											sql:"from FootMaterial where footid='"+currentFootid+"'"
+											type:"map",
+											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 								  		}
 								  	});
 				    			},
@@ -597,14 +610,14 @@ Ext.onReady(function() {
     		header:"原料类型",
     		dataIndex:"materialtype",
     		sortable: true,
-    		width:150,
+    		width:100,
 			renderer:filter,
     		editor: materialType
     	},{
     		header:"原料名称",
     		dataIndex:"materialid",
     		sortable: true,
-    		width:150,
+    		width:100,
 			renderer:filterMaterialName,
     		editor: materialList
     	},{
@@ -640,6 +653,13 @@ Ext.onReady(function() {
 			renderer:filterSecondcode,
     		editor: secondUnit
     	},{
+    		xtype : 'numbercolumn',
+    		header:"单价",
+    		dataIndex:"cost",
+    		sortable: true,
+    		format : "￥0,0.00",
+    		width:100
+    	},{
 			xtype: 'datecolumn',
 			header:"最后更新时间",
 			sortable: true,
@@ -660,6 +680,7 @@ Ext.onReady(function() {
 		{name: "footid", type: 'string'},
 		{name: "materialid", type: 'string'},
 		{name: "amount", type: 'string'},
+		{name: "cost", type: 'float'},
 		{name: "unit", type: 'string'},
 		{name: "issecond", type: 'string'},
 		{name: "secondcode", type: 'string'},
@@ -728,7 +749,6 @@ Ext.onReady(function() {
                     unit:'',
 					issecond:'0',
 					secondcode:'',
-                    updttime:'',
 					updtuser:''
                 };
 				secondUnit.allowBlank = true;
@@ -790,8 +810,8 @@ Ext.onReady(function() {
 								  			start:0, 
 								  			limit:10,
 								  			action:"hql",
-											type:"entity",
-											sql:"from FootMaterial where footid='"+currentFootid+"'"
+											type:"map",
+											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 								  		}
 								  	});
 				    			},
@@ -829,6 +849,8 @@ Ext.onReady(function() {
 	var listenerEvent = {
     	update:function(updateObj,jsonRecord){
     		var recordData = editor.record.data;
+    		console.log("============recordData==============");
+    		console.log(recordData);
     		loading.loadMask().show();
     		Ext.Ajax.request({
     			url:"footTypeVo.do?action=updateRecord",
@@ -841,7 +863,8 @@ Ext.onReady(function() {
 		updateMaterial:function(updateObj,jsonRecord){
     		var recordData = editorM.record.data;
     		loading.loadMask().show();
-			console.log(recordData);
+			
+			delete recordData.updttime;
     		Ext.Ajax.request({
     			url:"footTypeVo.do?action=updateFootMaterial&entity=com.hrm.entity.FootMaterial",
     			params:recordData,

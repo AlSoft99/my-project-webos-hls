@@ -40,6 +40,12 @@
                 <comment>ŤīßÁČ©ťÄÄŤīßśēįťáŹ</comment>
             </column>
         </property>
+        <property name="shouldpay" type="java.lang.Float">
+            <column name="shouldpay"></column>
+        </property>
+        <property name="actuallypay" type="java.lang.Float">
+            <column name="actuallypay"></column>
+        </property>
         <property name="updtuser" type="java.lang.String">
             <column name="updtuser" length="50">
                 <comment>śõīśĖįšļļ</comment>

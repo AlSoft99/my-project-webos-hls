@@ -375,7 +375,7 @@ Ext.onReady(function () {
 		}, {
 		    header: "菜单种类",
 		    dataIndex: "goodstype",
-		    width: 150,
+		    width: 100,
 		    sortable: true,
 		    renderer: filter,
 		    editor: comboBoxType
@@ -383,7 +383,7 @@ Ext.onReady(function () {
 		}, {
 		    header: "菜单名称",
 		    dataIndex: "goodsid",
-		    width: 150,
+		    width: 100,
 		    sortable: true,
 		    editor: comboBoxName,
 		    renderer: transform
@@ -400,15 +400,35 @@ Ext.onReady(function () {
 		    }
 
 		}, {
+			xtype : 'numbercolumn',
+		    header: "应付金额",
+		    dataIndex: "shouldpay",
+		    format : "￥0,0.00",
+		    sortable: true
+
+		}, {
+			xtype : 'numbercolumn',
+		    header: "实付金额",
+		    dataIndex: "actuallypay",
+		    sortable: true,
+		    format : "￥0,0.00",
+		    editor: {
+		        xtype: 'numberfield',
+		        minValue: 0,
+		        maxValue: 150000,
+		        allowBlank: false
+		    }
+
+		}, {
 		    header: "操作类型",
 		    dataIndex: "optiontype",
-		    width: 150,
+		    width: 100,
 		    sortable: true,
 		    renderer: transformOption
 		}, {
 		    header: "消耗类型",
 		    dataIndex: "consumetype",
-		    width: 150,
+		    width: 100,
 		    sortable: true,
 		    //editor: comboBoxConsume,
 		    renderer: transformConsume
@@ -505,7 +525,6 @@ Ext.onReady(function () {
                     goodsid: '',
                     optiontype: "1",
                     consumetype: "1",
-                    goodsnumber: 0,
                     returnnumber: 0
                 };
                 Ext.Ajax.request({

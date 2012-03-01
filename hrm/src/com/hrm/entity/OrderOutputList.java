@@ -23,6 +23,10 @@ public class OrderOutputList implements java.io.Serializable {
 	private String checkyn;
 	private Float goodsnumber;
 	private Float returnnumber;
+	//应付金额
+	private Float shouldpay;
+	//实付金额
+	private Float actuallypay;
 	private String updtuser;
 	private Date updttime;
 
@@ -131,6 +135,22 @@ public class OrderOutputList implements java.io.Serializable {
 
 	public void setCheckyn(String checkyn) {
 		this.checkyn = checkyn;
+	}
+
+	public Float getShouldpay() {
+		return shouldpay;
+	}
+
+	public void setShouldpay(Float shouldpay) {
+		this.shouldpay = shouldpay;
+	}
+
+	public Float getActuallypay() {
+		return actuallypay;
+	}
+
+	public void setActuallypay(Float actuallypay) {
+		this.actuallypay = actuallypay;
 	}
 
 }
