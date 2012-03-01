@@ -12,11 +12,13 @@ Ext.onReady(function () {
     var toolbar = new Ext.Toolbar([
 		"开始:",
 		new Ext.form.DateField({
-		    emptyText: "默认当天"
+		    emptyText: "默认当天",
+		    width:100
 		}),
 		"结束:",
 		new Ext.form.DateField({
-		    emptyText: "默认当天"
+		    emptyText: "默认当天",
+		    width: 100
 		}),
 		{
 		    text: "查询",
@@ -70,6 +72,10 @@ Ext.onReady(function () {
                     sql: "from OrderOutputList where outid='" + currentId + "'"
                 }
             });
+            property.setSource({});
+            property.setTitle("第二单位原料信息");
+            console.log("=========property=============");
+            console.log(property);
         } else {
             grid.addBtn.setDisabled(true);
         }
@@ -665,19 +671,14 @@ Ext.onReady(function () {
     editor.addListener("canceledit", function () {
 
     });
-    editor.addListener("click", function (a, b, c) {
-        console.log("click");
-        console.log(a);
-        console.log(b);
-        console.log(c);
-        console.log("=====aaaa========");
-    });
+
     var property = new Ext.grid.PropertyGrid({
         title: '第二单位原料信息',
         closable: false,
         height: height - 100
     });
     //property.setSource(baseMsg);
+    
     new Ext.Panel({
         title: '销售账单维护',
         collapsible: true,

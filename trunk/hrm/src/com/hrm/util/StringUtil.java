@@ -3,7 +3,6 @@ package com.hrm.util;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.log4j.Logger;
 
+import com.google.gson.Gson;
 import com.hrm.control.Request;
 
 public class StringUtil {
@@ -382,8 +382,13 @@ public class StringUtil {
 		Request req = new Request();
 		try {
 			Object classObj = null;
+			for(Iterator<String> it = map.keySet().iterator();it.hasNext();){
+				String key = it.next();
+				String[] value = map.get(key);
+				paramsMap.put(key, value[0]);
+			}
 			if(entity!=null){
-				classObj = Class.forName(entity).newInstance();
+				/*classObj = Class.forName(entity).newInstance();
 				for(Iterator<String> it = map.keySet().iterator();it.hasNext();){
 					String key = it.next();
 					String[] value = map.get(key);
@@ -407,16 +412,18 @@ public class StringUtil {
 							throw new Exception("未知数据类型==>类型为["+type+"]");
 						}
 					}
-				}
+				}*/
+				Gson gson = new Gson();
+				classObj = gson.fromJson(paramsMap.toString(), Class.forName(entity).newInstance().getClass());
 				//查看entity实体存放情况
 //				toEntityString(classObj);
 				
 			}else{
-				for(Iterator<String> it = map.keySet().iterator();it.hasNext();){
+				/*for(Iterator<String> it = map.keySet().iterator();it.hasNext();){
 					String key = it.next();
 					String[] value = map.get(key);
 					paramsMap.put(key, value[0]);
-				}
+				}*/
 			}
 			req.setEntity(classObj);
 			req.setParamsMap(paramsMap);

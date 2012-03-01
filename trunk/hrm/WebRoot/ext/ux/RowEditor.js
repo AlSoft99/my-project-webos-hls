@@ -28,7 +28,7 @@ Ext.ux.grid.RowEditor = Ext.extend(Ext.Panel, {
     clicksToEdit: 'auto',
     monitorValid: true,
     focusDelay: 250,
-    errorSummary: true,
+    errorSummary: false,
 
     saveText: 'Save',
     cancelText: 'Cancel',
