@@ -113,6 +113,7 @@ public class OrderOutputInfoVo implements BaseVo {
 				//goods.setGoodsnumber(Float.valueOf(request.getParamsMap().get("goodsnumber")));
 				goods.setId(createId);
 				goods.setOutid(request.getParamsMap().get("outid"));
+				System.out.println("Float.valueOf(request.getParamsMap().get(returnnumber)): "+Float.valueOf(request.getParamsMap().get("returnnumber")));
 				goods.setReturnnumber(Float.valueOf(request.getParamsMap().get("returnnumber")));
 				goods.setUpdttime(new Date());
 				goods.setUpdtuser(userInfo.getUserId());
@@ -135,6 +136,8 @@ public class OrderOutputInfoVo implements BaseVo {
 				System.out.println("Float.valueOf(request.getParamsMap().get(\"goodsnumber\")): "+Float.valueOf(request.getParamsMap().get("goodsnumber")));
 				goods.setGoodsnumber(Float.valueOf(request.getParamsMap().get("goodsnumber")));
 				goods.setReturnnumber(Float.valueOf(request.getParamsMap().get("returnnumber")));
+				goods.setShouldpay(Float.valueOf(request.getParamsMap().get("shouldpay")));
+				goods.setActuallypay(Float.valueOf(request.getParamsMap().get("actuallypay")));
 				goods.setUpdttime(new Date());
 				goods.setUpdtuser(userInfo.getUserId());
 				hibernateSessionDAO.update(goods);

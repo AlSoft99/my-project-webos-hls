@@ -74,8 +74,6 @@ Ext.onReady(function () {
             });
             property.setSource({});
             property.setTitle("第二单位原料信息");
-            console.log("=========property=============");
-            console.log(property);
         } else {
             grid.addBtn.setDisabled(true);
         }
@@ -326,8 +324,6 @@ Ext.onReady(function () {
         errorSummary: false
     });
     editor.slideHide();
-    console.log(editor);
-    console.log("========editor==============");
     var goods = Ext.data.Record.create([
 		{ name: "id", type: 'string' },
 		{ name: "outid", type: 'string' },
@@ -335,7 +331,9 @@ Ext.onReady(function () {
 		{ name: "optiontype", type: 'string' },
 		{ name: "consumetype", type: 'string' },
 		{ name: "goodsnumber", type: 'float' },
-		{ name: "returnnumber", type: 'float' }
+		{ name: "returnnumber", type: 'float' },
+		{ name: "shouldpay", type: 'float' },
+		{ name: "actuallypay", type: 'float' }
     ]);
 
     var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from FootType a", "", "");
@@ -344,6 +342,10 @@ Ext.onReady(function () {
     var comboBoxConsume = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='CONSUME'", "", "");
     var comboBoxOption = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='OPTION'", "", "");
     var materialListSecond = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a", "", "");
+    var footPrice = null; 
+    properties.ajax("select id,price from FootList",function(o){
+    	footPrice = Ext.util.JSON.decode(o.responseText);
+    });
     comboBoxType.emptyText = "过滤菜名";
     comboBoxType.allowBlank = true;
     comboBoxName.allowBlank = false;
@@ -354,7 +356,6 @@ Ext.onReady(function () {
                 var goodsid = rec.data.goodsid;
                 var id = rec.data.id;
                 properties.ajax("select b.paramsname,(select c.sum from OrderSecondMaterialList c where c.id.materialid=a.materialid and c.id.outlistid='" + id + "') as sum from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='" + goodsid + "' and a.issecond='1'", function (o) {
-                    console.log("o.responseText:" + o.responseText);
                     var json = eval("(" + o.responseText + ")");
                     property.setSource(json);
 
@@ -365,6 +366,32 @@ Ext.onReady(function () {
             }
         }
 
+    });
+    var shouldpay = new Ext.form.NumberField({
+        minValue: 0,
+        maxValue: 150000,
+        allowBlank: false,
+        disabled: true
+    });
+    var goodsnumber = new Ext.form.NumberField({
+        minValue: 0,
+        maxValue: 150000,
+        allowBlank: false
+    });
+    goodsnumber.on("valid",function(o,nowValue,beforeValue){
+    	var goodsid = comboBoxName.getValue();
+    	var price = footPrice[goodsid];
+    	var value = price*o.getValue();
+    	shouldpay.setValue(value);
+    	var actually = actuallypay.getValue();
+    	/*if(actually=="" || actually==0){
+    		actuallypay.setValue(value);
+    	}*/
+    });
+    var actuallypay = new Ext.form.NumberField({
+        minValue: 0,
+        maxValue: 150000,
+        allowBlank: false
     });
     var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
@@ -392,32 +419,22 @@ Ext.onReady(function () {
 		    header: "销售数量",
 		    dataIndex: "goodsnumber",
 		    sortable: true,
-		    editor: {
-		        xtype: 'numberfield',
-		        minValue: 0,
-		        maxValue: 150000,
-		        allowBlank: false
-		    }
+		    editor: goodsnumber
 
 		}, {
 			xtype : 'numbercolumn',
 		    header: "应付金额",
 		    dataIndex: "shouldpay",
 		    format : "￥0,0.00",
-		    sortable: true
-
+		    sortable: true,
+		    editor: shouldpay
 		}, {
 			xtype : 'numbercolumn',
 		    header: "实付金额",
 		    dataIndex: "actuallypay",
 		    sortable: true,
 		    format : "￥0,0.00",
-		    editor: {
-		        xtype: 'numberfield',
-		        minValue: 0,
-		        maxValue: 150000,
-		        allowBlank: false
-		    }
+		    editor: actuallypay
 
 		}, {
 		    header: "操作类型",
@@ -479,7 +496,7 @@ Ext.onReady(function () {
     comboBoxName.on("select", function (obj, option) {
         var value = option.data.value;
         var title = option.data.text;
-        properties.ajax("select b.paramsname,0 from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='" + value + "' and a.issecond='1'", function (o) {
+        properties.ajax("select b.paramsname,1 from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='" + value + "' and a.issecond='1'", function (o) {
             var json = eval("(" + o.responseText + ")");
             property.setSource(json);
             property.setTitle(title);
@@ -695,6 +712,17 @@ Ext.onReady(function () {
         title: '第二单位原料信息',
         closable: false,
         height: height - 100
+    });
+    property.isEditor = false;
+    property.clicksToEdit = -1;
+    console.log("======property========");
+    console.log(property);
+    property.on("afteredit",function(o,a,b){
+    	console.log("======afteredit========");
+    	console.log(o);
+    	console.log(a);
+    	console.log(b);
+    	console.log("======edit========");
     });
     //property.setSource(baseMsg);
     
