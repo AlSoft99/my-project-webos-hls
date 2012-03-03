@@ -384,9 +384,7 @@ Ext.onReady(function () {
     	var value = price*o.getValue();
     	shouldpay.setValue(value);
     	var actually = actuallypay.getValue();
-    	/*if(actually=="" || actually==0){
-    		actuallypay.setValue(value);
-    	}*/
+    	actuallypay.setValue(value);
     });
     var actuallypay = new Ext.form.NumberField({
         minValue: 0,
@@ -416,7 +414,7 @@ Ext.onReady(function () {
 		    renderer: transform
 
 		}, {
-		    header: "销售数量",
+		    header: "销售量",
 		    dataIndex: "goodsnumber",
 		    sortable: true,
 		    editor: goodsnumber

@@ -40,6 +40,14 @@
 				<!--  
 				<prop key="connection.useUnicode">true</prop>
 				<prop key="connection.characterEncoding">UTF-8</prop>-->
+				<prop key="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</prop>
+				<prop key="hibernate.c3p0.min_size">8</prop>
+				<prop key="hibernate.c3p0.max_size">200</prop>
+				<prop key="hibernate.c3p0.timeout">600</prop>
+				<prop key="hibernate.c3p0.max_statements">0</prop>
+				<prop key="hibernate.c3p0.idle_test_period">60</prop>
+				<prop key="hibernate.c3p0.acquire_increment">2</prop>
+				<prop key="hibernate.c3p0.validate">true</prop>
 			</props>
 		</property>
 		<property name="mappingResources">

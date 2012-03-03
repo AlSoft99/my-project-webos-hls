@@ -10,7 +10,8 @@ var loading = {
 			return new Ext.LoadMask(obj, {msg:typeof(msg)=="undefined"?"请稍后...":msg});
 		}
 	}
-}
+};
+
 var comboBoxList = {
 	goodsType : new Ext.form.ComboBox({
   		name: "goodstype",
@@ -202,3 +203,60 @@ function fxMultiply(a,b) {
 	var   bb   =   String(b).replace(/^0*|\./g, ' '); 
 	return   Number(aa)*Number(bb)/Math.pow(10,f1+f2); 
 } 
+function clone(obj){
+	 /*if(obj == null || typeof(obj) != 'object')  
+	 {
+	  return obj;
+	 }
+	     
+	 var temp = new obj.constructor();       
+	 for(var key in obj)   
+	 {
+	  temp[key] = cloneGood(obj[key]); 
+	 }
+
+	 return temp;*/  
+	 
+	 
+	 var objClone;
+	 if (obj.constructor == Object){
+        objClone = new obj.constructor(); 
+	 }else{
+        objClone = new obj.constructor(obj.valueOf()); 
+	 }
+	 for(var key in obj){
+        if ( objClone[key] != obj[key] ){ 
+            if ( typeof(obj[key]) == 'object' ){ 
+                objClone[key] = clone(obj[key]);
+            }else{
+                objClone[key] = obj[key];
+            }
+        }
+	 }
+	 objClone.toString = obj.toString;
+	 objClone.valueOf = obj.valueOf;
+	 return objClone; 
+}
+Ext.onReady(function(){
+	/*var cloneObject = new Object();
+	Object.prototype.clone = function(){
+	    var objClone;
+	    if (this.constructor == Object){
+	        objClone = new this.constructor(); 
+	    }else{
+	        objClone = new this.constructor(this.valueOf()); 
+	    }
+	    for(var key in this){
+	        if ( objClone[key] != this[key] ){ 
+	            if ( typeof(this[key]) == 'object' ){ 
+	                objClone[key] = this[key].Clone();
+	            }else{
+	                objClone[key] = this[key];
+	            }
+	        }
+	    }
+	    objClone.toString = this.toString;
+	    objClone.valueOf = this.valueOf;
+	    return objClone; 
+	}; */
+});

@@ -15,7 +15,7 @@ Ext.onReady(function() {
 		loader : new Ext.tree.TreeLoader({
 			dataUrl : "treeInfoQuery.do?action=single",
 			baseParams :{
-				parent: "select new map(id as id,typename as text,typedesc as qtip) from FootType"
+				parent: "select new map(id as id,typename as text,typedesc as qtip) from MaterialType"
 //				child: "select new map(id as id,goodsname as text,goodsdesc as qtip,typeid as nodeId,goodsnumber as number,price as price) from GoodsList"
 			}
 		})
@@ -36,19 +36,9 @@ Ext.onReady(function() {
 		  			limit:10,
 		  			action:"hql",
 					type:"entity",
-					sql:"from FootList where typeid='"+currentId+"'"
+					sql:"from MaterialList where typeid='"+currentId+"'"
 		  		}
 		  	});
-			currentFootid = "";
-			dsm.load({
-				params:{
-					start:0, 
-					limit:10,
-					action:"hql",
-					type:"map",
-					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
-				}
-			});
 		}else{
 			grid.addBtn.setDisabled(true);
 		}
@@ -60,7 +50,7 @@ Ext.onReady(function() {
 	  	defaultType:"textfield",
 	  	labelAlign:"right",
 	  	labelWidth:80,
-	  	url:"footTypeVo.do",
+	  	url:"materialTypeVo.do",
 	  	frame:true,
 	  	width:200,
 	  	items:[{
@@ -219,7 +209,7 @@ Ext.onReady(function() {
 		                    	isRoot = true;
 							}
 							Ext.Ajax.request({
-								url: "footTypeVo.do",
+								url: "materialTypeVo.do",
 							   	success: function(action){
 //							   		tree_menu.remove(node_menu);
 							   		tree_menu.getRootNode().removeChild(node_menu);
@@ -277,36 +267,14 @@ Ext.onReady(function() {
 		{name: "id", type: 'string'},
 		{name: "typeid", type: 'string'},
 		{name: "paramscode", type: 'string'},
-		{name: "paramsname", type: 'string'},
+		{ name: "paramsname", type: 'string' },
+        { name: "cost", type: 'float' },
 		{name: "paramsdesc", type: 'string'},
-		{name: "price", type: 'float'},
-		{name: "cost", type: 'float'},
-		{name: "updtuser", type: 'string'},
+		{name: "updtuser", type: 'float'},
     	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
     ]);
-	var currentFootid = "";
-	var sm = new Ext.grid.CheckboxSelectionModel({
-		listeners: {
-            rowselect: function(sm, row, rec) {
-                gridMaterial.addBtn.setDisabled(false);
-                currentFootid = rec.data.id;
-                var issecond = rec.data.issecond;
-                if (issecond == "0") {
-                    secondUnit.setDisabled(false);
-                }
-				dsm.load({
-					params:{
-						start:0, 
-						limit:10,
-						action:"hql",
-						type:"map",
-						sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+rec.data.id+"'"
-					}
-				});
-            }
-        }
 
-	});
+	var sm = new Ext.grid.CheckboxSelectionModel();
 	var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
 		sm,
@@ -325,17 +293,13 @@ Ext.onReady(function() {
     		header:"编号",
     		dataIndex:"paramscode",
     		sortable: true,
-    		width:70,
-    		editor: {
-                xtype: 'textfield',
-                maxLength:50,
-                allowBlank: false
-            }
+    		width:150,
+    		hidden:true
     	},{
     		header:"名称",
     		dataIndex:"paramsname",
     		sortable: true,
-    		width:100,
+    		width:150,
     		editor: {
                 xtype: 'textfield',
                 maxLength:50,
@@ -344,44 +308,20 @@ Ext.onReady(function() {
         }, {
             xtype: 'numbercolumn',
             header: "价格",
-            dataIndex: "price",
-            sortable: true,
-            width: 100,
-            format: "￥0,0.00",
-            editor: {
-                xtype: 'numberfield',
-                minValue: 0,
-                maxValue: 150000,
-                allowBlank: false
-            }
-        }, {
-            //xtype: 'numbercolumn',
-            header: "成本",
             dataIndex: "cost",
             sortable: true,
-            width: 100,
-            //format: "￥0,0.00",
+            width: 150,
+            format : "￥0,0.00",
             editor: {
                 xtype: 'numberfield',
                 minValue: 0,
                 maxValue: 150000,
                 allowBlank: false
-            },
-            renderer:function(content,a,row){
-            	var price = row.data.price;
-            	var cost = content;
-            	if((price-cost)<=0){
-            		return "<font color='red'>"+Ext.util.Format.number(content,"￥0,0.00")+"</font>";
-            	}else{
-            		
-            		return Ext.util.Format.number(content,"￥0,0.00");
-            	}
-            	
             }
         }, {
-    		header:"菜名描述",
+    		header:"原材料描述",
     		dataIndex:"paramsdesc",
-    		width:200,
+    		width:250,
     		sortable: true,
     		editor: {
                 xtype: 'textfield',
@@ -425,8 +365,8 @@ Ext.onReady(function() {
     	iconCls:"icon-grid",
     	tbar:[{
     		ref: '../addBtn',
-            text:'增加菜名',
-            tooltip:'添加一条新的菜名记录',
+            text:'增加原材料',
+            tooltip:'添加一条新的原材料记录',
             iconCls:'add',
             disabled: true,
             handler:function(){
@@ -435,12 +375,13 @@ Ext.onReady(function() {
             	var record = {
                     id: '',
                     typeid: currentId,
-                    paramscode:'0',
+                    paramscode: '0',
+                    cost: '0',
                     paramsname:'',
                     paramsdesc:''
                 };
                 Ext.Ajax.request({
-	        		url:"footTypeVo.do?action=insertRecord",
+	        		url:"materialTypeVo.do?action=insertRecord",
 	        		params:record,
 	        		success:function(action){
 	        			loading.loadMask().hide();
@@ -462,8 +403,8 @@ Ext.onReady(function() {
             }
         }, '-',{
         	ref: '../removeBtn',
-            text:'删除菜名',
-            tooltip:'删除一条菜名记录',
+            text:'删除原材料',
+            tooltip:'删除一条原材料记录',
             iconCls:'remove',
             disabled: true,
             handler:function(){
@@ -484,7 +425,7 @@ Ext.onReady(function() {
 							id = id.substring(0,id.length-1);
 //							loading.loadMask().show();
 							Ext.Ajax.request({
-				        		url:"footTypeVo.do?action=deleteRecord",
+				        		url:"materialTypeVo.do?action=deleteRecord",
 				        		params:{
 				        			id:id,
 				        			typeid:currentId
@@ -498,16 +439,7 @@ Ext.onReady(function() {
 								  			limit:10,
 								  			action:"hql",
 											type:"entity",
-											sql:"from FootList where typeid='"+currentId+"'"
-								  		}
-								  	});
-									dsm.load({
-								  		params:{
-								  			start:0, 
-								  			limit:10,
-								  			action:"hql",
-											type:"map",
-											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
+											sql:"from MaterialList where typeid='"+currentId+"'"
 								  		}
 								  	});
 				    			},
@@ -524,305 +456,6 @@ Ext.onReady(function() {
     	bbar:new Ext.PagingToolbar({
 		    pageSize:10,
 		    store:ds,
-		    displayInfo:true,
-		    displayMsg:"显示第{0}条到{1}条记录,一共{2}条记录",
-		    emptyMsg:"无记录"
-		})
-
-  	});
-	/*****************************************/
-  	var smm = new Ext.grid.CheckboxSelectionModel({
-  	    listeners: {
-  	        rowselect: function (sm, row, rec) {
-  	            var issecond = rec.data.issecond;
-  	            if (issecond == "0") {
-  	                secondUnit.setDisabled(true);
-  	                secondUnit.allowBlank = true;
-                  } else if (issecond == "1") {
-                      secondUnit.setDisabled(false);
-                      secondUnit.allowBlank = false;
-                  }
-  	        }
-  	    }
-
-  	});
-	var editorM = new Ext.ux.grid.RowEditor({
-	    saveText: 'Update',
-	    errorSummary: false
-    });
-	var materialType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialType a","","");
-	var materialList = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
-	var materialListAll = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
-	materialType.emptyText = "过滤货物";
-	materialType.allowBlank = true;
-	materialList.allowBlank = false;
-	materialType.on("select",function(obj,option){
-  		var roleCode = option.data.value;
-		var sql = "";
-		if(roleCode!=""){
-			sql = "select a.id,a.paramsname from MaterialList a where a.typeid='"+roleCode+"'";
-		}else{
-			sql = "select a.id,a.paramsname from MaterialList a ";
-		}
-		materialList.getStore().load({
-			params:{
-				sql: sql
-			}
-		});
-		materialList.setValue("");
-  	});
-	var unit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
-	var comboBoxYn = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='YNTYPE'","","");
-	var secondUnit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
-	
-	comboBoxYn.on("select",function(obj,option){
-	    var roleCode = option.data.value;
-		if(roleCode=="0"){
-		    secondUnit.allowBlank = true;
-		    secondUnit.setDisabled(true);
-		}else{
-		    secondUnit.allowBlank = false;
-		    secondUnit.setDisabled(false);
-		}
-		secondUnit.setValue("");
-  	});
-	
-  	var cmm = new Ext.grid.ColumnModel([
-		new Ext.grid.RowNumberer(),
-		smm,
-		{
-			header:"ID",
-			dataIndex:"id",
-			hidden:true,
-			sortable: true
-		},{
-			header:"食物ID",
-			width:150,
-			sortable: true,
-			hidden:true,
-			dataIndex:"footid"
-		},{
-    		header:"原料类型",
-    		dataIndex:"materialtype",
-    		sortable: true,
-    		width:100,
-			renderer:filter,
-    		editor: materialType
-    	},{
-    		header:"原料名称",
-    		dataIndex:"materialid",
-    		sortable: true,
-    		width:100,
-			renderer:filterMaterialName,
-    		editor: materialList
-    	},{
-    		header:"数量",
-    		dataIndex:"amount",
-    		sortable: true,
-    		width:100,
-    		editor: {
-                xtype: 'numberfield',
-                minValue: 0,
-                maxValue: 10000,
-                allowBlank: false
-            }
-    	},{
-    		header:"单位",
-    		dataIndex:"unit",
-    		width:100,
-    		sortable: true,
-			renderer:filterUnit,
-    		editor: unit
-    	},{
-    		header:"是否第二单位",
-    		dataIndex:"issecond",
-    		width:100,
-    		sortable: true,
-			renderer:filterIsSecond,
-    		editor: comboBoxYn
-    	},{
-    		header:"第二单位",
-    		dataIndex:"secondcode",
-    		width:100,
-    		sortable: true,
-			renderer:filterSecondcode,
-    		editor: secondUnit
-    	},{
-    		xtype : 'numbercolumn',
-    		header:"单价",
-    		dataIndex:"cost",
-    		sortable: true,
-    		format : "￥0,0.00",
-    		width:100
-    	},{
-			xtype: 'datecolumn',
-			header:"最后更新时间",
-			sortable: true,
-			dataIndex:"updttime",
-			width:150,
-			hidden:true,
-			format: 'Y-m-d H:i:s.u'
-		},{
-			header:"最后更新人",
-			sortable: true,
-			width:150,
-			hidden:true,
-			dataIndex:"updtuser"
-		}
-  	]);
-	var paramsm = Ext.data.Record.create([
-		{name: "id", type: 'string'},
-		{name: "footid", type: 'string'},
-		{name: "materialid", type: 'string'},
-		{name: "amount", type: 'string'},
-		{name: "cost", type: 'float'},
-		{name: "unit", type: 'string'},
-		{name: "issecond", type: 'string'},
-		{name: "secondcode", type: 'string'},
-		{name: "updtuser", type: 'float'},
-    	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
-    ]);
-	function filter(){
-		return "<font color='red'>过滤货物</font>";
-	}
-	function filterUnit(content){
-		var arrayData = comboBoxList.getArray(unit);
-		var value = comboBoxList.getValue(arrayData,content);
-		//unit.selectByValue("克");
-		return value;
-	}
-	function filterMaterialName(content){
-		var arrayData = comboBoxList.getArray(materialListAll);
-		var value = comboBoxList.getValue(arrayData,content);
-		return value;
-	}
-	function filterIsSecond(content){
-		var arrayData = comboBoxList.getArray(comboBoxYn);
-		var value = comboBoxList.getValue(arrayData,content);
-		return value;
-	}
-	function filterSecondcode(content){
-		var arrayData = comboBoxList.getArray(secondUnit);
-		var value = comboBoxList.getValue(arrayData,content);
-		if(value==""){
-			value = "无";
-		}
-		return value;
-	}
-  	cmm.defaultSortable = true;
-	var dsm = new Ext.data.Store({
-    	proxy: new Ext.data.HttpProxy({
-    		url:"queryInfoVo.do"
-    	}),
-		reader: new Ext.data.JsonReader({
-			totalProperty:"totalProperty",
-			root:"root"
-		},paramsm)
-  	});
-  	var gridMaterial = new Ext.grid.GridPanel({
-    	ds:dsm,
-    	cm:cmm,
-    	sm:smm,
-    	loadMask:true,
-    	height : height-180,
-    	plugins: [editorM],
-    	iconCls:"icon-grid",
-    	tbar:[{
-    		ref: '../addBtn',
-            text:'增加原材料',
-            tooltip:'添加一条新的原材料记录',
-            iconCls:'add',
-            disabled: true,
-            handler:function(){
-            	loading.loadMask().show();
-            	editorM.setDisabled(true);
-            	var record = {
-                    id: '',
-					footid : currentFootid,
-                    materialid: '',
-                    amount:'0',
-                    unit:'',
-					issecond:'0',
-					secondcode:'',
-					updtuser:''
-                };
-				secondUnit.allowBlank = true;
-                Ext.Ajax.request({
-	        		url:"footTypeVo.do?action=insertFootMaterial&entity=com.hrm.entity.FootMaterial",
-	        		params:record,
-	        		success:function(action){
-	        			loading.loadMask().hide();
-	        			editorM.setDisabled(false);
-	        			var json = eval("("+action.responseText+")");
-	        			record.id = json.msg;
-	        			var e = new params(record);
-		                editorM.stopEditing();
-		                dsm.insert(0, e);
-		                gridMaterial.getView().refresh();
-		                gridMaterial.getSelectionModel().selectRow(0);
-		                editorM.startEditing(0);
-	    			},
-	    			failure:function(action){
-	    				return false;
-	    			}
-	        	});
-            	
-            }
-        }, '-',{
-        	ref: '../removeBtn',
-            text:'删除原材料',
-            tooltip:'删除一条原材料记录',
-            iconCls:'remove',
-            disabled: true,
-            handler:function(){
-            	editorM.stopEditing();
-                var s = gridMaterial.getSelectionModel().getSelections();
-                Ext.MessageBox.show({
-					title:"警告提示",
-					msg:"请确认是否要删除?",
-					buttons:Ext.MessageBox.OKCANCEL,
-					icon:Ext.MessageBox.WARNING,
-					fn:function(btn){
-						if(btn=="ok"){
-							var id = "";
-			                for(var i = 0, r; r = s[i]; i++){
-			                    ds.remove(r);
-			                    id += r.data.id+",";
-			                }
-							id = id.substring(0,id.length-1);
-//							loading.loadMask().show();
-							Ext.Ajax.request({
-				        		url:"footTypeVo.do?action=deleteFootMaterial",
-				        		params:{
-				        			id:id,
-				        			footid:currentFootid
-				        		},
-				        		success:function(action){
-//				        			loading.loadMask().hide();
-				        			editorM.setDisabled(false);
-				        			dsm.load({
-								  		params:{
-								  			start:0, 
-								  			limit:10,
-								  			action:"hql",
-											type:"map",
-											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
-								  		}
-								  	});
-				    			},
-				    			failure:function(action){
-				    				return false;
-				    			}
-				        	});
-						}
-					}
-                });
-                
-            }
-        }],
-    	bbar:new Ext.PagingToolbar({
-		    pageSize:10,
-		    store:dsm,
 		    displayInfo:true,
 		    displayMsg:"显示第{0}条到{1}条记录,一共{2}条记录",
 		    emptyMsg:"无记录"
@@ -846,34 +479,12 @@ Ext.onReady(function() {
     		var recordData = editor.record.data;
     		loading.loadMask().show();
     		Ext.Ajax.request({
-    			url:"footTypeVo.do?action=updateRecord",
+    			url:"materialTypeVo.do?action=updateRecord",
     			params:recordData,
     			success:function(){
     				loading.loadMask().hide();
     			}
     		});
-    	},
-		updateMaterial:function(updateObj,jsonRecord){
-    		var recordData = editorM.record.data;
-    		loading.loadMask().show();
-			
-			delete recordData.updttime;
-    		Ext.Ajax.request({
-    			url:"footTypeVo.do?action=updateFootMaterial&entity=com.hrm.entity.FootMaterial",
-    			params:recordData,
-    			success:function(){
-    				loading.loadMask().hide();
-    			}
-    		});
-    		dsm.load({
-				params:{
-					start:0, 
-					limit:10,
-					action:"hql",
-					type:"map",
-					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
-				}
-			});
     	},
     	loadGrid:function(){
     		ds.load({
@@ -882,19 +493,18 @@ Ext.onReady(function() {
 		  			limit:10,
 		  			action:"hql",
 					type:"entity",
-					sql:"from FootList where typeid='"+currentId+"'"
+					sql:"from MaterialList where typeid='"+currentId+"'"
 		  		}
 		  	});
     	}
     	
     }
 	editor.addListener("afteredit",listenerEvent.update);
-	editorM.addListener("afteredit",listenerEvent.updateMaterial);
 	
 	new Ext.Panel({
-        title: '菜名种类',
+        title: '种类',
         collapsible:true,
-        renderTo: 'menu_params_info_name',
+        renderTo: 'menu_foot_month_start_name',
         width : 250,
         height : height-100,
         items:[
@@ -910,29 +520,17 @@ Ext.onReady(function() {
 		    })
 		]
     });
-
+    
     new Ext.Panel({
-        title: '菜名明细列表',
+        title: '原材料明细列表',
         collapsible:true,
-        width : 650,
-        renderTo: 'menu_params_info_list',
+        width : width-495,
+        renderTo: 'menu_foot_month_start_list',
         height : height-100,
         items:[grid]
     });
-	new Ext.Panel({
-        title: '原料明细列表',  
-        collapsible:true,
-        width : width-1150,
-        renderTo: 'menu_material_info_list',
-        height : height-100,
-        items:[gridMaterial]
-    });
     grid.getSelectionModel().on('selectionchange', function(sm){
         grid.removeBtn.setDisabled(sm.getCount() < 1);
-		gridMaterial.addBtn.setDisabled(sm.getCount() < 1);
-    });
-	gridMaterial.getSelectionModel().on('selectionchange', function(sm){
-        gridMaterial.removeBtn.setDisabled(sm.getCount() < 1);
     });
 
 });
