@@ -84,8 +84,7 @@ public class FootTypeVo implements BaseVo {
 			footListDAO.save(goods);
 			result = "{success:true,msg:'"+createId+"'}";
 		}else if("updateRecord".equals(action)){
-			FootList goods = new FootList();
-			goods.setId(request.getParamsMap().get("id"));
+			FootList goods = footListDAO.findById(request.getParamsMap().get("id"));
 			goods.setTypeid(request.getParamsMap().get("typeid"));
 			goods.setParamscode(request.getParamsMap().get("paramscode"));
 			goods.setParamsdesc(request.getParamsMap().get("paramsdesc"));
