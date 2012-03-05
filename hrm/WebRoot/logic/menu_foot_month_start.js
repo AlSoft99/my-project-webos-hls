@@ -7,6 +7,7 @@ Ext.onReady(function() {
 	 */
 	var currentId = "";
 	var currentSalaryList ;
+	var currentDate = "";
 	var tree_menu = new Ext.tree.TreePanel({
 		title:"参数类型选择",
 		width : 300,
@@ -24,6 +25,23 @@ Ext.onReady(function() {
 		id : "0",
 		text : "种类"
 	});
+	function checkStore(){
+		Ext.Ajax.request({
+		   url: 'materialStoreVo.do',
+		   success: function(o){
+				if(typeof(suCallback)!="undefined"){
+					suCallback(o);
+				}
+		   },
+		   failure: function(o){
+				if(typeof(faCallback)!="undefined"){
+					faCallback(o);
+				}
+		   },
+		   params: { storedate: currentDate, action:"check" }
+		});
+	};
+	checkStore();
 	tree_menu.setRootNode(root);
 	tree_menu.getRootNode().expand();// 2315
 	tree_menu.on("click",function(node){
@@ -500,13 +518,50 @@ Ext.onReady(function() {
     	
     }
 	editor.addListener("afteredit",listenerEvent.update);
-	
+	var comboBoxDate = new Ext.form.ComboBox({
+  		name: "month",
+  		fieldLabel: '月份',
+	  	store: new Ext.data.Store({
+            proxy:new Ext.data.HttpProxy({url:"optionServlet.do?option=month"}),
+            autoLoad:true,
+			reader:new Ext.data.ArrayReader({},[
+			    {name:"value"},
+			    {name:"text"}
+			])
+        }),
+        dateFormat:'Y-m',
+        width:150,
+	  	emptyText: "默认为当月",
+	  	mode: "local",
+	  	forceSelection :true,
+	  	triggerAction: "all",
+	  	valueField: "value",
+	  	displayField: "text",
+	  	hiddenName: "goodstype"
+	});
+	var monthBtn = new Ext.Button({
+		text:"查询",
+		iconCls:"icon-grid",
+		tooltip:'请选择月份查询',
+		handler:function(event,mouse){
+			currentDate = comboBoxDate.getValue();
+			console.log("currentDate:"+currentDate);
+			tree_menu.getRootNode().reload();
+		}
+	});
+	var toolbar = new Ext.Toolbar({
+		items:[
+			comboBoxDate,
+			monthBtn
+		]
+	});
 	new Ext.Panel({
         title: '种类',
         collapsible:true,
         renderTo: 'menu_foot_month_start_name',
         width : 250,
         height : height-100,
+        tbar:toolbar,
         items:[
 	        new Ext.TabPanel({
 		        border:false,

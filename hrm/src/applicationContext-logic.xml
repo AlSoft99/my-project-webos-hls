@@ -216,4 +216,9 @@
   			<ref bean="HibernateSessionDAO"/>
   		</property>
   	</bean>
+  	<bean id="materialStoreVo" class="com.hrm.vo.MaterialStoreVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
 </beans>
