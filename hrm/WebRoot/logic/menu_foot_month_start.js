@@ -5,9 +5,11 @@ Ext.onReady(function() {
 	/**
 	 * 树形
 	 */
+	var date = new Date();
 	var currentId = "";
 	var currentSalaryList ;
-	var currentDate = "";
+	var currentDate = date.format('Ym');
+	console.log("===currentDate:"+currentDate);
 	var tree_menu = new Ext.tree.TreePanel({
 		title:"参数类型选择",
 		width : 300,
@@ -48,6 +50,7 @@ Ext.onReady(function() {
 		if(node.leaf){
 			//grid.addBtn.setDisabled(false);
 			currentId = node.attributes.id;
+			/*
 			ds.load({
 		  		params:{
 		  			start:0, 
@@ -57,6 +60,8 @@ Ext.onReady(function() {
 					sql:"from MaterialList where typeid='"+currentId+"'"
 		  		}
 		  	});
+		  	*/
+			listenerEvent.loadGrid();
 		}else{
 			//grid.addBtn.setDisabled(true);
 		}
@@ -114,10 +119,10 @@ Ext.onReady(function() {
 		{name: "typeid", type: 'string'},
 		{name: "paramscode", type: 'string'},
 		{ name: "paramsname", type: 'string' },
+		{ name: "initsum", type: 'float' },
         { name: "cost", type: 'float' },
-		{name: "paramsdesc", type: 'string'},
 		{name: "updtuser", type: 'float'},
-    	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
+    	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"}
     ]);
 
 	var sm = new Ext.grid.CheckboxSelectionModel();
@@ -145,10 +150,18 @@ Ext.onReady(function() {
     		header:"名称",
     		dataIndex:"paramsname",
     		sortable: true,
-    		width:150,
-    		editor: {
-                xtype: 'textfield',
-                maxLength:50,
+    		width:150
+        }, {
+            xtype: 'numbercolumn',
+            header: "初始数量",
+            dataIndex: "initsum",
+            sortable: true,
+            width: 150,
+            format : "0,0.00",
+            editor: {
+                xtype: 'numberfield',
+                minValue: 0,
+                maxValue: 150000,
                 allowBlank: false
             }
         }, {
@@ -157,24 +170,8 @@ Ext.onReady(function() {
             dataIndex: "cost",
             sortable: true,
             width: 150,
-            format : "￥0,0.00",
-            editor: {
-                xtype: 'numberfield',
-                minValue: 0,
-                maxValue: 150000,
-                allowBlank: false
-            }
-        }, {
-    		header:"原材料描述",
-    		dataIndex:"paramsdesc",
-    		width:250,
-    		sortable: true,
-    		editor: {
-                xtype: 'textfield',
-                maxLength:200,
-                allowBlank: false
-            }
-    	},{
+            format : "￥0,0.00"
+        },{
 			xtype: 'datecolumn',
 			header:"最后更新时间",
 			sortable: true,
@@ -248,8 +245,8 @@ Ext.onReady(function() {
 		  			start:0, 
 		  			limit:10,
 		  			action:"hql",
-					type:"entity",
-					sql:"from MaterialList where typeid='"+currentId+"'"
+					type:"map",
+					sql:"select new map(a.id.id as id,a.typeid as typeid,a.initsum as initsum,b.cost as cost,b.paramscode as paramscode,b.paramsname as paramsname,a.updtuser as updtuser,a.updttime as updttime) from MaterialStoreList a,MaterialList b where a.id.id=b.id and a.typeid='"+currentId+"' and a.id.storedate='"+currentDate+"'"
 		  		}
 		  	});
     	}
