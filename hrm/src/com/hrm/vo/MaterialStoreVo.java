@@ -49,7 +49,7 @@ public class MaterialStoreVo implements BaseVo {
 				}
 			}
 			request.setResponse("");
-		}else if (storedate.equals("update")) {
+		}else if (action.equals("updateRecord")) {
 			
 		}
 		
