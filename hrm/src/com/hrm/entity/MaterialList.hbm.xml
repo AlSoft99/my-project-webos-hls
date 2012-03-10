@@ -31,6 +31,9 @@
         <property name="cost" type="java.lang.Float">
             <column name="cost" />
         </property>
+        <property name="unit" type="java.lang.String">
+            <column name="unit" length="10"></column>
+        </property>
         <property name="updtuser" type="java.lang.String">
             <column name="updtuser" length="50" />
         </property>

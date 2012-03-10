@@ -267,13 +267,14 @@ Ext.onReady(function() {
 		{name: "id", type: 'string'},
 		{name: "typeid", type: 'string'},
 		{name: "paramscode", type: 'string'},
-		{ name: "paramsname", type: 'string' },
-        { name: "cost", type: 'float' },
+		{name: "paramsname", type: 'string' },
+        {name: "cost", type: 'float' },
+        {name: "unit", type: 'string' },
 		{name: "paramsdesc", type: 'string'},
 		{name: "updtuser", type: 'float'},
     	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"},
     ]);
-
+	var unit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
 	var sm = new Ext.grid.CheckboxSelectionModel();
 	var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
@@ -306,6 +307,16 @@ Ext.onReady(function() {
                 allowBlank: false
             }
         }, {
+    		header:"原材料描述",
+    		dataIndex:"paramsdesc",
+    		width:250,
+    		sortable: true,
+    		editor: {
+                xtype: 'textfield',
+                maxLength:200,
+                allowBlank: false
+            }
+    	}, {
             xtype: 'numbercolumn',
             header: "价格",
             dataIndex: "cost",
@@ -319,16 +330,13 @@ Ext.onReady(function() {
                 allowBlank: false
             }
         }, {
-    		header:"原材料描述",
-    		dataIndex:"paramsdesc",
-    		width:250,
-    		sortable: true,
-    		editor: {
-                xtype: 'textfield',
-                maxLength:200,
-                allowBlank: false
-            }
-    	},{
+            header: "单位",
+            dataIndex: "unit",
+            sortable: true,
+            width: 150,
+            renderer:filterUnit,
+            editor: unit
+        },{
 			xtype: 'datecolumn',
 			header:"最后更新时间",
 			sortable: true,
@@ -354,7 +362,12 @@ Ext.onReady(function() {
 			root:"root"
 		},params)
   	});
-  	
+  	function filterUnit(content){
+		var arrayData = comboBoxList.getArray(unit);
+		var value = comboBoxList.getValue(arrayData,content);
+		//unit.selectByValue("克");
+		return value;
+	}
   	var grid = new Ext.grid.GridPanel({
     	ds:ds,
     	cm:cm,

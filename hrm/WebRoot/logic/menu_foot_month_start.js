@@ -9,7 +9,6 @@ Ext.onReady(function() {
 	var currentId = "";
 	var currentSalaryList ;
 	var currentDate = date.format('Ym');
-	console.log("===currentDate:"+currentDate);
 	var tree_menu = new Ext.tree.TreePanel({
 		title:"参数类型选择",
 		width : 300,
@@ -29,8 +28,16 @@ Ext.onReady(function() {
 	});
 	function checkStore(){
 		Ext.Ajax.request({
-		   url: 'materialStoreVo.do',
+		   url: 'materialStoreVo.do?storedate='+currentDate,
 		   success: function(o){
+			   if(Ext.util.Format.trim(o.responseText)!=""){
+				   Ext.MessageBox.show({
+						title:"错误提示",
+						msg: o.responseText,
+						buttons:Ext.MessageBox.OK,
+						icon:Ext.MessageBox.ERROR
+			   		});
+			   }
 				if(typeof(suCallback)!="undefined"){
 					suCallback(o);
 				}
@@ -153,7 +160,7 @@ Ext.onReady(function() {
     		width:150
         }, {
             xtype: 'numbercolumn',
-            header: "初始数量",
+            header: "月末实际库存",
             dataIndex: "initsum",
             sortable: true,
             width: 150,
@@ -232,10 +239,21 @@ Ext.onReady(function() {
     		var recordData = editor.record.data;
     		loading.loadMask().show();
     		Ext.Ajax.request({
-    			url:"materialStoreVo.do?action=updateRecord",
+    			url:"materialStoreVo.do?action=updateRecord&storedate="+currentDate,
     			params:recordData,
-    			success:function(){
+    			success:function(o){
+    				if(Ext.util.Format.trim(o.responseText)!=""){
+					   Ext.MessageBox.show({
+							title:"错误提示",
+							msg: o.responseText,
+							buttons:Ext.MessageBox.OK,
+							icon:Ext.MessageBox.ERROR
+				   		});
+				   }
     				loading.loadMask().hide();
+    			},failure: function(o){
+    				loading.loadMask().hide();
+    				
     			}
     		});
     	},
@@ -281,6 +299,7 @@ Ext.onReady(function() {
 		handler:function(event,mouse){
 			currentDate = comboBoxDate.getValue();
 			tree_menu.getRootNode().reload();
+			checkStore();
 		}
 	});
 	var toolbar = new Ext.Toolbar({

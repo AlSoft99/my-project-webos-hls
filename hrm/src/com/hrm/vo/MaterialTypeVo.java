@@ -100,6 +100,7 @@ public class MaterialTypeVo implements BaseVo {
 			goods.setParamsname(request.getParamsMap().get("paramsname"));
 			goods.setParamscode(request.getParamsMap().get("paramscode"));
 			goods.setCost(Float.valueOf(request.getParamsMap().get("cost")));
+			goods.setUnit("");
 			goods.setId(createId);
 			goods.setTypeid(request.getParamsMap().get("typeid"));
 			goods.setUpdttime(new Date());
@@ -114,6 +115,7 @@ public class MaterialTypeVo implements BaseVo {
 			goods.setParamsdesc(request.getParamsMap().get("paramsdesc"));
 			goods.setParamsname(request.getParamsMap().get("paramsname"));
 			goods.setCost(Float.valueOf(request.getParamsMap().get("cost")));
+			goods.setUnit(request.getParamsMap().get("unit"));
 			goods.setUpdttime(new Date());
 			goods.setUpdtuser(userInfo.getUserId());
 			materialListDAO.getHibernateTemplate().update(goods);

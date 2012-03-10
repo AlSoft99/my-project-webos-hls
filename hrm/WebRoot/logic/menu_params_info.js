@@ -46,7 +46,7 @@ Ext.onReady(function() {
 					limit:10,
 					action:"hql",
 					type:"map",
-					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
+					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 				}
 			});
 		}else{
@@ -300,7 +300,7 @@ Ext.onReady(function() {
 						limit:10,
 						action:"hql",
 						type:"map",
-						sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+rec.data.id+"'"
+						sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+rec.data.id+"'"
 					}
 				});
             }
@@ -507,7 +507,7 @@ Ext.onReady(function() {
 								  			limit:10,
 								  			action:"hql",
 											type:"map",
-											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
+											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 								  		}
 								  	});
 				    			},
@@ -553,6 +553,7 @@ Ext.onReady(function() {
 	var materialType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialType a","","");
 	var materialList = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
 	var materialListAll = comboBoxList.comboBoxSql("select a.id,a.paramsname from MaterialList a","","");
+	var materialListUnit = comboBoxList.comboBoxSql("select a.id,a.unit from MaterialList a","","");
 	materialType.emptyText = "过滤货物";
 	materialType.allowBlank = true;
 	materialList.allowBlank = false;
@@ -571,7 +572,16 @@ Ext.onReady(function() {
 		});
 		materialList.setValue("");
   	});
+	materialList.on("select",function(obj,option){
+		var content = option.data.value;
+		var arrayData = comboBoxList.getArray(materialListUnit);
+		var value = comboBoxList.getValue(arrayData,content);
+		console.log("====value:"+value);
+		unit.setValue(value);
+	});
 	var unit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
+	unit.setDisabled(true);
+	unit.allowBlank = true;
 	var comboBoxYn = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='YNTYPE'","","");
 	var secondUnit = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='UNIT'","","");
 	
@@ -806,7 +816,7 @@ Ext.onReady(function() {
 								  			limit:10,
 								  			action:"hql",
 											type:"map",
-											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
+											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 								  		}
 								  	});
 				    			},
@@ -855,11 +865,12 @@ Ext.onReady(function() {
     	},
 		updateMaterial:function(updateObj,jsonRecord){
     		var recordData = editorM.record.data;
+    		
     		loading.loadMask().show();
 			
 			delete recordData.updttime;
     		Ext.Ajax.request({
-    			url:"footTypeVo.do?action=updateFootMaterial&entity=com.hrm.entity.FootMaterial",
+    			url:"footTypeVo.do?action=updateFootMaterial&entity=com.hrm.entity.FootMaterial&footid="+currentFootid,
     			params:recordData,
     			success:function(){
     				loading.loadMask().hide();
@@ -871,7 +882,7 @@ Ext.onReady(function() {
 					limit:10,
 					action:"hql",
 					type:"map",
-					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,a.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
+					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 				}
 			});
     	},
