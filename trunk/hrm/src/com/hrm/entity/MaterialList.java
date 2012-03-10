@@ -18,6 +18,7 @@ public class MaterialList implements java.io.Serializable {
 	private String paramsname;
 	private String paramsdesc;
 	private Float cost;
+	private String unit;
 	private String updtuser;
 	private Date updttime;
 
@@ -49,6 +50,14 @@ public class MaterialList implements java.io.Serializable {
 
 	public String getId() {
 		return this.id;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
 
 	public void setId(String id) {
