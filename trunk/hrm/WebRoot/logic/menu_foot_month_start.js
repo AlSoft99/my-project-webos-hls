@@ -125,9 +125,10 @@ Ext.onReady(function() {
 		{name: "id", type: 'string'},
 		{name: "typeid", type: 'string'},
 		{name: "paramscode", type: 'string'},
-		{ name: "paramsname", type: 'string' },
-		{ name: "initsum", type: 'float' },
-        { name: "cost", type: 'float' },
+		{name: "paramsname", type: 'string' },
+		{name: "initsum", type: 'float' },
+		{name: "unitname", type: 'string' },
+        {name: "cost", type: 'float' },
 		{name: "updtuser", type: 'float'},
     	{name: "updttime",type:"date",dateFormat:"Y-m-d H:i:s.u"}
     ]);
@@ -171,6 +172,11 @@ Ext.onReady(function() {
                 maxValue: 150000,
                 allowBlank: false
             }
+        },{
+    		header:"单位",
+    		dataIndex:"unitname",
+    		sortable: true,
+    		width:150
         }, {
             xtype: 'numbercolumn',
             header: "价格",
@@ -264,7 +270,7 @@ Ext.onReady(function() {
 		  			limit:10,
 		  			action:"hql",
 					type:"map",
-					sql:"select new map(a.id.id as id,a.typeid as typeid,a.initsum as initsum,b.cost as cost,b.paramscode as paramscode,b.paramsname as paramsname,a.updtuser as updtuser,a.updttime as updttime) from MaterialStoreList a,MaterialList b where a.id.id=b.id and a.typeid='"+currentId+"' and a.id.storedate='"+currentDate+"'"
+					sql:"select new map(a.id.id as id,a.typeid as typeid,a.initsum as initsum,b.cost as cost,b.paramscode as paramscode,b.paramsname as paramsname,a.updtuser as updtuser,a.updttime as updttime,b.unit as unit,c.paramsname as unitname) from MaterialStoreList a,MaterialList b,ParamsList c where c.paramscode=b.unit and c.typeid='UNIT' and a.id.id=b.id and a.typeid='"+currentId+"' and a.id.storedate='"+currentDate+"'"
 		  		}
 		  	});
     	}

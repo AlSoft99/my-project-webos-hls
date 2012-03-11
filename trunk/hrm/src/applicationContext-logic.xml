@@ -26,6 +26,11 @@
   			<ref bean="HibernateSessionDAO"/>
   		</property>
   	</bean>
+  	<bean id="orderMaterialStoreVo" class="com.hrm.vo.OrderMaterialStoreVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
   	<bean id="jsonSqlServlet" class="com.hrm.server.JsonSqlServlet">
   		<property name="hibernateSessionDAO">
   			<ref bean="HibernateSessionDAO"/>
