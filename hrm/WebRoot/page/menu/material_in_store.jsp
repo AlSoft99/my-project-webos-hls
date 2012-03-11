@@ -9,15 +9,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-	<script type="text/javascript" src="<%=path%>/logic/output_order.js"></script>
+	<script type="text/javascript" src="<%=path%>/logic/material_in_store.js"></script>
   </head>
   
   <body>
     <table>
   		<tr>
-  			<td valign="top"><div id="output_order_name"></div></td>
-  			<td valign="top" rowspan="2"><div id="output_order_list"></div></td>
-  			<td valign="top"><div id="output_order_second_list"></div></td>
+  			<td valign="top"><div id="material_in_store_name"></div></td>
+  			<td valign="top" rowspan="2"><div id="material_in_store_list"></div></td>
   		</tr>
   	</table>
   </body>
