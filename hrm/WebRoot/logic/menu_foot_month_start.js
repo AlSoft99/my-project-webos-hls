@@ -268,9 +268,17 @@ Ext.onReady(function() {
 		  		params:{
 		  			start:0, 
 		  			limit:10,
-		  			action:"hql",
+		  			action:"sql",
 					type:"map",
-					sql:"select new map(a.id.id as id,a.typeid as typeid,a.initsum as initsum,b.cost as cost,b.paramscode as paramscode,b.paramsname as paramsname,a.updtuser as updtuser,a.updttime as updttime,b.unit as unit,c.paramsname as unitname) from MaterialStoreList a,MaterialList b,ParamsList c where c.paramscode=b.unit and c.typeid='UNIT' and a.id.id=b.id and a.typeid='"+currentId+"' and a.id.storedate='"+currentDate+"'"
+					//sql:"select new map(a.id.id as id,a.typeid as typeid,a.initsum as initsum,b.cost as cost,b.paramscode as paramscode,b.paramsname as paramsname,a.updtuser as updtuser,a.updttime as updttime,b.unit as unit,c.paramsname as unitname) from MaterialStoreList a,MaterialList b,ParamsList c where c.paramscode=b.unit and c.typeid='UNIT' and a.id.id=b.id and a.typeid='"+currentId+"' and a.id.storedate='"+currentDate+"'"
+					sql:"select b.typename,a.*,"+
+						"(ifnull((select sum(sl.sum) from order_material_store_list sl where sl.materialid=a.id and sl.updttime>='2012-03-01' and sl.updttime<'2012-04-01'),0)+ifnull((select initsum from material_store_list where storedate='201202' and id=a.id),0)) as input,"+
+						"(ifnull((select sum(ool.goodsnumber*fm.amount) from order_output_list ool,foot_material fm where fm.footid=ool.goodsid and fm.materialid=a.id and ool.updttime>='2012-03-01' and ool.updttime<'2012-04-01' ),0)) as output,"+
+						"(ifnull((select sum(omsl.sum) from order_material_store_list omsl where omsl.materialid=a.id and omsl.updttime>='2012-03-01' and omsl.updttime<'2012-04-01'),0)"+
+						"+ifnull((select msl.initsum from material_store_list msl where msl.storedate='201202' and msl.id=a.id),0)"+
+						"-(ifnull((select sum(ol.goodsnumber*fm.amount) from order_output_list ol,foot_material fm where fm.footid=ol.goodsid and fm.materialid=a.id and fm.issecond='0' and ol.updttime>='2012-03-01' and ol.updttime<'2012-04-01' ),0))"+
+						"-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='2012-03-01' and osml.updttime<'2012-04-01'),0))) as sum "
+						+"from material_store_list a, material_type b where a.typeid=b.id"
 		  		}
 		  	});
     	}
