@@ -125,8 +125,10 @@ Ext.onReady(function() {
 		{name: "id", type: 'string'},
 		{name: "typeid", type: 'string'},
 		{name: "paramscode", type: 'string'},
+		{name: "materialname", type: 'string'},
 		{name: "paramsname", type: 'string' },
 		{name: "initsum", type: 'float' },
+		{name: "sum", type: 'float' },
 		{name: "unitname", type: 'string' },
         {name: "cost", type: 'float' },
 		{name: "updtuser", type: 'float'},
@@ -156,7 +158,7 @@ Ext.onReady(function() {
     		hidden:true
     	},{
     		header:"名称",
-    		dataIndex:"paramsname",
+    		dataIndex:"materialname",
     		sortable: true,
     		width:150
         }, {
@@ -172,6 +174,12 @@ Ext.onReady(function() {
                 maxValue: 150000,
                 allowBlank: false
             }
+        }, {
+            header: "月末理论库存",
+            dataIndex: "sum",
+            sortable: true,
+            width: 150,
+            renderer: filterNumber
         },{
     		header:"单位",
     		dataIndex:"unitname",
@@ -220,7 +228,7 @@ Ext.onReady(function() {
     	plugins: [editor],
     	iconCls:"icon-grid",
     	bbar:new Ext.PagingToolbar({
-		    pageSize:10,
+		    pageSize:50,
 		    store:ds,
 		    displayInfo:true,
 		    displayMsg:"显示第{0}条到{1}条记录,一共{2}条记录",
@@ -228,7 +236,13 @@ Ext.onReady(function() {
 		})
 
   	});
-  	
+  	function filterNumber(value){
+  		if(value>=0){
+    		return "<font color='green'>"+Ext.util.Format.number(value,"0,0.00")+"</font>";
+    	}else{
+    		return "<font color='red'>"+Ext.util.Format.number(value,"0,0.00")+"</font>";
+    	}
+  	}
 	/**
 	 * 福利明细
 	 */
@@ -267,18 +281,22 @@ Ext.onReady(function() {
     		ds.load({
 		  		params:{
 		  			start:0, 
-		  			limit:10,
+		  			limit:50,
 		  			action:"sql",
 					type:"map",
-					//sql:"select new map(a.id.id as id,a.typeid as typeid,a.initsum as initsum,b.cost as cost,b.paramscode as paramscode,b.paramsname as paramsname,a.updtuser as updtuser,a.updttime as updttime,b.unit as unit,c.paramsname as unitname) from MaterialStoreList a,MaterialList b,ParamsList c where c.paramscode=b.unit and c.typeid='UNIT' and a.id.id=b.id and a.typeid='"+currentId+"' and a.id.storedate='"+currentDate+"'"
-					sql:"select b.typename,a.*,"+
+					/*sql:"select b.typename,a.*,"+
 						"(ifnull((select sum(sl.sum) from order_material_store_list sl where sl.materialid=a.id and sl.updttime>='2012-03-01' and sl.updttime<'2012-04-01'),0)+ifnull((select initsum from material_store_list where storedate='201202' and id=a.id),0)) as input,"+
 						"(ifnull((select sum(ool.goodsnumber*fm.amount) from order_output_list ool,foot_material fm where fm.footid=ool.goodsid and fm.materialid=a.id and ool.updttime>='2012-03-01' and ool.updttime<'2012-04-01' ),0)) as output,"+
 						"(ifnull((select sum(omsl.sum) from order_material_store_list omsl where omsl.materialid=a.id and omsl.updttime>='2012-03-01' and omsl.updttime<'2012-04-01'),0)"+
 						"+ifnull((select msl.initsum from material_store_list msl where msl.storedate='201202' and msl.id=a.id),0)"+
 						"-(ifnull((select sum(ol.goodsnumber*fm.amount) from order_output_list ol,foot_material fm where fm.footid=ol.goodsid and fm.materialid=a.id and fm.issecond='0' and ol.updttime>='2012-03-01' and ol.updttime<'2012-04-01' ),0))"+
 						"-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='2012-03-01' and osml.updttime<'2012-04-01'),0))) as sum "
-						+"from material_store_list a, material_type b where a.typeid=b.id"
+						+"from material_store_list a, material_type b where a.typeid=b.id"*/
+					sql:"SQL-1",
+					"{0}":"2012-03-01",
+					"{1}":"2012-04-01",
+					"{2}":"201202",
+					"{3}":currentId
 		  		}
 		  	});
     	}

@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -51,6 +52,31 @@ public class HibernateSessionDAO extends HibernateDaoSupport {
 			public List doInHibernate(Session session)
 					throws HibernateException, SQLException {
 				Query query = session.createQuery(hql);
+				if (start>=0) {
+					query.setFirstResult(start);
+				}
+				if(limit>=0){
+					query.setMaxResults(limit);
+				}
+				return query.list();
+			}
+			
+		});
+	}
+	/**
+	 * 查询
+	 * @param hql
+	 * @return
+	 */
+	public List createSqlQuery(final String hql){
+		return createSqlQuery(hql,-1,-1);
+	}
+	public List createSqlQuery(final String hql,final int start,final int limit){
+		return getHibernateTemplate().execute(new HibernateCallback<List>(){
+
+			public List doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				Query query = session.createSQLQuery(hql).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 				if (start>=0) {
 					query.setFirstResult(start);
 				}

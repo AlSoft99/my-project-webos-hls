@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  	http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  	http://www.springframework.org/schema/tx 
+  	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  	http://www.springframework.org/schema/context 
+  	http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+  	> 
+	<bean id="queryUtil" class="com.hrm.query.QueryUtil">
+		<property name="querylist">
+			<map>
+				<entry key="SQL-1">
+					<value>
+						<![CDATA[
+							select b.typename,a.*,c.paramsname as materialname,d.paramsname as unitname,
+							(ifnull((select sum(sl.sum) from order_material_store_list sl where sl.materialid=a.id and sl.updttime>='{0}' and sl.updttime<'{1}'),0)+ifnull((select initsum from material_store_list where storedate='{2}' and id=a.id),0)) as input,
+							(ifnull((select sum(ool.goodsnumber*fm.amount) from order_output_list ool,foot_material fm where fm.footid=ool.goodsid and fm.materialid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}' ),0)) as output,
+							(ifnull((select sum(omsl.sum) from order_material_store_list omsl where omsl.materialid=a.id and omsl.updttime>='{0}' and omsl.updttime<'{1}'),0)
+								+ifnull((select msl.initsum from material_store_list msl where msl.storedate='{2}' and msl.id=a.id),0)
+								-(ifnull((select sum(ol.goodsnumber*fm.amount) from order_output_list ol,foot_material fm where fm.footid=ol.goodsid and fm.materialid=a.id and fm.issecond='0' and ol.updttime>='{0}' and ol.updttime<'{1}' ),0))
+								-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='{0}' and osml.updttime<'{1}'),0))) as sum 
+							from material_store_list a, material_type b,material_list c,params_list d   
+							where a.typeid=b.id and a.id=c.id and c.unit=d.paramscode and d.typeid='UNIT' and c.typeid='{3}'
+						]]>
+					</value>
+				</entry>
+				
+				<!-- <entry key="SQL-x">
+					<value>
+						<![CDATA[
+						]]>
+					</value>
+				</entry> -->
+			</map>
+		</property>
+	</bean>
+	
+</beans>
