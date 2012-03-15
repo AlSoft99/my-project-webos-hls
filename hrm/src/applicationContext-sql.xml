@@ -32,7 +32,21 @@
 						]]>
 					</value>
 				</entry>
-				
+				<entry key="SQL-2">
+					<value>
+						<![CDATA[
+							select b.typename,a.*,c.paramsname as materialname,d.paramsname as unitname,
+							(ifnull((select sum(sl.sum) from order_material_store_list sl where sl.materialid=a.id and sl.updttime>='{0}' and sl.updttime<'{1}'),0)+ifnull((select initsum from material_store_list where storedate='{2}' and id=a.id),0)) as input,
+							(ifnull((select sum(ool.goodsnumber*fm.amount) from order_output_list ool,foot_material fm where fm.footid=ool.goodsid and fm.materialid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}' ),0)) as output,
+							(ifnull((select sum(omsl.sum) from order_material_store_list omsl where omsl.materialid=a.id and omsl.updttime>='{0}' and omsl.updttime<'{1}'),0)
+								+ifnull((select msl.initsum from material_store_list msl where msl.storedate='{2}' and msl.id=a.id),0)
+								-(ifnull((select sum(ol.goodsnumber*fm.amount) from order_output_list ol,foot_material fm where fm.footid=ol.goodsid and fm.materialid=a.id and fm.issecond='0' and ol.updttime>='{0}' and ol.updttime<'{1}' ),0))
+								-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='{0}' and osml.updttime<'{1}'),0))) as sum 
+							from material_store_list a, material_type b,material_list c,params_list d   
+							where a.typeid=b.id and a.id=c.id and c.unit=d.paramscode and d.typeid='UNIT' 
+						]]>
+					</value>
+				</entry>
 				<!-- <entry key="SQL-x">
 					<value>
 						<![CDATA[
