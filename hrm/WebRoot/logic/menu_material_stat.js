@@ -14,6 +14,28 @@ Ext.onReady(function(){
      */
     var curentStartDate = (new Date()).clearTime().format("Y-m-d");
 	var curentEndDate = (new Date()).clearTime().format("Y-m-d");
+	var currentDate = (new Date()).format('Ym');
+	var comboBoxDate = new Ext.form.ComboBox({
+  		name: "month",
+  		fieldLabel: '月份',
+	  	store: new Ext.data.Store({
+            proxy:new Ext.data.HttpProxy({url:"optionServlet.do?option=month"}),
+            autoLoad:true,
+			reader:new Ext.data.ArrayReader({},[
+			    {name:"value"},
+			    {name:"text"}
+			])
+        }),
+        dateFormat:'Y-m',
+        width:150,
+	  	emptyText: "默认为当月",
+	  	mode: "local",
+	  	forceSelection :true,
+	  	triggerAction: "all",
+	  	valueField: "value",
+	  	displayField: "text",
+	  	hiddenName: "goodstype"
+	});
 	var toolbar = new Ext.Toolbar({
 		items:["-",
 			{
@@ -23,18 +45,12 @@ Ext.onReady(function(){
 	            handler: function(){
 	            	summary.toggleSummaries();
 	            }
-	        },"-",new Ext.form.DateField({
-				emptyText:"默认当天"
-			}),{
+	        },"-",comboBoxDate,{
 				text:"查询",
 				iconCls:"icon-grid",
 				tooltip:'默认为当天查询',
 				handler:function(event,mouse){
-					if(toolbar.getComponent(3).getValue()!=""){
-						curentStartDate = toolbar.getComponent(3).getValue().format("Y-m-d");
-					}else{
-						curentStartDate = (new Date()).clearTime().format("Y-m-d");
-					}
+					
 					listenerEvent.loadGrid();
 				}
 			}
@@ -55,7 +71,9 @@ Ext.onReady(function(){
     		{name: "typeid", type: 'string'},
     		{name: "typename", type: 'string'},
     		{name: "sum", type: 'float'},
+    		{name: "cost", type: 'float'},
     		{name: "input", type: 'float'},
+    		{name: "spend", type: 'float'},
     		{name: "storedate", type: 'string'},
     		{name: "initsum", type: 'float'},
     		{name: "output", type: 'float'},
@@ -65,8 +83,8 @@ Ext.onReady(function(){
  			startDate:curentStartDate,
  			endDate:curentEndDate
  		},
- 		groupField: 'typename',
-        sortInfo: {field: 'lastnumber', direction: 'DESC'}
+ 		groupField: 'typename'
+        /*,sortInfo: {field: 'lastnumber', direction: 'DESC'}*/
     });
     
     var grid_info = new Ext.grid.GridPanel({
@@ -100,6 +118,18 @@ Ext.onReady(function(){
 	                return ((v === 0 || v > 1) ? '(原材料种类' + v +' 个)' : '(原材料种类1 个)');
 	            }
 	        },{
+	            xtype: 'numbercolumn',
+	            header: '原材料月进货量',
+	            dataIndex: 'input',
+	            summaryType: 'sum',
+	            sortable: true
+	        },{
+	            xtype: 'numbercolumn',
+	            header: '原材料消耗量',
+	            dataIndex: 'output',
+	            summaryType: 'sum',
+	            sortable: true
+	        },{
 	            header: '月末实际库存',
 	            dataIndex: 'initsum',
 	            summaryType: 'sum',
@@ -132,42 +162,18 @@ Ext.onReady(function(){
 	            }
 	        },{
 	            xtype: 'numbercolumn',
-	            header: '原材料月进货量',
-	            dataIndex: 'input',
-	            summaryType: 'sum',
-	            sortable: true
-	        },{
-	            xtype: 'numbercolumn',
-	            header: '原材料消耗量',
-	            dataIndex: 'output',
-	            summaryType: 'sum',
-	            sortable: true
-	        },{
-	            xtype: 'numbercolumn',
-	            header: '退货数量',
-	            dataIndex: 'returnnumber',
-	            summaryType: 'sum',
-	            sortable: true
-	        },{
-	            xtype: 'numbercolumn',
-	            header: '月末数量',
-	            dataIndex: 'lastnumber',
-	            summaryType: 'sum',
-	            sortable: true
-	        },{
-	            xtype: 'numbercolumn',
-	            header: '货物单价',
-	            dataIndex: 'perprice',
+	            header: '原材料单价',
+	            dataIndex: 'cost',
 	            format:"￥0,0.00",
 	            summaryType: 'sum',
 	            sortable: true
 	        },{
-	            xtype: 'numbercolumn',
-	            header: '预计价格',
-	            format:"￥0,0.00",
-	            dataIndex: 'price',
+	        	xtype: 'numbercolumn',
+	            header: '原材料月消耗总价',
+	            dataIndex: 'spend',
 	            summaryType: 'sum',
-	            sortable: true
+	            sortable: true,
+	            format:"￥0,0.00",
 	        }
 	        /**
 	        	 * {name: "goodsid", type: 'string'},
@@ -210,7 +216,16 @@ Ext.onReady(function(){
     });
     var listenerEvent = { 
     	loadGrid : function(){
-    		var where = "";
+    		
+    		if(comboBoxDate.getValue()!=""){
+    			currentDate = comboBoxDate.getValue();
+    		}else{
+    			currentDate = (new Date()).format('Ym');
+    		}
+    		var temp = (new Date()).add(Date.MONTH,-1).format('Ym');
+    		var parseDate = Date.parseDate(currentDate+'01','Ymd');
+    		var startDate = parseDate.format('Y-m-d');
+    		var endDate = parseDate.add(Date.MONTH,1).format('Y-m-d');
     		store.load({
 		  		params:{
 		  			start:-1, 
@@ -218,10 +233,10 @@ Ext.onReady(function(){
 		  			action:"sql",
 					type:"map",
 					sql:"SQL-2",
-					"{0}":"2012-03-01",
-					"{1}":"2012-04-01",
-					"{2}":"201202",
-					"{3}":"MT13316265523972552688483"
+					"{0}":startDate,
+					"{1}":endDate,
+					"{2}":temp,
+					"{3}":currentDate
 		  		}
 		  	});
     	}
