@@ -278,6 +278,15 @@ Ext.onReady(function() {
     		});
     	},
     	loadGrid:function(){
+    		if(comboBoxDate.getValue()!=""){
+    			currentDate = comboBoxDate.getValue();
+    		}else{
+    			currentDate = (new Date()).format('Ym');
+    		}
+    		var temp = (new Date()).add(Date.MONTH,-1).format('Ym');
+    		var parseDate = Date.parseDate(currentDate+'01','Ymd');
+    		var startDate = parseDate.format('Y-m-d');
+    		var endDate = parseDate.add(Date.MONTH,1).format('Y-m-d');
     		ds.load({
 		  		params:{
 		  			start:0, 
@@ -293,10 +302,11 @@ Ext.onReady(function() {
 						"-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='2012-03-01' and osml.updttime<'2012-04-01'),0))) as sum "
 						+"from material_store_list a, material_type b where a.typeid=b.id"*/
 					sql:"SQL-1",
-					"{0}":"2012-03-01",
-					"{1}":"2012-04-01",
-					"{2}":"201202",
-					"{3}":currentId
+					"{0}":startDate,
+					"{1}":endDate,
+					"{2}":temp,
+					"{3}":currentId,
+					"{4}":currentDate,
 		  		}
 		  	});
     	}
