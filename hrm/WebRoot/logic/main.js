@@ -2,9 +2,6 @@ var projectName = "hrm";
 Ext.BLANK_IMAGE_URL = "/"+projectName+"/ext/resources/images/default/s.gif";
 Ext.chart.Chart.CHART_URL = '/'+projectName+'/ext/resources/charts.swf';
 Ext.onReady(function() {
-	console.log("===============ExtObject===============");
-	console.log(Ext);
-	console.log("===============ExtObject===============");
 	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"数据读取中...请稍后..."});
 	myMask.show();
 	Ext.QuickTips.init();

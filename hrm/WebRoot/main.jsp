@@ -53,7 +53,7 @@
 		var roleMsg = eval("(<%=roleMsg%>)");
 		</script>
 		<script type="text/javascript" src="<%=path%>/ext/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="<%=path%>/ext/ext-all.js"></script>
+		<script type="text/javascript" src="<%=path%>/ext/ext-all-debug.js"></script>
 		<script type="text/javascript" src="<%=path%>/ext/src/locale/ext-lang-zh_CN.js"></script>
 		
 		<script type="text/javascript" src="<%=path%>/ext/ux/TabScrollerMenu.js"></script>
@@ -141,6 +141,9 @@
 			    display:block;
 			    padding:3px;
 			}
+			.upload-icon {
+	            background: url('<%=path%>/ext/shared/icons/fam/image_add.png') no-repeat 0 0 !important;
+	        }
 			.icon-params {
 	            background-image: url(<%=path%>/ext/shared/mini/icon_key.gif) !important;
 	        }
