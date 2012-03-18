@@ -226,6 +226,93 @@ Ext.onReady(function () {
                 win.show();
                 return true;
             }
+        },"-",{
+            text: "导入销售帐单",
+            iconCls: "add",
+            handler: function (event, mouse) {//bcescvr,110400
+            	var formp = new Ext.FormPanel({
+                    fileUpload: true,
+                    width: 500,
+                    frame: true,
+                    autoHeight: true,
+                    bodyStyle: 'padding: 22px 10px 22px 10px;',
+                    labelWidth: 50,
+                    defaults: {
+                        anchor: '95%',
+                        allowBlank: false,
+                        msgTarget: 'side'
+                    },
+            		/*defaultType: "textfield",
+                    labelAlign: "right",
+                    labelWidth: 80,
+                    frame: true,
+                    width: 500,
+                    bodyStyle: 'padding: 22px 10px 22px 10px;',*/
+                    
+                    items: [{
+                        xtype: 'fileuploadfield',
+                        id: 'form-file',
+                        emptyText: 'Select an image',
+                        fieldLabel: '文件名',
+                        name: 'photo-path',
+                        buttonText: '',
+                        buttonCfg: {
+                            iconCls: 'upload-icon'
+                        }
+                    }]
+                });
+                var win = new Ext.Window({
+                    layout: 'fit',
+                    width: 500,
+                    title: "导入销售单",
+                    height: 150,
+                    modal: true,
+                    closeAction: 'hide',
+                    allowDomMove: true,
+                    bodyBorder: false,
+                    plain: true,
+                    items: [formp],
+                    buttons: [{
+                        text: '保存',
+                        handler: function () {
+                        	if(formp.getForm().isValid()){
+                        		try{
+                        			formp.getForm().submit({
+                	                    url: 'fileupload.file',
+                	                    waitMsg: '正在上传文件11...',
+                	                    success: function(fp, o){
+                	                    	alert(123);
+                	                        Ext.Msg.show({
+                	                            title: "上传成功",
+                	                            msg: o.result.file+"已上传成功!",
+                	                            minWidth: 200,
+                	                            modal: true,
+                	                            icon: Ext.Msg.INFO,
+                	                            buttons: Ext.Msg.OK
+                	                        });
+                	                    },failure: function(){
+                	                    	alert(22333);
+                	                    }
+                	                });
+                        		}catch(e){
+                        			alert(e.message);
+                        		}
+                        		
+            	                
+                            }
+                        }
+                    }, {
+                        text: '关闭',
+                        handler: function () {
+                            //form.getForm().reset();
+                        	formp.getForm().reset();
+                            win.hide();
+                        }
+                    }]
+                });
+                win.show();
+                return true;
+            }
         }, {
             text: "刷新",
             iconCls: "option",
@@ -279,19 +366,20 @@ Ext.onReady(function () {
     tree_menu.on("contextmenu", function (node, e) {
         e.preventDefault();
         node.select();
+        console.log("node.isRoot:"+node.isRoot);
         if (node.isRoot) {
             node_menu = node;
             contextmenu.items.items[0].show();
             contextmenu.items.items[1].hide();
             contextmenu.items.items[2].show();
-            contextmenu.items.items[4].hide();
+            contextmenu.items.items[6].hide();
             contextmenu.showAt(e.getXY());
         } else {
             node_menu = node;
             contextmenu.items.items[0].hide();
             contextmenu.items.items[1].show();
             contextmenu.items.items[2].show();
-            contextmenu.items.items[4].show();
+            contextmenu.items.items[6].show();
             contextmenu.showAt(e.getXY());
         }
     });
