@@ -31,8 +31,12 @@ import com.hrm.entity.GoodsMonthStat;
 import com.hrm.entity.GoodsMonthStatId;
 import com.hrm.entity.GoodsStat;
 import com.hrm.entity.GoodsStatId;
+import com.hrm.entity.MaterialList;
+import com.hrm.entity.MaterialStoreList;
+import com.hrm.entity.MaterialStoreListId;
 import com.hrm.entity.StoreGoodsClear;
 import com.hrm.entity.StoreGoodsClearId;
+import com.hrm.entity.UserInfo;
 import com.hrm.quartz.StatQuzrtzBean;
 import com.hrm.util.ClsFactory;
 import com.hrm.util.Constant;
@@ -64,6 +68,29 @@ public class StatQuzrtzVo {
 		checkErrorProcess();
 		//清算日常检查
 		checkDayClear();
+		checkStoreList();
+	}
+	
+	public void checkStoreList(){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+		String storedate = sdf.format(new Date());
+		List<Long> list = hibernateSessionDAO.createHqlQuery("select count(*) from MaterialStoreList where id.storedate='"+storedate+"'");
+		if(list.get(0)==0){
+			List<MaterialList> mlist = hibernateSessionDAO.createHqlQuery("from MaterialList");
+			for (MaterialList materialList : mlist) {
+				MaterialStoreList store = new MaterialStoreList();
+				MaterialStoreListId id = new MaterialStoreListId();
+				id.setId(materialList.getId());
+				id.setStoredate(storedate);
+				store.setId(id);
+				store.setCost(materialList.getCost());
+				store.setInitsum(0F);
+				store.setTypeid(materialList.getTypeid());
+				store.setUpdtuser("system");
+				store.setUpdttime(new Date());
+				hibernateSessionDAO.save(store);
+			}
+		}
 	}
 	/**
 	 * 月报表检查
