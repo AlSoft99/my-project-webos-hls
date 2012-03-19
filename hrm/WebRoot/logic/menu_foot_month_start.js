@@ -306,7 +306,7 @@ Ext.onReady(function() {
 					"{1}":endDate,
 					"{2}":temp,
 					"{3}":currentId,
-					"{4}":currentDate,
+					"{4}":currentDate
 		  		}
 		  	});
     	}

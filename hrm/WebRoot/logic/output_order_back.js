@@ -38,7 +38,7 @@ Ext.onReady(function () {
 		}
     ]);
     var tree_menu = new Ext.tree.TreePanel({
-        title: "销售账单选择",
+        title: "退菜账单选择",
         width: 350,
         autoScroll: true,
         height: height - 500,
@@ -48,14 +48,14 @@ Ext.onReady(function () {
             baseParams: {
                 start: curentStartDate,//对应{1}
                 end: curentEndDate,//对应{2}
-                parent: "select new map(id as id,id||' ['||orderdesc||']' as text,orderdesc as qtip) from OrderOutputInfo where outuser='" + document.getElementById("user_id").value + "' and outdate>'{1}' and outdate<'{2}'"
+                parent: "select new map(id as id,id||' ['||orderdesc||']' as text,orderdesc as qtip) from OrderOutputBackInfo where outuser='" + document.getElementById("user_id").value + "' and outdate>'{1}' and outdate<'{2}'"
                 //				child: "select new map(id as id,goodsname as text,goodsdesc as qtip,typeid as nodeId,goodsnumber as number,price as price) from GoodsList"
             }
         })
     });
     var root = new Ext.tree.AsyncTreeNode({
         id: "0",
-        text: "销售账单"
+        text: "退菜账单"
     });
     tree_menu.setRootNode(root);
     tree_menu.getRootNode().expand();// 2315
@@ -69,7 +69,7 @@ Ext.onReady(function () {
                     limit: -1,
                     action: "hql",
                     type: "entity",
-                    sql: "from OrderOutputList where outid='" + currentId + "'"
+                    sql: "from OrderOutputBackList where outid='" + currentId + "'"
                 }
             });
             property.setSource({});
@@ -85,28 +85,28 @@ Ext.onReady(function () {
         defaultType: "textfield",
         labelAlign: "right",
         labelWidth: 80,
-        url: "orderOutputInfoVo.do",
+        url: "orderOutputBackInfoVo.do",
         frame: true,
         width: 200,
         items: [{
             name: "tree_tips",
-            fieldLabel: "销售备注",
+            fieldLabel: "退菜备注",
             allowBlank: false,
             width: 150,
             maxLength: 200,
-            emptyText: "请输入销售的必要备注"
+            emptyText: "请输入退菜的必要备注"
         }]
     });
     var node_menu = null;
     var contextmenu = new Ext.menu.Menu({
         items: [{
-            text: "添加新销售帐单",
+            text: "添加新退菜帐单",
             iconCls: "add",
             handler: function (event, mouse) {//bcescvr,110400
                 var win = new Ext.Window({
                     layout: 'fit',
                     width: 300,
-                    title: "销售单添加",
+                    title: "退菜单添加",
                     height: 120,
                     modal: true,
                     closeAction: 'hide',
@@ -168,14 +168,14 @@ Ext.onReady(function () {
                 return true;
             }
         }, {
-            text: "修改销售单",
+            text: "修改退菜单",
             iconCls: "save",
             handler: function (event, mouse) {//bcescvr,110400
                 form.getComponent(0).setValue(node_menu.attributes.qtip);
                 var win = new Ext.Window({
                     layout: 'fit',
                     width: 300,
-                    title: "销售单修改",
+                    title: "退菜单修改",
                     height: 120,
                     modal: true,
                     closeAction: 'hide',
@@ -233,7 +233,7 @@ Ext.onReady(function () {
                 tree_menu.getRootNode().reload();
             }
         }, "-", {
-            text: "删除销售单",
+            text: "删除退菜单",
             iconCls: "remove",
             handler: function (event, mouse) {
                 Ext.MessageBox.show({
@@ -248,7 +248,7 @@ Ext.onReady(function () {
                                 isRoot = true;
                             }
                             Ext.Ajax.request({
-                                url: "orderOutputInfoVo.do",
+                                url: "orderOutputBackInfoVo.do",
                                 success: function (action) {
                                     //							   		tree_menu.remove(node_menu);
                                     tree_menu.getRootNode().removeChild(node_menu);
@@ -394,7 +394,7 @@ Ext.onReady(function () {
     var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
 		sm, {
-		    header: "销售账单编号",
+		    header: "退菜账单编号",
 		    dataIndex: "outid",
 		    width: 150
 		}, {
@@ -414,7 +414,7 @@ Ext.onReady(function () {
 		    renderer: transform
 
 		}, {
-		    header: "销售量",
+		    header: "退菜量",
 		    dataIndex: "goodsnumber",
 		    sortable: true,
 		    editor: goodsnumber
@@ -539,11 +539,11 @@ Ext.onReady(function () {
                     outid: currentId,
                     goodsid: '',
                     optiontype: "1",
-                    consumetype: "1",
+                    consumetype: "0",
                     returnnumber: 0
                 };
                 Ext.Ajax.request({
-                    url: "orderOutputInfoVo.do?action=insertRecord",
+                    url: "orderOutputBackInfoVo.do?action=insertRecord",
                     params: record,
                     success: function (action) {
                         loading.loadMask().hide();
@@ -591,7 +591,7 @@ Ext.onReady(function () {
                             }
                             id = id.substring(0, id.length - 1);
                             Ext.Ajax.request({
-                                url: "orderOutputInfoVo.do?action=deleteRecord",
+                                url: "orderOutputBackInfoVo.do?action=deleteRecord",
                                 params: {
                                     id: id,
                                     outid: currentId
@@ -605,7 +605,7 @@ Ext.onReady(function () {
                                             limit: -1,
                                             action: "hql",
                                             type: "entity",
-                                            sql: "from OrderOutputList where outid='" + currentId + "'"
+                                            sql: "from OrderOutputBackList where outid='" + currentId + "'"
                                         }
                                     });
                                 },
@@ -662,7 +662,7 @@ Ext.onReady(function () {
             recordData.secondidlist = secondid;
             loading.loadMask().show();
             Ext.Ajax.request({
-                url: "orderOutputInfoVo.do?action=updateRecord",
+                url: "orderOutputBackInfoVo.do?action=updateRecord",
                 params: recordData,
                 success: function (action) {
                     var json = eval("(" + action.responseText + ")");
@@ -696,7 +696,7 @@ Ext.onReady(function () {
                     limit: -1,
                     action: "hql",
                     type: "entity",
-                    sql: "from OrderOutputList where outid='" + currentId + "'"
+                    sql: "from OrderOutputBackList where outid='" + currentId + "'"
                 }
             });
         }
@@ -725,7 +725,7 @@ Ext.onReady(function () {
     //property.setSource(baseMsg);
     
     new Ext.Panel({
-        title: '销售账单维护',
+        title: '退菜账单维护',
         collapsible: true,
         renderTo: 'output_order_back_name',
         width: 350,
@@ -745,7 +745,7 @@ Ext.onReady(function () {
     });
 
     new Ext.Panel({
-        title: '销售明细列表',
+        title: '退菜明细列表',
         collapsible: true,
         width: width - 950,
         renderTo: 'output_order_back_list',

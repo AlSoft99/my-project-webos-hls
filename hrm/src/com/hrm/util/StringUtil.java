@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -628,6 +629,10 @@ public class StringUtil {
 			}
 		}
 		return response;
+	}
+	public boolean isNumeric1(String str){ 
+		  Pattern pattern = Pattern.compile("[0-9]*"); 
+		  return pattern.matcher(str).matches(); 
 	}
 	/**====================================================**/
 	public static void main(String[] args) {
