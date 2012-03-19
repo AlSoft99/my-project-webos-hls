@@ -95,6 +95,8 @@
 				<value>com/hrm/entity/MaterialStoreListHis.hbm.xml</value>
 				<value>com/hrm/entity/OrderMaterialStoreInfo.hbm.xml</value>
 				<value>com/hrm/entity/OrderMaterialStoreList.hbm.xml</value>
+				<value>com/hrm/entity/OrderOutputBackInfo.hbm.xml</value>
+				<value>com/hrm/entity/OrderOutputBackList.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

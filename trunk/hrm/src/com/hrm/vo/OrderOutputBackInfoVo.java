@@ -18,8 +18,8 @@ import com.hrm.entity.GoodsMonthStatId;
 import com.hrm.entity.GoodsOutputList;
 import com.hrm.entity.GoodsStat;
 import com.hrm.entity.GoodsStatId;
-import com.hrm.entity.OrderOutputInfo;
-import com.hrm.entity.OrderOutputList;
+import com.hrm.entity.OrderOutputBackInfo;
+import com.hrm.entity.OrderOutputBackList;
 import com.hrm.entity.OrderSecondMaterialId;
 import com.hrm.entity.OrderSecondMaterialList;
 import com.hrm.entity.UserInfo;
@@ -27,7 +27,7 @@ import com.hrm.server.InitData;
 import com.hrm.util.Constant;
 import com.hrm.util.StringUtil;
 
-public class OrderOutputInfoVo implements BaseVo {
+public class OrderOutputBackInfoVo implements BaseVo {
 	private HibernateSessionDAO hibernateSessionDAO;
 	
 	/* (non-Javadoc)
@@ -40,18 +40,18 @@ public class OrderOutputInfoVo implements BaseVo {
 		if("insert".equals(action)){
 			String createId = "";
 			String header = userInfo.getUserCode().substring(0, 5).toUpperCase();
-			List<OrderOutputInfo> list = hibernateSessionDAO.createHqlQuery("from OrderOutputInfo where outdate>'"+StringUtil.newInstance().getCurrentDate()+"' and outdate<'"+StringUtil.newInstance().dayAddNumber(new Date(), 1)+"' order by id desc", -1, -1);
+			List<OrderOutputBackInfo> list = hibernateSessionDAO.createHqlQuery("from OrderOutputBackInfo where outdate>'"+StringUtil.newInstance().getCurrentDate()+"' and outdate<'"+StringUtil.newInstance().dayAddNumber(new Date(), 1)+"' order by id desc", -1, -1);
 			if(list.size()==0){
 				createId = StringUtil.newInstance().createAccId(header, 1, 5);
 			}else{
-				OrderOutputInfo info = list.get(0);
+				OrderOutputBackInfo info = list.get(0);
 				String id = info.getId();
 				String idNumber = id.substring(13, id.length());
 				int number = Integer.parseInt(idNumber);
 				createId = StringUtil.newInstance().createAccId(header, ++number, 5);
 			}
 			
-			OrderOutputInfo info = new OrderOutputInfo();
+			OrderOutputBackInfo info = new OrderOutputBackInfo();
 			info.setOrderdesc(request.getParamsMap().get("tree_tips"));
 			info.setId(createId);
 			info.setOutdate(new Date());
@@ -67,7 +67,7 @@ public class OrderOutputInfoVo implements BaseVo {
 			if(!outdate.equals(current)){
 				result = "{failure:true,msg:'不是今天账单不能增删改!'}";
 			}else{
-				OrderOutputInfo info = (OrderOutputInfo)hibernateSessionDAO.getHibernateTemplate().get("com.hrm.entity.OrderOutputInfo", id);;
+				OrderOutputBackInfo info = (OrderOutputBackInfo)hibernateSessionDAO.getHibernateTemplate().get("com.hrm.entity.OrderOutputBackInfo", id);;
 				info.setOrderdesc(request.getParamsMap().get("tree_tips"));
 				info.setOutuser(userInfo.getUserId());
 				info.setUpdttime(new Date());
@@ -86,8 +86,8 @@ public class OrderOutputInfoVo implements BaseVo {
 				boolean flag = hibernateSessionDAO.getHibernateTemplate().execute(new HibernateCallback<Boolean>(){
 					public Boolean doInHibernate(Session session)
 							throws HibernateException, SQLException {
-						session.createQuery("delete from OrderOutputList where outid='"+typeid+"'").executeUpdate();
-						int updt = session.createQuery("delete from OrderOutputInfo where id='"+typeid+"'").executeUpdate();
+						session.createQuery("delete from OrderOutputBackList where outid='"+typeid+"'").executeUpdate();
+						int updt = session.createQuery("delete from OrderOutputBackInfo where id='"+typeid+"'").executeUpdate();
 						return updt>0;
 					}
 				});
@@ -105,7 +105,7 @@ public class OrderOutputInfoVo implements BaseVo {
 			if(!outdate.equals(current)){
 				result = "{failure:true,msg:'不是今天账单不能增删改!'}";
 			}else{
-				OrderOutputList goods = new OrderOutputList();
+				OrderOutputBackList goods = new OrderOutputBackList();
 				goods.setConsumetype(request.getParamsMap().get("consumetype"));
 				goods.setOptiontype("1");
 				goods.setCheckyn("1");
@@ -113,6 +113,7 @@ public class OrderOutputInfoVo implements BaseVo {
 				//goods.setGoodsnumber(Float.valueOf(request.getParamsMap().get("goodsnumber")));
 				goods.setId(createId);
 				goods.setOutid(request.getParamsMap().get("outid"));
+				System.out.println("Float.valueOf(request.getParamsMap().get(returnnumber)): "+Float.valueOf(request.getParamsMap().get("returnnumber")));
 				goods.setReturnnumber(Float.valueOf(request.getParamsMap().get("returnnumber")));
 				goods.setUpdttime(new Date());
 				goods.setUpdtuser(userInfo.getUserId());
@@ -126,7 +127,7 @@ public class OrderOutputInfoVo implements BaseVo {
 			if(!outdate.equals(current)){
 				result = "{failure:true,msg:'不是今天账单不能增删改!'}";
 			}else{
-				OrderOutputList goods = (OrderOutputList)hibernateSessionDAO.getHibernateTemplate().get("com.hrm.entity.OrderOutputList", request.getParamsMap().get("id"));
+				OrderOutputBackList goods = (OrderOutputBackList)hibernateSessionDAO.getHibernateTemplate().get("com.hrm.entity.OrderOutputBackList", request.getParamsMap().get("id"));
 				goods.setConsumetype(request.getParamsMap().get("consumetype"));
 				goods.setOptiontype("1");
 				goods.setCheckyn("1");
@@ -238,7 +239,7 @@ public class OrderOutputInfoVo implements BaseVo {
 								list.setOutnumber(list.getOutnumber()-outlist.getGoodsnumber()+outlist.getReturnnumber());
 								session.save(list);
 							}*/
-							updt = session.createQuery("delete from OrderOutputList where id ='"+id[i]+"'").executeUpdate();
+							updt = session.createQuery("delete from OrderOutputBackList where id ='"+id[i]+"'").executeUpdate();
 						}
 						return updt>0;
 					}

@@ -65,8 +65,8 @@ Ext.onReady(function () {
             currentId = node.attributes.id;
             ds.load({
                 params: {
-                    start: -1,
-                    limit: -1,
+                    start: 0,
+                    limit: 20,
                     action: "hql",
                     type: "entity",
                     sql: "from OrderOutputList where outid='" + currentId + "'"
@@ -228,7 +228,7 @@ Ext.onReady(function () {
             }
         },"-",{
             text: "导入销售帐单",
-            iconCls: "add",
+            iconCls: "save",
             handler: function (event, mouse) {//bcescvr,110400
             	var formp = new Ext.FormPanel({
                     fileUpload: true,
@@ -279,12 +279,11 @@ Ext.onReady(function () {
                         		try{
                         			formp.getForm().submit({
                 	                    url: 'fileupload.file',
-                	                    waitMsg: '正在上传文件11...',
+                	                    waitMsg: '正在上传文件...',
                 	                    success: function(fp, o){
-                	                    	alert(123);
                 	                        Ext.Msg.show({
                 	                            title: "上传成功",
-                	                            msg: o.result.file+"已上传成功!",
+                	                            msg: "文件已上传成功!",
                 	                            minWidth: 200,
                 	                            modal: true,
                 	                            icon: Ext.Msg.INFO,
@@ -297,8 +296,6 @@ Ext.onReady(function () {
                         		}catch(e){
                         			alert(e.message);
                         		}
-                        		
-            	                
                             }
                         }
                     }, {
@@ -689,8 +686,8 @@ Ext.onReady(function () {
                                     editor.setDisabled(false);
                                     ds.load({
                                         params: {
-                                            start: -1,
-                                            limit: -1,
+                                            start: 0,
+                                            limit: 20,
                                             action: "hql",
                                             type: "entity",
                                             sql: "from OrderOutputList where outid='" + currentId + "'"
@@ -714,7 +711,7 @@ Ext.onReady(function () {
             }
         }],
         bbar: new Ext.PagingToolbar({
-            //		    pageSize:10,
+            pageSize:20,
             store: ds,
             displayInfo: true,
             displayMsg: "显示第{0}条到{1}条记录,一共{2}条记录",
@@ -780,8 +777,8 @@ Ext.onReady(function () {
         loadGrid: function () {
             ds.load({
                 params: {
-                    start: -1,
-                    limit: -1,
+                    start: 0,
+                    limit: 20,
                     action: "hql",
                     type: "entity",
                     sql: "from OrderOutputList where outid='" + currentId + "'"
