@@ -2,6 +2,7 @@ package com.hrm.vo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import com.hrm.dao.MaterialListDAO;
 import com.hrm.dao.MaterialTypeDAO;
 import com.hrm.entity.MaterialList;
 import com.hrm.entity.MaterialListHis;
+import com.hrm.entity.MaterialStoreList;
+import com.hrm.entity.MaterialStoreListId;
 import com.hrm.entity.MaterialType;
 import com.hrm.entity.MaterialTypeHis;
 import com.hrm.entity.UserInfo;
@@ -106,6 +109,20 @@ public class MaterialTypeVo implements BaseVo {
 			goods.setUpdttime(new Date());
 			goods.setUpdtuser(userInfo.getUserId());
 			materialListDAO.save(goods);
+			//save 
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+			String storedate = sdf.format(new Date());
+			MaterialStoreList store = new MaterialStoreList();
+			MaterialStoreListId id = new MaterialStoreListId();
+			id.setId(createId);
+			id.setStoredate(storedate);
+			store.setId(id);
+			store.setCost(goods.getCost());
+			store.setInitsum(0F);
+			store.setTypeid(goods.getTypeid());
+			store.setUpdtuser(((UserInfo)request.getUserInfo()).getUserId());
+			store.setUpdttime(new Date());
+			materialListDAO.getHibernateTemplate().save(store);
 			result = "{success:true,msg:'"+createId+"'}";
 		}else if("updateRecord".equals(action)){
 			MaterialList goods = new MaterialList();
@@ -119,10 +136,26 @@ public class MaterialTypeVo implements BaseVo {
 			goods.setUpdttime(new Date());
 			goods.setUpdtuser(userInfo.getUserId());
 			materialListDAO.getHibernateTemplate().update(goods);
+			//save 
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+			String storedate = sdf.format(new Date());
+			MaterialStoreList store = new MaterialStoreList();
+			MaterialStoreListId id = new MaterialStoreListId();
+			id.setId(goods.getId());
+			id.setStoredate(storedate);
+			store.setId(id);
+			store.setCost(goods.getCost());
+			store.setInitsum(0F);
+			store.setTypeid(goods.getTypeid());
+			store.setUpdtuser(((UserInfo)request.getUserInfo()).getUserId());
+			store.setUpdttime(new Date());
+			materialListDAO.getHibernateTemplate().saveOrUpdate(store);
 			result = "{success:true,msg:''}";
 		}else if("deleteRecord".equals(action)){
 			final String[] id = request.getParamsMap().get("id").split(",");
 			final String typeid = request.getParamsMap().get("typeid");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+			final String storedate = sdf.format(new Date());
 			boolean flag = materialTypeDAO.getHibernateTemplate().execute(new HibernateCallback<Boolean>(){
 				public Boolean doInHibernate(Session session)
 						throws HibernateException, SQLException {
@@ -140,7 +173,7 @@ public class MaterialTypeVo implements BaseVo {
 						} catch (NoSuchMethodException e) {
 							e.printStackTrace();
 						}
-						
+						session.createQuery("delete from MaterialStoreList where id.id ='"+id[i]+"' and id.storedate='"+storedate+"'").executeUpdate();
 						updt = session.createQuery("delete from MaterialList where id.id ='"+id[i]+"' and id.typeid='"+typeid+"'").executeUpdate();
 					}
 					return updt>0;

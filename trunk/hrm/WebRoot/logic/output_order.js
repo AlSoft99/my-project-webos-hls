@@ -63,7 +63,7 @@ Ext.onReady(function () {
         if (node.leaf) {
             grid.addBtn.setDisabled(false);
             currentId = node.attributes.id;
-            ds.load({
+            /*ds.load({
                 params: {
                     start: 0,
                     limit: 20,
@@ -71,7 +71,8 @@ Ext.onReady(function () {
                     type: "entity",
                     sql: "from OrderOutputList where outid='" + currentId + "'"
                 }
-            });
+            });*/
+            listenerEvent.loadGrid();
             property.setSource({});
             property.setTitle("第二单位原料信息");
         } else {
@@ -95,6 +96,85 @@ Ext.onReady(function () {
             width: 150,
             maxLength: 200,
             emptyText: "请输入销售的必要备注"
+        }]
+    });
+    var formp = new Ext.FormPanel({
+        fileUpload: true,
+        width: 500,
+        frame: true,
+        autoHeight: true,
+        bodyStyle: 'padding: 22px 10px 22px 10px;',
+        labelWidth: 50,
+        defaults: {
+            anchor: '95%',
+            allowBlank: false,
+            msgTarget: 'side'
+        },
+		/*defaultType: "textfield",
+        labelAlign: "right",
+        labelWidth: 80,
+        frame: true,
+        width: 500,
+        bodyStyle: 'padding: 22px 10px 22px 10px;',*/
+        
+        items: [{
+            xtype: 'fileuploadfield',
+            id: 'form-file',
+            emptyText: '请选择一个excel文件',
+            fieldLabel: '文件名',
+            name: 'photo-path',
+            buttonText: '',
+            buttonCfg: {
+                iconCls: 'upload-icon'
+            }
+        }]
+    });
+    var win = new Ext.Window({
+        layout: 'fit',
+        width: 500,
+        title: "导入销售单",
+        height: 150,
+        modal: true,
+        closeAction: 'hide',
+        allowDomMove: true,
+        bodyBorder: false,
+        plain: true,
+        items: [formp],
+        buttons: [{
+            text: '保存',
+            handler: function () {
+            	if(formp.getForm().isValid()){
+            		try{
+            			formp.getForm().submit({
+    	                    url: 'fileupload.file',
+    	                    waitMsg: '正在上传文件...',
+    	                    success: function(fp, o){
+    	                        Ext.Msg.show({
+    	                            title: "上传成功",
+    	                            msg: "文件已上传成功!",
+    	                            minWidth: 200,
+    	                            modal: true,
+    	                            icon: Ext.Msg.INFO,
+    	                            buttons: Ext.Msg.OK
+    	                        });
+    	                        win.hide();
+    	                        tree_menu.getRootNode().reload();
+    	                    },failure: function(){
+    	                    	
+    	                    }
+    	                });
+            		}catch(e){
+            			alert(e.message);
+            		}
+                }
+            }
+        }, {
+            text: '关闭',
+            handler: function () {
+                //form.getForm().reset();
+            	formp.getForm().reset();
+                win.hide();
+            }
         }]
     });
     var node_menu = null;
@@ -230,83 +310,6 @@ Ext.onReady(function () {
             text: "导入销售帐单",
             iconCls: "save",
             handler: function (event, mouse) {//bcescvr,110400
-            	var formp = new Ext.FormPanel({
-                    fileUpload: true,
-                    width: 500,
-                    frame: true,
-                    autoHeight: true,
-                    bodyStyle: 'padding: 22px 10px 22px 10px;',
-                    labelWidth: 50,
-                    defaults: {
-                        anchor: '95%',
-                        allowBlank: false,
-                        msgTarget: 'side'
-                    },
-            		/*defaultType: "textfield",
-                    labelAlign: "right",
-                    labelWidth: 80,
-                    frame: true,
-                    width: 500,
-                    bodyStyle: 'padding: 22px 10px 22px 10px;',*/
-                    
-                    items: [{
-                        xtype: 'fileuploadfield',
-                        id: 'form-file',
-                        emptyText: 'Select an image',
-                        fieldLabel: '文件名',
-                        name: 'photo-path',
-                        buttonText: '',
-                        buttonCfg: {
-                            iconCls: 'upload-icon'
-                        }
-                    }]
-                });
-                var win = new Ext.Window({
-                    layout: 'fit',
-                    width: 500,
-                    title: "导入销售单",
-                    height: 150,
-                    modal: true,
-                    closeAction: 'hide',
-                    allowDomMove: true,
-                    bodyBorder: false,
-                    plain: true,
-                    items: [formp],
-                    buttons: [{
-                        text: '保存',
-                        handler: function () {
-                        	if(formp.getForm().isValid()){
-                        		try{
-                        			formp.getForm().submit({
-                	                    url: 'fileupload.file',
-                	                    waitMsg: '正在上传文件...',
-                	                    success: function(fp, o){
-                	                        Ext.Msg.show({
-                	                            title: "上传成功",
-                	                            msg: "文件已上传成功!",
-                	                            minWidth: 200,
-                	                            modal: true,
-                	                            icon: Ext.Msg.INFO,
-                	                            buttons: Ext.Msg.OK
-                	                        });
-                	                    },failure: function(){
-                	                    	alert(22333);
-                	                    }
-                	                });
-                        		}catch(e){
-                        			alert(e.message);
-                        		}
-                            }
-                        }
-                    }, {
-                        text: '关闭',
-                        handler: function () {
-                            //form.getForm().reset();
-                        	formp.getForm().reset();
-                            win.hide();
-                        }
-                    }]
-                });
                 win.show();
                 return true;
             }
@@ -549,6 +552,9 @@ Ext.onReady(function () {
     function transform(content, record) {
         var arrayData = comboBoxList.getArray(comboBoxNameAll);
         var value = comboBoxList.getValue(arrayData, content);
+        if(value==""){
+        	return "<font color='red'>"+content+"</font>";
+        }
         return value;
         //return trans.comboBox(comboBoxName,value);
     }
@@ -684,7 +690,7 @@ Ext.onReady(function () {
                                 success: function (action) {
                                     loading.loadMask().hide();
                                     editor.setDisabled(false);
-                                    ds.load({
+                                    /*ds.load({
                                         params: {
                                             start: 0,
                                             limit: 20,
@@ -692,7 +698,8 @@ Ext.onReady(function () {
                                             type: "entity",
                                             sql: "from OrderOutputList where outid='" + currentId + "'"
                                         }
-                                    });
+                                    });*/
+                                    listenerEvent.loadGrid();
                                 },
                                 failure: function (action) {
                                     var json = eval("(" + action.responseText + ")");
@@ -775,13 +782,13 @@ Ext.onReady(function () {
 
         },
         loadGrid: function () {
+        	ds.baseParams.sql = "from OrderOutputList where outid='" + currentId + "' order by updttime desc";
+        	ds.baseParams.action = "hql";
+        	ds.baseParams.type = "entity";
             ds.load({
                 params: {
                     start: 0,
-                    limit: 20,
-                    action: "hql",
-                    type: "entity",
-                    sql: "from OrderOutputList where outid='" + currentId + "'"
+                    limit: 20
                 }
             });
         }

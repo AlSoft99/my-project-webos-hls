@@ -591,7 +591,7 @@ Ext.onReady(function() {
 		    secondUnit.allowBlank = true;
 		    secondUnit.setDisabled(true);
 		}else{
-		    secondUnit.allowBlank = false;
+		    secondUnit.allowBlank = true;
 		    secondUnit.setDisabled(false);
 		}
 		secondUnit.setValue("");
@@ -655,6 +655,7 @@ Ext.onReady(function() {
     		dataIndex:"secondcode",
     		width:100,
     		sortable: true,
+    		hidden:true,
 			renderer:filterSecondcode,
     		editor: secondUnit
     	},{
