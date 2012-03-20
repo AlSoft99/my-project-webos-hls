@@ -30,7 +30,7 @@ Ext.onReady(function() {
 		if(node.leaf){
 			grid.addBtn.setDisabled(false);
 			currentId = node.attributes.id;
-			ds.load({
+			/*ds.load({
 		  		params:{
 		  			start:0, 
 		  			limit:10,
@@ -38,9 +38,11 @@ Ext.onReady(function() {
 					type:"entity",
 					sql:"from FootList where typeid='"+currentId+"'"
 		  		}
-		  	});
+		  	});*/
+			listenerEvent.loadGrid();
 			currentFootid = "";
-			dsm.load({
+			listenerEvent.loadGridMaterial();
+			/*dsm.load({
 				params:{
 					start:0, 
 					limit:10,
@@ -48,7 +50,7 @@ Ext.onReady(function() {
 					type:"map",
 					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 				}
-			});
+			});*/
 		}else{
 			grid.addBtn.setDisabled(true);
 		}
@@ -294,7 +296,7 @@ Ext.onReady(function() {
                 if (issecond == "0") {
                     secondUnit.setDisabled(false);
                 }
-				dsm.load({
+				/*dsm.load({
 					params:{
 						start:0, 
 						limit:10,
@@ -302,7 +304,8 @@ Ext.onReady(function() {
 						type:"map",
 						sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+rec.data.id+"'"
 					}
-				});
+				});*/
+                listenerEvent.loadGridMaterial();
             }
         }
 
@@ -492,7 +495,7 @@ Ext.onReady(function() {
 				        		success:function(action){
 //				        			loading.loadMask().hide();
 				        			editor.setDisabled(false);
-				        			ds.load({
+				        			/*ds.load({
 								  		params:{
 								  			start:0, 
 								  			limit:10,
@@ -500,8 +503,9 @@ Ext.onReady(function() {
 											type:"entity",
 											sql:"from FootList where typeid='"+currentId+"'"
 								  		}
-								  	});
-									dsm.load({
+								  	});*/
+				        			listenerEvent.loadGrid();
+									/*dsm.load({
 								  		params:{
 								  			start:0, 
 								  			limit:10,
@@ -509,7 +513,8 @@ Ext.onReady(function() {
 											type:"map",
 											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 								  		}
-								  	});
+								  	});*/
+				        			listenerEvent.loadGridMaterial();
 				    			},
 				    			failure:function(action){
 				    				return false;
@@ -811,7 +816,7 @@ Ext.onReady(function() {
 				        		success:function(action){
 //				        			loading.loadMask().hide();
 				        			editorM.setDisabled(false);
-				        			dsm.load({
+				        			/*dsm.load({
 								  		params:{
 								  			start:0, 
 								  			limit:10,
@@ -819,7 +824,8 @@ Ext.onReady(function() {
 											type:"map",
 											sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 								  		}
-								  	});
+								  	});*/
+				        			listenerEvent.loadGridMaterial();
 				    			},
 				    			failure:function(action){
 				    				return false;
@@ -877,7 +883,7 @@ Ext.onReady(function() {
     				loading.loadMask().hide();
     			}
     		});
-    		dsm.load({
+    		/*dsm.load({
 				params:{
 					start:0, 
 					limit:10,
@@ -885,20 +891,31 @@ Ext.onReady(function() {
 					type:"map",
 					sql:"select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
 				}
-			});
+			});*/
+    		listenerEvent.loadGridMaterial();
     	},
     	loadGrid:function(){
+    		ds.baseParams.sql = "from FootList where typeid='"+currentId+"'";
+        	ds.baseParams.action = "hql";
+        	ds.baseParams.type = "entity";
     		ds.load({
 		  		params:{
 		  			start:0, 
 		  			limit:10,
-		  			action:"hql",
-					type:"entity",
-					sql:"from FootList where typeid='"+currentId+"'"
+		  		}
+		  	});
+    	},
+    	loadGridMaterial: function(){
+			dsm.baseParams.sql = "select new map(a.id as id,a.materialid as materialid,a.amount as amount,b.unit as unit,a.issecond as issecond, a.secondcode as secondcode,a.updtuser as updtuser,a.updttime as updttime,b.cost as cost) from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='"+currentFootid+"'"
+        	dsm.baseParams.action = "hql";
+        	dsm.baseParams.type = "map";
+        	dsm.load({
+		  		params:{
+		  			start:0, 
+		  			limit:10,
 		  		}
 		  	});
     	}
-    	
     }
 	editor.addListener("afteredit",listenerEvent.update);
 	editorM.addListener("afteredit",listenerEvent.updateMaterial);

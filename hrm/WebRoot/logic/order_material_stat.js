@@ -274,7 +274,7 @@ Ext.onReady(function(){
     }
 //    store.load({params:{start:-1, limit:-1,outuser:Ext.getDom("user_id").value}});
     listenerEvent.loadGrid();
-    layout.render("menu_material_stat_div");
+    layout.render("order_material_stat_div");
     grid_info.getSelectionModel().on('selectionchange', function(sm){
 //        grid_info.removeBtn.setDisabled(sm.getCount() < 1);
     });

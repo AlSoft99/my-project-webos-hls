@@ -287,12 +287,20 @@ Ext.onReady(function() {
     		var parseDate = Date.parseDate(currentDate+'01','Ymd');
     		var startDate = parseDate.format('Y-m-d');
     		var endDate = parseDate.add(Date.MONTH,1).format('Y-m-d');
+    		ds.baseParams.sql = "SQL-1";
+        	ds.baseParams.action = "sql";
+        	ds.baseParams.type = "map";
+        	ds.baseParams["{0}"] = startDate;
+        	ds.baseParams["{1}"] = endDate;
+        	ds.baseParams["{2}"] = temp;
+        	ds.baseParams["{3}"] = currentId;
+        	ds.baseParams["{4}"] = currentDate;
     		ds.load({
 		  		params:{
 		  			start:0, 
-		  			limit:50,
-		  			action:"sql",
-					type:"map",
+		  			limit:50
+		  			/*action:"sql",
+					type:"map",*/
 					/*sql:"select b.typename,a.*,"+
 						"(ifnull((select sum(sl.sum) from order_material_store_list sl where sl.materialid=a.id and sl.updttime>='2012-03-01' and sl.updttime<'2012-04-01'),0)+ifnull((select initsum from material_store_list where storedate='201202' and id=a.id),0)) as input,"+
 						"(ifnull((select sum(ool.goodsnumber*fm.amount) from order_output_list ool,foot_material fm where fm.footid=ool.goodsid and fm.materialid=a.id and ool.updttime>='2012-03-01' and ool.updttime<'2012-04-01' ),0)) as output,"+
@@ -301,12 +309,12 @@ Ext.onReady(function() {
 						"-(ifnull((select sum(ol.goodsnumber*fm.amount) from order_output_list ol,foot_material fm where fm.footid=ol.goodsid and fm.materialid=a.id and fm.issecond='0' and ol.updttime>='2012-03-01' and ol.updttime<'2012-04-01' ),0))"+
 						"-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='2012-03-01' and osml.updttime<'2012-04-01'),0))) as sum "
 						+"from material_store_list a, material_type b where a.typeid=b.id"*/
-					sql:"SQL-1",
+					/*sql:"SQL-1",
 					"{0}":startDate,
 					"{1}":endDate,
 					"{2}":temp,
 					"{3}":currentId,
-					"{4}":currentDate
+					"{4}":currentDate*/
 		  		}
 		  	});
     	}

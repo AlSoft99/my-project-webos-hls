@@ -125,32 +125,46 @@ public class MaterialTypeVo implements BaseVo {
 			materialListDAO.getHibernateTemplate().save(store);
 			result = "{success:true,msg:'"+createId+"'}";
 		}else if("updateRecord".equals(action)){
-			MaterialList goods = new MaterialList();
-			goods.setId(request.getParamsMap().get("id"));
-			goods.setTypeid(request.getParamsMap().get("typeid"));
-			goods.setParamscode(request.getParamsMap().get("paramscode"));
-			goods.setParamsdesc(request.getParamsMap().get("paramsdesc"));
-			goods.setParamsname(request.getParamsMap().get("paramsname"));
-			goods.setCost(Float.valueOf(request.getParamsMap().get("cost")));
-			goods.setUnit(request.getParamsMap().get("unit"));
-			goods.setUpdttime(new Date());
-			goods.setUpdtuser(userInfo.getUserId());
-			materialListDAO.getHibernateTemplate().update(goods);
-			//save 
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
-			String storedate = sdf.format(new Date());
-			MaterialStoreList store = new MaterialStoreList();
-			MaterialStoreListId id = new MaterialStoreListId();
-			id.setId(goods.getId());
-			id.setStoredate(storedate);
-			store.setId(id);
-			store.setCost(goods.getCost());
-			store.setInitsum(0F);
-			store.setTypeid(goods.getTypeid());
-			store.setUpdtuser(((UserInfo)request.getUserInfo()).getUserId());
-			store.setUpdttime(new Date());
-			materialListDAO.getHibernateTemplate().saveOrUpdate(store);
-			result = "{success:true,msg:''}";
+			String name = request.getParamsMap().get("paramsname");
+			boolean error = false;
+			List<MaterialList> list = materialListDAO.getHibernateTemplate().find("from MaterialList where paramsname='"+name+"'");
+			if(list.size()>0){
+				MaterialList material = list.get(0);
+				if(!material.getId().equals(request.getParamsMap().get("id"))){
+					error = true;
+				}
+			}
+			if(error){
+				result = "{success:true,msg:'error'}";
+			}else{
+				MaterialList goods = new MaterialList();
+				goods.setId(request.getParamsMap().get("id"));
+				goods.setTypeid(request.getParamsMap().get("typeid"));
+				goods.setParamscode(request.getParamsMap().get("paramscode"));
+				goods.setParamsdesc(request.getParamsMap().get("paramsdesc"));
+				goods.setParamsname(name);
+				goods.setCost(Float.valueOf(request.getParamsMap().get("cost")));
+				goods.setUnit(request.getParamsMap().get("unit"));
+				goods.setUpdttime(new Date());
+				goods.setUpdtuser(userInfo.getUserId());
+				materialListDAO.getHibernateTemplate().update(goods);
+				//save 
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
+				String storedate = sdf.format(new Date());
+				MaterialStoreList store = new MaterialStoreList();
+				MaterialStoreListId id = new MaterialStoreListId();
+				id.setId(goods.getId());
+				id.setStoredate(storedate);
+				store.setId(id);
+				store.setCost(goods.getCost());
+				store.setInitsum(0F);
+				store.setTypeid(goods.getTypeid());
+				store.setUpdtuser(((UserInfo)request.getUserInfo()).getUserId());
+				store.setUpdttime(new Date());
+				materialListDAO.getHibernateTemplate().saveOrUpdate(store);
+				result = "{success:true,msg:''}";
+			}
+			
 		}else if("deleteRecord".equals(action)){
 			final String[] id = request.getParamsMap().get("id").split(",");
 			final String typeid = request.getParamsMap().get("typeid");

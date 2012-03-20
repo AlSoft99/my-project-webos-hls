@@ -41,7 +41,7 @@
 	    	<ref bean="statJobBean" />
 	  	</property>
 	  	<property name="cronExpression">
-	    	<value>00 24 * * * ?</value>
+	    	<value>16 30 * * * ?</value>
 	  	</property>
 	</bean>
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">

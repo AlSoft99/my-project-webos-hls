@@ -195,7 +195,12 @@
 	        .x-icon-templates {
 	            background-image: url('images/templates.png');
 	        }
-		        
+		    .page-up {
+	            background-image:url(<%=path%>/ext/shared/mini/page_up.gif) !important;
+	        }
+	        .note-new{
+	        	background-image:url(<%=path%>/ext/shared/mini/note_new.gif) !important;
+	        }
 		</style>
 	</head>
 	
