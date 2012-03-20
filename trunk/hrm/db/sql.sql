@@ -29,7 +29,7 @@ select b.typename,a.*,c.paramsname as materialname,d.paramsname as unitname,c.co
 from material_store_list a, material_type b,material_list c,params_list d   
 where a.typeid=b.id and a.id=c.id and c.unit=d.paramscode and d.typeid='UNIT' and a.storedate='201203';
 
-select a.paramsname as footname,sum(b.goodsnumber) as goodsnumber, sum(b.shouldpay) as shouldpay,sum(b.actuallypay) as actuallypay,d.paramsname as materialname,c.amount as amount 
+select a.paramsname as footname,sum(b.goodsnumber) as goodsnumber, sum(b.shouldpay) as shouldpay,sum(b.actuallypay) as actuallypay,d.paramsname as materialname,c.amount,sum(b.goodsnumber)*c.amount as allamount 
 from foot_list a,order_output_list b,foot_material c,material_list d  
 where a.id=b.goodsid and b.consumetype='1' and b.checkyn='1' and b.updttime>='2012-03-01' and b.updttime<'2012-04-01' and a.id=c.footid and c.materialid=d.id 
-group by d.paramsname,a.paramsname;
+group by d.paramsname,a.paramsname order by a.paramsname;
