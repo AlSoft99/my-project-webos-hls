@@ -308,7 +308,7 @@ Ext.onReady(function () {
             }
         },"-",{
             text: "导入销售帐单",
-            iconCls: "save",
+            iconCls: "note-new",
             handler: function (event, mouse) {//bcescvr,110400
                 win.show();
                 return true;

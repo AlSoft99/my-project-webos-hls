@@ -30,15 +30,16 @@ Ext.onReady(function() {
 		if(node.leaf){
 			grid.addBtn.setDisabled(false);
 			currentId = node.attributes.id;
-			ds.load({
+			listenerEvent.loadGrid();
+			/*ds.load({
 		  		params:{
 		  			start:0, 
-		  			limit:10,
+		  			limit:20,
 		  			action:"hql",
 					type:"entity",
 					sql:"from MaterialList where typeid='"+currentId+"'"
 		  		}
-		  	});
+		  	});*/
 		}else{
 			grid.addBtn.setDisabled(true);
 		}
@@ -446,15 +447,16 @@ Ext.onReady(function() {
 				        		success:function(action){
 //				        			loading.loadMask().hide();
 				        			editor.setDisabled(false);
-				        			ds.load({
+				        			/*ds.load({
 								  		params:{
 								  			start:0, 
-								  			limit:10,
+								  			limit:20,
 								  			action:"hql",
 											type:"entity",
 											sql:"from MaterialList where typeid='"+currentId+"'"
 								  		}
-								  	});
+								  	});*/
+				        			listenerEvent.loadGrid();
 				    			},
 				    			failure:function(action){
 				    				return false;
@@ -467,7 +469,7 @@ Ext.onReady(function() {
             }
         }],
     	bbar:new Ext.PagingToolbar({
-		    pageSize:10,
+		    pageSize:20,
 		    store:ds,
 		    displayInfo:true,
 		    displayMsg:"显示第{0}条到{1}条记录,一共{2}条记录",
@@ -494,26 +496,38 @@ Ext.onReady(function() {
     		Ext.Ajax.request({
     			url:"materialTypeVo.do?action=updateRecord",
     			params:recordData,
-    			success:function(){
+    			success:function(o){
+    				var json = eval("("+o.responseText+")");
+    				if(json.msg=='error'){
+    					Ext.MessageBox.show({
+                            title: "错误提示",
+                            msg: "该原材料名称已存在!请更换名称!!",
+                            buttons: Ext.MessageBox.OK,
+                            icon: Ext.MessageBox.ERROR
+                        });
+    					editor.startEditing(0);
+    				}
     				loading.loadMask().hide();
     			}
     		});
     	},
     	loadGrid:function(){
+    		ds.baseParams.sql = "from MaterialList where typeid='"+currentId+"'";
+        	ds.baseParams.action = "hql";
+        	ds.baseParams.type = "entity";
     		ds.load({
 		  		params:{
 		  			start:0, 
-		  			limit:10,
-		  			action:"hql",
-					type:"entity",
-					sql:"from MaterialList where typeid='"+currentId+"'"
+		  			limit:20
 		  		}
 		  	});
+    	},
+    	cancel:function(){
+    		ds.reload();
     	}
-    	
     }
 	editor.addListener("afteredit",listenerEvent.update);
-	
+	editor.addListener("canceledit",listenerEvent.cancel);
 	new Ext.Panel({
         title: '种类',
         collapsible:true,

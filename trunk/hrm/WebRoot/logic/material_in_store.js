@@ -38,7 +38,7 @@ Ext.onReady(function () {
 		}
     ]);
     var tree_menu = new Ext.tree.TreePanel({
-        title: "销售账单选择",
+        title: "进仓账单选择",
         width: 350,
         autoScroll: true,
         height: height - 500,
@@ -55,7 +55,7 @@ Ext.onReady(function () {
     });
     var root = new Ext.tree.AsyncTreeNode({
         id: "0",
-        text: "销售账单"
+        text: "进仓账单"
     });
     tree_menu.setRootNode(root);
     tree_menu.getRootNode().expand();// 2315
@@ -63,7 +63,7 @@ Ext.onReady(function () {
         if (node.leaf) {
             grid.addBtn.setDisabled(false);
             currentId = node.attributes.id;
-            ds.load({
+            /*ds.load({
                 params: {
                     start: -1,
                     limit: -1,
@@ -71,7 +71,8 @@ Ext.onReady(function () {
                     type: "entity",
                     sql: "from OrderMaterialStoreList where outid='" + currentId + "'"
                 }
-            });
+            });*/
+            listenerEvent.loadGrid();
         } else {
             grid.addBtn.setDisabled(true);
         }
@@ -88,23 +89,23 @@ Ext.onReady(function () {
         width: 200,
         items: [{
             name: "tree_tips",
-            fieldLabel: "销售备注",
+            fieldLabel: "进仓备注",
             allowBlank: false,
             width: 150,
             maxLength: 200,
-            emptyText: "请输入销售的必要备注"
+            emptyText: "请输入进仓的必要备注"
         }]
     });
     var node_menu = null;
     var contextmenu = new Ext.menu.Menu({
         items: [{
-            text: "添加新销售帐单",
+            text: "添加新进仓帐单",
             iconCls: "add",
             handler: function (event, mouse) {//bcescvr,110400
                 var win = new Ext.Window({
                     layout: 'fit',
                     width: 300,
-                    title: "销售单添加",
+                    title: "进仓单添加",
                     height: 120,
                     modal: true,
                     closeAction: 'hide',
@@ -166,14 +167,14 @@ Ext.onReady(function () {
                 return true;
             }
         }, {
-            text: "修改销售单",
+            text: "修改进仓单",
             iconCls: "save",
             handler: function (event, mouse) {//bcescvr,110400
                 form.getComponent(0).setValue(node_menu.attributes.qtip);
                 var win = new Ext.Window({
                     layout: 'fit',
                     width: 300,
-                    title: "销售单修改",
+                    title: "进仓单修改",
                     height: 120,
                     modal: true,
                     closeAction: 'hide',
@@ -231,7 +232,7 @@ Ext.onReady(function () {
                 tree_menu.getRootNode().reload();
             }
         }, "-", {
-            text: "删除销售单",
+            text: "删除进仓单",
             iconCls: "remove",
             handler: function (event, mouse) {
                 Ext.MessageBox.show({
@@ -547,7 +548,7 @@ Ext.onReady(function () {
                                 success: function (action) {
                                     loading.loadMask().hide();
                                     editor.setDisabled(false);
-                                    ds.load({
+                                    /*ds.load({
                                         params: {
                                             start: -1,
                                             limit: -1,
@@ -555,7 +556,8 @@ Ext.onReady(function () {
                                             type: "entity",
                                             sql: "from OrderOutputList where outid='" + currentId + "'"
                                         }
-                                    });
+                                    });*/
+                                    listenerEvent.loadGrid();
                                 },
                                 failure: function (action) {
                                     var json = eval("(" + action.responseText + ")");
@@ -574,7 +576,7 @@ Ext.onReady(function () {
             }
         }],
         bbar: new Ext.PagingToolbar({
-            //		    pageSize:10,
+            pageSize:20,
             store: ds,
             displayInfo: true,
             displayMsg: "显示第{0}条到{1}条记录,一共{2}条记录",
@@ -627,13 +629,16 @@ Ext.onReady(function () {
 
         },
         loadGrid: function () {
+        	ds.baseParams.sql = "from OrderMaterialStoreList where outid='" + currentId + "'";
+        	ds.baseParams.action = "hql";
+        	ds.baseParams.type = "entity";
             ds.load({
                 params: {
-                    start: -1,
-                    limit: -1,
+                    start: 0,
+                    limit: 20/*,
                     action: "hql",
                     type: "entity",
-                    sql: "from OrderMaterialStoreList where outid='" + currentId + "'"
+                    sql: "from OrderMaterialStoreList where outid='" + currentId + "'"*/
                 }
             });
         }
@@ -646,7 +651,7 @@ Ext.onReady(function () {
     //property.setSource(baseMsg);
     
     new Ext.Panel({
-        title: '销售账单维护',
+        title: '进仓账单维护',
         collapsible: true,
         renderTo: 'material_in_store_name',
         width: 350,
@@ -666,7 +671,7 @@ Ext.onReady(function () {
     });
 
     new Ext.Panel({
-        title: '销售明细列表',
+        title: '进仓明细列表',
         collapsible: true,
         width: width - 600,
         renderTo: 'material_in_store_list',

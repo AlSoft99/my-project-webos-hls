@@ -63,7 +63,7 @@ Ext.onReady(function () {
         if (node.leaf) {
             grid.addBtn.setDisabled(false);
             currentId = node.attributes.id;
-            ds.load({
+            /*ds.load({
                 params: {
                     start: -1,
                     limit: -1,
@@ -71,7 +71,8 @@ Ext.onReady(function () {
                     type: "entity",
                     sql: "from OrderOutputBackList where outid='" + currentId + "'"
                 }
-            });
+            });*/
+            listenerEvent.loadGrid();
             property.setSource({});
             property.setTitle("第二单位原料信息");
         } else {
@@ -599,7 +600,7 @@ Ext.onReady(function () {
                                 success: function (action) {
                                     loading.loadMask().hide();
                                     editor.setDisabled(false);
-                                    ds.load({
+                                    /*ds.load({
                                         params: {
                                             start: -1,
                                             limit: -1,
@@ -607,7 +608,8 @@ Ext.onReady(function () {
                                             type: "entity",
                                             sql: "from OrderOutputBackList where outid='" + currentId + "'"
                                         }
-                                    });
+                                    });*/
+                                    listenerEvent.loadGrid();
                                 },
                                 failure: function (action) {
                                     var json = eval("(" + action.responseText + ")");
@@ -626,7 +628,7 @@ Ext.onReady(function () {
             }
         }],
         bbar: new Ext.PagingToolbar({
-            //		    pageSize:10,
+            pageSize:20,
             store: ds,
             displayInfo: true,
             displayMsg: "显示第{0}条到{1}条记录,一共{2}条记录",
@@ -690,13 +692,14 @@ Ext.onReady(function () {
 
         },
         loadGrid: function () {
+            
+            ds.baseParams.sql = "from OrderOutputBackList where outid='" + currentId + "' order by updttime desc";
+        	ds.baseParams.action = "hql";
+        	ds.baseParams.type = "entity";
             ds.load({
                 params: {
-                    start: -1,
-                    limit: -1,
-                    action: "hql",
-                    type: "entity",
-                    sql: "from OrderOutputBackList where outid='" + currentId + "'"
+                    start: 0,
+                    limit: 20
                 }
             });
         }
