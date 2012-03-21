@@ -21,7 +21,7 @@ import com.hrm.entity.GoodsStatId;
 import com.hrm.entity.OrderOutputBackInfo;
 import com.hrm.entity.OrderOutputBackList;
 import com.hrm.entity.OrderSecondMaterialId;
-import com.hrm.entity.OrderSecondMaterialList;
+import com.hrm.entity.OrderSecondMaterialBackList;
 import com.hrm.entity.UserInfo;
 import com.hrm.server.InitData;
 import com.hrm.util.Constant;
@@ -141,12 +141,12 @@ public class OrderOutputBackInfoVo implements BaseVo {
 				goods.setUpdttime(new Date());
 				goods.setUpdtuser(userInfo.getUserId());
 				hibernateSessionDAO.update(goods);
-				hibernateSessionDAO.createHqlExcute("delete from OrderSecondMaterialList where id.outlistid='"+request.getParamsMap().get("id")+"'");
+				hibernateSessionDAO.createHqlExcute("delete from OrderSecondMaterialBackList where id.outlistid='"+request.getParamsMap().get("id")+"'");
 				String[] secondidlist = request.getParamsMap().get("secondidlist").split(",");
 				for (int i = 0; i < secondidlist.length; i++) {
 					if(!"".equals(secondidlist[i])){
 						OrderSecondMaterialId id = new OrderSecondMaterialId();
-						OrderSecondMaterialList list = new OrderSecondMaterialList();
+						OrderSecondMaterialBackList list = new OrderSecondMaterialBackList();
 						id.setGoodsid(request.getParamsMap().get("goodsid"));
 						id.setMaterialid(secondidlist[i]);
 						id.setOutlistid(request.getParamsMap().get("id"));

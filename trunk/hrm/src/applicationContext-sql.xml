@@ -42,9 +42,29 @@
 							(ifnull((select sum(omsl.sum) from order_material_store_list omsl where omsl.materialid=a.id and omsl.updttime>='{0}' and omsl.updttime<'{1}'),0)
 								+ifnull((select msl.initsum from material_store_list msl where msl.storedate='{2}' and msl.id=a.id),0)
 								-(ifnull((select sum(ol.goodsnumber*fm.amount) from order_output_list ol,foot_material fm where ol.consumetype='1' and ol.checkyn='1' and fm.footid=ol.goodsid and fm.materialid=a.id and fm.issecond='0' and ol.updttime>='{0}' and ol.updttime<'{1}' ),0))
-								-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='{0}' and osml.updttime<'{1}'),0))) as sum 
+								-(ifnull((select sum(osml.sum) from order_second_material_list osml where osml.materialid=a.id and osml.updttime>='{0}' and osml.updttime<'{1}'),0))) as sum,
+							(ifnull((select sum(ool.goodsnumber*fm.amount) from order_output_back_list ool,foot_material fm where ool.goodsid=fm.footid and fm.materialid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}' and fm.issecond='0'),0)+ifnull((select sum(osm.sum) from order_second_material_back_list osm where osm.materialid=a.id and osm.updttime>='{0}' and osm.updttime<'{1}' ),0)) as losssum,
+							(ifnull((select sum(ool.goodsnumber*fm.amount) from order_output_back_list ool,foot_material fm where ool.goodsid=fm.footid and fm.materialid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}' and fm.issecond='0'),0)+ifnull((select sum(osm.sum) from order_second_material_back_list osm where osm.materialid=a.id and osm.updttime>='{0}' and osm.updttime<'{1}'),0))*c.cost as losscostsum 
 							from material_store_list a, material_type b,material_list c,params_list d   
 							where a.typeid=b.id and a.id=c.id and c.unit=d.paramscode and d.typeid='UNIT' and a.storedate='{3}'
+						]]>
+					</value>
+				</entry>
+				<entry key="SQL-3">
+					<value>
+						<![CDATA[
+							select a.paramsname as footname,c.paramsname as materialname,c.cost as materialcost,d.paramsname as unitname,
+							ifnull((select sum(ool.goodsnumber) from order_output_list ool where ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0) as sellamount,
+							ifnull((select sum(ool.actuallypay) from order_output_list ool where ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0) as sellpay,
+							b.amount as materialamount,
+							((ifnull((select sum(ool.goodsnumber) from order_output_list ool,foot_material fm where ool.goodsid=fm.footid and fm.materialid=b.materialid and fm.issecond='0' and ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0)*b.amount)+ifnull((select sum(osm.sum) from order_second_material_list osm where osm.materialid=b.materialid and osm.goodsid=a.id and osm.updttime>='{0}' and osm.updttime<'{1}'),0)) as materialsum,
+							((ifnull((select sum(ool.goodsnumber) from order_output_list ool,foot_material fm where ool.goodsid=fm.footid and fm.materialid=b.materialid and fm.issecond='0' and ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0)*b.amount)+ifnull((select sum(osm.sum) from order_second_material_list osm where osm.materialid=b.materialid and osm.goodsid=a.id and osm.updttime>='{0}' and osm.updttime<'{1}'),0))*c.cost as materialcostsum,
+							((ifnull((select sum(ool.goodsnumber) from order_output_back_list ool,foot_material fm where ool.goodsid=fm.footid and fm.materialid=b.materialid and fm.issecond='0' and ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0))+ifnull((select sum(osm.sum) from order_second_material_back_list osm where osm.materialid=b.materialid and osm.goodsid=a.id and osm.updttime>='{0}' and osm.updttime<'{1}'),0)) as lossamount,
+							((ifnull((select sum(ool.goodsnumber) from order_output_back_list ool,foot_material fm where ool.goodsid=fm.footid and fm.materialid=b.materialid and fm.issecond='0' and ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0)*b.amount)+ifnull((select sum(osm.sum) from order_second_material_back_list osm where osm.materialid=b.materialid and osm.goodsid=a.id and osm.updttime>='{0}' and osm.updttime<'{1}'),0)) as lossmaterialsum,
+							((ifnull((select sum(ool.goodsnumber) from order_output_back_list ool,foot_material fm where ool.goodsid=fm.footid and fm.materialid=b.materialid and fm.issecond='0' and ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0)*b.amount)+ifnull((select sum(osm.sum) from order_second_material_back_list osm where osm.materialid=b.materialid and osm.goodsid=a.id and osm.updttime>='{0}' and osm.updttime<'{1}'),0))*c.cost as lossmaterialcostsum
+							from foot_list a,foot_material b,material_list c,params_list d 
+							where a.id=b.footid and b.materialid=c.id and c.unit=d.paramscode and d.typeid='UNIT'
+							order by a.paramsname;
 						]]>
 					</value>
 				</entry>
