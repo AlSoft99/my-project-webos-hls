@@ -67,23 +67,22 @@ Ext.onReady(function(){
 		   	{name: "id", type: 'string'},
     		{name: "materialname", type: 'string'},
     		{name: "unitname", type: 'string'},
-    		{name: "storenumber", type: 'int'},
-    		{name: "typeid", type: 'string'},
-    		{name: "typename", type: 'string'},
-    		{name: "sum", type: 'float'},
-    		{name: "cost", type: 'float'},
-    		{name: "input", type: 'float'},
-    		{name: "spend", type: 'float'},
-    		{name: "storedate", type: 'string'},
-    		{name: "initsum", type: 'float'},
-    		{name: "output", type: 'float'},
-    		{name: "updttime", type: 'string'}
+    		{name: "footname", type: 'string'},
+    		{name: "lossmaterialsum", type: 'float'},
+    		{name: "materialcostsum", type: 'float'},
+    		{name: "sellpay", type: 'float'},
+    		{name: "lossmaterialcostsum", type: 'float'},
+    		{name: "sellamount", type: 'float'},
+    		{name: "materialcost", type: 'float'},
+    		{name: "lossamount", type: 'float'},
+    		{name: "materialamount", type: 'float'},
+    		{name: "materialsum", type: 'float'}
  		]),
  		baseParams:{
  			startDate:curentStartDate,
  			endDate:curentEndDate
  		},
- 		groupField: 'typename'
+ 		groupField: 'footname'
         /*,sortInfo: {field: 'lastnumber', direction: 'DESC'}*/
     });
     
@@ -109,13 +108,21 @@ Ext.onReady(function(){
 		tbar : toolbar,
         columns: [
 	        new Ext.grid.RowNumberer(),{
-	            id: 'materialname',
-	            header: '原材料名称',
-	            dataIndex: 'materialname',
+	            header: '菜品销售总价格',
+	            dataIndex: 'sellpay',
+	            summaryType: 'sum',
+	            sortable: true,
+	            format:"￥0,0.00",
+	            hidden:true,
+	            renderer:filterNumber
+	        },{
+	            id: 'footname',
+	            header: '菜品名称',
+	            dataIndex: 'footname',
 	            sortable: true,
 	            summaryType: 'count',
 	            summaryRenderer: function(v, params, data){
-	                return ((v === 0 || v > 1) ? '(原材料种类' + v +' 个)' : '(原材料种类1 个)');
+	                return ((v === 0 || v > 1) ? '(原材料' + v +' 个)' : '(原材料1 个)');
 	            },
 	            renderer: function(value,data,o){
 	            	var unitname = o.data.unitname;
@@ -123,67 +130,76 @@ Ext.onReady(function(){
 	            	if(typeof(unitname)!="undefined"){
 	            		temp = ""+unitname+"";
 	            	}
-	            	return value+" / <font color='blue'>"+temp+"</font>";
+	            	return value+" 销售量:<font color='red' style='font-weight:normal;line-height:10px;'>"+o.data.sellamount+"</font>&nbsp;&nbsp;&nbsp;&nbsp;月销售:<font color='red' style='font-weight:normal;line-height:10px;'>"+Ext.util.Format.number(o.data.sellpay,"￥0,0.00")+"</font>";
 	            }
 	        },{
-	        	xtype: 'numbercolumn',
-	            header: '原材料月进货量',
-	            dataIndex: 'input',
+	            header: '原材料',
+	            dataIndex: 'materialname',
 	            summaryType: 'sum',
-	            sortable: true,
-	            renderer:filterUnit
-	        },{
-	        	xtype: 'numbercolumn',
-	            header: '原材料消耗量',
-	            dataIndex: 'output',
-	            summaryType: 'sum',
-	            sortable: true,
-	            renderer:filterUnit
-	        },{
-	            header: '月末实际库存',
-	            dataIndex: 'initsum',
-	            summaryType: 'sum',
-	            sortable: true,
-	            renderer:filterNumber
-	        },{
-	            header: '月末理论库存',
-	            dataIndex: 'sum',
-	            summaryType: 'sum',
-	            sortable: true,
-	            renderer:filterNumber
-	        },{
-	            id: 'typeid',
-	            header: '种类ID',
-	            dataIndex: 'typeid',
 	            sortable: true,
 	            summaryType: 'count',
 	            summaryRenderer: function(v, params, data){
-	                return ((v === 0 || v > 1) ? '(种类' + v +' 个)' : '(种类1 个)');
-	            },
-	            hidden:true
-	        },{
-	            id: 'typename',
-	            header: '种类名称',
-	            dataIndex: 'typename',
-	            sortable: true,
-	            summaryType: 'count',
-	            summaryRenderer: function(v, params, data){
-	                return ((v === 0 || v > 1) ? '(种类' + v +' 个)' : '(种类1 个)');
+	                return ((v === 0 || v > 1) ? '(原材料' + v +' 个)' : '(原材料1 个)');
 	            }
 	        },{
-	            xtype: 'numbercolumn',
+	        	xtype: 'numbercolumn',
 	            header: '原材料单价',
-	            dataIndex: 'cost',
-	            format:"￥0,0.00",
-	            summaryType: 'sum',
-	            sortable: true
-	        },{
-	        	xtype: 'numbercolumn',
-	            header: '原材料月消耗总价',
-	            dataIndex: 'spend',
+	            dataIndex: 'materialcost',
 	            summaryType: 'sum',
 	            sortable: true,
 	            format:"￥0,0.00",
+	            renderer:filterUnit
+	        },{
+	            header: '销售原材料量',
+	            dataIndex: 'materialsum',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterNumber
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '销售原材料总价格',
+	            dataIndex: 'materialcostsum',
+	            summaryType: 'sum',
+	            sortable: true,
+	            format:"￥0,0.00",
+	            renderer:filterUnit
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '退菜原材料量/单',
+	            dataIndex: 'materialamount',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterUnit
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '退菜原材料量',
+	            dataIndex: 'lossamount',
+	            summaryType: 'sum',
+	            sortable: true,
+	            hidden: true,
+	            renderer:filterUnit
+	        },{
+	            header: '退菜原材料总量',
+	            dataIndex: 'lossmaterialsum',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterNumber
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '退菜原材料总价格',
+	            dataIndex: 'lossmaterialcostsum',
+	            summaryType: 'sum',
+	            sortable: true,
+	            format:"￥0,0.00",
+	            renderer:filterUnit
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '菜品销售量',
+	            dataIndex: 'sellamount',
+	            summaryType: 'sum',
+	            sortable: true,
+	            hidden:true,
+	            renderer:filterUnit
 	        }
 	        /**
 	        	 * {name: "goodsid", type: 'string'},
@@ -229,7 +245,7 @@ Ext.onReady(function(){
     	return value;
     }
     var layout = new Ext.Panel({
-        title: '货物月销售报表',
+        title: '菜品月销售报表',
         layout: 'border',
         layoutConfig: {
             columns: 1
@@ -250,13 +266,11 @@ Ext.onReady(function(){
     		var parseDate = Date.parseDate(currentDate+'01','Ymd');
     		var startDate = parseDate.format('Y-m-d');
     		var endDate = parseDate.add(Date.MONTH,1).format('Y-m-d');
-    		store.baseParams.sql = "SQL-2";
+    		store.baseParams.sql = "SQL-3";
     		store.baseParams.action = "sql";
     		store.baseParams.type = "map";
     		store.baseParams["{0}"] = startDate;
     		store.baseParams["{1}"] = endDate;
-    		store.baseParams["{2}"] = temp;
-    		store.baseParams["{3}"] = currentDate;
     		store.load({
 		  		params:{
 		  			start:-1, 

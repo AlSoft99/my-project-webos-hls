@@ -91,6 +91,7 @@
 				<value>com/hrm/entity/OrderOutputInfo.hbm.xml</value>
 				<value>com/hrm/entity/OrderOutputList.hbm.xml</value>
 				<value>com/hrm/entity/OrderSecondMaterialList.hbm.xml</value>
+				<value>com/hrm/entity/OrderSecondMaterialBackList.hbm.xml</value>
 				<value>com/hrm/entity/MaterialStoreList.hbm.xml</value>
 				<value>com/hrm/entity/MaterialStoreListHis.hbm.xml</value>
 				<value>com/hrm/entity/OrderMaterialStoreInfo.hbm.xml</value>

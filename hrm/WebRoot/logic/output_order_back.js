@@ -356,7 +356,7 @@ Ext.onReady(function () {
             rowselect: function (sm, row, rec) {
                 var goodsid = rec.data.goodsid;
                 var id = rec.data.id;
-                properties.ajax("select b.paramsname,(select c.sum from OrderSecondMaterialList c where c.id.materialid=a.materialid and c.id.outlistid='" + id + "') as sum from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='" + goodsid + "' and a.issecond='1'", function (o) {
+                properties.ajax("select b.paramsname,(select c.sum from OrderSecondMaterialBackList c where c.id.materialid=a.materialid and c.id.outlistid='" + id + "') as sum from FootMaterial a,MaterialList b where a.materialid=b.id and a.footid='" + goodsid + "' and a.issecond='1'", function (o) {
                     var json = eval("(" + o.responseText + ")");
                     property.setSource(json);
 
