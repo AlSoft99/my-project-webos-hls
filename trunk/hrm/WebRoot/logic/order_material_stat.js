@@ -76,7 +76,11 @@ Ext.onReady(function(){
     		{name: "materialcost", type: 'float'},
     		{name: "lossamount", type: 'float'},
     		{name: "materialamount", type: 'float'},
-    		{name: "materialsum", type: 'float'}
+    		{name: "materialsum", type: 'float'},
+    		{name: "monthinput", type: 'float'},
+    		{name: "monthend", type: 'float'},
+    		{name: "monthshouldend", type: 'float'},
+    		{name: "monthinit", type: 'float'}
  		]),
  		baseParams:{
  			startDate:curentStartDate,
@@ -141,6 +145,33 @@ Ext.onReady(function(){
 	            summaryRenderer: function(v, params, data){
 	                return ((v === 0 || v > 1) ? '(原材料' + v +' 个)' : '(原材料1 个)');
 	            }
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '原材料月进货量',
+	            dataIndex: 'monthinput',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterUnit
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '原材料月初实际库存',
+	            dataIndex: 'monthinit',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterUnit
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '原材料月末实际库存',
+	            dataIndex: 'monthend',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterUnit
+	        },{
+	            header: '原材料月末理论库存',
+	            dataIndex: 'monthshouldend',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterNumber
 	        },{
 	        	xtype: 'numbercolumn',
 	            header: '原材料单价',

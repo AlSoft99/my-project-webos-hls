@@ -77,6 +77,8 @@ Ext.onReady(function(){
     		{name: "storedate", type: 'string'},
     		{name: "initsum", type: 'float'},
     		{name: "output", type: 'float'},
+    		{name: "monthinit", type: 'float'},
+    		
     		{name: "updttime", type: 'string'}
  		]),
  		baseParams:{
@@ -134,6 +136,13 @@ Ext.onReady(function(){
 	            renderer:filterUnit
 	        },{
 	        	xtype: 'numbercolumn',
+	            header: '原材料月初实际库存',
+	            dataIndex: 'monthinit',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterUnit
+	        },{
+	        	xtype: 'numbercolumn',
 	            header: '原材料消耗量',
 	            dataIndex: 'output',
 	            summaryType: 'sum',
@@ -151,6 +160,26 @@ Ext.onReady(function(){
 	            summaryType: 'sum',
 	            sortable: true,
 	            renderer:filterNumber
+	        },{
+	            header: '损耗率%',
+	            dataIndex: 'loss',
+	            summaryType: 'sum',
+	            sortable: true,
+	            summaryType: 'count',
+	            summaryRenderer: function(v, params, data){
+	                return "损耗率统计";
+	            },
+	            renderer:function(v,params,data){
+	            	var lossrate = (data.data.sum-data.data.initsum)/(data.data.input+data.data.monthinit);
+	            	if(isNaN(lossrate)){
+	            		lossrate = 0;
+	            	}
+	            	if(lossrate<0 || lossrate>0.5){
+	            		return "<font color='red'>"+Ext.util.Format.number(lossrate*100,"00.00")+"%</font>";
+	            	}else{
+	            		return "<font color='green'>"+Ext.util.Format.number(lossrate*100,"00.00")+"%</font>";
+	            	}
+	            }
 	        },{
 	            id: 'typeid',
 	            header: '种类ID',
