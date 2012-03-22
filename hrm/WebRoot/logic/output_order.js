@@ -591,6 +591,15 @@ Ext.onReady(function () {
             property.setTitle(title);
         });
     });
+    comboBoxType.on("change",function(obj, option){
+    	if(option==""){
+    		comboBoxName.getStore().load({
+                params: {
+                    sql: "select a.id,a.paramscode || '-' || a.paramsname from FootList a "
+                }
+            });
+    	}
+    });
     var ds = new Ext.data.Store({
         proxy: new Ext.data.HttpProxy({
             url: "queryInfoVo.do"

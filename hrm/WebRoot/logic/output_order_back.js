@@ -492,6 +492,15 @@ Ext.onReady(function () {
         });
         comboBoxName.setValue("");
     });
+    comboBoxType.on("change",function(obj, option){
+    	if(option==""){
+    		comboBoxName.getStore().load({
+                params: {
+                    sql: "select a.id,a.paramscode || '-' || a.paramsname from FootList a "
+                }
+            });
+    	}
+    });
     comboBoxName.on("select", function (obj, option) {
         var value = option.data.value;
         var title = option.data.text;
