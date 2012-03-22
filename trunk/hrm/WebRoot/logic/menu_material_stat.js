@@ -36,6 +36,9 @@ Ext.onReady(function(){
 	  	displayField: "text",
 	  	hiddenName: "goodstype"
 	});
+	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialType a", "", "");
+	comboBoxType.allowBlank = true;
+	comboBoxType.emptyText = "过滤原材料种类";
 	var toolbar = new Ext.Toolbar({
 		items:["-",
 			{
@@ -45,7 +48,12 @@ Ext.onReady(function(){
 	            handler: function(){
 	            	summary.toggleSummaries();
 	            }
-	        },"-",comboBoxDate,{
+	        },
+	        "-",
+	        comboBoxDate,
+	        "-",
+	        comboBoxType,
+	        {
 				text:"查询",
 				iconCls:"icon-grid",
 				tooltip:'默认为当天查询',
@@ -275,17 +283,23 @@ Ext.onReady(function(){
     		}else{
     			currentDate = (new Date()).format('Ym');
     		}
+    		var where = "";
+    		if(comboBoxType.getValue()!=""){
+    			where = " and b.id='"+comboBoxType.getValue()+"' ";
+    		}
     		var temp = (new Date()).add(Date.MONTH,-1).format('Ym');
     		var parseDate = Date.parseDate(currentDate+'01','Ymd');
     		var startDate = parseDate.format('Y-m-d');
     		var endDate = parseDate.add(Date.MONTH,1).format('Y-m-d');
+    		var preCurrentDate = parseDate.add(Date.MONTH,-1).format('Ym');
     		store.baseParams.sql = "SQL-2";
     		store.baseParams.action = "sql";
     		store.baseParams.type = "map";
     		store.baseParams["{0}"] = startDate;
     		store.baseParams["{1}"] = endDate;
-    		store.baseParams["{2}"] = temp;
+    		store.baseParams["{2}"] = preCurrentDate;
     		store.baseParams["{3}"] = currentDate;
+    		store.baseParams["{4}"] = where;
     		store.load({
 		  		params:{
 		  			start:-1, 

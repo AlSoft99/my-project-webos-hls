@@ -36,6 +36,29 @@ Ext.onReady(function(){
 	  	displayField: "text",
 	  	hiddenName: "goodstype"
 	});
+	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from FootType a", "", "");
+	var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from FootList a", "", "");
+	comboBoxType.emptyText = "过滤菜名";
+    comboBoxType.allowBlank = true;
+    comboBoxName.allowBlank = true;
+    comboBoxType.on("select", function (obj, option) {
+        var roleCode = option.data.value;
+        comboBoxName.getStore().load({
+            params: {
+                sql: "select a.id,a.paramscode || '-' || a.paramsname from FootList a where a.typeid='" + roleCode + "'"
+            }
+        });
+        comboBoxName.setValue("");
+    });
+    comboBoxType.on("change",function(obj, option){
+    	if(option==""){
+    		comboBoxName.getStore().load({
+                params: {
+                    sql: "select a.id,a.paramscode || '-' || a.paramsname from FootList a "
+                }
+            });
+    	}
+    });
 	var toolbar = new Ext.Toolbar({
 		items:["-",
 			{
@@ -45,7 +68,11 @@ Ext.onReady(function(){
 	            handler: function(){
 	            	summary.toggleSummaries();
 	            }
-	        },"-",comboBoxDate,{
+	        },"-",
+	        comboBoxDate,
+	        "-",
+	        comboBoxType,
+	        comboBoxName,{
 				text:"查询",
 				iconCls:"icon-grid",
 				tooltip:'默认为当天查询',
@@ -297,11 +324,22 @@ Ext.onReady(function(){
     		var parseDate = Date.parseDate(currentDate+'01','Ymd');
     		var startDate = parseDate.format('Y-m-d');
     		var endDate = parseDate.add(Date.MONTH,1).format('Y-m-d');
+    		var preCurrentDate = parseDate.add(Date.MONTH,-1).format('Ym');
+    		var where = "";
+    		if(comboBoxType.getValue()!=""){
+    			where += " and a.typeid='"+comboBoxType.getValue()+"' ";
+    		}
+    		if(comboBoxName.getValue()!=""){
+    			where += " and a.id='"+comboBoxName.getValue()+"' ";
+    		}
     		store.baseParams.sql = "SQL-3";
     		store.baseParams.action = "sql";
     		store.baseParams.type = "map";
     		store.baseParams["{0}"] = startDate;
     		store.baseParams["{1}"] = endDate;
+    		store.baseParams["{2}"] = preCurrentDate;
+    		store.baseParams["{3}"] = currentDate;
+    		store.baseParams["{4}"] = where;
     		store.load({
 		  		params:{
 		  			start:-1, 
