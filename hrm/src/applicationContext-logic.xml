@@ -216,6 +216,11 @@
   			<ref bean="MaterialListDAO"/>
   		</property>
   	</bean>
+  	<bean id="materialTypeKtvVo" class="com.hrm.vo.MaterialTypeKtvVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
   	<bean id="orderOutputInfoVo" class="com.hrm.vo.OrderOutputInfoVo">
   		<property name="hibernateSessionDAO">
   			<ref bean="HibernateSessionDAO"/>
