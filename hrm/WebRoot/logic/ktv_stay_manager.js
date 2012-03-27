@@ -80,6 +80,12 @@ Ext.onReady(function(){
 	    allowBlank:false,
 	    readOnly:true
     });
+    Ext.getBody().on("keypress",function(o){
+    	console.log(o);
+    	console.log(o.keyCode);
+    	var strcode=String.fromCharCode(o.keyCode);
+    	console.log(strcode);
+    });
     cardid.on("specialkey",function(){
     	console.log("specialkey");
     	myMask.hide();
