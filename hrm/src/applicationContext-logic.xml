@@ -31,6 +31,11 @@
   			<ref bean="HibernateSessionDAO"/>
   		</property>
   	</bean>
+  	<bean id="ktvStayInfoVo" class="com.hrm.vo.KtvStayInfoVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
   	<bean id="jsonSqlServlet" class="com.hrm.server.JsonSqlServlet">
   		<property name="hibernateSessionDAO">
   			<ref bean="HibernateSessionDAO"/>

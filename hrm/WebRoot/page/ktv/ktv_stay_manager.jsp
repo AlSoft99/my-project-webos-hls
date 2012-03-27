@@ -12,9 +12,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>My JSP 'user_add.jsp' starting page</title>
     <script type="text/javascript" src="<%=path%>/logic/ktv_stay_manager.js"></script>
     <style type="text/css">
-        body .x-panel {
-            margin-bottom:20px;
-        }
         .icon-grid {
             background-image:url(<%=path%>/ext/shared/icons/fam/grid.png) !important;
         }

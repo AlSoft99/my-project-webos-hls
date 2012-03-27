@@ -11,9 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <script type="text/javascript" src="<%=path%>/logic/user_mod.js"></script>
     <style type="text/css">
-        body .x-panel {
-            margin-bottom:20px;
-        }
         .icon-grid {
             background-image:url(<%=path%>/ext/shared/icons/fam/grid.png) !important;
         }

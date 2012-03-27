@@ -159,6 +159,9 @@
 	        .icon-menu4 {
 	            background-image: url(<%=path%>/ext/shared/mini/action_stop.gif) !important;
 	        }
+	        .page_find{
+	        	background-image: url(<%=path%>/ext/shared/mini/page_find.gif) !important;
+	        }
 	        .add {
             	background-image:url(<%=path%>/ext/shared/icons/fam/add.gif) !important;
 	        }
