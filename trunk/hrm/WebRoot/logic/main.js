@@ -4,6 +4,9 @@ Ext.chart.Chart.CHART_URL = '/'+projectName+'/ext/resources/charts.swf';
 Ext.onReady(function() {
 	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"数据读取中...请稍后..."});
 	myMask.show();
+	console.log("==========Ext Object==================");
+	console.log(Ext);
+	console.log("==========Ext Object==================");
 	Ext.QuickTips.init();
 	var role_code = document.getElementById("role_code").value;
 	var propertyGrid_base = new Ext.grid.PropertyGrid({

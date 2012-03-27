@@ -5,17 +5,17 @@ Ext.onReady(function(){
 		new Ext.grid.RowNumberer(),
 		sm,
 		{
-			header:"角色编号",
+			header:"卡号编号",
 			dataIndex:"role_code",
 			sortable: true,
 			width:90
 		},{
-    		header:"角色名称",
+    		header:"卡号名称",
     		dataIndex:"role_name",
     		sortable: true,
     		width:50
     	},{
-    		header:"角色描述",
+    		header:"卡号描述",
     		sortable: true,
     		dataIndex:"role_desc"
     	},{
@@ -49,33 +49,123 @@ Ext.onReady(function(){
     		{name: "updt_time",type:"date",dateFormat:"Y-m-d H:i:s.u"}
  		])
   	});
-  	
+  	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialTypeKtv a", "酒水种类", "");
+    var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a", "酒水名称", "");
+    comboBoxType.emptyText = "过滤酒水";
+    comboBoxType.allowBlank = true;
+    comboBoxName.allowBlank = false;
+    comboBoxType.on("change",function(obj, option){
+    	if(option==""){
+    		comboBoxName.getStore().load({
+                params: {
+                    sql: "select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a "
+                }
+            });
+    	}
+    });
+    comboBoxType.on("select", function (obj, option) {
+        var roleCode = option.data.value;
+        comboBoxName.getStore().load({
+            params: {
+                sql: "select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a where a.typeid='" + roleCode + "'"
+            }
+        });
+        comboBoxName.setValue("");
+    });
+    var cardid = new Ext.form.TextField({
+    	name      : 'cardid',
+	    fieldLabel: 'Card ID',
+	    anchor    : '-20',
+	    flex: 1,
+	    allowBlank:false,
+	    readOnly:true
+    });
+    cardid.on("specialkey",function(){
+    	console.log("specialkey");
+    	myMask.hide();
+    });
+    Ext.getBody().on("keydown",function(o){
+    	var key = o.keyCode;
+    	if(key=="27"){
+    		myMask.hide();
+    	}
+    });
 	var form = new Ext.form.FormPanel({
 	  	defaultType:"textfield",
 	  	labelAlign:"right",
-	  	url:"roleInfoVo.do",
+	  	url:"ktvStayInfoVo.do",
 	  	labelWidth:80,
+	  	defaults: {
+            width:520
+        },
 	  	frame:true,
-	  	width:200,
 	  	items:[{
-	    	name:"role_code",
-	    	fieldLabel:"角色代码",
-	    	hidden:true,
-	    	hideLabel:true
-	  	},{
-	    	name:"role_name",
-	    	fieldLabel:"角色名称",
-	    	allowBlank:false,
-	    	width:150,
-	    	maxLength:50
-	  	},{
-	  		name:"role_desc",
-	  		xtype:"textarea",
-	  		fieldLabel:"角色描述",
-	  		width:150,
-	  		allowBlank:false,
-	  		maxLength:200
-	  	}]
+            xtype:'fieldset',
+            title: '基本信息',
+            collapsible: true,
+            autoHeight:true,
+            defaults: {width: 380,allowBlank:false},
+            defaultType: 'textfield',
+            items :[{
+    	    	name:"id",
+    	    	fieldLabel:"ID",
+    	    	hidden:true,
+    	    	hideLabel:true
+    	  	},{
+    	  		xtype: 'compositefield',
+    	    	name:"role_name",
+    	    	fieldLabel:"卡号扫描",
+    	    	allowBlank:false,
+    	    	items:[cardid,{
+    	    		xtype     : 'button',
+    			    name      : 'email',
+    			    iconCls: 'page_find',
+    			    width: 23,
+    			    handler:function(){
+    			    	myMask.show();
+    			    	cardid.focus();
+    			    }
+    	    	}]
+    	  	},{
+    	  		name:"password",
+    	  		xtype:"textfield",
+    	  		inputType:"password",
+    	  		fieldLabel:"创建密码",
+    	  		allowBlank:false,
+    	  		maxLength:50
+    	  	},
+    	  	comboBoxType,
+    	  	comboBoxName,
+    	  	{
+    	  		name:"role_desc",
+    	  		xtype:"textarea",
+    	  		fieldLabel:"保存描述",
+    	  		allowBlank:false,
+    	  		maxLength:200
+    	  	}]
+        },{
+            xtype:'fieldset',
+            checkboxToggle:true,
+            title: '补填信息',
+            autoHeight:true,
+            defaults: {width: 380},
+            defaultType: 'textfield',
+            collapsed: true,
+            items :[{
+                    fieldLabel: '用户姓名',
+                    name: 'username',
+                    maxLength:50
+                },{
+                    fieldLabel: '用户手机',
+                    name: 'moblie',
+                    maxLength:50
+                },{
+                    fieldLabel: '身份证',
+                    name: 'idcard',
+                    maxLength:50
+                }
+            ]
+        }]
 	});
 	var resetForm = function(){
 		form.getForm().reset();
@@ -84,6 +174,7 @@ Ext.onReady(function(){
     	form.getComponent(2).setRawValue("");
     	
 	}
+	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"正在等待刷卡....(按<font color='red'>ESC</font>取消)"});
   	var grid = new Ext.grid.GridPanel({
     	el:"ktv_stay_manager_table",
     	ds:ds,
@@ -91,7 +182,7 @@ Ext.onReady(function(){
     	sm:sm,
     	loadMask:true,
     	autoHeight:true,
-    	title:'角色管理',
+    	title:'卡号管理',
     	iconCls:"icon-grid",
     	//自动填充表格宽度
     	viewConfig: {
@@ -100,15 +191,13 @@ Ext.onReady(function(){
             showPreview:true
     	},
     	tbar:[{
-            text:'添加角色',
+            text:'添加卡号',
             tooltip:'添加一条新的记录',
             iconCls:'add',
             handler:function(){
             	var win = new Ext.Window({
-	                layout      : 'fit',
-	                width       : 300,
-	                title		: "角色添加",
-	                height  	: 180,
+	                width       : 550,
+	                title		: "卡号添加",
 	                modal		: true,
 	                closeAction : 'hide',
 	                allowDomMove: true,
@@ -150,8 +239,8 @@ Ext.onReady(function(){
 				win.show();
             }
         }, '-', {
-            text:'修改角色',
-            tooltip:'修改一条角色记录',
+            text:'修改卡号',
+            tooltip:'修改一条卡号记录',
             iconCls:'option',
             handler:function(){
             	var selections = grid.getSelectionModel().getSelections();//
@@ -170,7 +259,7 @@ Ext.onReady(function(){
             	var win = new Ext.Window({
 	                layout      : 'fit',
 	                width       : 300,
-	                title		: "角色修改",
+	                title		: "卡号修改",
 	                height  	: 180,
 	                modal		: true,
 	                closeAction : 'hide',
@@ -178,7 +267,7 @@ Ext.onReady(function(){
 	                bodyBorder 	: false,
 	                plain       : true,
 	                items       : [form],
-	
+	                id:'winForm',
 	                buttons: [{
 	                    text     : '保存',
 	                    handler	 : function(){
@@ -213,8 +302,8 @@ Ext.onReady(function(){
 				win.show();
             }
         },'-',{
-            text:'删除角色',
-            tooltip:'删除一条角色记录',
+            text:'删除卡号',
+            tooltip:'删除一条卡号记录',
             iconCls:'remove',
             handler:function(){
             	var selections = grid.getSelectionModel().getSelections();//

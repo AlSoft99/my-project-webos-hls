@@ -13,7 +13,7 @@ public class KtvStayInfo {
 	//卡手机号
 	private String moblie;
 	//附言
-	private String desc;
+	private String otherdesc;
 	//身份证
 	private String idcard;
 	//酒水ID
@@ -36,11 +36,11 @@ public class KtvStayInfo {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getDesc() {
-		return desc;
+	public String getOtherdesc() {
+		return otherdesc;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setOtherdesc(String otherdesc) {
+		this.otherdesc = otherdesc;
 	}
 	public String getId() {
 		return id;
