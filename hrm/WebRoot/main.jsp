@@ -43,6 +43,7 @@
 		<link rel="stylesheet" type="text/css" href="<%=path%>/ext/ux/css/MultiSelect.css"/>
 		<link rel="stylesheet" type="text/css" href="<%=path%>/ext/ux/css/Portal.css" />
     	<link rel="stylesheet" type="text/css" href="<%=path%>/ext/ux/css/GroupTab.css" />
+    	<link rel="stylesheet" type="text/css" href="<%=path%>/ext/ux/css/Spinner.css" />
     	<link rel="stylesheet" type="text/css" href="<%=path%>/css/animated-dataview.css" />
     	<link rel="stylesheet" type="text/css" href="<%=path%>/ext/ux/fileuploadfield/css/fileuploadfield.css"/>
     	
@@ -74,6 +75,8 @@
 	    <script type="text/javascript" src="<%=path%>/ext/ux/ProgressBarPager.js"></script>
 	    <script type="text/javascript" src="<%=path%>/ext/ux/PanelResizer.js"></script>
 	    <script type="text/javascript" src="<%=path%>/ext/ux/PagingMemoryProxy.js"></script>
+	    <script type="text/javascript" src="<%=path%>/ext/ux/Spinner.js"></script>
+	    <script type="text/javascript" src="<%=path%>/ext/ux/SpinnerField.js"></script>
 		
 		<script type="text/javascript" src="<%=path%>/ext/ux/treegrid/TreeGridSorter.js"></script>
         <script type="text/javascript" src="<%=path%>/ext/ux/treegrid/TreeGridColumnResizer.js"></script>
