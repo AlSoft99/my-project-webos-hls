@@ -20,10 +20,34 @@ public class KtvStayInfo {
 	private String materialid;
 	//状态  1=保存酒水, 2=取出酒水, 3=过期, 0=删除
 	private String state;
+	//保存天数
+	private int day;
+	//过期日期
+	private Date overtime;
+	//押金
+	private Float cash;
 	//更新人
 	private String updtuser;
 	//更新时间
 	private Date updttime;
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
+	public Date getOvertime() {
+		return overtime;
+	}
+	public void setOvertime(Date overtime) {
+		this.overtime = overtime;
+	}
+	public Float getCash() {
+		return cash;
+	}
+	public void setCash(Float cash) {
+		this.cash = cash;
+	}
 	public String getMaterialid() {
 		return materialid;
 	}

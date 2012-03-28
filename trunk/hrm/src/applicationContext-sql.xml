@@ -77,6 +77,13 @@
 						]]>
 					</value>
 				</entry>
+				<entry key="SQL-4">
+					<value>
+						<![CDATA[
+							select new map(a.id as id, a.cardid as cardid, a.password as password,a.username as username,a.moblie as moblie,a.otherdesc as otherdesc,a.idcard as idcard,a.materialid as materialid,a.state as state,a.day as day,a.overtime as overtime,a.cash as cash,a.updtuser as updtuser,a.updttime as updttime,b.userName as updtusername,c.paramsname as materialname,d.paramsname as statename) from KtvStayInfo a, UserInfo b,MaterialListKtv c,ParamsList d where a.state=d.paramscode and d.typeid='KTV_STATE' and c.id=a.materialid and a.updtuser=b.userId order by a.updttime desc
+						]]>
+					</value>
+				</entry>
 				<!-- <entry key="SQL-x">
 					<value>
 						<![CDATA[

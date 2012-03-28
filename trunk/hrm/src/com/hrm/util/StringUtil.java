@@ -273,12 +273,22 @@ public class StringUtil {
 	 * @return
 	 */
 	public String dateAddNumber(Date date,int number){
+		Date newDate = dateAdd(date,number);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(newDate);
+	}
+	/**
+	 * 日期增加天数
+	 * @param date
+	 * @param number
+	 * @return
+	 */
+	public Date dateAdd(Date date,int number){
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		cal.add(Calendar.DAY_OF_MONTH, number);
 		Date newDate = cal.getTime();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		return sdf.format(newDate);
+		return newDate;
 	}
 	/**
 	 * 格式化日期,例如yyyy-MM-dd HH:mm:ss格式化为yyyy-MM-dd
@@ -399,7 +409,7 @@ public class StringUtil {
 						String type = properties.getSimpleName();
 						if (type.equals("String")) {
 							PropertyUtils.setProperty(classObj, key, value[0]);
-						}else if (type.equals("Integer")){
+						}else if (type.equals("Integer") || type.equals("int")){
 							PropertyUtils.setProperty(classObj, key, Integer.valueOf(value[0]));
 						}else if (type.equals("Double")){
 							PropertyUtils.setProperty(classObj, key, Double.valueOf(value[0]));
