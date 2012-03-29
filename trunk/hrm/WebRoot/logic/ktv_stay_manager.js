@@ -360,6 +360,7 @@ Ext.onReady(function(){
             }
         }]
     });
+	var formUpdt = new form();
 	//winAdd.show();
 	var winUpdate = new Ext.Window({
 		width       : 550,
@@ -369,7 +370,7 @@ Ext.onReady(function(){
         allowDomMove: true,
         bodyBorder 	: false,
         plain       : true,
-        items       : [form],
+        items       : [formUpdt],
         buttons: [{
             text     : '保存',
             handler	 : function(){
