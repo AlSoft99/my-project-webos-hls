@@ -10,7 +10,7 @@ Ext.onReady(function(){
 	});
 	var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
-		sm,
+		//sm,
 		{
 			header:"ID",
 			dataIndex:"id",
@@ -156,16 +156,14 @@ Ext.onReady(function(){
         comboBoxName.setValue("");
     });
     var cardid = new Ext.form.TextField({
-    	id:"ktv-cardid",
     	name      : 'cardid',
 	    fieldLabel: 'Card ID',
 	    anchor    : '-20',
 	    flex: 1,
 	    allowBlank:false,
-	    readOnly:true
+	    //readOnly:true
     });
     var cash = new Ext.form.NumberField({
-    	id:"ktv-cash",
     	name      : 'cash',
 	    fieldLabel: '押金(元)',
 	    minValue: 0,
@@ -175,25 +173,8 @@ Ext.onReady(function(){
     });
     var cardnumber = "";
     var currentTime = (new Date()).getTime();
-    Ext.getBody().on("keydown",function(o){
-    	if(maskState){
-    		var nowTime = (new Date()).getTime();
-    		if(nowTime-currentTime>100){
-    			cardnumber = "";
-    		}
-    		currentTime = nowTime;
-    		var key = o.keyCode;
-    		var strcode=String.fromCharCode(o.keyCode);
-        	if(key=="13"){
-        		hideMask();
-        		cardid.setValue(cardnumber);
-        	}else{
-        		cardnumber += strcode;
-        	}
-    	}
-    });
+    
     var dayspinner = new Ext.ux.form.SpinnerField({
-    	id:"ktv-day",
   		xtype: 'spinnerfield',
     	fieldLabel: '保存天数',
     	name: 'day',
@@ -227,27 +208,26 @@ Ext.onReady(function(){
             defaults: {width: 380},
             defaultType: 'textfield',
             items :[{
-            	id:"ktv-id",
     	    	name:"id",
     	    	fieldLabel:"ID",
     	    	hidden:true,
     	    	hideLabel:true
     	  	},{
     	  		xtype: 'compositefield',
-    	    	name:"card-scan",
     	    	fieldLabel:"卡号扫描",
-    	    	allowBlank:false,
     	    	items:[cardid,{
     	    		xtype     : 'button',
     			    name      : 'email',
     			    iconCls: 'page_find',
     			    width: 23,
     			    handler:function(){
-    			    	showMask();
+    			    	scanCard(function(cardnumber){
+    			    		cardid.setValue(cardnumber);
+    			    	});
     			    }
     	    	}]
+    	  		
     	  	},{
-    	  		id:"ktv-password",
     	  		name:"password",
     	  		xtype:"textfield",
     	  		inputType:"password",
@@ -260,7 +240,6 @@ Ext.onReady(function(){
     	  	dayspinner,
     	  	cash,
     	  	{
-    	  		id:"ktv-otherdesc",
     	  		name:"otherdesc",
     	  		xtype:"textarea",
     	  		fieldLabel:"保存描述",
@@ -276,17 +255,14 @@ Ext.onReady(function(){
             defaultType: 'textfield',
             collapsed: true,
             items :[{
-            		id:"ktv-username",
                     fieldLabel: '用户姓名',
                     name: 'username',
                     maxLength:50
                 },{
-                	id:"ktv-moblie",
                     fieldLabel: '用户手机',
                     name: 'moblie',
                     maxLength:50
                 },{
-                	id:"ktv-idcard",
                     fieldLabel: '身份证',
                     name: 'idcard',
                     maxLength:50
@@ -294,19 +270,43 @@ Ext.onReady(function(){
             ]
         }]
 	});
-	console.log(form);
 	var resetForm = function(){
 		form.getForm().reset();
+		cardid.setValue("");
+    	comboBoxName.setValue("");
+    	form.getComponent(0).getComponent(0).setValue("");
+    	form.getComponent(0).getComponent(2).setValue("");
+    	form.getComponent(0).getComponent(2).setDisabled(false);
+    	form.getComponent(0).getComponent(5).setValue(10);
+    	form.getComponent(0).getComponent(6).setValue(10);
+    	form.getComponent(0).getComponent(7).setValue("");
+    	form.getComponent(1).getComponent(0).setValue("");
+    	form.getComponent(1).getComponent(1).setValue("");
+    	form.getComponent(1).getComponent(2).setValue("");
 	}
 	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"正在等待刷卡....(按<font color='red'>回车</font>取消)"});
-	var maskState = false;
-	function hideMask(){
-		myMask.hide();
-		maskState = false;
-	}
-	function showMask(){
+	
+	function scanCard(callback){
 		myMask.show();
-		maskState = true;
+		function eventKey(o){
+    		var nowTime = (new Date()).getTime();
+    		if(nowTime-currentTime>100){
+    			cardnumber = "";
+    		}
+    		currentTime = nowTime;
+    		var key = o.keyCode;
+    		var strcode=String.fromCharCode(o.keyCode);
+        	if(key=="13"){
+        		myMask.hide();
+        		Ext.getBody().un("keydown",eventKey);
+        		if(Ext.isFunction(callback)){
+        			callback(cardnumber);
+        		}
+        	}else{
+        		cardnumber += strcode;
+        	}
+	    }
+		Ext.getBody().on("keydown",eventKey);
 	}
 	var winAdd = new Ext.Window({
         width       : 550,
@@ -338,7 +338,17 @@ Ext.onReady(function(){
             				action:"insert",
             				entity:"com.hrm.entity.KtvStayInfo"
             			},
-            			waitMsg:"Loading"
+            			waitMsg:"Loading",
+            			failure:function(form,action){
+            				console.log(form);
+            				console.log(action);
+            				Ext.MessageBox.show({
+            					title:"操作提示",
+            					msg:action.result.msg,
+            					buttons:Ext.MessageBox.OK,
+            					icon:Ext.MessageBox.INFO
+            				});
+            			}
             		});
             	}
             }
@@ -360,7 +370,6 @@ Ext.onReady(function(){
         bodyBorder 	: false,
         plain       : true,
         items       : [form],
-        id:'winForm',
         buttons: [{
             text     : '保存',
             handler	 : function(){
@@ -378,7 +387,8 @@ Ext.onReady(function(){
             				ds.reload();
             				winUpdate.hide();
             			},params:{
-            				action:"update"
+            				action:"update",
+            				entity:"com.hrm.entity.KtvStayInfo"
             			},
             			waitMsg:"Loading"
             		});
@@ -412,7 +422,7 @@ Ext.onReady(function(){
             tooltip:'添加一条新的记录',
             iconCls:'add',
             handler:function(){
-            	//resetForm();
+            	winAdd.add(form);
             	winAdd.show();
             }
         }, '-', {
@@ -420,7 +430,7 @@ Ext.onReady(function(){
             tooltip:'修改一条卡号记录',
             iconCls:'option',
             handler:function(){
-            	var selections = grid.getSelectionModel().getSelections();//
+            	/*var selections = grid.getSelectionModel().getSelections();//
             	if(selections.length==0){
 					Ext.MessageBox.show({
     					title:"错误提示",
@@ -429,21 +439,70 @@ Ext.onReady(function(){
     					icon:Ext.MessageBox.ERROR
     				});
     				return;
-            	}
-            	cardid.setValue(selections[0].get("cardid"));
-            	comboBoxName.setValue(selections[0].get("materialid"));
-            	form.getComponent(0).get("ktv-id").setValue(selections[0].get("id"));
-            	form.getComponent(0).get("ktv-password").setValue(1);
-            	form.getComponent(0).get("ktv-day").setValue(selections[0].get("day"));
-            	form.getComponent(0).get("ktv-otherdesc").setValue(selections[0].get("otherdesc"));
-            	form.getComponent(0).get("ktv-cash").setValue(selections[0].get("cash"));
-            	form.getComponent(1).get("ktv-username").setValue(selections[0].get("username"));
-            	form.getComponent(1).get("ktv-moblie").setValue(selections[0].get("moblie"));
-            	form.getComponent(1).get("ktv-idcard").setValue(selections[0].get("idcard"));
-            	//form.getForm().loadRecord(selections[0]);
+            	}*/
+            	scanCard(function(number){
+            		Ext.Ajax.request({
+            			url: 'ktvStayInfoVo.do',
+            			success: function(o){
+        					var data = eval("("+o.responseText+")");
+        					if(data.length>0){
+        						/*console.log(form.getComponent(0).getComponent(0));
+        						var Record = Ext.data.Record.create([
+	                                 {name: 'cardid',     type: 'string'},
+	                                 {name: 'materialid',     type: 'string'},
+	                                 {name: 'id', type: 'string'},
+	                                 {name: 'password',  type: 'string'},
+	                                 {name: 'day',   type: 'string'},
+	                                 {name: 'otherdesc',   type: 'string'},
+	                                 {name: 'cash',   type: 'string'},
+	                                 {name: 'username',   type: 'string'},
+	                                 {name: 'moblie',   type: 'string'},
+	                                 {name: 'idcard',   type: 'string'}
+	                            ]);
+        						form.getForm().loadRecord(new Record({
+        	                        'cardid'    : data[0].cardid,
+        	                        'materialid'    : data[0].materialid,
+        	                        'id': data[0].id,
+        	                        'password' : '1',
+        	                        'day': data[0].day,
+        	                        'otherdesc'  : data[0].otherdesc,
+        	                        'cash'  : data[0].cash,
+        	                        'username'  : data[0].username,
+        	                        'moblie'  : data[0].moblie,
+        	                        'idcard'    : data[0].idcard
+        	                    }));*/
+        						cardid.setValue(data[0].cardid);
+        						cardid.originalValue="";
+        		            	comboBoxName.setValue(data[0].materialid);
+        		            	comboBoxName.originalValue="";
+        		            	form.getComponent(0).getComponent(0).setValue(data[0].id);
+        		            	form.getComponent(0).getComponent(2).setValue(1);
+        		            	form.getComponent(0).getComponent(2).setDisabled(true);
+        		            	form.getComponent(0).getComponent(5).setValue(data[0].day);
+        		            	form.getComponent(0).getComponent(7).setValue(data[0].otherdesc);
+        		            	form.getComponent(0).getComponent(6).setValue(data[0].cash);
+        		            	form.getComponent(1).getComponent(0).setValue(data[0].username);
+        		            	form.getComponent(1).getComponent(1).setValue(data[0].moblie);
+        		            	form.getComponent(1).getComponent(2).setValue(data[0].idcard);
+        		            	//form.getForm().loadRecord(data[0]);
+        		            	winUpdate.add(form);
+        		            	winUpdate.show();
+        					}else{
+        						Ext.MessageBox.show({
+        	    					title:"错误提示",
+        	    					msg:"未找到相关卡的记录!",
+        	    					buttons:Ext.MessageBox.OK,
+        	    					icon:Ext.MessageBox.ERROR
+        	    				});
+        					}
+            			},
+            			failure: function(o){
+        					
+            			},
+            			params: { cardid:"111111111" , action:"queryCard" }
+        			});
+            	});
             	
-            	console.log(winUpdate);
-            	winUpdate.show();
             }
         },'-',{
             text:'删除卡号',
