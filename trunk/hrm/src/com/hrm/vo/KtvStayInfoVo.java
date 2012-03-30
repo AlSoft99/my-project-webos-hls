@@ -22,6 +22,7 @@ public class KtvStayInfoVo implements BaseVo {
 	@Override
 	public Request execute(Request request) throws Exception {
 		String action = request.getParamsMap().get("action");
+		UserInfo user = (UserInfo)request.getUserInfo();
 		if("insert".equals(action)){
 			KtvStayInfo info = (KtvStayInfo)request.getEntity();
 			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+info.getCardid()+"' and state='1'");
@@ -29,7 +30,7 @@ public class KtvStayInfoVo implements BaseVo {
 				request.setResponse("{success:false,msg:'卡号为<font color=red>"+info.getCardid()+"</font>的卡已被使用!!'}");
 				return request;
 			}
-			UserInfo user = (UserInfo)request.getUserInfo();
+			
 			int day = info.getDay();
 			Date overtime = StringUtil.newInstance().dateAdd(new Date(), day);
 			info.setOvertime(overtime);
@@ -37,7 +38,7 @@ public class KtvStayInfoVo implements BaseVo {
 			info.setUpdtuser(user.getUserId());
 			info.setUpdttime(new Date());
 			hibernateSessionDAO.save(info);
-			request.setResponse("{success:true,msg:'添加成功!'}");
+			request.setResponse("{success:true,msg:'卡号为<font color=red>"+info.getCardid()+"</font>已添加成功!'}");
 		}else if("queryCard".equals(action)){
 			String cardid = request.getParamsMap().get("cardid");
 			List<Map<String, Object>> list = hibernateSessionDAO.createHqlQuery("select new map(id as id,cardid as cardid,username as username,moblie as moblie,idcard as idcard,materialid as materialid,state as state,otherdesc as otherdesc,day as day,overtime as overtime,cash as cash) from KtvStayInfo where cardid='"+cardid+"' and state='1'");
@@ -45,7 +46,6 @@ public class KtvStayInfoVo implements BaseVo {
 			request.setResponse(gson.toJson(list));
 		}else if("update".equals(action)){
 			KtvStayInfo info = (KtvStayInfo)request.getEntity();
-			UserInfo user = (UserInfo)request.getUserInfo();
 			int day = info.getDay();
 			Date overtime = StringUtil.newInstance().dateAdd(new Date(), day);
 			info.setOvertime(overtime);
@@ -53,7 +53,20 @@ public class KtvStayInfoVo implements BaseVo {
 			info.setUpdtuser(user.getUserId());
 			info.setUpdttime(new Date());
 			hibernateSessionDAO.update(info);
-			request.setResponse("{success:true,msg:'修改成功!'}");
+			request.setResponse("{success:true,msg:'卡号为<font color=red>"+info.getCardid()+"</font>已修改成功!'}");
+		}else if("delete".equals(action)){
+			String cardid = request.getParamsMap().get("cardid");
+			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+cardid+"' and state='1'");
+			if(list.size()==0){
+				request.setResponse("卡号为<font color=red>"+cardid+"</font>的卡并未被使用! 无法删除!!");
+				return request;
+			}
+			KtvStayInfo ktv = list.get(0);
+			ktv.setState("0");
+			ktv.setUpdtuser(user.getUserId());
+			ktv.setUpdttime(new Date());
+			hibernateSessionDAO.update(ktv);
+			request.setResponse("卡号为<font color=red>"+cardid+"</font>的卡已删除成功!!");
 		}
 		return request;
 	}

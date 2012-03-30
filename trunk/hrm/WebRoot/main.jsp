@@ -144,6 +144,9 @@
 			    display:block;
 			    padding:3px;
 			}
+			.icon_package_open{
+				background-image: url(<%=path%>/ext/shared/mini/icon_package_open.gif) !important;
+			}
 			.upload-icon {
 	            background: url('<%=path%>/ext/shared/icons/fam/image_add.png') no-repeat 0 0 !important;
 	        }
