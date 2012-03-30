@@ -155,6 +155,7 @@ Ext.onReady(function(){
         });
         comboBoxName.setValue("");
     });
+    
     var cardid = new Ext.form.TextField({
     	name      : 'cardid',
 	    fieldLabel: 'Card ID',
@@ -163,6 +164,20 @@ Ext.onReady(function(){
 	    allowBlank:false,
 	    //readOnly:true
     });
+    var cardbtn = new Ext.Button({
+		xtype     : 'button',
+	    name      : 'email',
+	    iconCls: 'page_find',
+	    width: 23,
+	    handler:function(){
+	    	scanCard(function(cardnumber){
+	    		cardid.setValue(cardnumber);
+	    		console.log(form.getComponent(0).getComponent(2));
+	    		form.getComponent(0).getComponent(2).focus();
+	    	});
+	    }
+	});
+    
     var cash = new Ext.form.NumberField({
     	name      : 'cash',
 	    fieldLabel: '押金(元)',
@@ -191,6 +206,7 @@ Ext.onReady(function(){
     dayspinner.on("spin",function(o){
     	cash.setValue(dayspinner.getValue());
     });
+    
 	var form = new Ext.form.FormPanel({
 	  	defaultType:"textfield",
 	  	labelAlign:"right",
@@ -215,17 +231,7 @@ Ext.onReady(function(){
     	  	},{
     	  		xtype: 'compositefield',
     	    	fieldLabel:"卡号扫描",
-    	    	items:[cardid,{
-    	    		xtype     : 'button',
-    			    name      : 'email',
-    			    iconCls: 'page_find',
-    			    width: 23,
-    			    handler:function(){
-    			    	scanCard(function(cardnumber){
-    			    		cardid.setValue(cardnumber);
-    			    	});
-    			    }
-    	    	}]
+    	    	items:[cardid,cardbtn]
     	  		
     	  	},{
     	  		name:"password",
@@ -233,7 +239,15 @@ Ext.onReady(function(){
     	  		inputType:"password",
     	  		fieldLabel:"创建密码",
     	  		allowBlank:false,
-    	  		maxLength:50
+    	  		maxLength:50,
+    	  		listeners: {
+    	  			specialkey: {
+    	  				fn: function(o, evt) {
+    	  					comboBoxType.focus();
+    	  				},
+    	  				scope: this
+    	  			}
+    	  		}
     	  	},
     	  	comboBoxType,
     	  	comboBoxName,
@@ -270,9 +284,35 @@ Ext.onReady(function(){
             ]
         }]
 	});
+	(function(){
+    	comboBoxType.on("specialkey",function(field, e){
+    		if (e.getKey() == Ext.EventObject.ENTER) {    //触发了listener后，如果按回车，执行相应的方法
+    			comboBoxName.focus();
+            }
+        });
+        comboBoxName.on("specialkey",function(field, e){
+        	if (e.getKey() == Ext.EventObject.ENTER) {
+        		dayspinner.focus();
+        	}
+        	
+        });
+        dayspinner.on("specialkey",function(field, e){
+        	if (e.getKey() == Ext.EventObject.ENTER) {
+        		cash.focus();
+        	}
+        	
+        });
+        cash.on("specialkey",function(field, e){
+        	if (e.getKey() == Ext.EventObject.ENTER) {
+        		form.getComponent(0).getComponent(7).focus();
+        	}
+        });
+    })();
 	var resetForm = function(){
+		cardbtn.setDisabled(false);
+		form.getComponent(0).getComponent(2).setDisabled(false);
 		form.getForm().reset();
-		cardid.setValue("");
+		/*cardid.setValue("");
     	comboBoxName.setValue("");
     	form.getComponent(0).getComponent(0).setValue("");
     	form.getComponent(0).getComponent(2).setValue("");
@@ -282,12 +322,19 @@ Ext.onReady(function(){
     	form.getComponent(0).getComponent(7).setValue("");
     	form.getComponent(1).getComponent(0).setValue("");
     	form.getComponent(1).getComponent(1).setValue("");
-    	form.getComponent(1).getComponent(2).setValue("");
+    	form.getComponent(1).getComponent(2).setValue("");*/
 	}
 	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"正在等待刷卡....(按<font color='red'>回车</font>取消)"});
 	
 	function scanCard(callback){
-		myMask.show();
+		//myMask.show();
+		Ext.MessageBox.show({
+	           msg: "正在等待刷卡....(按<font color='red'>回车</font>取消)",
+	           width:300,
+	           wait:true,
+	           waitConfig: {interval:200},
+	           animEl: 'mb7'
+	    });
 		function eventKey(o){
     		var nowTime = (new Date()).getTime();
     		if(nowTime-currentTime>100){
@@ -297,7 +344,8 @@ Ext.onReady(function(){
     		var key = o.keyCode;
     		var strcode=String.fromCharCode(o.keyCode);
         	if(key=="13"){
-        		myMask.hide();
+        		//myMask.hide();
+        		Ext.MessageBox.hide();
         		Ext.getBody().un("keydown",eventKey);
         		if(Ext.isFunction(callback)){
         			callback(cardnumber);
@@ -308,6 +356,38 @@ Ext.onReady(function(){
 	    }
 		Ext.getBody().on("keydown",eventKey);
 	}
+	var submit = function(){
+    	var basicForm = form.getForm();
+    	if(basicForm.isValid()){
+    		basicForm.submit({
+    			success:function(form,action){
+    				Ext.MessageBox.show({
+    					title:"操作提示",
+    					msg:action.result.msg,
+    					buttons:Ext.MessageBox.OK,
+    					icon:Ext.MessageBox.INFO
+    				});
+    				resetForm();
+    				ds.reload();
+    				winAdd.hide();
+    			},params:{
+    				action:"insert",
+    				entity:"com.hrm.entity.KtvStayInfo"
+    			},
+    			waitMsg:"Loading",
+    			failure:function(form,action){
+    				console.log(form);
+    				console.log(action);
+    				Ext.MessageBox.show({
+    					title:"操作提示",
+    					msg:action.result.msg,
+    					buttons:Ext.MessageBox.OK,
+    					icon:Ext.MessageBox.INFO
+    				});
+    			}
+    		});
+    	}
+    }
 	var winAdd = new Ext.Window({
         width       : 550,
         title		: "卡号添加",
@@ -321,36 +401,7 @@ Ext.onReady(function(){
         buttons: [{
             text     : '保存',
             handler	 : function(){
-            	var basicForm = form.getForm();
-            	if(basicForm.isValid()){
-            		basicForm.submit({
-            			success:function(form,action){
-            				Ext.MessageBox.show({
-            					title:"操作提示",
-            					msg:action.result.msg,
-            					buttons:Ext.MessageBox.OK,
-            					icon:Ext.MessageBox.INFO
-            				});
-            				resetForm();
-            				ds.reload();
-            				winAdd.hide();
-            			},params:{
-            				action:"insert",
-            				entity:"com.hrm.entity.KtvStayInfo"
-            			},
-            			waitMsg:"Loading",
-            			failure:function(form,action){
-            				console.log(form);
-            				console.log(action);
-            				Ext.MessageBox.show({
-            					title:"操作提示",
-            					msg:action.result.msg,
-            					buttons:Ext.MessageBox.OK,
-            					icon:Ext.MessageBox.INFO
-            				});
-            			}
-            		});
-            	}
+            	submit();
             }
         },{
             text     : '关闭',
@@ -402,6 +453,7 @@ Ext.onReady(function(){
             }
         }]
     });
+	var test = true;
   	var grid = new Ext.grid.GridPanel({
     	el:"ktv_stay_manager_table",
     	ds:ds,
@@ -424,8 +476,9 @@ Ext.onReady(function(){
             handler:function(){
             	winAdd.add(form);
             	winAdd.show();
+            	resetForm();
             }
-        }, '-', {
+        }, {
             text:'修改卡号',
             tooltip:'修改一条卡号记录',
             iconCls:'option',
@@ -441,12 +494,17 @@ Ext.onReady(function(){
     				return;
             	}*/
             	scanCard(function(number){
+            		if(number=="" && !test){
+            			return;
+            		}
             		Ext.Ajax.request({
             			url: 'ktvStayInfoVo.do',
             			success: function(o){
         					var data = eval("("+o.responseText+")");
         					if(data.length>0){
-        						/*console.log(form.getComponent(0).getComponent(0));
+        						winUpdate.add(form);
+        						winUpdate.show();
+        						//console.log(form.getComponent(0).getComponent(0));
         						var Record = Ext.data.Record.create([
 	                                 {name: 'cardid',     type: 'string'},
 	                                 {name: 'materialid',     type: 'string'},
@@ -459,7 +517,7 @@ Ext.onReady(function(){
 	                                 {name: 'moblie',   type: 'string'},
 	                                 {name: 'idcard',   type: 'string'}
 	                            ]);
-        						form.getForm().loadRecord(new Record({
+        						form.form.loadRecord(new Record({
         	                        'cardid'    : data[0].cardid,
         	                        'materialid'    : data[0].materialid,
         	                        'id': data[0].id,
@@ -470,8 +528,10 @@ Ext.onReady(function(){
         	                        'username'  : data[0].username,
         	                        'moblie'  : data[0].moblie,
         	                        'idcard'    : data[0].idcard
-        	                    }));*/
-        						cardid.setValue(data[0].cardid);
+        	                    }));
+        						cardbtn.setDisabled(true);
+        						form.getComponent(0).getComponent(2).setDisabled(true);
+        						/*cardid.setValue(data[0].cardid);
         						cardid.originalValue="";
         		            	comboBoxName.setValue(data[0].materialid);
         		            	comboBoxName.originalValue="";
@@ -483,14 +543,14 @@ Ext.onReady(function(){
         		            	form.getComponent(0).getComponent(6).setValue(data[0].cash);
         		            	form.getComponent(1).getComponent(0).setValue(data[0].username);
         		            	form.getComponent(1).getComponent(1).setValue(data[0].moblie);
-        		            	form.getComponent(1).getComponent(2).setValue(data[0].idcard);
+        		            	form.getComponent(1).getComponent(2).setValue(data[0].idcard);*/
         		            	//form.getForm().loadRecord(data[0]);
-        		            	winUpdate.add(form);
-        		            	winUpdate.show();
+        		            	
+        		            	
         					}else{
         						Ext.MessageBox.show({
         	    					title:"错误提示",
-        	    					msg:"未找到相关卡的记录!",
+        	    					msg:"未找到卡号为<font color=red>"+number+"</font>的记录!",
         	    					buttons:Ext.MessageBox.OK,
         	    					icon:Ext.MessageBox.ERROR
         	    				});
@@ -504,55 +564,44 @@ Ext.onReady(function(){
             	});
             	
             }
-        },'-',{
+        },{
             text:'删除卡号',
             tooltip:'删除一条卡号记录',
             iconCls:'remove',
             handler:function(){
-            	var selections = grid.getSelectionModel().getSelections();//
-            	if(selections.length==0){
-					Ext.MessageBox.show({
-    					title:"错误提示",
-    					msg:"请选择至少一条需要删除的记录!",
-    					buttons:Ext.MessageBox.OK,
-    					icon:Ext.MessageBox.ERROR
-    				});
-    				return;
-            	}
-            	var deleteCode = "";
-            	for(var i = 0 ; i < selections.length; i++ ){
-            		deleteCode += selections[i].get("role_code")+",";
-            	}
-            	var deleteCode = deleteCode.substring(0,deleteCode.length-1);
-            	Ext.MessageBox.show({
-					title:"删除警告",
-					msg:"是否删除该记录!请确认编号:</br>"+deleteCode+"!",
-					buttons:Ext.MessageBox.OKCANCEL,
-					icon:Ext.MessageBox.WARNING,
-					fn:function(btn){
-						if(btn=="ok"){
-			            	Ext.Ajax.request({
-			            		url:"roleInfoVo.do",
-			            		params:{
-			            			action:"delete",
-			            			role_code:deleteCode
-			            		},
-			            		success:function(action){
-			            			var json = eval("["+action.responseText+"]");
-                    				Ext.MessageBox.show({
-                    					title:"操作提示",
-                    					msg:json[0].msg,
-                    					buttons:Ext.MessageBox.OK,
-                    					icon:Ext.MessageBox.INFO
-                    				});
-                    				ds.reload();
-                    			},
-                    			waitMsg:"Loading"
-			            	});
-						}
-					}
-				});
-	                    				
+            	scanCard(function(number){
+            		if(number=="" && !test){
+            			return;
+            		}
+            		Ext.Ajax.request({
+            			url: 'ktvStayInfoVo.do',
+            			success: function(o){
+            				Ext.MessageBox.show({
+    	    					title:"操作提示",
+    	    					msg:o.responseText,
+    	    					buttons:Ext.MessageBox.OK,
+    	    					icon:Ext.MessageBox.INFO
+    	    				});
+            				ds.reload();
+            			},
+            			failure: function(o){
+            				Ext.MessageBox.show({
+    	    					title:"错误提示",
+    	    					msg:o.responseText,
+    	    					buttons:Ext.MessageBox.OK,
+    	    					icon:Ext.MessageBox.ERROR
+    	    				});
+            			},
+            			params: { cardid:"111111111" , action:"delete" }
+        			});
+            	});
+            }
+        },"-",{
+        	text:'取出卡号',
+            tooltip:'删除一条卡号记录',
+            iconCls:'remove',
+            handler:function(){
+            	
             }
         }],
     	bbar:new Ext.PagingToolbar({

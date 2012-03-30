@@ -61,7 +61,8 @@ public class QueryInfoVo implements BaseVo {
 				result = querySqlMap(request,sql.trim());
 			}
 		}
-		
+		System.out.println(result);
+		result = result.replace("\n", "<br>");
 		request.setResponse(result);
 		return request;
 	}
