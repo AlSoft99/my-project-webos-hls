@@ -165,8 +165,17 @@
 	        .icon-menu4 {
 	            background-image: url(<%=path%>/ext/shared/mini/action_stop.gif) !important;
 	        }
+	        .page_new{
+	        	background-image: url(<%=path%>/ext/shared/mini/page_new.gif) !important;
+	        }
 	        .page_find{
 	        	background-image: url(<%=path%>/ext/shared/mini/page_find.gif) !important;
+	        }
+	        .page_delete{
+	        	background-image: url(<%=path%>/ext/shared/mini/page_delete.gif) !important;
+	        }
+	        .page_edit{
+	        	background-image: url(<%=path%>/ext/shared/mini/page_edit.gif) !important;
 	        }
 	        .add {
             	background-image:url(<%=path%>/ext/shared/icons/fam/add.gif) !important;

@@ -326,9 +326,13 @@ Ext.onReady(function(){
 	}
 	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"正在等待刷卡....(按<font color='red'>回车</font>取消)"});
 	
-	function scanCard(callback){
+	function scanCard(callback,title){
+		if(typeof(title)=="undefined"){
+			title = "";
+		}
 		//myMask.show();
 		Ext.MessageBox.show({
+			   title: title,
 	           msg: "正在等待刷卡....(按<font color='red'>回车</font>取消)",
 	           width:300,
 	           wait:true,
@@ -472,7 +476,7 @@ Ext.onReady(function(){
     	tbar:[{
             text:'添加卡号',
             tooltip:'添加一条新的记录',
-            iconCls:'add',
+            iconCls:'page_new',
             handler:function(){
             	winAdd.add(form);
             	winAdd.show();
@@ -481,7 +485,7 @@ Ext.onReady(function(){
         }, {
             text:'修改卡号',
             tooltip:'修改一条卡号记录',
-            iconCls:'option',
+            iconCls:'page_edit',
             handler:function(){
             	/*var selections = grid.getSelectionModel().getSelections();//
             	if(selections.length==0){
@@ -567,7 +571,7 @@ Ext.onReady(function(){
         },{
             text:'删除卡号',
             tooltip:'删除一条卡号记录',
-            iconCls:'remove',
+            iconCls:'page_delete',
             handler:function(){
             	scanCard(function(number){
             		if(number=="" && !test){
@@ -597,11 +601,21 @@ Ext.onReady(function(){
             	});
             }
         },"-",{
-        	text:'取出卡号',
-            tooltip:'删除一条卡号记录',
-            iconCls:'remove',
+        	text:'归还卡号',
+            tooltip:'取出一条卡号记录',
+            iconCls:'icon_package_open',
             handler:function(){
-            	
+            	scanCard(function(number){
+            		if(number=="" && !test){
+            			return;
+            		};
+            		inputPsdCard = number;
+            		winPsd.show();
+            		setTimeout(function(){
+            			inputPsd.focus();
+            		},300);
+            		
+            	});
             }
         }],
     	bbar:new Ext.PagingToolbar({
@@ -613,6 +627,91 @@ Ext.onReady(function(){
 		})
 
   	});
+  	var submitPsd = function(){
+    	var basicForm = formPsd.getForm();
+    	if(basicForm.isValid()){
+    		basicForm.submit({
+    			success:function(form,action){
+    				Ext.MessageBox.show({
+    					title:"成功提示",
+    					msg:action.result.msg,
+    					buttons:Ext.MessageBox.OK,
+    					icon:Ext.MessageBox.INFO
+    				});
+    				winPsd.hide();
+    				basicForm.reset();
+    				ds.reload();
+    			},
+    			failure:function(form,action){
+    				Ext.MessageBox.show({
+    					title:"错误提示",
+    					msg:action.result.msg,
+    					buttons:Ext.MessageBox.OK,
+    					icon:Ext.MessageBox.ERROR
+    				});
+    			},
+    			params:{
+    				action:"confirmPsd",
+    				password:inputPsd.getValue(),
+    				//cardid: inputPsdCard
+    				cardid: "111111111"
+    			},
+    			waitMsg:"Loading"
+    		});
+    	}
+  	}
+  	var inputPsdCard = "";
+  	var inputPsd = new Ext.form.TextField({
+  		name:"password",
+  		fieldLabel:"输入密码",
+  		inputType:"password",
+  		width:150,
+  		allowBlank:false,
+  		maxLength:50
+  	});
+  	inputPsd.on("specialkey",function(field,e){
+  		if (e.getKey() == Ext.EventObject.ENTER) {
+  			submitPsd();
+  		}
+  	});
+  	var formPsd = new Ext.form.FormPanel({
+	  	defaultType:"textfield",
+	  	labelAlign:"right",
+	  	url:"ktvStayInfoVo.do",
+	  	labelWidth:80,
+	  	frame:true,
+	  	width:200,
+	  	items:[inputPsd]
+	});
+	var winPsd = new Ext.Window({
+        layout      : 'fit',
+        width       : 300,
+        title		: "输入密码",
+        height  	: 120,
+        modal		: false,
+        closeAction : 'hide',
+        loadMask:true,
+        allowDomMove: true,
+        bodyBorder 	: false,
+        plain       : true,
+        items       : [
+            formPsd
+		],
+        buttons: [{
+            text     : '保存',
+            handler	 : function(){
+            	submitPsd();
+            }
+        },{
+            text     : '关闭',
+            handler  : function(){
+            	winPsd.hide();
+            	formPsd.getForm().reset();
+            }
+        }]
+    });
+  	
+  	
   	var listenerEvent = {
         loadGrid: function () {
         	ds.baseParams.sql = "SQL-4";
