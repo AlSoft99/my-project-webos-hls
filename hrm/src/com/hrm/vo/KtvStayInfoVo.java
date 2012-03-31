@@ -1,5 +1,6 @@
 package com.hrm.vo;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +68,28 @@ public class KtvStayInfoVo implements BaseVo {
 			ktv.setUpdttime(new Date());
 			hibernateSessionDAO.update(ktv);
 			request.setResponse("卡号为<font color=red>"+cardid+"</font>的卡已删除成功!!");
+		}else if("confirmPsd".equals(action)){
+			String password = request.getParamsMap().get("password");
+			String cardid = request.getParamsMap().get("cardid");
+			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+cardid+"' and state='1'");
+			if(list.size()==0){
+				request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>不存在!'}");
+				return request;
+			}else if(!list.get(0).getPassword().equals(password)){
+				request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>的密码错误!'}");
+				return request;
+			}
+			KtvStayInfo info = list.get(0);
+			long v = StringUtil.newInstance().subDate(new Date(), info.getOvertime(), Calendar.HOUR);
+			if(v>0){
+				request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>的已过期!'}");
+				return request;
+			}
+			info.setState("2");
+			info.setUpdtuser(user.getUserId());
+			info.setUpdttime(new Date());
+			hibernateSessionDAO.update(info);
+			request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>的卡已成功取出!!'}");
 		}
 		return request;
 	}
