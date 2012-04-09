@@ -113,7 +113,7 @@ Ext.onReady(function(){
  			startDate:curentStartDate,
  			endDate:curentEndDate
  		},
- 		groupField: 'footname'
+ 		groupField: 'materialname'
         /*,sortInfo: {field: 'lastnumber', direction: 'DESC'}*/
     });
     
@@ -154,7 +154,7 @@ Ext.onReady(function(){
 	            summaryType: 'count',
 	            summaryRenderer: function(v, params, data){
 	                return ((v === 0 || v > 1) ? '(原材料' + v +' 个)' : '(原材料1 个)');
-	            },
+	            }/*,
 	            renderer: function(value,data,o){
 	            	var unitname = o.data.unitname;
 	            	var temp = "";
@@ -162,7 +162,7 @@ Ext.onReady(function(){
 	            		temp = ""+unitname+"";
 	            	}
 	            	return value+" 销售量:<font color='red' style='font-weight:normal;line-height:10px;'>"+o.data.sellamount+"</font>&nbsp;&nbsp;&nbsp;&nbsp;月销售:<font color='red' style='font-weight:normal;line-height:10px;'>"+Ext.util.Format.number(o.data.sellpay,"￥0,0.00")+"</font>";
-	            }
+	            }*/
 	        },{
 	            header: '原材料',
 	            dataIndex: 'materialname',
@@ -171,12 +171,40 @@ Ext.onReady(function(){
 	            summaryType: 'count',
 	            summaryRenderer: function(v, params, data){
 	                return ((v === 0 || v > 1) ? '(原材料' + v +' 个)' : '(原材料1 个)');
+	            },
+	            renderer: function(value,data,o){
+	            	var unitname = o.data.unitname;
+	            	var temp = "";
+	            	if(typeof(unitname)!="undefined"){
+	            		temp = ""+unitname+"";
+	            	}
+	            	return value+" 月进货量:<font color='red' style='font-weight:normal;line-height:10px;'>"+o.data.monthinput+"</font>&nbsp;&nbsp;&nbsp;&nbsp;"+
+	            			"月初实际库存:<font color='red' style='font-weight:normal;line-height:10px;'>"+o.data.monthinit+"</font>&nbsp;&nbsp;&nbsp;&nbsp;"+
+	            			"月末实际库存:<font color='red' style='font-weight:normal;line-height:10px;'>"+o.data.monthend+"</font>&nbsp;&nbsp;&nbsp;&nbsp;"+
+	            			"月末理论库存:<font color='red' style='font-weight:normal;line-height:10px;'>"+o.data.monthshouldend+"</font>&nbsp;&nbsp;&nbsp;&nbsp;"+
+	            			"原材料单价:<font color='red' style='font-weight:normal;line-height:10px;'>"+Ext.util.Format.number(o.data.materialcost,"￥0,0.00")+"</font>&nbsp;&nbsp;&nbsp;&nbsp;";
 	            }
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '菜品月销售量',
+	            dataIndex: 'sellamount',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterUnit
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '菜品月销售额',
+	            dataIndex: 'sellpay',
+	            format:'￥0,0.00',
+	            summaryType: 'sum',
+	            sortable: true,
+	            renderer:filterUnit
 	        },{
 	        	xtype: 'numbercolumn',
 	            header: '原材料月进货量',
 	            dataIndex: 'monthinput',
 	            summaryType: 'sum',
+	            hidden: true,
 	            sortable: true,
 	            renderer:filterUnit
 	        },{
@@ -184,6 +212,7 @@ Ext.onReady(function(){
 	            header: '原材料月初实际库存',
 	            dataIndex: 'monthinit',
 	            summaryType: 'sum',
+	            hidden: true,
 	            sortable: true,
 	            renderer:filterUnit
 	        },{
@@ -191,12 +220,14 @@ Ext.onReady(function(){
 	            header: '原材料月末实际库存',
 	            dataIndex: 'monthend',
 	            summaryType: 'sum',
+	            hidden: true,
 	            sortable: true,
 	            renderer:filterUnit
 	        },{
 	            header: '原材料月末理论库存',
 	            dataIndex: 'monthshouldend',
 	            summaryType: 'sum',
+	            hidden: true,
 	            sortable: true,
 	            renderer:filterNumber
 	        },{
@@ -204,6 +235,7 @@ Ext.onReady(function(){
 	            header: '原材料单价',
 	            dataIndex: 'materialcost',
 	            summaryType: 'sum',
+	            hidden: true,
 	            sortable: true,
 	            format:"￥0,0.00",
 	            renderer:filterUnit
@@ -223,7 +255,7 @@ Ext.onReady(function(){
 	            renderer:filterUnit
 	        },{
 	        	xtype: 'numbercolumn',
-	            header: '退菜原材料量/单',
+	            header: '原材料消耗量/单',
 	            dataIndex: 'materialamount',
 	            summaryType: 'sum',
 	            sortable: true,
@@ -249,14 +281,6 @@ Ext.onReady(function(){
 	            summaryType: 'sum',
 	            sortable: true,
 	            format:"￥0,0.00",
-	            renderer:filterUnit
-	        },{
-	        	xtype: 'numbercolumn',
-	            header: '菜品销售量',
-	            dataIndex: 'sellamount',
-	            summaryType: 'sum',
-	            sortable: true,
-	            hidden:true,
 	            renderer:filterUnit
 	        }
 	        /**
