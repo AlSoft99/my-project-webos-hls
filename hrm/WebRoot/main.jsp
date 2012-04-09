@@ -33,7 +33,7 @@
 		<link rel='stylesheet' type='text/css' href='<%=path%>/js/calendar/examples/redmond/theme.css' /> 
 		<link rel='stylesheet' type='text/css' href='<%=path%>/js/calendar/fullcalendar.css' />
 		<link rel="stylesheet" type="text/css" href="<%=path%>/ext/resources/css/ext-all.css" />
-		<link rel="stylesheet" type="text/css" href="<%=path%>/css/file-upload.css" />
+		<%-- <link rel="stylesheet" type="text/css" href="<%=path%>/css/file-upload.css" /> --%>
 		<link rel="stylesheet" type="text/css" href="<%=path%>/css/layout-browser.css" />
 		<link rel="stylesheet" type="text/css" href="<%=path%>/css/tabs/tab-scroller-menu.css" />
 		<link rel="stylesheet" type="text/css" href="<%=path%>/css/tabs/tab-scroller-menu.gif" />

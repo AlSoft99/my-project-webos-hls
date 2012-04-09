@@ -43,7 +43,16 @@ Ext.onReady(function(){
     	},{
     		header:"状态",
     		sortable: true,
-    		dataIndex:"statename"
+    		dataIndex:"statename",
+    		renderer: function(value,data,o){
+    			var state = o.data.state;
+    			if(state=="3"){
+    				return "<font color=red>"+value+"</font>";
+    			}else if(state=="1"){
+    				return "<font color=green>"+value+"</font>";
+    			}
+    			return value;
+    		}
     	},{
     		xtype : 'numbercolumn',
     		header:"保存天数",
@@ -177,6 +186,26 @@ Ext.onReady(function(){
 	    	});
 	    }
 	});
+    var cardidQuery = new Ext.form.TextField({
+    	name      : 'cardid',
+	    fieldLabel: 'Card ID',
+	    anchor    : '-20',
+	    width:150,
+	    allowBlank:true,
+	    emptyText:"查询卡号",
+	    readOnly:true
+    });
+    var cardbtnQuery = new Ext.Button({
+		xtype     : 'button',
+	    name      : 'email',
+	    iconCls: 'page_find',
+	    width: 23,
+	    handler:function(){
+	    	scanCard(function(cardnumber){
+	    		cardidQuery.setValue(cardnumber);
+	    	});
+	    }
+	});
     
     var cash = new Ext.form.NumberField({
     	name      : 'cash',
@@ -304,7 +333,10 @@ Ext.onReady(function(){
         });
         cash.on("specialkey",function(field, e){
         	if (e.getKey() == Ext.EventObject.ENTER) {
-        		form.getComponent(0).getComponent(7).focus();
+        		setTimeout(function(){
+        			form.getComponent(0).getComponent(7).focus();
+        		},50);
+        		
         	}
         });
     })();
@@ -457,6 +489,9 @@ Ext.onReady(function(){
             }
         }]
     });
+	var comboBoxState = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='KTV_STATE' order by paramscode", "", "");
+	comboBoxState.allowBlank = true;
+	comboBoxState.emptyText = "默认为全部";
 	var test = true;
   	var grid = new Ext.grid.GridPanel({
     	el:"ktv_stay_manager_table",
@@ -617,7 +652,15 @@ Ext.onReady(function(){
             		
             	});
             }
-        }],
+        },"-",cardidQuery,cardbtnQuery,comboBoxState,{
+			text:"查询",
+			iconCls:"icon-grid",
+			tooltip:'默认为当天查询',
+			handler:function(event,mouse){
+				
+				listenerEvent.loadGrid();
+			}
+		}],
     	bbar:new Ext.PagingToolbar({
 		    pageSize:10,
 		    store:ds,
@@ -714,9 +757,23 @@ Ext.onReady(function(){
   	
   	var listenerEvent = {
         loadGrid: function () {
+        	var where1 = "";
+        	if(comboBoxState.getValue()!="" && typeof(comboBoxState.getValue())!="undefined"){
+        		where1 = " and a.state='"+comboBoxState.getValue()+"' ";
+        	}else{
+        		where1 = "";
+        	}
+        	var where2 = "";
+        	if(cardidQuery.getValue()!="" && typeof(cardidQuery.getValue())!="undefined"){
+        		where2 = " and a.cardid='"+cardidQuery.getValue()+"' ";
+        	}else{
+        		where2 = "";
+        	}
         	ds.baseParams.sql = "SQL-4";
         	ds.baseParams.action = "hql";
         	ds.baseParams.type = "map";
+        	ds.baseParams["{0}"] = where1;
+        	ds.baseParams["{1}"] = where2;
             ds.load({
                 params: {
                     start: 0,

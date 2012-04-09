@@ -47,8 +47,10 @@ public class KtvStayInfoVo implements BaseVo {
 			request.setResponse(gson.toJson(list));
 		}else if("update".equals(action)){
 			KtvStayInfo info = (KtvStayInfo)request.getEntity();
+			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+info.getCardid()+"' and state='1'");
 			int day = info.getDay();
 			Date overtime = StringUtil.newInstance().dateAdd(new Date(), day);
+			info.setPassword(list.get(0).getPassword());
 			info.setOvertime(overtime);
 			info.setState("1");
 			info.setUpdtuser(user.getUserId());

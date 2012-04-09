@@ -69,8 +69,14 @@ public class StatQuzrtzVo {
 		//清算日常检查
 		checkDayClear();
 		checkStoreList();
+		//检查KTV的保存物品是否过期
+		checkKtvStore();
 	}
-	
+	private void checkKtvStore(){
+		System.out.println("==============CURRENT_TIMECURRENT_TIME=================");
+		
+		hibernateSessionDAO.createHqlExcute("update KtvStayInfo set state='3' where overtime<'"+StringUtil.newInstance().getCurrentDate()+"'");
+	}
 	public void checkStoreList(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");
 		String storedate = sdf.format(new Date());
