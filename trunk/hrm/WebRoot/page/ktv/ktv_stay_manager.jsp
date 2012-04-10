@@ -37,5 +37,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div id="ktv_stay_manager_table"></div>
+    <div id="tree-div"></div>
   </body>
 </html>

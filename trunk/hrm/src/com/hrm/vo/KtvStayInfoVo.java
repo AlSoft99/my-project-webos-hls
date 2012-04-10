@@ -26,9 +26,9 @@ public class KtvStayInfoVo implements BaseVo {
 		UserInfo user = (UserInfo)request.getUserInfo();
 		if("insert".equals(action)){
 			KtvStayInfo info = (KtvStayInfo)request.getEntity();
-			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+info.getCardid()+"' and state='1'");
+			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+info.getCardid()+"' and (state='1' or state='3')");
 			if(list.size()>0){
-				request.setResponse("{success:false,msg:'卡号为<font color=red>"+info.getCardid()+"</font>的卡已被使用!!'}");
+				request.setResponse("{success:false,msg:'卡号为<font color=red>"+info.getCardid()+"</font>的卡已被使用或者已过期!!'}");
 				return request;
 			}
 			
@@ -75,6 +75,16 @@ public class KtvStayInfoVo implements BaseVo {
 			String cardid = request.getParamsMap().get("cardid");
 			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+cardid+"' and state='1'");
 			if(list.size()==0){
+				List<KtvStayInfo> listOver = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+cardid+"' and state='3'");
+				if(listOver.size()>0){
+					if(!listOver.get(0).getPassword().equals(password)){
+						request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>的密码错误!'}");
+						return request;
+					}
+					request.setResponse("{success:true,msg:'overtime'}");
+					return request;
+				}
+				
 				request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>不存在!'}");
 				return request;
 			}else if(!list.get(0).getPassword().equals(password)){
@@ -82,16 +92,46 @@ public class KtvStayInfoVo implements BaseVo {
 				return request;
 			}
 			KtvStayInfo info = list.get(0);
-			long v = StringUtil.newInstance().subDate(new Date(), info.getOvertime(), Calendar.HOUR);
-			if(v>0){
-				request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>的已过期!'}");
-				return request;
-			}
+			
 			info.setState("2");
 			info.setUpdtuser(user.getUserId());
 			info.setUpdttime(new Date());
 			hibernateSessionDAO.update(info);
 			request.setResponse("{success:true,msg:'卡号为<font color=red>"+cardid+"</font>的卡已成功取出!!'}");
+		}else if("changeState".equals(action)){
+			String cardid = request.getParamsMap().get("cardid");
+			String state = request.getParamsMap().get("state");
+			List<KtvStayInfo> list = hibernateSessionDAO.createHqlQuery("from KtvStayInfo where cardid='"+cardid+"' and state='3'");
+			KtvStayInfo ktv = list.get(0);
+			ktv.setState(state);
+			ktv.setUpdtuser(user.getUserId());
+			ktv.setUpdttime(new Date());
+			hibernateSessionDAO.update(ktv);
+			request.setResponse("卡号为<font color=red>"+cardid+"</font>的卡操作成功!!");
+		}else if("treeLoader".equals(action)){
+			request.setResponse("[" +
+					"{\"text\": \"To Do\", \"cls\": \"folder\",\"expanded\": true," +
+						"\"children\": " +
+							"[" +
+								"{\"text\": \"Go jogging\",\"leaf\": true,\"checked\": true}," +
+								"{\"text\": \"Take a nap\",\"leaf\": true,\"checked\": false}," +
+								"{\"text\": \"Climb Everest\",\"leaf\": true,\"checked\": false}" +
+							"]" +
+					"}," +
+					"{\"text\": \"Grocery List\",\"cls\": \"folder\",\"children\": " +
+						"[" +
+							"{\"text\": \"Bananas\",\"leaf\": true,\"checked\": false}," +
+							"{\"text\": \"Milk\",\"leaf\": true,\"checked\": false}," +
+							"{\"text\": \"Cereal\",\"leaf\": true,\"checked\": false}," +
+							"{\"text\": \"Energy foods\",\"cls\": \"folder\",\"children\": " +
+								"[" +
+									"{\"text\": \"Coffee\",\"leaf\": true,\"checked\": false}," +
+									"{\"text\": \"Red Bull\",\"leaf\": true,\"checked\": false}" +
+								"]" +
+							"}" +
+						"]" +
+					"}" +
+					"]");
 		}
 		return request;
 	}
