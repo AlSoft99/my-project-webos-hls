@@ -8,6 +8,7 @@ Ext.onReady(function(){
         }
 
 	});
+	
 	var cm = new Ext.grid.ColumnModel([
 		new Ext.grid.RowNumberer(),
 		//sm,
@@ -141,29 +142,66 @@ Ext.onReady(function(){
             root: "root"
         }, goods)
     });
-  	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialTypeKtv a", "酒水种类", "materialtype");
-    var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a", "酒水名称", "materialid");
-    comboBoxType.emptyText = "过滤酒水";
-    comboBoxType.allowBlank = true;
-    comboBoxName.allowBlank = false;
-    comboBoxType.on("change",function(obj, option){
-    	if(option==""){
-    		comboBoxName.getStore().load({
+  	
+    var CreateCombox = function(){
+    	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialTypeKtv a", "酒水种类", "materialtype");
+        var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a", "酒水名称", "materialid");
+        console.log(comboBoxType);
+        comboBoxType.emptyText = "过滤酒水";
+        comboBoxType.allowBlank = true;
+        comboBoxName.allowBlank = false;
+        comboBoxType.on("change",function(obj, option){
+        	if(option==""){
+        		comboBoxName.getStore().load({
+                    params: {
+                        sql: "select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a "
+                    }
+                });
+        	}
+        });
+        comboBoxType.on("select", function (obj, option) {
+            var roleCode = option.data.value;
+            comboBoxName.getStore().load({
                 params: {
-                    sql: "select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a "
+                    sql: "select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a where a.typeid='" + roleCode + "'"
                 }
             });
-    	}
-    });
-    comboBoxType.on("select", function (obj, option) {
-        var roleCode = option.data.value;
-        comboBoxName.getStore().load({
-            params: {
-                sql: "select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a where a.typeid='" + roleCode + "'"
-            }
+            comboBoxName.setValue("");
         });
-        comboBoxName.setValue("");
-    });
+        var dayspinner = new Ext.ux.form.SpinnerField({
+      		xtype: 'spinnerfield',
+        	fieldLabel: '数量',
+        	name: 'day',
+        	minValue: 0,
+        	width:40,
+        	maxValue: 100,
+        	value: 1,
+        	allowDecimals: true,
+        	decimalPrecision: 1,
+        	allowBlank:false,
+        	incrementValue: 1,
+        	//alternateIncrementValue: 2.1,
+        	accelerate: true
+      	});
+        var deleteBtn = new Ext.Button({
+    		xtype     : 'button',
+    	    iconCls: 'page_find',
+    	    width: 23,
+    	    handler:function(){
+    	    	
+    	    }
+    	});
+        return [comboBoxType,comboBoxName,dayspinner,deleteBtn];
+    };
+    var CreateCompositeField = function(){
+    	var tempCombox = new CreateCombox();
+    	var field = new Ext.form.CompositeField({
+    		fieldLabel:"酒水管理",
+    		items: tempCombox
+    	});
+    	return field;
+    };
+    var initCombox = new CreateCombox();
     
     var cardid = new Ext.form.TextField({
     	name      : 'cardid',
@@ -184,6 +222,18 @@ Ext.onReady(function(){
 	    		console.log(form.getComponent(0).getComponent(2));
 	    		form.getComponent(0).getComponent(2).focus();
 	    	});
+	    }
+	});
+    var cardadd = new Ext.Button({
+		xtype     : 'button',
+	    name      : 'email',
+	    iconCls: 'page_find',
+	    width: 23,
+	    handler:function(){
+	    	var addCombox = new CreateCompositeField();
+	    	console.log(Ext.getCmp("drinkinfo"));
+	    	Ext.getCmp("drinkinfo").add(addCombox);
+	    	Ext.getCmp("drinkinfo").doLayout();
 	    }
 	});
     var cardidQuery = new Ext.form.TextField({
@@ -235,7 +285,6 @@ Ext.onReady(function(){
     dayspinner.on("spin",function(o){
     	cash.setValue(dayspinner.getValue());
     });
-    
 	var form = new Ext.form.FormPanel({
 	  	defaultType:"textfield",
 	  	labelAlign:"right",
@@ -272,14 +321,14 @@ Ext.onReady(function(){
     	  		listeners: {
     	  			specialkey: {
     	  				fn: function(o, evt) {
-    	  					comboBoxType.focus();
+    	  					dayspinner.focus();
     	  				},
     	  				scope: this
     	  			}
     	  		}
     	  	},
-    	  	comboBoxType,
-    	  	comboBoxName,
+    	  	/*initCombox1[0],
+    	  	initCombox1[1],*/
     	  	dayspinner,
     	  	cash,
     	  	{
@@ -288,6 +337,20 @@ Ext.onReady(function(){
     	  		fieldLabel:"保存描述",
     	  		allowBlank:false,
     	  		maxLength:200
+    	  	}]
+        },{
+            xtype:'fieldset',
+            title: '酒水信息',
+            id: 'drinkinfo',
+            collapsible: true,
+            autoHeight:true,
+            defaults: {width: 380},
+            defaultType: 'textfield',
+            items :[{
+    	  		xtype: 'compositefield',
+    	    	fieldLabel:"酒水管理",
+    	    	items:[initCombox[0],initCombox[1],initCombox[2],cardadd]
+    	  		
     	  	}]
         },{
             xtype:'fieldset',
@@ -314,7 +377,7 @@ Ext.onReady(function(){
         }]
 	});
 	(function(){
-    	comboBoxType.on("specialkey",function(field, e){
+    	/*comboBoxType.on("specialkey",function(field, e){
     		if (e.getKey() == Ext.EventObject.ENTER) {    //触发了listener后，如果按回车，执行相应的方法
     			comboBoxName.focus();
             }
@@ -324,7 +387,7 @@ Ext.onReady(function(){
         		dayspinner.focus();
         	}
         	
-        });
+        });*/
         dayspinner.on("specialkey",function(field, e){
         	if (e.getKey() == Ext.EventObject.ENTER) {
         		cash.focus();
@@ -636,6 +699,7 @@ Ext.onReady(function(){
             	});
             }
         },"-",{
+        	
         	text:'归还卡号',
             tooltip:'取出一条卡号记录',
             iconCls:'icon_package_open',
@@ -662,7 +726,7 @@ Ext.onReady(function(){
 			}
 		}],
     	bbar:new Ext.PagingToolbar({
-		    pageSize:10,
+		    pageSize:15,
 		    store:ds,
 		    displayInfo:true,
 		    displayMsg:"显示第{0}条到{1}条记录,一共{2}条记录",
@@ -675,15 +739,88 @@ Ext.onReady(function(){
     	if(basicForm.isValid()){
     		basicForm.submit({
     			success:function(form,action){
-    				Ext.MessageBox.show({
-    					title:"成功提示",
-    					msg:action.result.msg,
-    					buttons:Ext.MessageBox.OK,
-    					icon:Ext.MessageBox.INFO
-    				});
     				winPsd.hide();
     				basicForm.reset();
-    				ds.reload();
+    				if(action.result.msg!="overtime"){
+    					Ext.MessageBox.show({
+        					title:"成功提示",
+        					msg:action.result.msg,
+        					buttons:Ext.MessageBox.OK,
+        					icon:Ext.MessageBox.INFO
+        				});
+        				
+        				ds.reload();
+    				}else{
+    					Ext.Msg.show({   
+    						title: '过期警告!',   
+    						msg: '卡号为:<font color=red>'+inputPsdCard+'</font>已过期!<br>如果经过经理书面同意领取货物, 请点击<font color=red>过期取货&收卡</font>!! <br>否则如果客户同意收卡, 请点击<font color=red>过期收卡</font>!! <br>客户不同意, 请点击<font color=red>取消</font>!!',   
+    						width:400,   
+    						buttons: {yes : "过期取货&收卡",no:"过期收卡",cancel : "取消"},   
+    						multiline: false,   
+    						icon: Ext.MessageBox.WARNING,
+    						fn: function showResultText(btn, text){
+    							console.log(btn);
+    					        if(btn=="yes"){
+    					        	Ext.Ajax.request({
+    			            			url: 'ktvStayInfoVo.do',
+    			            			success: function(o){
+    			            				Ext.MessageBox.show({
+    			    	    					title:"操作提示",
+    			    	    					msg:o.responseText,
+    			    	    					buttons:Ext.MessageBox.OK,
+    			    	    					icon:Ext.MessageBox.INFO
+    			    	    				});
+    			            				ds.reload();
+    			            			},
+    			            			failure: function(o){
+    			            				Ext.MessageBox.show({
+    			    	    					title:"错误提示",
+    			    	    					msg:o.responseText,
+    			    	    					buttons:Ext.MessageBox.OK,
+    			    	    					icon:Ext.MessageBox.ERROR
+    			    	    				});
+    			            			},
+    			            			params: { 
+    			            				cardid:"111111111" , 
+    			            				//cardid:inputPsdCard,
+    			            				action:"changeState",
+    			            				state:"4"
+    			            			}
+    			        			});
+    					        }else if(btn=="no"){
+    					        	Ext.Ajax.request({
+    			            			url: 'ktvStayInfoVo.do',
+    			            			success: function(o){
+    			            				Ext.MessageBox.show({
+    			    	    					title:"操作提示",
+    			    	    					msg:o.responseText,
+    			    	    					buttons:Ext.MessageBox.OK,
+    			    	    					icon:Ext.MessageBox.INFO
+    			    	    				});
+    			            				ds.reload();
+    			            			},
+    			            			failure: function(o){
+    			            				Ext.MessageBox.show({
+    			    	    					title:"错误提示",
+    			    	    					msg:o.responseText,
+    			    	    					buttons:Ext.MessageBox.OK,
+    			    	    					icon:Ext.MessageBox.ERROR
+    			    	    				});
+    			            			},
+    			            			params: { 
+    			            				cardid:"111111111" , 
+    			            				//cardid:inputPsdCard,
+    			            				action:"changeState",
+    			            				state:"5"
+    			            			}
+    			        			});
+    					        }else if(btn=="cancel"){
+    					        	
+    					        }
+    					        return false;
+    					    }
+    					});
+    				}
     			},
     			failure:function(form,action){
     				Ext.MessageBox.show({
@@ -777,7 +914,7 @@ Ext.onReady(function(){
             ds.load({
                 params: {
                     start: 0,
-                    limit: 20
+                    limit: 15
                 }
             });
         }
