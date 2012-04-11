@@ -8,9 +8,16 @@ Ext.onReady(function(){
         }
 
 	});
-	
+	var expander = new Ext.ux.grid.RowExpander({
+        tpl : new Ext.Template(
+            '<p><b>货物名称:</b> </p><br>',
+            '<p><b>总数量差异:</b> </p><br>',
+            '<p><b>销售总数量差异:</b> </p><br>',
+            '<p><b>剩余库存差异:</b> </p><br>'
+        )
+    });
 	var cm = new Ext.grid.ColumnModel([
-		new Ext.grid.RowNumberer(),
+		expander,
 		//sm,
 		{
 			header:"ID",
@@ -146,7 +153,6 @@ Ext.onReady(function(){
     var CreateCombox = function(){
     	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialTypeKtv a", "酒水种类", "materialtype");
         var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a", "酒水名称", "materialid");
-        console.log(comboBoxType);
         comboBoxType.emptyText = "过滤酒水";
         comboBoxType.allowBlank = true;
         comboBoxName.allowBlank = false;
@@ -171,7 +177,7 @@ Ext.onReady(function(){
         var dayspinner = new Ext.ux.form.SpinnerField({
       		xtype: 'spinnerfield',
         	fieldLabel: '数量',
-        	name: 'day',
+        	name: 'count',
         	minValue: 0,
         	width:40,
         	maxValue: 100,
@@ -183,18 +189,21 @@ Ext.onReady(function(){
         	//alternateIncrementValue: 2.1,
         	accelerate: true
       	});
-        var deleteBtn = new Ext.Button({
-    		xtype     : 'button',
-    	    iconCls: 'page_find',
-    	    width: 23,
-    	    handler:function(){
-    	    	
-    	    }
-    	});
-        return [comboBoxType,comboBoxName,dayspinner,deleteBtn];
+        
+        return [comboBoxType,comboBoxName,dayspinner];
     };
     var CreateCompositeField = function(){
     	var tempCombox = new CreateCombox();
+    	
+    	var deleteBtn = new Ext.Button({
+    		xtype     : 'button',
+    	    iconCls: 'remove',
+    	    width: 23,
+    	    handler:function(o,e){
+    	    	Ext.getCmp("drinkinfo").remove(field);
+    	    }
+    	});
+    	tempCombox.push(deleteBtn);
     	var field = new Ext.form.CompositeField({
     		fieldLabel:"酒水管理",
     		items: tempCombox
@@ -219,7 +228,6 @@ Ext.onReady(function(){
 	    handler:function(){
 	    	scanCard(function(cardnumber){
 	    		cardid.setValue(cardnumber);
-	    		console.log(form.getComponent(0).getComponent(2));
 	    		form.getComponent(0).getComponent(2).focus();
 	    	});
 	    }
@@ -227,11 +235,11 @@ Ext.onReady(function(){
     var cardadd = new Ext.Button({
 		xtype     : 'button',
 	    name      : 'email',
-	    iconCls: 'page_find',
+	    iconCls: 'add',
+	    frame: false,
 	    width: 23,
 	    handler:function(){
 	    	var addCombox = new CreateCompositeField();
-	    	console.log(Ext.getCmp("drinkinfo"));
 	    	Ext.getCmp("drinkinfo").add(addCombox);
 	    	Ext.getCmp("drinkinfo").doLayout();
 	    }
@@ -403,21 +411,15 @@ Ext.onReady(function(){
         	}
         });
     })();
+	var driverObj = new Array();
 	var resetForm = function(){
 		cardbtn.setDisabled(false);
 		form.getComponent(0).getComponent(2).setDisabled(false);
+		var fieldset = Ext.getCmp("drinkinfo").items.items;
+		for( var i=fieldset.length-1; i>0; i-- ){
+			Ext.getCmp("drinkinfo").remove(fieldset[i]);
+		}
 		form.getForm().reset();
-		/*cardid.setValue("");
-    	comboBoxName.setValue("");
-    	form.getComponent(0).getComponent(0).setValue("");
-    	form.getComponent(0).getComponent(2).setValue("");
-    	form.getComponent(0).getComponent(2).setDisabled(false);
-    	form.getComponent(0).getComponent(5).setValue(10);
-    	form.getComponent(0).getComponent(6).setValue(10);
-    	form.getComponent(0).getComponent(7).setValue("");
-    	form.getComponent(1).getComponent(0).setValue("");
-    	form.getComponent(1).getComponent(1).setValue("");
-    	form.getComponent(1).getComponent(2).setValue("");*/
 	}
 	var myMask = new Ext.LoadMask(Ext.getBody(), {msg:"正在等待刷卡....(按<font color='red'>回车</font>取消)"});
 	
@@ -458,6 +460,17 @@ Ext.onReady(function(){
 	var submit = function(){
     	var basicForm = form.getForm();
     	if(basicForm.isValid()){
+    		var fieldset = Ext.getCmp("drinkinfo").items.items;
+    		var materialid = "";
+    		var count = "";
+    		for( var i=fieldset.length-1; i>=0; i-- ){
+    			materialid += fieldset[i].items.items[1].getValue()+",";
+    			count += fieldset[i].items.items[2].getValue()+",";
+    		}
+    		materialid = materialid.substring(0, materialid.length-1);
+    		count = count.substring(0, count.length-1);
+    		console.log(materialid);
+    		console.log(count);
     		basicForm.submit({
     			success:function(form,action){
     				Ext.MessageBox.show({
@@ -471,12 +484,12 @@ Ext.onReady(function(){
     				winAdd.hide();
     			},params:{
     				action:"insert",
-    				entity:"com.hrm.entity.KtvStayInfo"
+    				entity:"com.hrm.entity.KtvStayInfo",
+    				materialid:materialid,
+    				count:count
     			},
     			waitMsg:"Loading",
     			failure:function(form,action){
-    				console.log(form);
-    				console.log(action);
     				Ext.MessageBox.show({
     					title:"操作提示",
     					msg:action.result.msg,
@@ -563,6 +576,7 @@ Ext.onReady(function(){
     	sm:sm,
     	loadMask:true,
     	autoHeight:true,
+    	plugins: expander,
     	title:'卡号管理',
     	iconCls:"icon-grid",
     	//自动填充表格宽度
@@ -759,7 +773,6 @@ Ext.onReady(function(){
     						multiline: false,   
     						icon: Ext.MessageBox.WARNING,
     						fn: function showResultText(btn, text){
-    							console.log(btn);
     					        if(btn=="yes"){
     					        	Ext.Ajax.request({
     			            			url: 'ktvStayInfoVo.do',

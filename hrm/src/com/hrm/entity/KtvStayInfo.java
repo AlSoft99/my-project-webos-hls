@@ -16,8 +16,6 @@ public class KtvStayInfo {
 	private String otherdesc;
 	//身份证
 	private String idcard;
-	//酒水ID
-	private String materialid;
 	//状态  1=保存酒水, 2=取出酒水, 3=过期, 0=删除, 4=过期取货, 5=过期收卡
 	private String state;
 	//保存天数
@@ -47,12 +45,6 @@ public class KtvStayInfo {
 	}
 	public void setCash(Float cash) {
 		this.cash = cash;
-	}
-	public String getMaterialid() {
-		return materialid;
-	}
-	public void setMaterialid(String materialid) {
-		this.materialid = materialid;
 	}
 	public String getState() {
 		return state;

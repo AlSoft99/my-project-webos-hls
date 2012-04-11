@@ -1,6 +1,5 @@
 package com.hrm.vo;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +8,7 @@ import com.google.gson.Gson;
 import com.hrm.control.Request;
 import com.hrm.dao.HibernateSessionDAO;
 import com.hrm.entity.KtvStayInfo;
+import com.hrm.entity.KtvStayList;
 import com.hrm.entity.UserInfo;
 import com.hrm.util.StringUtil;
 
@@ -39,6 +39,19 @@ public class KtvStayInfoVo implements BaseVo {
 			info.setUpdtuser(user.getUserId());
 			info.setUpdttime(new Date());
 			hibernateSessionDAO.save(info);
+			String materialid = request.getParamsMap().get("materialid");
+			String count = request.getParamsMap().get("count");
+			String[] materiallist = materialid.split(",");
+			String[] countlist = count.split(",");
+			for(int i = 0 ; i < materiallist.length; i++ ){
+				KtvStayList temp = new KtvStayList();
+				temp.setCount(Integer.valueOf(countlist[i]));
+				temp.setKtvid(info.getId());
+				temp.setMaterialid(materiallist[i]);
+				temp.setUpdtuser(user.getUserId());
+				temp.setUpdttime(new Date());
+				hibernateSessionDAO.save(temp);
+			}
 			request.setResponse("{success:true,msg:'卡号为<font color=red>"+info.getCardid()+"</font>已添加成功!'}");
 		}else if("queryCard".equals(action)){
 			String cardid = request.getParamsMap().get("cardid");
