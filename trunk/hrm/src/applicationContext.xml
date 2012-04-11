@@ -101,6 +101,7 @@
 				<value>com/hrm/entity/OrderOutputBackInfo.hbm.xml</value>
 				<value>com/hrm/entity/OrderOutputBackList.hbm.xml</value>
 				<value>com/hrm/entity/KtvStayInfo.hbm.xml</value>
+				<value>com/hrm/entity/KtvStayList.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

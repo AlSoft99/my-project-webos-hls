@@ -29,10 +29,6 @@
 			type="java.lang.String">
 			<column length="50" name="idcard" />
 		</property>
-		<property generated="never" lazy="false" name="materialid"
-			type="java.lang.String">
-			<column length="50" name="materialid" />
-		</property>
 		<property generated="never" lazy="false" name="state"
 			type="java.lang.String">
 			<column length="50" name="state" />
