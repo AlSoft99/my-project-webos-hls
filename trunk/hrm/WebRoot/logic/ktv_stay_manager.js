@@ -8,13 +8,46 @@ Ext.onReady(function(){
         }
 
 	});
+	var template = new Ext.Template(
+            '{id:this.parseStature()}'
+        );
+	
+	template.parseStature = function(id){
+		var result = "";
+		Ext.Ajax.request({
+            url: "ktvStayInfoVo.do",    
+            method: "GET",
+            async : false,   //ASYNC 是否异步( TRUE 异步 , FALSE 同步)
+            params: {                                    //将真正的页面（服务）url参数传递到代理页面
+                action: "queryMaterial",
+                id: id
+            },
+            success: function(response, opts) {
+            	var content = "";
+            	var json = eval("("+response.responseText+")");
+            	for(var i=0;i<json.length;i++){
+            		content += "<p style='margin-left:10px;line-height:22px;'><b>"+json[i].materialname+"</b>: <font color=blue>"+json[i].count+"</font> "+json[i].unitname+"</p>";
+            	}
+            	result =  content;
+            }, //请求成功的回调函数 
+            failure: function() { 
+            	alert("获取目录请求失败！"); 
+            }  // 请求失败的回调函数
+        });
+		return result;
+		/*var conn = Ext.lib.Ajax.getConnectionObject().conn;
+		conn.open("GET", 'ktvStayInfoVo.do?action=queryMaterial&id='+id,false);
+		conn.send(null);
+		console.log(2);
+		var json = eval("("+response.responseText+")");
+    	for(var i=0;i<json.length;i++){
+    		content += "<p><b>"+json[i].materialname+"</b>: "+json[i].count+" "+json[i].unitname+"</p><br>";
+    	}
+    	console.log("content:"+content);
+    	return content;*/
+	}
 	var expander = new Ext.ux.grid.RowExpander({
-        tpl : new Ext.Template(
-            '<p><b>货物名称:</b> </p><br>',
-            '<p><b>总数量差异:</b> </p><br>',
-            '<p><b>销售总数量差异:</b> </p><br>',
-            '<p><b>剩余库存差异:</b> </p><br>'
-        )
+        tpl : template
     });
 	var cm = new Ext.grid.ColumnModel([
 		expander,
@@ -30,15 +63,6 @@ Ext.onReady(function(){
 			dataIndex:"cardid",
 			sortable: true
 		},{
-    		header:"保存物品",
-    		dataIndex:"materialname",
-    		sortable: true
-    	},{
-    		header:"保存物品",
-    		dataIndex:"materialid",
-    		sortable: true,
-    		hidden: true
-    	},{
     		header:"附言",
     		sortable: true,
     		width:150,
@@ -469,8 +493,6 @@ Ext.onReady(function(){
     		}
     		materialid = materialid.substring(0, materialid.length-1);
     		count = count.substring(0, count.length-1);
-    		console.log(materialid);
-    		console.log(count);
     		basicForm.submit({
     			success:function(form,action){
     				Ext.MessageBox.show({
