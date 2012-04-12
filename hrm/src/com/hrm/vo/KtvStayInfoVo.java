@@ -145,6 +145,11 @@ public class KtvStayInfoVo implements BaseVo {
 						"]" +
 					"}" +
 					"]");
+		}else if("queryMaterial".equals(action)){
+			String id = request.getParamsMap().get("id");
+			List<Map<String,Object>> list = hibernateSessionDAO.createHqlQuery("select new map(a.id as id, a.ktvid as ktvid,a.materialid as materialid,a.count as count,b.paramsname as materialname,c.paramsname as unitname) from KtvStayList a,MaterialListKtv b,ParamsList c where b.unit=c.paramscode and c.typeid='KTV_UNIT' and a.materialid=b.id and a.ktvid='"+id+"'");
+			Gson g = new Gson();
+			request.setResponse(g.toJson(list));
 		}
 		return request;
 	}

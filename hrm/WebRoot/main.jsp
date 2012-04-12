@@ -55,6 +55,7 @@
 		</script>
 		<script type="text/javascript" src="<%=path%>/ext/adapter/ext/ext-base.js"></script>
 		<script type="text/javascript" src="<%=path%>/ext/ext-all-debug.js"></script>
+		<script type="text/javascript" src="<%=path%>/ext/ext-basex.js"></script>
 		<script type="text/javascript" src="<%=path%>/ext/src/locale/ext-lang-zh_CN.js"></script>
 		
 		<script type="text/javascript" src="<%=path%>/ext/ux/TabScrollerMenu.js"></script>
