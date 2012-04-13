@@ -25,9 +25,12 @@ Ext.onReady(function(){
             success: function(response, opts) {
             	var content = "";
             	var json = eval("("+response.responseText+")");
+            	var sum = 0;
             	for(var i=0;i<json.length;i++){
             		content += "<p style='margin-left:10px;line-height:22px;'><b>"+json[i].materialname+"</b>: <font color=blue>"+json[i].count+"</font> "+json[i].unitname+"</p>";
+            		sum += json[i].count;
             	}
+            	content += "<p style='margin-left:10px;line-height:22px;'><b>总数量: </b><font color=blue>"+sum+"</font></p>";
             	result =  content;
             }, //请求成功的回调函数 
             failure: function() { 
@@ -174,9 +177,9 @@ Ext.onReady(function(){
         }, goods)
     });
   	
-    var CreateCombox = function(){
+    var CreateCombox = function(fn,p){
     	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialTypeKtv a", "酒水种类", "materialtype");
-        var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a", "酒水名称", "materialid");
+        var comboBoxName = comboBoxList.comboBoxSql("select a.id,a.paramscode || '-' || a.paramsname from MaterialListKtv a", "酒水名称", "materialid",fn,p);
         comboBoxType.emptyText = "过滤酒水";
         comboBoxType.allowBlank = true;
         comboBoxName.allowBlank = false;
@@ -216,8 +219,8 @@ Ext.onReady(function(){
         
         return [comboBoxType,comboBoxName,dayspinner];
     };
-    var CreateCompositeField = function(){
-    	var tempCombox = new CreateCombox();
+    var CreateCompositeField = function(fn,p){
+    	var tempCombox = new CreateCombox(fn,p);
     	
     	var deleteBtn = new Ext.Button({
     		xtype     : 'button',
@@ -560,6 +563,15 @@ Ext.onReady(function(){
             handler	 : function(){
             	var basicForm = form.getForm();
             	if(basicForm.isValid()){
+            		var fieldset = Ext.getCmp("drinkinfo").items.items;
+            		var materialid = "";
+            		var count = "";
+            		for( var i=fieldset.length-1; i>=0; i-- ){
+            			materialid += fieldset[i].items.items[1].getValue()+",";
+            			count += fieldset[i].items.items[2].getValue()+",";
+            		}
+            		materialid = materialid.substring(0, materialid.length-1);
+            		count = count.substring(0, count.length-1);
             		basicForm.submit({
             			success:function(form,action){
             				Ext.MessageBox.show({
@@ -573,7 +585,9 @@ Ext.onReady(function(){
             				winUpdate.hide();
             			},params:{
             				action:"update",
-            				entity:"com.hrm.entity.KtvStayInfo"
+            				entity:"com.hrm.entity.KtvStayInfo",
+            				materialid:materialid,
+            				count:count
             			},
             			waitMsg:"Loading"
             		});
@@ -587,6 +601,12 @@ Ext.onReady(function(){
             }
         }]
     });
+	winAdd.on("hide",function(){
+		resetForm();
+	});
+	winUpdate.on("hide",function(){
+		resetForm();
+	});
 	var comboBoxState = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='KTV_STATE' order by paramscode", "", "");
 	comboBoxState.allowBlank = true;
 	comboBoxState.emptyText = "默认为全部";
@@ -635,70 +655,12 @@ Ext.onReady(function(){
             		if(number=="" && !test){
             			return;
             		}
-            		Ext.Ajax.request({
-            			url: 'ktvStayInfoVo.do',
-            			success: function(o){
-        					var data = eval("("+o.responseText+")");
-        					if(data.length>0){
-        						winUpdate.add(form);
-        						winUpdate.show();
-        						//console.log(form.getComponent(0).getComponent(0));
-        						var Record = Ext.data.Record.create([
-	                                 {name: 'cardid',     type: 'string'},
-	                                 {name: 'materialid',     type: 'string'},
-	                                 {name: 'id', type: 'string'},
-	                                 {name: 'password',  type: 'string'},
-	                                 {name: 'day',   type: 'string'},
-	                                 {name: 'otherdesc',   type: 'string'},
-	                                 {name: 'cash',   type: 'string'},
-	                                 {name: 'username',   type: 'string'},
-	                                 {name: 'moblie',   type: 'string'},
-	                                 {name: 'idcard',   type: 'string'}
-	                            ]);
-        						form.form.loadRecord(new Record({
-        	                        'cardid'    : data[0].cardid,
-        	                        'materialid'    : data[0].materialid,
-        	                        'id': data[0].id,
-        	                        'password' : '1',
-        	                        'day': data[0].day,
-        	                        'otherdesc'  : data[0].otherdesc,
-        	                        'cash'  : data[0].cash,
-        	                        'username'  : data[0].username,
-        	                        'moblie'  : data[0].moblie,
-        	                        'idcard'    : data[0].idcard
-        	                    }));
-        						cardbtn.setDisabled(true);
-        						form.getComponent(0).getComponent(2).setDisabled(true);
-        						/*cardid.setValue(data[0].cardid);
-        						cardid.originalValue="";
-        		            	comboBoxName.setValue(data[0].materialid);
-        		            	comboBoxName.originalValue="";
-        		            	form.getComponent(0).getComponent(0).setValue(data[0].id);
-        		            	form.getComponent(0).getComponent(2).setValue(1);
-        		            	form.getComponent(0).getComponent(2).setDisabled(true);
-        		            	form.getComponent(0).getComponent(5).setValue(data[0].day);
-        		            	form.getComponent(0).getComponent(7).setValue(data[0].otherdesc);
-        		            	form.getComponent(0).getComponent(6).setValue(data[0].cash);
-        		            	form.getComponent(1).getComponent(0).setValue(data[0].username);
-        		            	form.getComponent(1).getComponent(1).setValue(data[0].moblie);
-        		            	form.getComponent(1).getComponent(2).setValue(data[0].idcard);*/
-        		            	//form.getForm().loadRecord(data[0]);
-        		            	
-        		            	
-        					}else{
-        						Ext.MessageBox.show({
-        	    					title:"错误提示",
-        	    					msg:"未找到卡号为<font color=red>"+number+"</font>的记录!",
-        	    					buttons:Ext.MessageBox.OK,
-        	    					icon:Ext.MessageBox.ERROR
-        	    				});
-        					}
-            			},
-            			failure: function(o){
-        					
-            			},
-            			params: { cardid:"111111111" , action:"queryCard" }
-        			});
+            		inputPsdCard = number;
+            		winUpdtPsd.show();
+            		setTimeout(function(){
+            			inputPsd.focus();
+            		},300);
+            		
             	});
             	
             }
@@ -921,6 +883,137 @@ Ext.onReady(function(){
             text     : '关闭',
             handler  : function(){
             	winPsd.hide();
+            	formPsd.getForm().reset();
+            }
+        }]
+    });
+	var winUpdtPsd = new Ext.Window({
+        layout      : 'fit',
+        width       : 300,
+        title		: "输入密码",
+        height  	: 120,
+        modal		: false,
+        closeAction : 'hide',
+        loadMask:true,
+        allowDomMove: true,
+        bodyBorder 	: false,
+        plain       : true,
+        items       : [
+            formPsd
+		],
+        buttons: [{
+            text     : '保存',
+            handler	 : function(){
+            	var basicForm = formPsd.getForm();
+            	if(basicForm.isValid()){
+            		basicForm.submit({
+            			success:function(form,action){
+            				winUpdtPsd.hide();
+            				basicForm.reset();
+            				if(action.result.msg=="overtime"){
+            					Ext.Msg.show({   
+            						title: '过期警告!',   
+            						msg: '卡号为:<font color=red>'+inputPsdCard+'</font>已过期!!无法修改!!',   
+            						width:400,   
+            						buttons: {cancel : "确认"},   
+            						multiline: false,   
+            						icon: Ext.MessageBox.WARNING
+            					});
+            				}else if(action.result.msg=="success"){
+            					Ext.Ajax.request({
+                        			url: 'ktvStayInfoVo.do',
+                        			success: function(o){
+                    					var data = eval("("+o.responseText+")");
+                    					if(data.length>0){
+                    						winUpdate.add(form);
+                    						winUpdate.show();
+                    						//console.log(form.getComponent(0).getComponent(0));
+                    						var Record = Ext.data.Record.create([
+            	                                 {name: 'cardid',     type: 'string'},
+            	                                 {name: 'materialid',     type: 'string'},
+            	                                 {name: 'id', type: 'string'},
+            	                                 {name: 'password',  type: 'string'},
+            	                                 {name: 'day',   type: 'string'},
+            	                                 {name: 'otherdesc',   type: 'string'},
+            	                                 {name: 'cash',   type: 'string'},
+            	                                 {name: 'username',   type: 'string'},
+            	                                 {name: 'moblie',   type: 'string'},
+            	                                 {name: 'idcard',   type: 'string'}
+            	                            ]);
+                    						form.form.loadRecord(new Record({
+                    	                        'cardid'    : data[0].cardid,
+                    	                        'materialid'    : data[0].materialid,
+                    	                        'id': data[0].id,
+                    	                        'password' : '1',
+                    	                        'day': data[0].day,
+                    	                        'otherdesc'  : data[0].otherdesc,
+                    	                        'cash'  : data[0].cash,
+                    	                        'username'  : data[0].username,
+                    	                        'moblie'  : data[0].moblie,
+                    	                        'idcard'    : data[0].idcard
+                    	                    }));
+                    						cardbtn.setDisabled(true);
+                    						form.getComponent(0).getComponent(2).setDisabled(true);
+                    						var materialidlist = data[1].materialidlist.split(",");
+                    						var countlist = data[2].countlist.split(",");
+                    						var field = Ext.getCmp("drinkinfo");
+                    						(function(){
+                    							var temp = field.items.items[0];
+                    							temp.items.items[1].setValue(materialidlist[0]);
+                    							temp.items.items[2].setValue(countlist[0]);
+                    						})();
+                    		            	for(var i = 1; i < materialidlist.length; i++){
+                    		            		var index = i;
+                    		            		var addCombox = new CreateCompositeField(function(store,record,opts,p){
+                    		            			var temp = field.items.items[p.index];
+                    		            			temp.items.items[1].setValue(materialidlist[p.index]);
+                    		            			temp.items.items[2].setValue(countlist[p.index]);
+                    		            		},{
+                    		            			index: index
+                    		            		});
+                    		        	    	Ext.getCmp("drinkinfo").add(addCombox);
+                    		            	}
+                    		            	Ext.getCmp("drinkinfo").doLayout();
+                    		            	
+                    					}else{
+                    						Ext.MessageBox.show({
+                    	    					title:"错误提示",
+                    	    					msg:"未找到卡号为<font color=red>"+number+"</font>的记录!",
+                    	    					buttons:Ext.MessageBox.OK,
+                    	    					icon:Ext.MessageBox.ERROR
+                    	    				});
+                    					}
+                        			},
+                        			failure: function(o){
+                    					
+                        			},
+                        			params: { cardid:"111111111" , action:"queryCard" }
+                    			});
+            				}
+            				
+            			},
+            			failure:function(form,action){
+            				Ext.MessageBox.show({
+            					title:"错误提示",
+            					msg:action.result.msg,
+            					buttons:Ext.MessageBox.OK,
+            					icon:Ext.MessageBox.ERROR
+            				});
+            			},
+            			params:{
+            				action:"surePsd",
+            				password:inputPsd.getValue(),
+            				//cardid: inputPsdCard
+            				cardid: "111111111"
+            			},
+            			waitMsg:"Loading"
+            		});
+            	}
+          	}
+        },{
+            text     : '关闭',
+            handler  : function(){
+            	winUpdtPsd.hide();
             	formPsd.getForm().reset();
             }
         }]
