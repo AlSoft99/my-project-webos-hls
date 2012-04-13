@@ -73,9 +73,7 @@ public class StatQuzrtzVo {
 		checkKtvStore();
 	}
 	private void checkKtvStore(){
-		System.out.println("==============CURRENT_TIMECURRENT_TIME=================");
-		
-		hibernateSessionDAO.createHqlExcute("update KtvStayInfo set state='3' where overtime<'"+StringUtil.newInstance().getCurrentDate()+"'");
+		hibernateSessionDAO.createHqlExcute("update KtvStayInfo set state='3' where state='1' and overtime<'"+StringUtil.newInstance().getCurrentDate()+"'");
 	}
 	public void checkStoreList(){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMM");

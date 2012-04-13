@@ -108,7 +108,7 @@ var comboBoxList = {
 	  	displayField: "text",
 	  	hiddenName: "recuser"
 	}),
-	comboBoxSql:function(sql,fieldLabel,fieldName,fnt){
+	comboBoxSql:function(sql,fieldLabel,fieldName,fnt,p){
 		return new Ext.form.ComboBox({
 	  		name: fieldName,
 	  		fieldLabel: fieldLabel,
@@ -127,7 +127,7 @@ var comboBoxList = {
 				listeners:{
 					load:function(store,record,opts){
 						if(typeof(fnt)!="undefined"){
-							new fnt(store,record,opts);
+							fnt(store,record,opts,p);
 						}
 					}
 				}
