@@ -84,6 +84,16 @@
 						]]>
 					</value>
 				</entry>
+				<entry key="SQL-5">
+					<value>
+						<![CDATA[
+							select a.id as id,a.typeid as typeid,a.paramsname as materialname,b.typename as typename,
+							ifnull((select sum(ksl.count) from ktv_stay_list ksl,ktv_stay_info ksi where ksl.ktvid=ksi.id and (ksi.state='3' or ksi.state='5') and ksl.materialid=a.id),0) as count  
+							from material_list_ktv a, material_type_ktv b 
+							where a.typeid=b.id {0}
+						]]>
+					</value>
+				</entry>
 				<!-- <entry key="SQL-x">
 					<value>
 						<![CDATA[
