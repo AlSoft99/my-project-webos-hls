@@ -76,7 +76,11 @@ Ext.onReady(function(){
     		{name: "typeid", type: 'string'},
     		{name: "materialname", type: 'string'},
     		{name: "typename", type: 'string'},
-    		{name: "count", type: 'float'}
+    		{name: "count", type: 'float'},
+    		{name: "savecount", type: 'float'},
+    		{name: "takeoncount", type: 'float'},
+    		{name: "takeovercount", type: 'float'},
+    		{name: "takeallcount", type: 'float'}
  		]),
  		baseParams:{
  			
@@ -117,8 +121,32 @@ Ext.onReady(function(){
 	            }
 	        },{
 	        	xtype: 'numbercolumn',
-	            header: '酒水卡过期入库',
+	            header: '卡已过期入库',
 	            dataIndex: 'count',
+	            summaryType: 'sum',
+	            sortable: true
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '卡未到期入库',
+	            dataIndex: 'savecount',
+	            summaryType: 'sum',
+	            sortable: true
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '正常还卡取货',
+	            dataIndex: 'takeoncount',
+	            summaryType: 'sum',
+	            sortable: true
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '过期还卡取货',
+	            dataIndex: 'takeovercount',
+	            summaryType: 'sum',
+	            sortable: true
+	        },{
+	        	xtype: 'numbercolumn',
+	            header: '总取货数',
+	            dataIndex: 'takeallcount',
 	            summaryType: 'sum',
 	            sortable: true
 	        },{
