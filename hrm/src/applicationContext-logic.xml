@@ -31,6 +31,11 @@
   			<ref bean="HibernateSessionDAO"/>
   		</property>
   	</bean>
+  	<bean id="exportExcelVo" class="com.hrm.vo.ExportExcelVo">
+  		<property name="hibernateSessionDAO">
+  			<ref bean="HibernateSessionDAO"/>
+  		</property>
+  	</bean>
   	<bean id="ktvStayInfoVo" class="com.hrm.vo.KtvStayInfoVo">
   		<property name="hibernateSessionDAO">
   			<ref bean="HibernateSessionDAO"/>

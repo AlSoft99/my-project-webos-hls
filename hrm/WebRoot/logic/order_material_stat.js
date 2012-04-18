@@ -80,6 +80,23 @@ Ext.onReady(function(){
 					
 					listenerEvent.loadGrid();
 				}
+			},"-",{
+				text:"导出",
+				iconCls:"icon-grid",
+				tooltip:'默认为当天查询',
+				handler:function(event,mouse){
+					listenerEvent.loadGrid();
+					Ext.Ajax.request({
+					   url: 'exportExcelVo.do',
+					   success: function(o){
+							
+					   },
+					   failure: function(o){
+							
+					   },
+					   params: store.baseParams
+					});
+				}
 			}
 	    ]
 	});
