@@ -36,21 +36,19 @@ Ext.onReady(function(){
 	  	displayField: "text",
 	  	hiddenName: "goodstype"
 	});
-	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialType a", "", "");
+	var comboBoxType = comboBoxList.comboBoxSql("select a.id,a.typename from MaterialTypeKtv a ", "", "");
 	comboBoxType.allowBlank = true;
-	comboBoxType.emptyText = "过滤原材料种类";
+	comboBoxType.emptyText = "过滤酒水种类";
 	var toolbar = new Ext.Toolbar({
 		items:["-",
 			{
-	            text: '货物统计',
-	            tooltip: '点击货物将统计,再次点击将取消统计',
+	            text: '酒水统计',
+	            tooltip: '点击酒水将统计,再次点击将取消统计',
 	            iconCls:"icon-params",
 	            handler: function(){
 	            	summary.toggleSummaries();
 	            }
 	        },
-	        "-",
-	        comboBoxDate,
 	        "-",
 	        comboBoxType,
 	        {
@@ -91,9 +89,10 @@ Ext.onReady(function(){
     
     var grid_info = new Ext.grid.GridPanel({
         store: store,
-        autoWidth:true,
-        region:'center',
+        columnWidth:.8,
         margins: '0 5 5 5',
+        height:Ext.getBody().getHeight()-190,
+        //autoHeight: true,
         autoExpandColumn: 'goodsname',
         plugins: [summary],
         view: new Ext.grid.GroupingView({
@@ -117,7 +116,7 @@ Ext.onReady(function(){
 	            sortable: true,
 	            summaryType: 'count',
 	            summaryRenderer: function(v, params, data){
-	                return ((v === 0 || v > 1) ? '(原材料种类' + v +' 个)' : '(原材料种类1 个)');
+	                return ((v === 0 || v > 1) ? '(酒水' + v +' 个)' : '(酒水1 个)');
 	            }
 	        },{
 	        	xtype: 'numbercolumn',
@@ -127,7 +126,7 @@ Ext.onReady(function(){
 	            sortable: true
 	        },{
 	        	xtype: 'numbercolumn',
-	            header: '卡未到期入库',
+	            header: '卡未到期寄放',
 	            dataIndex: 'savecount',
 	            summaryType: 'sum',
 	            sortable: true
@@ -191,15 +190,24 @@ Ext.onReady(function(){
         })
 
     });
+    var property = new Ext.grid.PropertyGrid({
+        title: '酒水卡统计',
+        closable: false,
+        autoHeight: true,
+        columnWidth:.2
+    });
+    property.isEditor = false;
+    property.clicksToEdit = -1;
+    
     var layout = new Ext.Panel({
-        title: '货物月销售报表',
-        layout: 'border',
+        title: '酒水寄放报表',
+        layout: 'column',
+        //layout: 'border',
         layoutConfig: {
             columns: 1
         },
-        autoWidth:true,
-        height: Ext.getBody().getHeight()-148-20, 
-        items: [grid_info]
+        //height: Ext.getBody().getHeight()-148-20, 
+        items: [grid_info,property]
     });
     var listenerEvent = { 
     	loadGrid : function(){
@@ -226,6 +234,11 @@ Ext.onReady(function(){
 					"{3}":currentDate*/
 		  		}
 		  	});
+    		
+    		properties.ajax("select b.paramsname,count(*) from KtvStayInfo a,ParamsList b where a.state=b.paramscode and b.typeid='KTV_STATE' group by a.state", function (o) {
+    	        var json = eval("(" + o.responseText + ")");
+    	        property.setSource(json);
+    	    });
     	}
     }
 //    store.load({params:{start:-1, limit:-1,outuser:Ext.getDom("user_id").value}});
