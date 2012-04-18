@@ -245,7 +245,7 @@ Ext.onReady(function(){
 	    anchor    : '-20',
 	    flex: 1,
 	    allowBlank:false,
-	    //readOnly:true
+	    readOnly:true
     });
     var cardbtn = new Ext.Button({
 		xtype     : 'button',
@@ -610,7 +610,7 @@ Ext.onReady(function(){
 	var comboBoxState = comboBoxList.comboBoxSql("select paramscode,paramsname from ParamsList where typeid='KTV_STATE' order by paramscode", "", "");
 	comboBoxState.allowBlank = true;
 	comboBoxState.emptyText = "默认为全部";
-	var test = true;
+	var test = false;
   	var grid = new Ext.grid.GridPanel({
     	el:"ktv_stay_manager_table",
     	ds:ds,
@@ -740,7 +740,7 @@ Ext.onReady(function(){
 					icon:Ext.MessageBox.ERROR
 				});
 			},
-			params: { cardid:"111111111" , action:"delete" }
+			params: { cardid:inputPsdCard , action:"delete" }
 		});
   	};
   	var submitPsd = function(){
@@ -789,8 +789,8 @@ Ext.onReady(function(){
     			    	    				});
     			            			},
     			            			params: { 
-    			            				cardid:"111111111" , 
-    			            				//cardid:inputPsdCard,
+    			            				//cardid:"111111111" , 
+    			            				cardid:inputPsdCard,
     			            				action:"changeState",
     			            				state:"4"
     			            			}
@@ -816,8 +816,8 @@ Ext.onReady(function(){
     			    	    				});
     			            			},
     			            			params: { 
-    			            				cardid:"111111111" , 
-    			            				//cardid:inputPsdCard,
+    			            				//cardid:"111111111" , 
+    			            				cardid:inputPsdCard,
     			            				action:"changeState",
     			            				state:"5"
     			            			}
@@ -841,8 +841,8 @@ Ext.onReady(function(){
     			params:{
     				action:"confirmPsd",
     				password:inputPsd.getValue(),
-    				//cardid: inputPsdCard
-    				cardid: "111111111"
+    				cardid: inputPsdCard
+    				//cardid: "111111111"
     			},
     			waitMsg:"Loading"
     		});
@@ -998,7 +998,11 @@ Ext.onReady(function(){
                 			failure: function(o){
             					
                 			},
-                			params: { cardid:"111111111" , action:"queryCard" }
+                			params: { 
+                				//cardid:"111111111" , 
+                				cardid:inputPsdCard,
+                				action:"queryCard" 
+                			}
             			});
     				}else{
     					Ext.Msg.show({   
@@ -1022,8 +1026,8 @@ Ext.onReady(function(){
     			params:{
     				action:"surePsd",
     				password:inputPsd.getValue(),
-    				//cardid: inputPsdCard
-    				cardid: "111111111"
+    				cardid: inputPsdCard
+    				//cardid: "111111111"
     			},
     			waitMsg:"Loading"
     		});

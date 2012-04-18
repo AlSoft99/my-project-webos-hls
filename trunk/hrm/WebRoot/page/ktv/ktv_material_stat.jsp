@@ -17,6 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div id="ktv_material_stat_div"></div>
+    <div id="ktv_material_stat_div"></div><div id='ktv_material_all'></div>
   </body>
 </html>
