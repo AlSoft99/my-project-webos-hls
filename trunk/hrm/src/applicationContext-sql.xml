@@ -54,7 +54,7 @@
 				<entry key="SQL-3">
 					<value>
 						<![CDATA[
-							select a.paramsname as footname,c.paramsname as materialname,c.cost as materialcost,d.paramsname as unitname,
+							select a.paramsname as footname,c.paramsname as materialname,c.cost as materialcost,d.paramsname as unitname,a.price as footprice, a.cost as footcost,
 							ifnull((select sum(ool.goodsnumber) from order_output_list ool where ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0) as sellamount,
 							ifnull((select sum(ool.actuallypay) from order_output_list ool where ool.goodsid=a.id and ool.updttime>='{0}' and ool.updttime<'{1}'),0) as sellpay,
 							b.amount as materialamount,
