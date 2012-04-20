@@ -52,9 +52,9 @@ public class CreateStatExcel {
 		wcf.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		return wcf;
 	}
-	public void createTitle(WritableSheet sheet,WritableCellFormat wcf, String title) throws RowsExceededException, WriteException{
+	public void createTitle(WritableSheet sheet,WritableCellFormat wcf, String title, String[] th) throws RowsExceededException, WriteException{
 		sheet.addCell(new Label(0, TITLE, title, wcf));
-		sheet.mergeCells(0, 0, TH_CONTENT.length, TH-1);
+		sheet.mergeCells(0, 0, th.length-1, TH-1);
 	}
 	
 	public void createTHead(WritableSheet sheet,WritableCellFormat wcf, String[] th) throws RowsExceededException, WriteException{
@@ -81,7 +81,7 @@ public class CreateStatExcel {
 		WritableCellFormat normalCell = t.getNormalCell(12);
 		WritableSheet sheet = t.createSheet(book);
 		//创建标题
-		t.createTitle(sheet,boldCell,"标题");
+		t.createTitle(sheet,boldCell,"标题",th);
 		//创建表头
 		t.createTHead(sheet,boldCell, th);
 		t.write(book);
