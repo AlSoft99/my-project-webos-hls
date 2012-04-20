@@ -57,7 +57,7 @@ public class ExportExcelVo implements BaseVo {
 				sheet.addCell(new Label(0, start, materialList.getParamsname(), normalTlCell));
 				sheet.addCell(new Label(7, start, "￥"+temp.get(0).get("materialcost").toString(), normalContentCell));
 				sheet.addCell(new Label(8, start, temp.get(0).get("monthinit").toString(), normalContentCell));
-				sheet.addCell(new Label(9, start, temp.get(0).get("monthinput").toString()+temp.get(0).get("unitname").toString(), normalContentCell));
+				sheet.addCell(new Label(9, start, temp.get(0).get("monthinput").toString(), normalContentCell));
 				sheet.addCell(new Label(10, start, temp.get(0).get("monthend").toString(), normalContentCell));
 				sheet.addCell(new Label(11, start, temp.get(0).get("monthshouldend").toString(), normalContentCell));
 				float rate = (Float.valueOf(temp.get(0).get("monthshouldend").toString())-Float.valueOf(temp.get(0).get("monthend").toString())) / Float.valueOf(temp.get(0).get("monthshouldend").toString());
