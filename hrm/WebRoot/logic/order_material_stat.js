@@ -82,14 +82,15 @@ Ext.onReady(function(){
 				}
 			},"-",{
 				text:"导出",
-				iconCls:"icon-grid",
-				tooltip:'默认为当天查询',
+				iconCls:"page-up",
+				tooltip:'默认为当月查询',
 				handler:function(event,mouse){
 					listenerEvent.loadGrid();
 					Ext.Ajax.request({
 					   url: 'exportExcelVo.do',
 					   success: function(o){
-							
+							console.log(o);
+							window.location.href="/"+projectName+"/stat/monthstat.xls"
 					   },
 					   failure: function(o){
 							
