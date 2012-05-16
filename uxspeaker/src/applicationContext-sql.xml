@@ -27,7 +27,7 @@
 				<entry key="SQL2">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c where a.status='17' and c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
+							select new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c where a.status='13' and c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
 						]]>
 					</value>
 				</entry>
@@ -41,7 +41,7 @@
 				<entry key="SQL4">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.articleid as articleid,a.userid as userid,a.commentuser as commentuser,a.comment as comment,a.receiver as receiver,a.approve as approve,a.oppose as oppose,a.currentDate as currentDate,(select b.username from UserInfo b where b.id=a.userid) as username,(select b.picture from UserInfo b where b.id=a.userid) as picture ) from CommentInfo a,ArticleInfo b where a.articleid=b.id and b.status='17' order by a.currentDate desc
+							select new map(a.id as id,a.articleid as articleid,a.userid as userid,a.commentuser as commentuser,a.comment as comment,a.receiver as receiver,a.approve as approve,a.oppose as oppose,a.currentDate as currentDate,(select b.username from UserInfo b where b.id=a.userid) as username,(select b.picture from UserInfo b where b.id=a.userid) as picture ) from CommentInfo a,ArticleInfo b where a.articleid=b.id and b.status='13' order by a.currentDate desc
 						]]>
 					</value>
 				</entry>
@@ -55,7 +55,7 @@
 				<entry key="SQL6">
 					<value>
 						<![CDATA[
-							select distinct new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c,TagInfo d where a.status='17' and a.id=d.articleid and c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
+							select distinct new map(a.id as id,a.userid as userid,a.type as type,c.typename as typename,a.title as title,a.picture as picture,a.text as text,a.tag as tag,a.love as love,a.brower as brower,a.firstDate as firstDate,a.currentDate as currentDate,b.email as email,b.username as username,b.sign as sign,b.job as job,b.intro as intro,b.phone as phone,b.picture as userpicture,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum) from ArticleInfo a,UserInfo b,ParamsType c,TagInfo d where a.status='13' and a.id=d.articleid and c.typeid='2' and c.id=a.type and a.userid = b.id {0} order by a.firstDate desc
 						]]>
 					</value>
 				</entry>
@@ -69,7 +69,7 @@
 				<entry key="SQL8">
 					<value>
 						<![CDATA[
-							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.status as status,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum,a.content as content,a.picture as picture) from ArticleInfo a,ParamsType b where a.status='17' and a.type=b.id {0} order by a.currentDate desc
+							select new map(a.id as id,a.type as type,a.title as title,a.love as love,a.brower as brower,b.typename as typename,a.status as status,a.currentDate as currentDate,(select count(*) from CommentInfo c where c.articleid=a.id) as commentsum,a.content as content,a.picture as picture) from ArticleInfo a,ParamsType b where a.status='13' and a.type=b.id {0} order by a.currentDate desc
 						]]>
 					</value>
 				</entry>
@@ -165,7 +165,7 @@
 					<property name="updtuser" value="system" />
 					<property name="updttime" ref="currentDate" />
 				</bean>
-				<bean class="com.ux.entity.ParamsType">
+				<!-- <bean class="com.ux.entity.ParamsType">
 					<property name="id" value="5" />
 					<property name="typeid" value="2" />
 					<property name="typename" value="视觉设计" />
@@ -196,9 +196,10 @@
 					<property name="typedesc" value="后台开发" />
 					<property name="updtuser" value="system" />
 					<property name="updttime" ref="currentDate" />
-				</bean>
+				</bean> -->
+				
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="9" />
+					<property name="id" value="5" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="超级管理员" />
 					<property name="typedesc" value="超级管理员" />
@@ -206,7 +207,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="10" />
+					<property name="id" value="6" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="管理员" />
 					<property name="typedesc" value="管理员" />
@@ -214,7 +215,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="11" />
+					<property name="id" value="7" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="钻石会员" />
 					<property name="typedesc" value="钻石会员" />
@@ -222,7 +223,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="12" />
+					<property name="id" value="8" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="黄金会员" />
 					<property name="typedesc" value="黄金会员" />
@@ -230,7 +231,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="13" />
+					<property name="id" value="9" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="白银会员" />
 					<property name="typedesc" value="白银会员" />
@@ -238,7 +239,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="14" />
+					<property name="id" value="10" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="高级会员" />
 					<property name="typedesc" value="高级会员" />
@@ -246,7 +247,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="15" />
+					<property name="id" value="11" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="普通会员" />
 					<property name="typedesc" value="普通会员" />
@@ -254,7 +255,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="16" />
+					<property name="id" value="12" />
 					<property name="typeid" value="3" />
 					<property name="typename" value="新手" />
 					<property name="typedesc" value="新手" />
@@ -262,7 +263,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="17" />
+					<property name="id" value="13" />
 					<property name="typeid" value="4" />
 					<property name="typename" value="公开" />
 					<property name="typedesc" value="公开" />
@@ -278,7 +279,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean> -->
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="19" />
+					<property name="id" value="14" />
 					<property name="typeid" value="4" />
 					<property name="typename" value="私有" />
 					<property name="typedesc" value="私有" />
@@ -286,7 +287,7 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="20" />
+					<property name="id" value="15" />
 					<property name="typeid" value="4" />
 					<property name="typename" value="草稿" />
 					<property name="typedesc" value="草稿" />
@@ -294,10 +295,131 @@
 					<property name="updttime" ref="currentDate" />
 				</bean>
 				<bean class="com.ux.entity.ParamsType">
-					<property name="id" value="21" />
+					<property name="id" value="16" />
 					<property name="typeid" value="4" />
 					<property name="typename" value="回收站" />
 					<property name="typedesc" value="回收站" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="17" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Aix" />
+					<property name="typedesc" value="Aix" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="18" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Android" />
+					<property name="typedesc" value="Android" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="19" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Database" />
+					<property name="typedesc" value="Database" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="20" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Ecplise" />
+					<property name="typedesc" value="Ecplise" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="21" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Flex" />
+					<property name="typedesc" value="Flex" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="22" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Hibernate" />
+					<property name="typedesc" value="Hibernate" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="23" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Html4,Css2" />
+					<property name="typedesc" value="Html4,Css2" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="24" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Html5,Css3" />
+					<property name="typedesc" value="Html5,Css3" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="25" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Java" />
+					<property name="typedesc" value="Java" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="26" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Js,JQuery" />
+					<property name="typedesc" value="Js,JQuery" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="27" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="MQ" />
+					<property name="typedesc" value="MQ" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="28" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Spring" />
+					<property name="typedesc" value="Spring" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="29" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Window" />
+					<property name="typedesc" value="Window" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="30" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="Weblogic" />
+					<property name="typedesc" value="Weblogic" />
+					<property name="updtuser" value="system" />
+					<property name="updttime" ref="currentDate" />
+				</bean>
+				<bean class="com.ux.entity.ParamsType">
+					<property name="id" value="31" />
+					<property name="typeid" value="2" />
+					<property name="typename" value="WebService" />
+					<property name="typedesc" value="WebService" />
 					<property name="updtuser" value="system" />
 					<property name="updttime" ref="currentDate" />
 				</bean>

@@ -58,6 +58,7 @@ public class ArticleVo {
 		info.setLove(0);
 		info.setCurrentDate(new Date());
 		info.setFirstDate(new Date());
+		info.setText(info.getText().replace("<", ""));
 		articleDao.save(info);
 		if(!tag.equals("")){
 			String[] taglist = tag.split(",");
@@ -80,7 +81,7 @@ public class ArticleVo {
 		getInfo.setCurrentDate(new Date());
 		getInfo.setPicture(info.getPicture());
 		getInfo.setContent(info.getContent());
-		getInfo.setText(info.getText());
+		getInfo.setText(info.getText().replace("<", ""));
 		getInfo.setTitle(info.getTitle());
 		getInfo.setType(info.getType());
 		getInfo.setStatus(info.getStatus());

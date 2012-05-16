@@ -47,7 +47,7 @@
 	border-width: 0px;
 }
 .index-content-text{
-	font-size: 14px;line-height: 24px;
+	font-size: 14px;line-height: 24px;word-break:break-all;
 }
 .index-content-text p{
 	margin: 0;padding: 7px 0;
