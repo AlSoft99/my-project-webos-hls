@@ -14,12 +14,12 @@ if(userInfo!=null){
 QueryDao queryDao = ServletFactory.newInstant().getFactory().getBean("queryDao",QueryDao.class);
 List<Map<String,Object>> paramsList = queryDao.queryByPage("SQL3", "1");
 %>
-<link type="text/css" rel="stylesheet" href="lib/plugin/colortip/colortip.jquery.css" media="screen" />
-<link type="text/css" rel="stylesheet" href="lib/ui/css/base/jquery.ui.selectmenu.css" media="screen" />
-<script type="text/javascript" src="lib/plugin/colortip/colortip.jquery.js"></script>
-<script type="text/javascript" src="lib/plugin/jquery.validate.js"></script>
-<script type="text/javascript" src="lib/plugin/jquery.cookie.js"></script>
-<script type="text/javascript" src="lib/ui/web/jquery.ui.selectmenu.js"></script>
+<link type="text/css" rel="stylesheet" href="lib/plugin/colortip/colortip.jquery.css?v=1.0" media="screen" />
+<link type="text/css" rel="stylesheet" href="lib/ui/css/base/jquery.ui.selectmenu.css?v=1.0" media="screen" />
+<script type="text/javascript" src="lib/plugin/colortip/colortip.jquery.js?v=1.0"></script>
+<script type="text/javascript" src="lib/plugin/jquery.validate.js?v=1.0"></script>
+<script type="text/javascript" src="lib/plugin/jquery.cookie.js?v=1.0"></script>
+<script type="text/javascript" src="lib/ui/web/jquery.ui.selectmenu.js?v=1.0"></script>
 <div id="dialog-register" style="display: none;" title="<span style='padding:3px 0;float:left;'>注册</span>">
 	<form style="margin-top: 15px;">
 		<table style="width:100%;">
@@ -194,7 +194,7 @@ $(function(){
 		$.get("register.do?method=logout",function(val){
 			if(val=="success"){
 				$.toast("退出成功!");
-				$("#registerfield").show();
+				//$("#registerfield").show();
 				$("#loginfield").hide();
 				$("#loginname").text("");
 				$("#loginname").attr("loginid","");
