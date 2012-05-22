@@ -67,7 +67,7 @@ List<Map<String,Object>> paramsList = queryDao.queryByPage("SQL3", "1");
 </div>
 <div class="index-title">
 	<div class="index-title-frame">
-		<div class="float"><a class="logo float" style="margin-top: 10px;" href="index"></a>&nbsp;&nbsp;<span <% if(userInfo!=null) {%>style="display:none;"<%}%> id="registerfield"><a class="float index-logo" id="register-btn" style="padding-left: 10px;display:none;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></span><span id="loginfield" <% if(userInfo==null) {%>style="display:none;"<%}%>><label id="loginname" class="float" loginid="<%=userid %>" style="padding:30px 0 10px 10px;font-size: 13px;" ><%=username %></label><label class="float" style="padding:30px 0 10px;font-size: 13px;" > ,欢迎您登陆本Bolog</label><a class="float index-logo" style="padding-left: 10px;" href="main">我的后台</a><a class="float index-logo" id="logout-btn" style="padding-left: 10px;" href="#">退出</a></span></div>
+		<div class="float"><a class="logo float" style="margin-top: 10px;" href="index"></a>&nbsp;&nbsp;<span <% if(userInfo!=null) {%>style="display:none;"<%}%> id="registerfield"><a class="float index-logo" id="register-btn" style="padding-left: 10px;" href="#">注册</a>&nbsp;&nbsp;<a class="float index-logo" id="login-btn" style="padding-left: 10px;" href="#">登陆</a></span><span id="loginfield" <% if(userInfo==null) {%>style="display:none;"<%}%>><label id="loginname" class="float" loginid="<%=userid %>" style="padding:30px 0 10px 10px;font-size: 13px;" ><%=username %></label><label class="float" style="padding:30px 0 10px;font-size: 13px;" > ,欢迎您登陆本Bolog</label><a class="float index-logo" style="padding-left: 10px;" href="main">我的后台</a><a class="float index-logo" id="logout-btn" style="padding-left: 10px;" href="#">退出</a></span></div>
 		<div class="float-right index-menu">
 			<ul class="float-right">
 				<li class="select"><a href="index" >首页</a></li>
@@ -183,7 +183,8 @@ $(function(){
 		}
 	});
 	$("#register-btn").click(function(){
-		$( "#dialog-register" ).dialog("open");
+		//$( "#dialog-register" ).dialog("open");
+		$.toast("注册关闭！");
 		return false;
 	});
 	$("#login-btn").click(function(){
@@ -194,7 +195,7 @@ $(function(){
 		$.get("register.do?method=logout",function(val){
 			if(val=="success"){
 				$.toast("退出成功!");
-				//$("#registerfield").show();
+				$("#registerfield").show();
 				$("#loginfield").hide();
 				$("#loginname").text("");
 				$("#loginname").attr("loginid","");
