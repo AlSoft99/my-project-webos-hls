@@ -2,7 +2,7 @@
 	padding : 10px;
 }
 .common-page-foot span{
-	border: 1px solid #B9B7B7;color: #8B8A8A;margin:1px;padding:5px 10px;text-decoration : none;height: 17px;line-height: 17px;overflow: hidden;cursor: pointer;
+	border: 1px solid #B9B7B7;color: #8B8A8A;margin:1px;padding:5px 10px;text-decoration : none;height: 17px;line-height: 17px;overflow: hidden;cursor: pointer; vertical-align: middle;
 }
 .common-page-foot span:hover{
 	/* text-decoration: underline; */
@@ -12,4 +12,7 @@
 }
 .common-page-foot span.select:hover{
 	text-decoration: none;
+}
+.common-page-foot-body{
+	height: 30px; padding-top:5px; padding-bottom: 5px;
 }
