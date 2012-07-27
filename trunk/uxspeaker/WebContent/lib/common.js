@@ -290,7 +290,7 @@ $.fn.extend({
 				left:0,
 				right:32,
 				top:0,
-				bottom:0,
+				bottom:0
 			},
 			zIndex:99,
 			defaultPostion:"right",//默认列表是left还是right
@@ -448,7 +448,7 @@ $.fn.extend({
 					break;
 				}
 			}
-			var foot = "<div class='float-right'>"+footStart+footBody+footEnd+"</div>";
+			var foot = "<div class='float-right common-page-foot-body'>"+footStart+footBody+footEnd+"</div>";
 			var last = $('<div class="common-page-foot"></div>').append(createString).append(foot);
 			_this.append(last);
 			//处理首页和下一页按钮是否隐藏
