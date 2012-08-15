@@ -12,4 +12,10 @@ define(function(require, exports, module){
 		var one = new Box();
 		dom.append("<div class="+one.className+"></div>");
 	};
+	exports.createBackground = function(dom){
+		console.log(exports);
+		for(var i = 0 ; i < 10; i++){
+			exports.createBox(dom);
+		}
+	};
 });
