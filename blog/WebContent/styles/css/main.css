@@ -1,0 +1,10 @@
+body{
+	margin: 0;padding: 0;
+}
+
+.box{
+	background:url("../image/box.png");
+	width:100px;
+	height:100px;
+	border: 1px solid #232323;
+}
