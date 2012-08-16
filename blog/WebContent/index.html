@@ -8,11 +8,32 @@
 <script type="text/javascript" src="lib/sea.config.js"></script>
 </head>
 <body>
-	<div id="background"></div>
+	<div id="box-background" class="bg"></div>
+	<!-- <div style="display:table-cell; vertical-align: bottom;width:100px;height:100px;background-color:red;">1234567</div> -->
 </body>
 </html>
 <script>
 	seajs.use(['box','jquery','jquery.fn'], function(box, $){
-		box.createBackground($("#background"));
+		var bg = $("#box-background");
+		box.createBackground(bg);
+		box.createItem(bg,{
+			color: "#DA797F",
+			title: "About",
+			hover: "04",
+			left:3,
+			top:4,
+			onclick: function(){
+				//item1.animateMove(1,-1);
+			},
+			child:[
+				
+			]
+		});
+		box.createItem(bg,{
+			color: "#45403C",
+			title: "About",
+			left:5,
+			top:3
+		});
 	});
 </script>
