@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Blog</title>
 <link href="styles/default/css/main.css" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript" src="lib/sea.js"></script>
 <script type="text/javascript" src="lib/sea.config.js"></script>
@@ -24,14 +24,17 @@
 			top:4,
 			onclick: function(){
 				//item1.animateMove(1,-1);
-			},
-			child:[
-				
-			]
+				var child = [
+					$("<div>12345</div>"),
+					$("<div>abcde</div>")
+				];
+				box.openChild(bg,child,$(this));
+			}
 		});
 		box.createItem(bg,{
 			color: "#45403C",
-			title: "About",
+			title: "WORKS",
+			hover: "05",
 			left:5,
 			top:3
 		});
