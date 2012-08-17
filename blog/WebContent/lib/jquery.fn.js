@@ -20,7 +20,6 @@ define(function(require, exports, module){
             			};
             		});
             	})();
-            	console.log(arrayList);
             	return temp;
             };
             var getNumber = function(part,str){
@@ -35,17 +34,24 @@ define(function(require, exports, module){
                 var temp = {};
                 for (var key in end) {
                 	if(key != "params"){
-                		if(!isNaN(parseFloat(doc.style[key]))){
-                			temp[key] = parseFloat(end[key]) - parseFloat(doc.style[key]);
+                		
+                		if(doc.style[key].indexOf("(")<0 && doc.style[key].indexOf(")")<0){
+                			var styleValue = parseFloat(doc.style[key]);
+                			if(isNaN(styleValue)){
+                				styleValue = 0;
+                			}
+                			console.log("====doc.style[key]:"+doc.style[key]+"   parseFloat(doc.style[key]):"+styleValue+"  key:"+key);
+                			temp[key] = parseFloat(end[key]) - styleValue;
+                			start[key] = doc.style[key];
                 		}else{
                 			var styleKey = doc.style[key];
                 			var part = getOtherPart(end[key],end.params);
                 			var startNumber = getNumber(part.part,styleKey);
                 			var endNumber = end.params[part.index];
-                			console.log("===number:"+(endNumber-startNumber));
                 			temp[key] = endNumber-startNumber;
                 			part.key = key;
                 			indexList.push(part);
+                			start[key] = startNumber;
                 		};
                 		
                         if ((doc.style[key]+"").indexOf("px") != -1) {
@@ -53,14 +59,11 @@ define(function(require, exports, module){
                         } else {
                             unit[key] = "";
                         };
-                        console.log("change[key]:"+end[key]+"  key:"+key);
-                        start[key] = doc.style[key];
                 	};
                 }
                 
                 return temp;
             })();
-            console.log("indexList:"+indexList);
             function isExist(array, str){
             	var bool = {
             		exist: false
@@ -77,19 +80,18 @@ define(function(require, exports, module){
             //var startTime = window.webkitAnimationStartTime;
             var startTime = (new Date()).getTime();
             var animationFunction = function (nowTime) {
-            	console.log("startTime:"+startTime+"   nowTime:"+nowTime+"  number:"+number);
                 var process = (function () {
                     
                     return process = (parseFloat(nowTime) - parseFloat(startTime)) / parseFloat(time);
                 })();
-                console.log("process:"+process+"   change:"+change);
                 if (process >= 1) {
                     for (var key in change) {
-                    	var exist = !isExist(indexList, key);
+                    	var exist = isExist(indexList, key);
                     	if(!exist.exist){
-                    		doc.style[key] = end[key];
+                    		doc.style[key] = end[key]+unit[key];
                     	}else{
-                    		doc.style[key] = exist.part[0]+end[key]+exist.part[1];
+                    		
+                    		doc.style[key] = exist.part.part[0]+end.params[exist.part.index]+exist.part.part[1];
                     	}
                         
                     }
@@ -100,16 +102,13 @@ define(function(require, exports, module){
 
                 } else {
                     for (var key in change) {
-                    	//console.log("change[key]:"+change[key]+"  key:"+key);
-                    	var exist = !isExist(indexList, key);
-                    	console.log("exist.exist:"+exist.exist);
+                    	var exist = isExist(indexList, key);
                     	if(!exist.exist){
                     		doc.style[key] = (change[key] * process + parseFloat(start[key])) + unit[key];
                     	}else{
-                    		doc.style[key] = exist.part[0]+(change[key] * process + parseFloat(start[key])) + unit[key]+ exist.part[1];
-                    		console.log("++++++++++++++++doc.style[key]:"+doc.style[key]);
+                    		var changeValue = change[key] * process + parseFloat(start[key]);
+                    		doc.style[key] = exist.part.part[0]+ changeValue + unit[key]+ exist.part.part[1];
                     	}
-                        
                     }
                     window.webkitRequestAnimationFrame(animationFunction);
                 }

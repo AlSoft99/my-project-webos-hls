@@ -36,31 +36,21 @@ define(function(require, exports, module){
 			var top = parseInt(_this.dom.css("top"));
 			_this.transformPositionMove(diffLeft*_this.width + left, diffTop*_this.height + top);
 		};
+		_this.transformCellMove = function(cellLeft, cellTop){
+			_this.transformPositionMove(cellLeft*_this.width, cellTop*_this.height);
+		};
 		_this.transformPositionMove = function(moveLeft, moveTop){
-			var domLeft = parseInt(_this.dom.css("left"));
-			var domTop = parseInt(_this.dom.css("top"));
-			var diffLeft = parseInt(moveLeft/domLeft < 1 ? domLeft/moveLeft : moveLeft/domLeft) - 1;
-			var diffTop = parseInt(moveTop/domTop < 1 ? domTop/moveTop : moveTop/domTop) - 1;
-			var valid = function(movePosition, domPosition){
-				var value = movePosition-domPosition;
-				if(value == 0){
-					return value;
-				}else{
-					return value < 0 ? -1 : 1;
-				}
-			};
-			var dirDom = {
-				dirLeft: valid(moveLeft, domLeft),
-				dirTop: valid(moveTop, domTop)
-			};
-			if(dirDom.dirLeft!=0 && dirDom.dirTop!=0){
-				_this.dom.css("-webkit-transform-origin", "center center");
-				_this.dom.css("-webkit-transform", "rotate(180deg)");
-			};
+			var rotate = 90;
+			if($.random(0,2)==0){
+				rotate = -rotate;
+			}
+			_this.dom.css("-webkit-transform", "rotate("+rotate+"deg)");
 			_this.dom.animation({
 				"-webkit-transform": "rotate({0}deg)",
-				params: [50]
-			},500);
+				left: moveLeft,
+				top: moveTop,
+				params: [0]
+			},100);
 		};
 	};
 	var Grid = function(){
@@ -101,7 +91,7 @@ define(function(require, exports, module){
 		};
 		if(params.onclick){
 			coverDom.on("click",function(){
-				params.onclick();
+				params.onclick($(this));
 			});
 		};
 		coverDom.on("mouseleave",function(){
@@ -125,20 +115,100 @@ define(function(require, exports, module){
 	};
 	
 	var Child = function(dom){
-		this.dom.append(dom);
-		this.dom.addClass("cell").css("z-index",1).css("opacity",1).css("-webkit-transform", "rotate("+random(0,0)+"deg)").addClass("transform");
+		if(dom){
+			this.dom.append(dom);
+		}
+		this.dom.addClass("cell").css("z-index",1).css("opacity",1);
 	};
 	
-	exports.openChild = function(dom, list,__this){
-		$(list).each(function(i){
-			Child.prototype = new Box();
-			var child = new Child(list[i]);
-			var cellLeft = parseInt(__this.get(0).left);
-			var cellTop = parseInt(__this.get(0).top);
-			dom.append(child.dom);
-			child.move(cellLeft, cellTop);
-			child.transformMove(i-1, 1);
+	exports.dropAllItems = function(){
+		var _this = this;
+		var all = this.getItems();
+		$(all).each(function(i){
+			var elem = all[i];
+			_this.dropItem(elem);
 		});
+	};
+	exports.dropItem = function(item){
+		var height = item.dom.height();
+		var position = item.dom.position();
+		item.dom.css("top",-height);
+		this.shock(item, position);
+	};
+	exports.shock = function(item, position, callback){
+		var queue = item.dom.queue("fx");
+		item.dom.stop(true, true);
+		item.dom.animate({
+			top: position.top
+		},100);
+		for ( var int = 7; int >=0; int--) {
+			item.dom.animate({
+				top: position.top-int*1.5
+			},50);
+			item.dom.animate({
+				top: position.top+int*1.5
+			},50);
+		};
+		item.dom.promise().done(function(){
+			if($.isFunction(callback)){
+				callback();
+			}
+		});
+	};
+	
+	exports.openChild = function(dom, list,__this,_this){
+		var ___this = this;
+		var childList = [];
+		var dir = [[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
+		$(list).each(function(i){
+			if(i<=8){
+				Child.prototype = new Box();
+				var child = new Child(list[i]);
+				var cellLeft = parseInt(__this.get(0).left);
+				var cellTop = parseInt(__this.get(0).top);
+				dom.append(child.dom);
+				child.move(cellLeft, cellTop);
+				var random = $.random(0,dir.length);
+				var dirRandom = dir.splice(random,1);
+				child.transformMove(dirRandom[0][0], dirRandom[0][1]);
+				childList.push(child);
+			}else{
+				console.log("the child should be <= 8 in length");
+			}
+		});
+		//close button
+		var close = (function(){
+			var div = $("<div class='close'>close</div>");
+			div.on("click",function(){
+				$(childList).each(function(i){
+					var rotate = 30;
+					if($.random(0,2)==0){
+						rotate = -rotate;
+					}
+					childList[i].dom.css("-webkit-transform", "rotate("+rotate+"deg)");
+					/*childList[i].dom.addClass("drop");
+					var p = childList[i].dom.position();
+					childList[i].dom.css("top", (p.top+500)+"px");*/
+					childList[i].dom.animate({
+						opacity: 0,
+						top: '+=500'
+					},250,function(){
+						$(this).remove();
+					});
+				});
+				$(this).remove();
+				_this.parent().show();
+				___this.dropAllItems();
+			});
+			return div;
+		})();
+		
+		(function(){
+			var body = _this.parent();
+			var cell = body.parent();
+			body.hide();
+			cell.append(close);
+		})();
 	};
 	
 	exports.createBackground = function(dom){
@@ -167,5 +237,20 @@ define(function(require, exports, module){
 	};
 	exports.getItems = function(){
 		return items;
+	};
+	exports.openDialog = function(dom, dialog, $this){
+		console.log(2);
+		for ( var int = 0; int < dialog.row; int++) {
+			var tempLeft = dialog.left;
+			for ( var int2 = 0; int2 < dialog.cell; int2++) {
+				Child.prototype = new Box();
+				var child = new Child();
+				child.move($this[0].left, $this[0].top)
+				dom.append(child.dom);
+				child.transformCellMove(tempLeft, dialog.top);
+				tempLeft++;
+			}
+			dialog.top = dialog.top + 1;
+		}
 	};
 });

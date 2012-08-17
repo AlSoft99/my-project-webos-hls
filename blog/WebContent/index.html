@@ -22,13 +22,16 @@
 			hover: "04",
 			left:3,
 			top:4,
-			onclick: function(){
+			onclick: function(_this){
 				//item1.animateMove(1,-1);
 				var child = [
 					$("<div>12345</div>"),
+					$("<div>12345</div>"),
+					$("<div>12345</div>"),
+					$("<div>12345</div>"),
 					$("<div>abcde</div>")
 				];
-				box.openChild(bg,child,$(this));
+				box.openChild(bg,child,$(this),_this);
 			}
 		});
 		box.createItem(bg,{
@@ -36,7 +39,17 @@
 			title: "WORKS",
 			hover: "05",
 			left:5,
-			top:3
+			top:3,
+			onclick: function(_this){
+				var dialog = {
+					left: 1,
+					top: 1,
+					row: 5,
+					cell: 3,
+					style: ""
+				};
+				box.openDialog(bg, dialog, $(this));
+			}
 		});
 	});
 </script>
