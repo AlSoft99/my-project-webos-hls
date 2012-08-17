@@ -13,13 +13,18 @@ div,p,span,li,ul,label,dd,dl{
 }
 .box{
 	width:102px; height:102px; position: absolute;background-color: rgba(0, 0, 0, .3);opacity:0;
-	-webkit-transition-delay: 0;
+}
+.transition-transform{
+	/* -webkit-transition-delay: 0;
 	-webkit-transition-duration: .4s;
-	-webkit-transition-property: -webkit-transform;
-	-webkit-transition-timing-function: linear;
-	-webkit-transform:rotate(0deg);
+	-webkit-transition-property: all;
+	-webkit-transition-timing-function: linear; */
 }
 /********cell start**********/
+.cell.transform{
+	/* -webkit-transition: all .1s linear; -webkit-transform-origin: right bottom; */
+	-webkit-transform-style: rotate; -webkit-transform-x: 180deg;
+}
 .cell{
 	border-radius: 5px; cursor: pointer;
 }

@@ -22,17 +22,45 @@ define(function(require, exports, module){
 		_this.animateMove = function(diffLeft,diffTop){
 			var left = parseInt(_this.dom.css("left"));
 			var top = parseInt(_this.dom.css("top"));
-			var randomnumber = random(50,90);
-			_this.dom.css("-webkit-transform", "rotate("+randomnumber+"deg)");
 			_this.dom.animate({
 				"left": diffLeft*_this.width + left,
 				"top": diffTop*_this.height + top
 			},{
 				easing: 'linear',
-				duration: 100,
+				duration: 0,
 				queue: false
 			});
-			_this.dom.css("-webkit-transform", "rotate(0deg)");
+		};
+		_this.transformMove = function(diffLeft, diffTop){
+			var left = parseInt(_this.dom.css("left"));
+			var top = parseInt(_this.dom.css("top"));
+			_this.transformPositionMove(diffLeft*_this.width + left, diffTop*_this.height + top);
+		};
+		_this.transformPositionMove = function(moveLeft, moveTop){
+			var domLeft = parseInt(_this.dom.css("left"));
+			var domTop = parseInt(_this.dom.css("top"));
+			var diffLeft = parseInt(moveLeft/domLeft < 1 ? domLeft/moveLeft : moveLeft/domLeft) - 1;
+			var diffTop = parseInt(moveTop/domTop < 1 ? domTop/moveTop : moveTop/domTop) - 1;
+			var valid = function(movePosition, domPosition){
+				var value = movePosition-domPosition;
+				if(value == 0){
+					return value;
+				}else{
+					return value < 0 ? -1 : 1;
+				}
+			};
+			var dirDom = {
+				dirLeft: valid(moveLeft, domLeft),
+				dirTop: valid(moveTop, domTop)
+			};
+			if(dirDom.dirLeft!=0 && dirDom.dirTop!=0){
+				_this.dom.css("-webkit-transform-origin", "center center");
+				_this.dom.css("-webkit-transform", "rotate(180deg)");
+			};
+			_this.dom.animation({
+				"-webkit-transform": "rotate({0}deg)",
+				params: [50]
+			},500);
 		};
 	};
 	var Grid = function(){
@@ -98,7 +126,7 @@ define(function(require, exports, module){
 	
 	var Child = function(dom){
 		this.dom.append(dom);
-		this.dom.addClass("cell").css("z-index",1).css("opacity",1);
+		this.dom.addClass("cell").css("z-index",1).css("opacity",1).css("-webkit-transform", "rotate("+random(0,0)+"deg)").addClass("transform");
 	};
 	
 	exports.openChild = function(dom, list,__this){
@@ -109,7 +137,7 @@ define(function(require, exports, module){
 			var cellTop = parseInt(__this.get(0).top);
 			dom.append(child.dom);
 			child.move(cellLeft, cellTop);
-			child.animateMove(i-1, 1);
+			child.transformMove(i-1, 1);
 		});
 	};
 	
