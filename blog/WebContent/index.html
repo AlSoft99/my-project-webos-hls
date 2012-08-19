@@ -9,7 +9,6 @@
 </head>
 <body>
 	<div id="box-background" class="bg"></div>
-	<!-- <div style="display:table-cell; vertical-align: bottom;width:100px;height:100px;background-color:red;">1234567</div> -->
 </body>
 </html>
 <script>
@@ -22,7 +21,7 @@
 			hover: "04",
 			left:3,
 			top:4,
-			onclick: function(_this){
+			onclick: function(_this, item){
 				//item1.animateMove(1,-1);
 				var child = [
 					$("<div>12345</div>"),
@@ -31,7 +30,7 @@
 					$("<div>12345</div>"),
 					$("<div>abcde</div>")
 				];
-				box.openChild(bg,child,$(this),_this);
+				box.openChild(bg,child,$(this),_this,item);
 			}
 		});
 		box.createItem(bg,{
@@ -40,15 +39,38 @@
 			hover: "05",
 			left:5,
 			top:3,
-			onclick: function(_this){
+			onclick: function(_this, item){
 				var dialog = {
 					left: 1,
 					top: 1,
 					row: 5,
 					cell: 3,
-					style: ""
+					style: {
+						"background-image": "url(styles/default/images/b6eeaa6791756cb38123c205622feff8.jpg)"
+						/* "background-color": "#FFFFFF" */
+					}
 				};
-				box.openDialog(bg, dialog, $(this));
+				box.openDialog(bg, dialog, $(this), item);
+			}
+		});
+		box.createItem(bg,{
+			color: "#45403C",
+			title: "DESIGN",
+			hover: "06",
+			left:10,
+			top:2,
+			onclick: function(_this, item){
+				var dialog = {
+					left: 0,
+					top: 0,
+					row: 10,
+					cell: 19,
+					style: {
+						"background-image": "url(styles/default/images/b6eeaa6791756cb38123c205622feff8.jpg)"
+						/* "background-color": "#FFFFFF" */
+					}
+				};
+				box.openDialog(bg, dialog, $(this), item);
 			}
 		});
 	});
