@@ -9,28 +9,31 @@ define(function(require, exports, module){
 	}
 	var Box = function(){
 		var _this = this;
-		_this.width = 102;
-		_this.height = 102;
+		_this.width = 100;
+		_this.height = 100;
 		_this.realwidth = 101;
 		_this.realheight = 101;
 		_this.className = "box";
 		_this.move = function(cellLeft,cellTop){
-			_this.dom.css("left", cellLeft*_this.realwidth+"px")
-					 .css("top", cellTop*_this.realheight+"px")
+			_this.dom.css("left", this.calcCell(cellLeft, _this.realwidth)+"px")
+					 .css("top", this.calcCell(cellTop,_this.realheight)+"px")
 					 .data("cell-left",cellLeft)
 					 .data("cell-top",cellTop);
 		};
 		_this.dom = $("<div class="+_this.className+"></div>");
 		_this.animateMove = function(cellLeft,cellTop,time){
-			time = time || 200
+			time = time || 200;
 			_this.dom.animate({
-				"left": cellLeft*_this.realwidth,
-				"top": cellTop*_this.realheight
+				"left": this.calcCell(cellLeft, _this.realwidth),
+				"top": this.calcCell(cellTop, _this.realheight)
 			},{
 				easing: 'linear',
 				duration: time,
 				queue: false
 			});
+		};
+		_this.calcCell = function(cell,size){
+			return cell*size + 1;
 		};
 		_this.reduction = function(){
 			var cellLeft = _this.dom.data("cell-left");
@@ -43,7 +46,7 @@ define(function(require, exports, module){
 			_this.transformPositionMove(diffLeft*_this.realwidth + left, diffTop*_this.realheight + top, time);
 		};
 		_this.transformCellMove = function(cellLeft, cellTop, time){
-			_this.transformPositionMove(cellLeft*_this.realwidth, cellTop*_this.realheight, time);
+			_this.transformPositionMove(this.calcCell(cellLeft, _this.realwidth), this.calcCell(cellTop, _this.realheight), time);
 		};
 		_this.transformPositionMove = function(moveLeft, moveTop, time){
 			time = time || 100;
@@ -77,6 +80,7 @@ define(function(require, exports, module){
 		var titleDom = $("<span class='title'></span>");
 		var hoverDom = $("<span class='hover'></span>");
 		var coverDom = $("<div class='cover'></div>").data("index",items.length).data("cell-left",params.left).data("cell-top",params.top);
+		_this.params = params;
 		_this.id = params.left + "" + params.top;
 		_this.dom.css("background-color",params.color).css("z-index",1).css("opacity",1).addClass("cell");
 		_this.move(params.left,params.top);
@@ -93,6 +97,8 @@ define(function(require, exports, module){
 		})(params.hover);
 		
 		function opacity(dom,number){
+			//dom.stop(true, true);
+			//this.stopAllShock();
 			dom.animate({
 				opacity: number
 			},300);
@@ -111,7 +117,8 @@ define(function(require, exports, module){
 				}
 			});
 		}).on("mouseenter",function(){
-			opacity(hoverDom, 1);
+			//opacity(hoverDom, 1);
+			hoverDom.css("opacity",1);
 			$(items).each(function(i){
 				var index = parseInt(coverDom.data("index"));
 				if(i!=index){
@@ -128,10 +135,17 @@ define(function(require, exports, module){
 		}
 		this.dom.addClass("cell").css("z-index",1).css("opacity",1);
 	};
-	
-	exports.dropAllItems = function(item){
+	exports.hideAllItems = function(item){
 		var _this = this;
-		var all = this.getItems();
+		_this.actionItems(item, function(elem){
+			elem.dom.hide();
+		}, function(item){
+			
+		});
+	};
+	exports.actionItems = function(item, callback, callbackItem){
+		var _this = this;
+		var all = _this.getItems();
 		item = item || {
 			id: 0
 		};
@@ -140,17 +154,37 @@ define(function(require, exports, module){
 			var elem = all[i];
 			var elemId = elem.id;
 			if(currentId!=elemId){
-				_this.dropItem(elem);
+				if($.isFunction(callback)){
+					callback(elem);
+				}
 			}else{
-				item.reduction();
+				//item.reduction();
+				if($.isFunction(callbackItem)){
+					callbackItem(item);
+				}
 			}
 			
 		});
 	};
+	exports.dropAllItems = function(item, isReduction){
+		var _this = this;
+		isReduction = isReduction || true;
+		_this.actionItems(item, function(elem){
+			_this.dropItem(elem);
+		}, function(item){
+			if(isReduction==true){
+				item.reduction();
+			}
+		});
+	};
+	
 	exports.dropItem = function(item){
 		var height = item.dom.height();
-		var position = item.dom.position();
-		item.dom.css("top",-height);
+		var position = {
+			top: parseInt(item.dom.css("top")),
+			left: parseInt(item.dom.css("left"))
+		};
+		item.dom.css("top",-height).show();
 		this.shock(item, position);
 	};
 	exports.shock = function(item, position, callback){
@@ -173,34 +207,46 @@ define(function(require, exports, module){
 			}
 		});
 	};
-	
-	exports.openChild = function(dom, list,__this,_this, item){
+	exports.stopAllShock = function(){
+		var items = this.getItems();
+		$(items).each(function(i){
+			var item = items[i];
+			item.dom.stop(true, true);
+			item.move(item.params.left, item.params.top);
+		});
+	};
+	exports.openChild = function(dom, list, item, params){
 		var ___this = this;
 		var childList = [];
 		var dir = [[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
+		params = params || {};
+		item.dom.css("opacity",1);
+		___this.stopAllShock();
+		___this.hideAllItems(item);
 		$(list).each(function(i){
 			if(i<=8){
 				Child.prototype = new Box();
 				var child = new Child(list[i]);
-				var cellLeft = parseInt(__this.get(0).left);
-				var cellTop = parseInt(__this.get(0).top);
+				var cellLeft = parseInt(item.params.left);
+				var cellTop = parseInt(item.params.top);
 				dom.append(child.dom);
 				child.move(cellLeft, cellTop);
 				var random = $.random(0,dir.length);
 				var dirRandom = dir.splice(random,1);
 				child.transformMove(dirRandom[0][0], dirRandom[0][1]);
+				child.dom.on("click",function(){
+					console.log(112345);
+					___this.closeItem(childList, false, item, "y");
+				});
 				childList.push(child);
 			}else{
-				console.log("the child should be <= 8 in length");
+				console.error("the child should be <= 8 in length");
 			}
 		});
-		
-		var close = this.createClose(childList, item);
+		var close = this.createClose(childList, item,params);
 		(function(){
-			var body = _this.parent();
-			var cell = body.parent();
-			body.hide();
-			cell.append(close);
+			item.dom.append(close);
+			item.dom.find(".body").hide();
 		})();
 	};
 	exports.getMaxNumber = function(){
@@ -237,93 +283,176 @@ define(function(require, exports, module){
 	exports.getItems = function(){
 		return items;
 	};
-	exports.createClose = function(childList, item){
+	exports.createClose = function(childList, item, params){
 		var _this = this;
-		var div = $("<div class='close'>close</div>");
+		var div = $("<div class='close'></div>");
+		params = params || {};
 		div.on("click",function(){
-			$(childList).each(function(i){
-				/*var rotate = 30;
-				if($.random(0,2)==0){
-					rotate = -rotate;
+			var counitus = true;
+			if($.isFunction(params.close)){
+				counitus = params.close(item);
+				if($.type(counitus)=="undefined" || counitus==null){
+					counitus = true;
 				}
-				childList[i].dom.css("-webkit-transform", "rotate("+rotate+"deg)");*/
-				var rotate = $.random(-20,20);
-				var time = $.random(100,300);
-				childList[i].dom.css("-webkit-transform", "rotate("+rotate+"deg)");
-				childList[i].dom.animate({
-					top: '+='+(10+Math.abs(rotate))
-				},time).animate({
-					top: '+=600'
-				},time,function(){
-					$(this).remove();
-				});
-				/*var p = childList[i].dom.position();
-				childList[i].dom.animation({
-					top: p.top+(10+Math.abs(rotate))
-				},time,function(){
-					childList[i].dom.animation({
-						top: childList[i].dom.position().top+500
-					},time,function(){
-						childList[i].dom.remove();
-					});
-				});*/
-			});
-			$(this).remove();
-			item.dom.find(".body").show();
-			setTimeout(function(){
-				_this.dropAllItems(item);
-			},200);
+			}
+			if(!counitus){
+				return;
+			}
+			_this.closeItem(childList, $(this), item);
 			
 		});
+		if($.type(params.dom)!="undefined" && params.dom!=null){
+			div.append(params.dom);
+		}
 		item.dom.find(".body").hide();
 		return div;
 	};
-	exports.openDialog = function(dom, dialog, $this, item){
-		var childList = [];
-		var time = 100;
-		item.dom.stop(true,true);
-		/*for ( var int = 0; int < dialog.row; int++) {
-			var tempLeft = dialog.left;
-			for ( var int2 = 0; int2 < dialog.cell; int2++) {
-				if(int == 0 && int2 == 0){
-					console.log("==dialog.left:"+dialog.left+"   dialog.top:"+dialog.top);
-					item.transformCellMove(dialog.left, dialog.top);
-				}else{
-					Child.prototype = new Box();
-					var child = new Child();
-					child.move($this[0].left, $this[0].top);
-					
-					for(var key in dialog.style){
-						child.dom.css(key, dialog.style[key]);
-					}
-					child.dom.addClass("dialog");
-					child.dom.css("background-position", (-int2*child.width)+"px " + (-int*child.height)+"px");
-					dom.append(child.dom);
-					child.transformCellMove(tempLeft, dialog.top,time);
-					childList.push(child);
-					
-				}
-				tempLeft++;
+	exports.closeItem = function(childList,self,item ,isReduction){
+		var dropTop = 100;
+		var dropTime = 100;
+		var _this = this;
+		isReduction = isReduction|| true;
+		for ( var int = childList.length-1; int >= 0; int--) {
+			
+			var time = $.random(100,300);
+			var childTmp = childList[int];
+			if(dropTop>=0){
+				dropTop-=5;
 			}
-			time+=50;
-			dialog.top = dialog.top + 1;
-		}*/
+			if(dropTime<=300){
+				dropTime+=20;
+			}
+			childTmp.dom.animate({
+				top: '+='+dropTop
+			},time,function(){
+				var isrotate = $.random(0,3);
+				var rotate = 0;
+				if(isrotate==0){
+					rotate = 0;
+				}else{
+					rotate = $.random(-10,10);
+				}
+				$(this).css("-webkit-transform", "rotate("+rotate+"deg)");
+			}).animate({
+				top: '+=600'
+			},dropTime,function(){
+				$(this).remove();
+			});
+		}
+		if(self){
+			self.remove();
+		}
+		if(item && isReduction==true){
+			item.dom.find(".body").show();
+		}
+		setTimeout(function(){
+			_this.dropAllItems(item,isReduction);
+		},200);
+	};
+	exports.createBtn = function(dialogDom, childList, item){
+		var _this = this;
+		function getCounitus(o){
+			var counitus = true;
+			if(o.btn.event){
+				counitus = o.btn.event(o.child);
+			}
+			if($.type(counitus)=="undefined" || counitus==null){
+				counitus = true;
+			}
+			return counitus;
+		}
+		$(dialogDom).each(function(i){
+			var o = dialogDom[i];
+			if(o.child){
+				o.child.dom.on("click",function(){
+					var counitus = getCounitus(o);
+					if(counitus){
+						var closeDom = item.dom.find(".close");
+						_this.closeItem(childList,closeDom,item);
+					}
+				});
+				o.child.dom.append(o.btn.dom);
+			}else if(o.close){
+				o.close.dom.find(".body").hide();
+				o.btn.dom.on("click",function(){
+					var counitus = getCounitus(o);
+					if(counitus){
+						_this.closeItem(childList,$(this),item);
+					}
+				});
+				o.close.dom.append(o.btn.dom);
+			}
+			
+		});
+	};
+	exports.setDefaultClose = function(btn){
+		btn.close = $.extend(true,{
+			dom: $("<div>close</div>"),
+			left: 0,
+			top: 0
+		},btn.close);
+		btn.close.dom.addClass("close");
+	};
+	exports.openDialog = function(dom, dialog, item){
+		var _this = this;
+		var childList = new Array();
+		var time = 100;
+		this.hideAllItems(item);
+		item.dom.find(".close").remove();
+		item.dom.css("opacity",1);
+		item.dom.stop(true,true);
+		var dialogDom = new Array();
+		dialog.btn = dialog.btn || {};
+		this.setDefaultClose(dialog.btn);
 		for ( var int = 0; int < dialog.cell; int++) {
 			var tempTop = dialog.top;
 			for ( var int2 = 0; int2 < dialog.row; int2++) {
 				if(int == 0 && int2 == 0){
-					console.log("==dialog.left:"+dialog.left+"   dialog.top:"+dialog.top);
 					item.transformCellMove(dialog.left, dialog.top);
+					dialogDom.push({
+						close: item,
+						btn: dialog.btn.close
+					});
 				}else{
 					Child.prototype = new Box();
 					var child = new Child();
-					child.move($this[0].left, $this[0].top);
-					
+					child.move(item.params.left, item.params.top);
+					/*if(int2>0){
+						for(var key in dialog.style){
+							child.dom.css(key, dialog.style[key]);
+						}
+						child.dom.css("background-position", (-int*child.width)+"px " + (-int2*child.height)+"px");
+					}else{
+						//child.dom.css("background-color","#FFFFFF");
+					}*/
 					for(var key in dialog.style){
 						child.dom.css(key, dialog.style[key]);
 					}
-					child.dom.addClass("dialog");
 					child.dom.css("background-position", (-int*child.width)+"px " + (-int2*child.height)+"px");
+					
+					child.dom.addClass("dialog");
+					if((int == 0 && int2 == 1) || (int == 1 && int2 == 0)){
+						child.dom.addClass("dialog-lt");
+					}else if(int == 0 && int2 == dialog.row-1){
+						child.dom.addClass("dialog-lb");
+					}else if(int == dialog.cell-1 && int2 == 0){
+						child.dom.addClass("dialog-rt");
+					}else if(int == dialog.cell-1 && int2 == dialog.row-1){
+						child.dom.addClass("dialog-rb");
+					}
+					/*if(dialog.btn){
+						delete dialog.btn.close;
+					}*/
+					
+					for(var key in dialog.btn){
+						var o = dialog.btn[key];
+						if(o.left==int && o.top==int2){
+							dialogDom.push({
+								child: child,
+								btn: o
+							});
+						}
+					};
 					dom.append(child.dom);
 					child.transformCellMove(dialog.left, tempTop,time);
 					childList.push(child);
@@ -334,7 +463,17 @@ define(function(require, exports, module){
 			time+=50;
 			dialog.left = dialog.left + 1;
 		}
-		var closeBtn = this.createClose(childList,item);
-		item.dom.append(closeBtn);
+		/*var params = {};
+		if($.type(dialog.btn)!="undefined" && $.type(dialog.btn.close)!="undefined"){
+			params = {
+				dom: dialog.btn.close.dom,
+				close: dialog.btn.close.event
+			};
+		}
+		
+		var closeBtn = this.createClose(childList,item,params);
+		
+		item.dom.append(closeBtn);*/
+		this.createBtn(dialogDom,childList, item);
 	};
 });

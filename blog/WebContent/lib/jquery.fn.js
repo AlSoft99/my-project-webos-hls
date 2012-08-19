@@ -40,7 +40,6 @@ define(function(require, exports, module){
                 			if(isNaN(styleValue)){
                 				styleValue = 0;
                 			}
-                			console.log("====doc.style[key]:"+doc.style[key]+"   parseFloat(doc.style[key]):"+styleValue+"  key:"+key);
                 			temp[key] = parseFloat(end[key]) - styleValue;
                 			start[key] = doc.style[key];
                 		}else{
