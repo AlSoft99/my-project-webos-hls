@@ -5,10 +5,40 @@ define(function(require, exports, module){
 			alert(1234);
 		},
 		animation: function (end,time,callback) {
-            var start = {};
+			var requestAnimationFrame = window.webkitRequestAnimationFrame 
+										|| window.mozRequestAnimationFrame 
+										|| window.oRequestAnimationFrame
+										|| window.msRequestAnimationFrame
+										|| 'jquery';
+			if(requestAnimationFrame == "jquery"){
+				$(this).animate(end, time, function(){
+					if($.isFunction(callback)){
+						callback();
+					}
+				});
+			}else{
+				this.animationFrame(end, time, callback);
+			}
+        },
+        animationFrame: function(end,time,callback){
+        	var start = {};
             var unit = {};
             var _this = $(this);
             var doc = _this.get(0);
+            var requestAnimationFrame = window.webkitRequestAnimationFrame 
+										|| window.mozRequestAnimationFrame 
+										|| window.oRequestAnimationFrame
+										|| window.msRequestAnimationFrame
+										|| 'jquery';
+            var cancelRequestAnimationFrame = window.webkitCancelRequestAnimationFrame 
+										|| window.mozCancelRequestAnimationFrame 
+										|| window.oCancelRequestAnimationFrame
+										|| window.msCancelRequestAnimationFrame
+										|| 'jquery';
+            if(requestAnimationFrame=='jquery'){
+            	console.log("please use animation function, this function need brower provide!");
+            	return ;
+            }
             var getOtherPart = function(str, array){
             	var temp = {};
             	var arrayList = (function(){
@@ -97,7 +127,7 @@ define(function(require, exports, module){
                     if ($.isFunction(callback)) {
                         callback();
                     }
-                    window.webkitCancelRequestAnimationFrame(number);
+                    cancelRequestAnimationFrame(number);
 
                 } else {
                     for (var key in change) {
@@ -109,11 +139,11 @@ define(function(require, exports, module){
                     		doc.style[key] = exist.part.part[0]+ changeValue + unit[key]+ exist.part.part[1];
                     	}
                     }
-                    window.webkitRequestAnimationFrame(animationFunction);
+                    requestAnimationFrame(animationFunction);
                 }
                 
             };
-            number = window.webkitRequestAnimationFrame(animationFunction);
+            number = requestAnimationFrame(animationFunction);
         }
 	});
 	$.extend({
