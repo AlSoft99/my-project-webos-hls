@@ -169,13 +169,13 @@ define(function(require, exports, module){
 	exports.dropAllItems = function(item, isReduction){
 		var _this = this;
 		isReduction = isReduction || true;
-		_this.actionItems(item, function(elem){
-			_this.dropItem(elem);
-		}, function(item){
-			if(isReduction==true){
+		if(isReduction==true){
+			_this.actionItems(item, function(elem){
+				_this.dropItem(elem);
+			}, function(item){
 				item.reduction();
-			}
-		});
+			});
+		}
 	};
 	
 	exports.dropItem = function(item){
@@ -237,6 +237,7 @@ define(function(require, exports, module){
 				child.dom.on("click",function(){
 					console.log(112345);
 					___this.closeItem(childList, false, item, "y");
+					___this.hideAllItems(item);
 				});
 				childList.push(child);
 			}else{
