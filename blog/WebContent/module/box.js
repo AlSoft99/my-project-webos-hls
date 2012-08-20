@@ -54,13 +54,19 @@ define(function(require, exports, module){
 			if($.random(0,2)==0){
 				rotate = -rotate;
 			}
-			_this.dom.css("-webkit-transform", "rotate("+rotate+"deg)");
-			_this.dom.animation({
-				"-webkit-transform": "rotate({0}deg)",
+			_this.dom.css("-webkit-transform", "rotate("+rotate+"deg)")
+						.css("-moz-transform", "rotate("+rotate+"deg)")
+						.css("-o-transform", "rotate("+rotate+"deg)")
+						.css("-ms-transform", "rotate("+rotate+"deg)");
+			var transformStr = $.getBrower()+"transform";
+			var paramsAnimation = {
 				left: moveLeft,
 				top: moveTop,
 				params: [0]
-			},time);
+			};
+			console.log("transformStr:"+transformStr);
+			paramsAnimation[transformStr] = "rotate({0}deg)";
+			_this.dom.animation(paramsAnimation,time);
 		};
 	};
 	var Grid = function(){
@@ -333,7 +339,10 @@ define(function(require, exports, module){
 				}else{
 					rotate = $.random(-10,10);
 				}
-				$(this).css("-webkit-transform", "rotate("+rotate+"deg)");
+				$(this).css("-webkit-transform", "rotate("+rotate+"deg)")
+						.css("-moz-transform", "rotate("+rotate+"deg)")
+						.css("-o-transform", "rotate("+rotate+"deg)")
+						.css("-ms-transform", "rotate("+rotate+"deg)");
 			}).animate({
 				top: '+=600'
 			},dropTime,function(){

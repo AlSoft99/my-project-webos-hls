@@ -64,16 +64,15 @@ define(function(require, exports, module){
                 var temp = {};
                 for (var key in end) {
                 	if(key != "params"){
-                		
-                		if(doc.style[key].indexOf("(")<0 && doc.style[key].indexOf(")")<0){
+            			if(doc.style.getPropertyValue(key).indexOf("(")<0 && doc.style.getPropertyValue(key).indexOf(")")<0){
                 			var styleValue = parseFloat(doc.style[key]);
                 			if(isNaN(styleValue)){
                 				styleValue = 0;
                 			}
                 			temp[key] = parseFloat(end[key]) - styleValue;
-                			start[key] = doc.style[key];
+                			start[key] = doc.style.getPropertyValue(key);
                 		}else{
-                			var styleKey = doc.style[key];
+                			var styleKey = doc.style.getPropertyValue(key);
                 			var part = getOtherPart(end[key],end.params);
                 			var startNumber = getNumber(part.part,styleKey);
                 			var endNumber = end.params[part.index];
@@ -83,7 +82,7 @@ define(function(require, exports, module){
                 			start[key] = startNumber;
                 		};
                 		
-                        if ((doc.style[key]+"").indexOf("px") != -1) {
+                        if ((doc.style.getPropertyValue(key)+"").indexOf("px") != -1) {
                             unit[key] = "px";
                         } else {
                             unit[key] = "";
@@ -117,10 +116,10 @@ define(function(require, exports, module){
                     for (var key in change) {
                     	var exist = isExist(indexList, key);
                     	if(!exist.exist){
-                    		doc.style[key] = end[key]+unit[key];
+                    		doc.style.setProperty(key, (end[key]+unit[key]));
                     	}else{
                     		
-                    		doc.style[key] = exist.part.part[0]+end.params[exist.part.index]+exist.part.part[1];
+                    		doc.style.setProperty(key, (exist.part.part[0]+end.params[exist.part.index]+exist.part.part[1]));
                     	}
                         
                     }
@@ -133,10 +132,10 @@ define(function(require, exports, module){
                     for (var key in change) {
                     	var exist = isExist(indexList, key);
                     	if(!exist.exist){
-                    		doc.style[key] = (change[key] * process + parseFloat(start[key])) + unit[key];
+                    		doc.style.setProperty(key, ((change[key] * process + parseFloat(start[key])) + unit[key]));
                     	}else{
                     		var changeValue = change[key] * process + parseFloat(start[key]);
-                    		doc.style[key] = exist.part.part[0]+ changeValue + unit[key]+ exist.part.part[1];
+                    		doc.style.setProperty(key, (exist.part.part[0]+ changeValue + unit[key]+ exist.part.part[1]));
                     	}
                     }
                     requestAnimationFrame(animationFunction);
@@ -149,7 +148,14 @@ define(function(require, exports, module){
 	$.extend({
 		random: function(min, max){
 			return Math.floor(min+Math.random()*(max-min));
+		},
+		getBrower : function(){
+			var result = false;
+			result = (!result && $.browser.chrome) ? "-webkit-":false 
+					|| (!result && $.browser.mozilla) ? "-moz-":false 
+					|| (!result && $.browser.msie) ? "-ms-":false
+					|| "";
+			return result;
 		}
-		
 	});
 });
