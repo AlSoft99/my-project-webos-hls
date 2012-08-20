@@ -10,7 +10,23 @@ define(function(require, exports, module){
 										|| window.oRequestAnimationFrame
 										|| window.msRequestAnimationFrame
 										|| 'jquery';
-			if(requestAnimationFrame == "jquery"){
+			var cancelRequestAnimationFrame = window.webkitCancelRequestAnimationFrame 
+										|| window.mozCancelRequestAnimationFrame 
+										|| window.oCancelRequestAnimationFrame
+										|| window.msCancelRequestAnimationFrame
+										|| 'jquery';
+			if(requestAnimationFrame == "jquery" || cancelRequestAnimationFrame == "jquery"){
+				for(var key in end){
+					var value = end[key];
+					if((value+"").indexOf("(")>=0 && (value+"").indexOf(")")>=0){
+						if(end.params){
+							for(var i = 0; i< end.params.length; i++){
+								value = value.replace("{"+i+"}",end.params[i]);
+							}
+						}
+						$(this).css(key, value);
+					}
+				};
 				$(this).animate(end, time, function(){
 					if($.isFunction(callback)){
 						callback();
@@ -35,7 +51,7 @@ define(function(require, exports, module){
 										|| window.oCancelRequestAnimationFrame
 										|| window.msCancelRequestAnimationFrame
 										|| 'jquery';
-            if(requestAnimationFrame=='jquery'){
+            if(requestAnimationFrame=='jquery' || cancelRequestAnimationFrame=='jquery'){
             	console.log("please use animation function, this function need brower provide!");
             	return ;
             }
@@ -116,10 +132,10 @@ define(function(require, exports, module){
                     for (var key in change) {
                     	var exist = isExist(indexList, key);
                     	if(!exist.exist){
-                    		doc.style.setProperty(key, (end[key]+unit[key]));
+                    		doc.style.setProperty(key, (end[key]+unit[key]),null);
                     	}else{
                     		
-                    		doc.style.setProperty(key, (exist.part.part[0]+end.params[exist.part.index]+exist.part.part[1]));
+                    		doc.style.setProperty(key, (exist.part.part[0]+end.params[exist.part.index]+exist.part.part[1]),null);
                     	}
                         
                     }
@@ -132,10 +148,13 @@ define(function(require, exports, module){
                     for (var key in change) {
                     	var exist = isExist(indexList, key);
                     	if(!exist.exist){
-                    		doc.style.setProperty(key, ((change[key] * process + parseFloat(start[key])) + unit[key]));
+                    		var propertyValue = (change[key] * process + parseFloat(start[key])) + unit[key];
+                    		console.log(key+"    "+propertyValue);
+                    		doc.style.setProperty(key, propertyValue,null);
                     	}else{
                     		var changeValue = change[key] * process + parseFloat(start[key]);
-                    		doc.style.setProperty(key, (exist.part.part[0]+ changeValue + unit[key]+ exist.part.part[1]));
+                    		var propertyValue = exist.part.part[0]+ changeValue + unit[key]+ exist.part.part[1];
+                    		doc.style.setProperty(key, propertyValue,null);
                     	}
                     }
                     requestAnimationFrame(animationFunction);

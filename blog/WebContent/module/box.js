@@ -64,7 +64,6 @@ define(function(require, exports, module){
 				top: moveTop,
 				params: [0]
 			};
-			console.log("transformStr:"+transformStr);
 			paramsAnimation[transformStr] = "rotate({0}deg)";
 			_this.dom.animation(paramsAnimation,time);
 		};
@@ -111,10 +110,11 @@ define(function(require, exports, module){
 		};
 		if(params.onclick){
 			coverDom.on("click",function(){
+				console.log("click dom");
 				params.onclick($(this), _this);
 			});
 		};
-		coverDom.on("mouseleave",function(){
+		coverDom.on("mouseleave",function(e){
 			opacity(hoverDom, 0);
 			$(items).each(function(i){
 				var index = parseInt(coverDom.data("index"));
@@ -122,7 +122,7 @@ define(function(require, exports, module){
 					opacity(items[i].dom, 1);
 				}
 			});
-		}).on("mouseenter",function(){
+		}).on("mouseenter",function(e){
 			//opacity(hoverDom, 1);
 			hoverDom.css("opacity",1);
 			$(items).each(function(i){
@@ -241,7 +241,6 @@ define(function(require, exports, module){
 				var dirRandom = dir.splice(random,1);
 				child.transformMove(dirRandom[0][0], dirRandom[0][1]);
 				child.dom.on("click",function(){
-					console.log(112345);
 					___this.closeItem(childList, false, item, "y");
 					___this.hideAllItems(item);
 				});
@@ -414,6 +413,13 @@ define(function(require, exports, module){
 		var dialogDom = new Array();
 		dialog.btn = dialog.btn || {};
 		this.setDefaultClose(dialog.btn);
+		function getNumber(gridNumber, cellRow, dialog){
+			if(cellRow == -1){
+				return gridNumber;
+			}else if(cellRow == "center"){
+				var margin = parseInt((gridNumber-cellRow)/2);
+			}
+		}
 		for ( var int = 0; int < dialog.cell; int++) {
 			var tempTop = dialog.top;
 			for ( var int2 = 0; int2 < dialog.row; int2++) {
