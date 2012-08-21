@@ -130,9 +130,10 @@ define(function(require, exports, module){
 		}).on("mouseenter",function(e){
 			//opacity(hoverDom, 1);
 			hoverDom.css("opacity",1);
-			stopOpacity(items);
+			//stopOpacity(items);
 			$(items).each(function(i){
 				var index = parseInt(coverDom.data("index"));
+				items[i].dom.css("opacity",1).stop(true, true);
 				if(i!=index){
 					opacity(items[i].dom, .5);
 				}
