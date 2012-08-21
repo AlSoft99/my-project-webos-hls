@@ -87,7 +87,7 @@ define(function(require, exports, module){
 		var coverDom = $("<div class='cover'></div>").data("index",items.length).data("cell-left",params.left).data("cell-top",params.top);
 		_this.params = params;
 		_this.id = params.left + "" + params.top;
-		_this.dom.css("background-color",params.color).css("z-index",1).css("opacity",1).addClass("cell");
+		_this.dom.css("background-color",params.color).css("z-index",1).css("opacity",1).addClass("cell").addClass("item");
 		_this.move(params.left,params.top);
 
 		bodyDom.append(titleDom);
@@ -130,10 +130,9 @@ define(function(require, exports, module){
 		}).on("mouseenter",function(e){
 			//opacity(hoverDom, 1);
 			hoverDom.css("opacity",1);
-			//stopOpacity(items);
 			$(items).each(function(i){
 				var index = parseInt(coverDom.data("index"));
-				items[i].dom.css("opacity",1).stop(true, true);
+				//items[i].dom.css("opacity",1).stop(true, true);
 				if(i!=index){
 					opacity(items[i].dom, .5);
 				}
@@ -146,7 +145,13 @@ define(function(require, exports, module){
 		if(dom){
 			this.dom.append(dom);
 		}
-		this.dom.addClass("cell").css("z-index",1).css("opacity",1);
+		this.dom.addClass("cell").addClass("child").css("z-index",1).css("opacity",1);
+	};
+	var Dialog = function(dom){
+		if(dom){
+			this.dom.append(dom);
+		}
+		this.dom.addClass("cell").addClass("dialog").css("z-index",1).css("opacity",1);
 	};
 	exports.hideAllItems = function(item){
 		var _this = this;
@@ -440,8 +445,8 @@ define(function(require, exports, module){
 						btn: dialog.btn.close
 					});
 				}else{
-					Child.prototype = new Box();
-					var child = new Child();
+					Dialog.prototype = new Box();
+					var child = new Dialog();
 					child.move(item.params.left, item.params.top);
 					for(var key in dialog.style){
 						child.dom.css(key, dialog.style[key]);
@@ -477,7 +482,7 @@ define(function(require, exports, module){
 				}
 				tempTop++;
 			}
-			time+=50;
+			time+=30;
 			tempLeft = tempLeft + 1;
 		}
 		this.createBtn(dialogDom,childList, item, dialog);
