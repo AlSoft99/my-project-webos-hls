@@ -54,10 +54,7 @@ define(function(require, exports, module){
 			if($.random(0,2)==0){
 				rotate = -rotate;
 			}
-			_this.dom.css("-webkit-transform", "rotate("+rotate+"deg)")
-						.css("-moz-transform", "rotate("+rotate+"deg)")
-						.css("-o-transform", "rotate("+rotate+"deg)")
-						.css("-ms-transform", "rotate("+rotate+"deg)");
+			_this.dom.css("transform", "rotate("+rotate+"deg)");
 			var transformStr = $.getBrower()+"transform";
 			var paramsAnimation = {
 				left: moveLeft,
@@ -338,10 +335,7 @@ define(function(require, exports, module){
 				}else{
 					rotate = $.random(-10,10);
 				}
-				$(this).css("-webkit-transform", "rotate("+rotate+"deg)")
-						.css("-moz-transform", "rotate("+rotate+"deg)")
-						.css("-o-transform", "rotate("+rotate+"deg)")
-						.css("-ms-transform", "rotate("+rotate+"deg)");
+				$(this).css("transform", "rotate("+rotate+"deg)");
 			}).animate({
 				top: '+=600'
 			},dropTime,function(){
@@ -413,13 +407,18 @@ define(function(require, exports, module){
 		var dialogDom = new Array();
 		dialog.btn = dialog.btn || {};
 		this.setDefaultClose(dialog.btn);
-		function getNumber(gridNumber, cellRow, dialog){
-			if(cellRow == -1){
+		(function handlerParams(dialog,maxNumber){
+			/*if(cellRow == -1){
 				return gridNumber;
 			}else if(cellRow == "center"){
 				var margin = parseInt((gridNumber-cellRow)/2);
-			}
-		}
+			}*/
+			dialog.row = dialog.row==-1 ? maxNumber.row : dialog.row;
+			dialog.cell = dialog.cell==-1 ? maxNumber.cell : dialog.cell;
+			dialog.left = dialog.left=="center" ? parseInt((maxNumber.cell-dialog.cell)/2) : dialog.left;
+			dialog.top = dialog.top=="center" ? parseInt((maxNumber.row-dialog.row)/2) : dialog.top;
+		})(dialog,_this.getMaxNumber());
+		
 		for ( var int = 0; int < dialog.cell; int++) {
 			var tempTop = dialog.top;
 			for ( var int2 = 0; int2 < dialog.row; int2++) {

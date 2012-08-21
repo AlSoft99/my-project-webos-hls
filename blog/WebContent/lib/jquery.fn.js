@@ -149,7 +149,6 @@ define(function(require, exports, module){
                     	var exist = isExist(indexList, key);
                     	if(!exist.exist){
                     		var propertyValue = (change[key] * process + parseFloat(start[key])) + unit[key];
-                    		console.log(key+"    "+propertyValue);
                     		doc.style.setProperty(key, propertyValue,null);
                     	}else{
                     		var changeValue = change[key] * process + parseFloat(start[key]);
