@@ -113,6 +113,7 @@
 						"background-color": "#FFFFFF"
 					}
 				}; */
+				
 				var dialog = {
 					left: "center",
 					top: "center",
@@ -121,7 +122,30 @@
 					style: {
 						/* "background-image": "url(styles/default/images/b6eeaa6791756cb38123c205622feff8.jpg)" */
 						"background-color": "#FFFFFF"
-					}
+					},
+					content: $("<div>123456789</div>")
+				};
+				box.openDialog(bg, dialog, item);
+			}
+		});
+		
+		box.createItem(bg,{
+			color: "#DA797F",
+			title: "News",
+			hover: "01",
+			left:0,
+			top:0,
+			onclick: function(_this, item){
+				var dialog = {
+					left: 0,
+					top: 0,
+					row: 3,
+					cell: 10,
+					style: {
+						/* "background-image": "url(styles/default/images/b6eeaa6791756cb38123c205622feff8.jpg)" */
+						"background-color": "#FFFFFF"
+					},
+					content: $("<div>123456789</div>")
 				};
 				box.openDialog(bg, dialog, item);
 			}

@@ -33,7 +33,10 @@ define(function(require, exports, module){
 			});
 		};
 		_this.calcCell = function(cell,size){
-			return cell*size + 1;
+			return parseInt(cell)*parseInt(size) + 1;
+		};
+		_this.calcContent = function(cell,size){
+			return parseInt(cell)*parseInt(size) - 1;
 		};
 		_this.reduction = function(){
 			var cellLeft = _this.dom.data("cell-left");
@@ -111,6 +114,11 @@ define(function(require, exports, module){
 				params.onclick($(this), _this);
 			});
 		};
+		function stopOpacity(items){
+			$(items).each(function(i){
+				//items[i].css("opacity",1).stop(true, true);;
+			});
+		}
 		coverDom.on("mouseleave",function(e){
 			opacity(hoverDom, 0);
 			$(items).each(function(i){
@@ -122,6 +130,7 @@ define(function(require, exports, module){
 		}).on("mouseenter",function(e){
 			//opacity(hoverDom, 1);
 			hoverDom.css("opacity",1);
+			stopOpacity(items);
 			$(items).each(function(i){
 				var index = parseInt(coverDom.data("index"));
 				if(i!=index){
@@ -352,7 +361,7 @@ define(function(require, exports, module){
 			_this.dropAllItems(item,isReduction);
 		},200);
 	};
-	exports.createBtn = function(dialogDom, childList, item){
+	exports.createBtn = function(dialogDom, childList, item, dialog){
 		var _this = this;
 		function getCounitus(o){
 			var counitus = true;
@@ -372,6 +381,9 @@ define(function(require, exports, module){
 					if(counitus){
 						var closeDom = item.dom.find(".close");
 						_this.closeItem(childList,closeDom,item);
+						if(dialog.content){
+							dialog.content.remove();
+						}
 					}
 				});
 				o.child.dom.append(o.btn.dom);
@@ -381,6 +393,9 @@ define(function(require, exports, module){
 					var counitus = getCounitus(o);
 					if(counitus){
 						_this.closeItem(childList,$(this),item);
+						if(dialog.content){
+							dialog.content.remove();
+						}
 					}
 				});
 				o.close.dom.append(o.btn.dom);
@@ -408,17 +423,12 @@ define(function(require, exports, module){
 		dialog.btn = dialog.btn || {};
 		this.setDefaultClose(dialog.btn);
 		(function handlerParams(dialog,maxNumber){
-			/*if(cellRow == -1){
-				return gridNumber;
-			}else if(cellRow == "center"){
-				var margin = parseInt((gridNumber-cellRow)/2);
-			}*/
 			dialog.row = dialog.row==-1 ? maxNumber.row : dialog.row;
 			dialog.cell = dialog.cell==-1 ? maxNumber.cell : dialog.cell;
 			dialog.left = dialog.left=="center" ? parseInt((maxNumber.cell-dialog.cell)/2) : dialog.left;
 			dialog.top = dialog.top=="center" ? parseInt((maxNumber.row-dialog.row)/2) : dialog.top;
 		})(dialog,_this.getMaxNumber());
-		
+		var tempLeft = dialog.left;
 		for ( var int = 0; int < dialog.cell; int++) {
 			var tempTop = dialog.top;
 			for ( var int2 = 0; int2 < dialog.row; int2++) {
@@ -432,32 +442,23 @@ define(function(require, exports, module){
 					Child.prototype = new Box();
 					var child = new Child();
 					child.move(item.params.left, item.params.top);
-					/*if(int2>0){
-						for(var key in dialog.style){
-							child.dom.css(key, dialog.style[key]);
-						}
-						child.dom.css("background-position", (-int*child.width)+"px " + (-int2*child.height)+"px");
-					}else{
-						//child.dom.css("background-color","#FFFFFF");
-					}*/
 					for(var key in dialog.style){
 						child.dom.css(key, dialog.style[key]);
 					}
-					child.dom.css("background-position", (-int*child.width)+"px " + (-int2*child.height)+"px");
-					
+					child.dom.css("background-position", (-int*child.realwidth)+"px " + (-int2*child.realheight)+"px");
 					child.dom.addClass("dialog");
 					if((int == 0 && int2 == 1) || (int == 1 && int2 == 0)){
 						child.dom.addClass("dialog-lt");
-					}else if(int == 0 && int2 == dialog.row-1){
+					}
+					if((int == 0 && int2 == dialog.row-1) || (dialog.row==1 && int==1)){
 						child.dom.addClass("dialog-lb");
-					}else if(int == dialog.cell-1 && int2 == 0){
+					}
+					if(int == dialog.cell-1 && int2 == 0){
 						child.dom.addClass("dialog-rt");
-					}else if(int == dialog.cell-1 && int2 == dialog.row-1){
+					}
+					if(int == dialog.cell-1 && int2 == dialog.row-1){
 						child.dom.addClass("dialog-rb");
 					}
-					/*if(dialog.btn){
-						delete dialog.btn.close;
-					}*/
 					
 					for(var key in dialog.btn){
 						var o = dialog.btn[key];
@@ -469,26 +470,34 @@ define(function(require, exports, module){
 						}
 					};
 					dom.append(child.dom);
-					child.transformCellMove(dialog.left, tempTop,time);
+					child.transformCellMove(tempLeft, tempTop,time);
 					childList.push(child);
 					
 				}
 				tempTop++;
 			}
 			time+=50;
-			dialog.left = dialog.left + 1;
+			tempLeft = tempLeft + 1;
 		}
-		/*var params = {};
-		if($.type(dialog.btn)!="undefined" && $.type(dialog.btn.close)!="undefined"){
-			params = {
-				dom: dialog.btn.close.dom,
-				close: dialog.btn.close.event
-			};
-		}
-		
-		var closeBtn = this.createClose(childList,item,params);
-		
-		item.dom.append(closeBtn);*/
-		this.createBtn(dialogDom,childList, item);
+		this.createBtn(dialogDom,childList, item, dialog);
+		(function createContent(dialog, item){
+			
+			if(dialog.content){
+				if(dialog.row == 1){
+					var left = item.calcCell(dialog.left+1, item.realwidth)+1;
+					var top = item.calcCell(dialog.top, item.realheight)+1;
+					var width = item.calcContent((dialog.cell-1), item.realwidth);
+					var height = item.calcContent(dialog.row, item.realheight);
+					dialog.content.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content");
+				}else if(dialog.row > 1){
+					var left = item.calcCell(dialog.left, item.realwidth)+1;
+					var top = item.calcCell(dialog.top+1, item.realheight)+1;
+					var width = item.calcContent(dialog.cell, item.realwidth);
+					var height = item.calcContent(dialog.row-1, item.realheight);
+					dialog.content.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content");
+				}
+				dom.append(dialog.content);
+			}
+		})(dialog, item);
 	};
 });
