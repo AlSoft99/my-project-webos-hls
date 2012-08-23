@@ -89,7 +89,8 @@ define(function(require, exports, module){
 		_this.id = params.left + "" + params.top;
 		_this.dom.css("background-color",params.color).css("z-index",1).css("opacity",1).addClass("cell").addClass("item");
 		_this.move(params.left,params.top);
-
+		_this.childlist;
+		
 		bodyDom.append(titleDom);
 		bodyDom.append(hoverDom);
 		bodyDom.append(coverDom);
@@ -110,7 +111,6 @@ define(function(require, exports, module){
 		};
 		if(params.onclick){
 			coverDom.on("click",function(){
-				console.log("click dom");
 				params.onclick($(this), _this);
 			});
 		};
@@ -261,7 +261,8 @@ define(function(require, exports, module){
 				console.error("the child should be <= 8 in length");
 			}
 		});
-		var close = this.createClose(childList, item,params);
+		item.childlist = childList;
+		var close = this.createClose(item.childlist, item,params);
 		(function(){
 			item.dom.append(close);
 			item.dom.find(".body").hide();
@@ -421,6 +422,7 @@ define(function(require, exports, module){
 		var _this = this;
 		var childList = new Array();
 		var time = 100;
+		var childlist = dialog.childlist || item.childlist || [];
 		this.hideAllItems(item);
 		item.dom.find(".close").remove();
 		item.dom.css("opacity",1);

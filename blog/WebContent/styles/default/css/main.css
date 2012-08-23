@@ -64,7 +64,7 @@ div,p,span,li,ul,label,dd,dl{
 	top: 0;left: 0;right:0; font-size: 40px; opacity: 0; color: #262626;
 }
 .cell > .body > .cover{
-	position: absolute; z-index: 2;left:0;top:0;right:0;bottom:0;
+	position: absolute; z-index: 2;left:0;top:0;right:0;bottom:0; background-color: rgb(255,255,255);filter: alpha(opacity=0);opacity:0;
 }
 /********cell end**********/
 .dialog-content{

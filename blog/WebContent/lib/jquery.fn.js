@@ -122,7 +122,7 @@ define(function(require, exports, module){
             }
             var number = 0;
             //var startTime = window.webkitAnimationStartTime;
-            var startTime = (new Date()).getTime();
+            var startTime = window.msAnimationStartTime || (new Date()).getTime();
             var animationFunction = function (nowTime) {
                 var process = (function () {
                     
