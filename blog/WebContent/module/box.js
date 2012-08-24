@@ -4,15 +4,21 @@ define(function(require, exports, module){
 		alert("helloworld");
 	};*/
 	var items = [];
+	var boxObject = {
+		width : 100,
+		height : 100,
+		realwidth : 101,
+		realheight : 101
+	};
 	function random(min,max){
 		return Math.floor(min+Math.random()*(max-min));
 	}
 	var Box = function(){
 		var _this = this;
-		_this.width = 100;
-		_this.height = 100;
-		_this.realwidth = 101;
-		_this.realheight = 101;
+		_this.width = boxObject.width;
+		_this.height = boxObject.height;
+		_this.realwidth = boxObject.realwidth;
+		_this.realheight = boxObject.realheight;
 		_this.className = "box";
 		_this.move = function(cellLeft,cellTop){
 			_this.dom.css("left", this.calcCell(cellLeft, _this.realwidth)+"px")
@@ -422,7 +428,7 @@ define(function(require, exports, module){
 		var _this = this;
 		var childList = new Array();
 		var time = 100;
-		var childlist = dialog.childlist || item.childlist || [];
+		var itemChild = dialog.childlist || item.childlist || [];
 		this.hideAllItems(item);
 		item.dom.find(".close").remove();
 		item.dom.css("opacity",1);
@@ -488,24 +494,40 @@ define(function(require, exports, module){
 			tempLeft = tempLeft + 1;
 		}
 		this.createBtn(dialogDom,childList, item, dialog);
-		(function createContent(dialog, item){
-			
-			if(dialog.content){
-				if(dialog.row == 1){
-					var left = item.calcCell(dialog.left+1, item.realwidth)+1;
-					var top = item.calcCell(dialog.top, item.realheight)+1;
-					var width = item.calcContent((dialog.cell-1), item.realwidth);
-					var height = item.calcContent(dialog.row, item.realheight);
-					dialog.content.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content");
-				}else if(dialog.row > 1){
-					var left = item.calcCell(dialog.left, item.realwidth)+1;
-					var top = item.calcCell(dialog.top+1, item.realheight)+1;
-					var width = item.calcContent(dialog.cell, item.realwidth);
-					var height = item.calcContent(dialog.row-1, item.realheight);
-					dialog.content.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content");
-				}
-				dom.append(dialog.content);
+		var dialogContent = (function createContent(dialog, item){
+			var div = $("<div></div>");
+			if(dialog.row == 1){
+				var left = item.calcCell(dialog.left+1, item.realwidth)+1;
+				var top = item.calcCell(dialog.top, item.realheight)+1;
+				var width = item.calcContent((dialog.cell-1), item.realwidth);
+				var height = item.calcContent(dialog.row, item.realheight);
+				div.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content");
+			}else if(dialog.row > 1){
+				var left = item.calcCell(dialog.left, item.realwidth)+1;
+				var top = item.calcCell(dialog.top+1, item.realheight)+1;
+				var width = item.calcContent(dialog.cell, item.realwidth);
+				var height = item.calcContent(dialog.row-1, item.realheight);
+				div.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content");
 			}
+			if(dialog.content){
+				div.append(dialog.content);
+			}
+			dialog.content = div;
+			dom.append(div);
+			return div;
 		})(dialog, item);
+		
+		this.createChildItem(itemChild,dialog, dialogContent);
+	};
+	exports.createChildItem = function(itemChild,dialog,dialogContent){
+		var _this = this;
+		dialogContent.on("mousemove", function(e){
+			var offset = [e.offsetX, e.offsetY];
+			console.log(offset+"   "+boxObject.realwidth);
+			var cellLeft = Math.floor(offset[0]/boxObject.realwidth);
+			var cellTop = Math.floor(offset[1]/boxObject.realheight);
+			var left = cellLeft*boxObject.realwidth+1;
+			var top = cellTop*boxObject.realheight+1;
+		});
 	};
 });

@@ -68,7 +68,7 @@ div,p,span,li,ul,label,dd,dl{
 }
 /********cell end**********/
 .dialog-content{
-	width:100px; height:100px; position: absolute; z-index:2;
+	width:100px; height:100px; position: relative; z-index:2;
 }
 .animation-form{  
     -webkit-animation: shock 1s linear infinite;  
