@@ -52,6 +52,10 @@ define(function(require, exports, module){
 		_this.transformMove = function(diffLeft, diffTop, time){
 			var left = parseInt(_this.dom.css("left"));
 			var top = parseInt(_this.dom.css("top"));
+			_this.diffLeft = diffLeft;
+			_this.diffTop = diffTop;
+			console.log("diffLeft:"+diffLeft+"  _this.realwidth:"+_this.realwidth+"  left:"+left);
+			console.log("diffTop:"+diffTop+"  _this.realwidth:"+_this.realwidth+"  top:"+top);
 			_this.transformPositionMove(diffLeft*_this.realwidth + left, diffTop*_this.realheight + top, time);
 		};
 		_this.transformCellMove = function(cellLeft, cellTop, time){
@@ -63,7 +67,10 @@ define(function(require, exports, module){
 			if($.random(0,2)==0){
 				rotate = -rotate;
 			}
+			console.log("moveLeft:"+moveLeft+"   moveTop:"+moveTop+"    "+_this.dom[0].outerHTML);
 			_this.dom.css("transform", "rotate("+rotate+"deg)");
+			_this.left = moveLeft;
+			_this.top = moveTop;
 			var transformStr = $.getBrower()+"transform";
 			var paramsAnimation = {
 				left: moveLeft,
@@ -274,6 +281,15 @@ define(function(require, exports, module){
 			item.dom.find(".body").hide();
 		})();
 	};
+	exports.openChildItem = function(itemChildList, item,dialogContent){
+		var offset = item.position();
+		$(itemChildList).each(function(i){
+			var child = itemChildList[i];
+			dialogContent.append(child.dom);
+			child.dom.css("left", offset.left+"px").css("top", offset.top+"px");
+			child.transformMove(child.diffLeft, child.diffTop);
+		});
+	};
 	exports.getMaxNumber = function(){
 		var one = new Box();
 		var width = $(window).width();
@@ -428,7 +444,7 @@ define(function(require, exports, module){
 		var _this = this;
 		var childList = new Array();
 		var time = 100;
-		var itemChild = dialog.childlist || item.childlist || [];
+		var itemChildList = dialog.childlist || item.childlist || [];
 		this.hideAllItems(item);
 		item.dom.find(".close").remove();
 		item.dom.css("opacity",1);
@@ -517,17 +533,23 @@ define(function(require, exports, module){
 			return div;
 		})(dialog, item);
 		
-		this.createChildItem(itemChild,dialog, dialogContent);
+		this.createChildItem(itemChildList,dialog, dialogContent);
 	};
-	exports.createChildItem = function(itemChild,dialog,dialogContent){
+	exports.createChildItem = function(itemChildList,dialog,dialogContent){
 		var _this = this;
+		var follow = $("<div class='follow'></div>");
+		dialogContent.append(follow);
 		dialogContent.on("mousemove", function(e){
-			var offset = [e.offsetX, e.offsetY];
-			console.log(offset+"   "+boxObject.realwidth);
+			var offset = [e.clientX-$(this).offset().left, e.clientY-$(this).offset().top];
+			
 			var cellLeft = Math.floor(offset[0]/boxObject.realwidth);
 			var cellTop = Math.floor(offset[1]/boxObject.realheight);
-			var left = cellLeft*boxObject.realwidth+1;
-			var top = cellTop*boxObject.realheight+1;
+			var left = cellLeft*boxObject.realwidth;
+			var top = cellTop*boxObject.realheight;
+			follow.css("width",boxObject.width+"px").css("height",boxObject.height+"px").css("left",left+"px").css("top",top+"px");
+		});
+		follow.on("click", function(){
+			_this.openChildItem(itemChildList,$(this),dialogContent);
 		});
 	};
 });
