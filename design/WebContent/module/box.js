@@ -5,10 +5,10 @@ define(function(require, exports, module){
 	};*/
 	var items = [];
 	var boxObject = {
-		width : 100,
-		height : 100,
-		realwidth : 101,
-		realheight : 101
+		width : 120,
+		height : 120,
+		realwidth : 121,
+		realheight : 121
 	};
 	function random(min,max){
 		return Math.floor(min+Math.random()*(max-min));
