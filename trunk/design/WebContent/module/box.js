@@ -102,16 +102,16 @@ define(function(require, exports, module){
 		bodyDom.append(coverDom);
 		_this.dom.append(bodyDom);
 		_this.setTitle = (function(title){
-			titleDom.text(title);
+			titleDom.html(title);
 		})(params.title);
 		_this.setHover = (function(title){
-			hoverDom.text(title);
+			hoverDom.html(title);
 		})(params.hover);
 		
 		function opacity(dom,number){
 			//dom.stop(true, true);
 			//this.stopAllShock();
-			dom.animate({
+			dom.stop(false, true).animate({
 				opacity: number
 			},300);
 		};
@@ -138,7 +138,6 @@ define(function(require, exports, module){
 			hoverDom.css("opacity",1);
 			$(items).each(function(i){
 				var index = parseInt(coverDom.data("index"));
-				//items[i].dom.css("opacity",1).stop(true, true);
 				if(i!=index){
 					opacity(items[i].dom, .5);
 				}
@@ -159,12 +158,36 @@ define(function(require, exports, module){
 		}
 		this.dom.addClass("cell").addClass("dialog").css("z-index",1).css("opacity",1);
 	};
+	exports.createChild = function(content,mouseenter,params){
+		var create = $("<div class='child-body' ></div>");
+		mouseenter = mouseenter || "";
+		params = params || {};
+		if(params.params.color){
+			create.css("border-color",params.params.color);
+		}
+		if(mouseenter!=""){
+			create.append(mouseenter);
+			create.on("mouseenter",function(){
+				create.animate({
+					"border-width":10
+				},150);
+				content.fadeOut(300);
+			}).on("mouseleave",function(){
+				create.animate({
+					"border-width":0
+				},150);
+				content.fadeIn(300);
+			});
+		}
+		create.append(content);
+		return create;
+	};
 	exports.hideAllItems = function(item){
 		var _this = this;
 		_this.actionItems(item, function(elem){
 			elem.dom.hide();
 		}, function(item){
-			
+			item.dom.before("<div class='item-cover'></div>");
 		});
 	};
 	exports.actionItems = function(item, callback, callbackItem){
@@ -244,7 +267,6 @@ define(function(require, exports, module){
 		var childList = [];
 		var dir = [[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 		params = params || {};
-		item.dom.css("opacity",1);
 		___this.stopAllShock();
 		___this.hideAllItems(item);
 		$(list).each(function(i){
@@ -336,6 +358,7 @@ define(function(require, exports, module){
 		var dropTop = 100;
 		var dropTime = 100;
 		var _this = this;
+		$(".item-cover").remove();
 		isReduction = isReduction|| true;
 		for ( var int = childList.length-1; int >= 0; int--) {
 			
@@ -418,7 +441,7 @@ define(function(require, exports, module){
 	};
 	exports.setDefaultClose = function(btn){
 		btn.close = $.extend(true,{
-			dom: $("<div>close</div>"),
+			dom: $("<div></div>"),
 			left: 0,
 			top: 0
 		},btn.close);
@@ -523,11 +546,18 @@ define(function(require, exports, module){
 		var _this = this;
 		dialogContent.on("mousemove", function(e){
 			var offset = [e.offsetX, e.offsetY];
-			console.log(offset+"   "+boxObject.realwidth);
 			var cellLeft = Math.floor(offset[0]/boxObject.realwidth);
 			var cellTop = Math.floor(offset[1]/boxObject.realheight);
 			var left = cellLeft*boxObject.realwidth+1;
 			var top = cellTop*boxObject.realheight+1;
 		});
+	};
+	
+	var Navigate = function(id){
+		var _this = this;
+		_this.item = [];
+		$("#"+id+" li").each(function(i){
+			_this.item.push($(this));
+		});  
 	};
 });
