@@ -11,15 +11,7 @@
 	<div class="bg-elem">
 		<img class="bg-image" src="styles/default/images/bg.jpg" />
 		<img class="bg-title" src="styles/default/images/team_title.png" />
-		<div class="navigate">
-			<ul id="navigate">
-				<li>Home</li>
-				<li>Delivered Project</li>
-				<li>Concepts & Inspireations</li>
-				<li>Quick Usability Testing</li>
-				<li class='navigate-last'>About Us</li>
-			</ul>
-		</div>
+		<div id="navigate"></div>
 	</div>
 	<div id="box-background" class="bg"></div>
 </body>
@@ -28,7 +20,7 @@
 	seajs.use(['box','jquery','jquery.fn'], function(box, $){
 		var bg = $("#box-background");
 		box.createBackground(bg);
-		box.createItem(bg,{
+		var deliverItem = box.createItem(bg,{
 			color: "#2DA4DB",
 			title: "Delivered Projects",
 			hover: "04",
@@ -36,51 +28,55 @@
 			top:5,
 			onclick: function(_this, item){
 				//item1.animateMove(1,-1);
-				var child1 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_01_black.png' style='width:100%;height:100%;'></div>");
-				child1.on("click",function(){
-					box.openDialog(bg, {
-						left: 0,
-						top: 0,
-						row: 5,
-						cell: 3,
-						style: {
-							"background-image": "url(styles/default/images/b6eeaa6791756cb38123c205622feff8.jpg)"
-							/* "background-color": "#FFFFFF" */
-						},
-						childlist: item.childlist
-					}, item);
-				});
-				var child1_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_01.png' style='width:100%;height:100%;'></div>");
-				child1 = box.createChild(child1,child1_hover,item);
-				var child2 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_02_black.png' style='width:100%;height:100%;'></div>");
-				var child2_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_02.png' style='width:100%;height:100%;'></div>");
-				child2 = box.createChild(child2,child2_hover,item);
-				var child3 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_03_black.png' style='width:100%;height:100%;'></div>");
-				var child3_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_03.png' style='width:100%;height:100%;'></div>");
-				child3 = box.createChild(child3,child3_hover,item);
-				var child4 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_04_black.png' style='width:100%;height:100%;'></div>");
-				var child4_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_04.png' style='width:100%;height:100%;'></div>");
-				child4 = box.createChild(child4,child4_hover,item);
-				var child5 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_05_black.png' style='width:100%;height:100%;'></div>");
-				var child5_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_05.png' style='width:100%;height:100%;'></div>");
-				child5 = box.createChild(child5,child5_hover,item);
-				var child6 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_06_black.png' style='width:100%;height:100%;'></div>");
-				var child6_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_06.png' style='width:100%;height:100%;'></div>");
-				child6 = box.createChild(child6,child6_hover,item);
-				var child7 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_07_black.png' style='width:100%;height:100%;'></div>");
-				var child7_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_07.png' style='width:100%;height:100%;'></div>");
-				child7 = box.createChild(child7,child7_hover,item);
-				var child8 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_08_black.png' style='width:100%;height:100%;'></div>");
-				var child8_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_08.png' style='width:100%;height:100%;'></div>");
-				child8 = box.createChild(child8,child8_hover,item);
-				var child = [child1, child2, child3, child4, child5, child6, child7, child8];
-				box.openChild(bg,child,item,{
-					close: function(){
-						return true;
-					}
-				});
+				openDelivered();
 			}
 		});
+		function openDelivered(){
+			var item = deliverItem;
+			var child1 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_01_black.png' style='width:100%;height:100%;'></div>");
+			child1.on("click",function(){
+				box.openDialog(bg, {
+					left: 0,
+					top: 0,
+					row: 5,
+					cell: 3,
+					style: {
+						"background-image": "url(styles/default/images/b6eeaa6791756cb38123c205622feff8.jpg)"
+						/* "background-color": "#FFFFFF" */
+					},
+					childlist: item.childlist
+				}, item);
+			});
+			var child1_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_01.png' style='width:100%;height:100%;'></div>");
+			child1 = box.createChild(child1,child1_hover,item);
+			var child2 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_02_black.png' style='width:100%;height:100%;'></div>");
+			var child2_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_02.png' style='width:100%;height:100%;'></div>");
+			child2 = box.createChild(child2,child2_hover,item);
+			var child3 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_03_black.png' style='width:100%;height:100%;'></div>");
+			var child3_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_03.png' style='width:100%;height:100%;'></div>");
+			child3 = box.createChild(child3,child3_hover,item);
+			var child4 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_04_black.png' style='width:100%;height:100%;'></div>");
+			var child4_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_04.png' style='width:100%;height:100%;'></div>");
+			child4 = box.createChild(child4,child4_hover,item);
+			var child5 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_05_black.png' style='width:100%;height:100%;'></div>");
+			var child5_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_05.png' style='width:100%;height:100%;'></div>");
+			child5 = box.createChild(child5,child5_hover,item);
+			var child6 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_06_black.png' style='width:100%;height:100%;'></div>");
+			var child6_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_06.png' style='width:100%;height:100%;'></div>");
+			child6 = box.createChild(child6,child6_hover,item);
+			var child7 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_07_black.png' style='width:100%;height:100%;'></div>");
+			var child7_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_07.png' style='width:100%;height:100%;'></div>");
+			child7 = box.createChild(child7,child7_hover,item);
+			var child8 = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_08_black.png' style='width:100%;height:100%;'></div>");
+			var child8_hover = $("<div style='width:100%;height:100%;'><img src='styles/default/images/child/deliver_08.png' style='width:100%;height:100%;'></div>");
+			child8 = box.createChild(child8,child8_hover,deliverItem);
+			var child = [child1, child2, child3, child4, child5, child6, child7, child8];
+			box.openChild(bg,child,item,{
+				close: function(){
+					return true;
+				}
+			});
+		}
 		box.createItem(bg,{
 			color: "#7AB42C",
 			title: "Concepts<br>&<br>Inspirations",
@@ -181,6 +177,29 @@
 			}
 		});
 		
-		
+		var vi = box.createNavigate({
+			id: "navigate",
+			list: [{
+				text: "Home",
+				onclick: function(){
+					box.closeItem(deliverItem.childlist, $(".close"), deliverItem);
+				}
+			},{
+				text: "Delivered Project",
+				onclick: function(){
+					openDelivered();
+				}
+			},{
+				text: "Concepts & Inspireations",
+				onclick: function(){}
+			},{
+				text: "Quick Usability Testing",
+				onclick: function(){}
+			},{
+				text: "About Us",
+				onclick: function(){}
+			}],
+			defaults: 0
+		});
 	});
 </script>

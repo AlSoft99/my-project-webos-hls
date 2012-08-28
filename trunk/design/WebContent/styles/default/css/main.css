@@ -106,7 +106,8 @@ div,p,span,li,ul,label,dd,dl{
 	left: 0; top: 0; z-index: 2;color:white; font-size: 12px; text-align: center; 
 }
 .navigate ul{
-	list-style:none; text-align: center; margin:0;height: 100%; vertical-align: middle; padding: 0; display: inline;padding: 24px 0;
+	list-style:none; text-align: center; margin:0;height: 100%; vertical-align: middle; padding: 0; display: inline;padding: 24px 0; 
+	background-position: 0 50px; 
 }
 .navigate ul > li{
 	/* float: left; */
@@ -114,6 +115,9 @@ div,p,span,li,ul,label,dd,dl{
 }
 .navigate ul > li.navigate-last{
 	border-right: 0px dashed #FFFFFF; 
+}
+.navigate .arrow{
+	background: url("../images/arrow.png") no-repeat;width:18px; height:10px; display: block; position: absolute; top: 46px;
 }
 /********nagative end**********/
 .dialog-content{
