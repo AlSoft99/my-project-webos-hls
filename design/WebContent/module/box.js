@@ -553,11 +553,65 @@ define(function(require, exports, module){
 		});
 	};
 	
-	var Navigate = function(id){
+	var Navigate = function(params){
 		var _this = this;
+		var na = $("#"+params.id);
+		na.addClass("navigate");
+		var arrow = $("<p class='arrow'></p>");
+		var ul = $("<ul></ul>");
+		na.append(arrow);
+		var defaults = params.defaults || 0;
+		for(var i = 0;i < params.list.length; i++){
+			if(i!=params.list.length-1){
+				var temp = $("<li>"+params.list[i].text+"</li>");
+				if(params.list[i].onclick){
+					temp.on("click",params.list[i].onclick);
+				}
+				ul.append(temp);
+			}else{
+				var temp = $("<li class='navigate-last'>"+params.list[i].text+"</li>");
+				if(params.list[i].onclick){
+					temp.on("click",params.list[i].onclick);
+				}
+				ul.append(temp);
+			}
+		}
+		na.append(ul);
+		
 		_this.item = [];
-		$("#"+id+" li").each(function(i){
+		_this.itemWidth = [];
+		var li = ul.find("li");
+		li.each(function(i){
 			_this.item.push($(this));
-		});  
+			_this.itemWidth.push($(this).outerWidth());
+		}); 
+		li.on("click", function(){
+			_this.goIndex($(this).index());
+		});
+		_this.width = ul.outerWidth();
+		_this.margin = ($(window).width()-ul.outerWidth())/2;
+		_this.goIndex = function(index, time){
+			var left = 0;
+			time = time || 300;
+			for(var i = 0; i < index; i++){
+				left += _this.itemWidth[i];
+			}
+			left += _this.itemWidth[index]/2 - arrow.width()/2;
+			arrow.animate({
+				left: left+_this.margin
+			},time);
+			
+		};
+		_this.goIndex(defaults, 1);
+	};
+	
+	exports.createNavigate = function(params){
+		
+		var vi = new Navigate(params);
+		/*$(vi.item).each(function(i){
+			var temp = vi.item[i];
+			console.log(temp.outerWidth());
+		});*/
+		return vi;
 	};
 });
