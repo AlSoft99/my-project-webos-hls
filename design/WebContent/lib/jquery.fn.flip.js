@@ -1,18 +1,21 @@
 define(function(require, exports, module){ 
 	var $ = require("jquery");
 	$.fn.extend({
-		flip: function(){
-			console.log("flip");
+		flip: function(param){
+			var params = {
+				btnWidth: 100,
+				btnHeight: 100
+			};
+			$.extend(true, params, param);
 			var _this = $(this);
 			var object = _this.find("img");
-			var prev = $("<div class='prev'><div>");
-			var next = $("<div class='next'><div>");
+			var prev = $("<div class='prev' ><div>").width(params.btnWidth).height(params.btnHeight);
+			var next = $("<div class='next'><div>").width(params.btnWidth).height(params.btnHeight);
+			var top = (object.get(0).height - params.btnHeight)/2;
+			prev.css("top", top+"px").css("left", "30px");
+			next.css("top", top+"px").css("right", "30px");
 			_this.append(prev);
-			object.get(0).onload = function(){
-				console.log("object.outerHeight():"+object.height()+"   prev.outerHeight():"+prev.height());
-				prev.top = (object.outerHeight() - prev.outerHeight())/2;
-			};
-			
+			_this.append(next);
 			
 		}
 	});

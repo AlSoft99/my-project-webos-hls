@@ -37,7 +37,7 @@
 			var child1_hover = $("<div class='full'><img src='styles/default/images/child/deliver_01.png' class='full'></div>");
 			child1_hover.on("click",function(){
 				var bodyContent = $("<div class='index-dialog' style='padding-top:20px;padding-left:30px;'><img src='styles/default/images/dialog/deliver_largeview_01.jpg' style='' ></div>");
-				bodyContent.flip();
+				
 				var dialog = {
 					left: "center",
 					top: "center",
@@ -60,6 +60,11 @@
 					childlist: item.childlist
 				};
 				box.openDialog(bg, dialog, item);
+				bodyContent.flip({
+					width: dialog.cell * item.width,
+					height: dialog.row * item.height
+				});
+				
 			});
 			child1 = box.createChild(child1,child1_hover,item);
 			var child2 = $("<div class='full'><img src='styles/default/images/child/deliver_02_black.png' class='full'></div>");
