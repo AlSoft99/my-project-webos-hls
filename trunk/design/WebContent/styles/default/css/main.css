@@ -1,3 +1,5 @@
+@import url("./index.css");
+
 body{
 	margin: 0;padding: 0;
 }
@@ -13,6 +15,12 @@ div,p,span,li,ul,label,dd,dl{
 .float{
 	float: left;
 }
+.full{
+	width: 100%;
+	height: 100%;
+}
+
+
 .bg{
 	position: absolute; overflow: hidden; width: 100%; height: 100%; background: url("../images/grid.png");top: 0;left:0;
 }
@@ -89,7 +97,7 @@ div,p,span,li,ul,label,dd,dl{
 /********cell end**********/
 /********child start**********/
 .child .child-body{
-	width:100%; height:100%; box-sizing:border-box; border-radius:5px; position: relative; border-style:solid;border-width:0;
+	width:100%; height:100%; box-sizing:border-box; border-radius:5px; position: relative; border-style:solid;border-width:0; -moz-box-sizing:border-box;
 }
 .child .child-body > div{
 	position: absolute; left:0; top:0;
@@ -103,7 +111,7 @@ div,p,span,li,ul,label,dd,dl{
 	height:58px;
 	background-color: black;
 	position: absolute;
-	left: 0; top: 0; z-index: 2;color:white; font-size: 12px; text-align: center; 
+	left: 0; top: 0; z-index: 1;color:white; font-size: 12px; text-align: center; 
 }
 .navigate ul{
 	list-style:none; text-align: center; margin:0;height: 100%; vertical-align: middle; padding: 0; display: inline;padding: 24px 0; 
@@ -121,7 +129,13 @@ div,p,span,li,ul,label,dd,dl{
 }
 /********nagative end**********/
 .dialog-content{
-	position: relative; z-index:2;
+	position: absolute; z-index:2;
+}
+.prev{
+	background:url(../images/dialog/previous_button.png) no-repeat center center white; width: 50px; height: 50px; opacity: .5; filter: alpha(opacity=.5); position: absolute;
+}
+.next{
+	background:url(../images/dialog/next_button.png) no-repeat center center white; width: 50px; height: 50px; opacity: .5; filter: alpha(opacity=.5); position: absolute;
 }
 .animation-form{  
     -webkit-animation: shock 1s linear infinite;  
