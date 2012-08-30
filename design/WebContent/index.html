@@ -39,7 +39,6 @@
 			child1.on("click",click1);
 			child1_hover.on("click",click1);
 			function click1(){
-				child1.stop(true, true);
 				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='styles/default/images/dialog/deliver_largeview_01.jpg' style='' ></div>");
 				
 				var dialog = {
@@ -85,6 +84,7 @@
 				});
 			}
 			child1 = box.createChild(child1,child1_hover,item);
+			
 			var child2 = $("<div class='full'><img src='styles/default/images/child/deliver_02_black.png' class='full'></div>");
 			var child2_hover = $("<div class='full'><img src='styles/default/images/child/deliver_02.png' class='full'></div>");
 			child2.on("click",click2);
@@ -135,6 +135,7 @@
 				
 			};
 			child2 = box.createChild(child2,child2_hover,item);
+			
 			var child3 = $("<div class='full'><img src='styles/default/images/child/deliver_03_black.png' class='full'></div>");
 			var child3_hover = $("<div class='full'><img src='styles/default/images/child/deliver_03.png' class='full'></div>");
 			child3.on("click",click3);
@@ -185,12 +186,12 @@
 				
 			}
 			child3 = box.createChild(child3,child3_hover,item);
+			
 			var child4 = $("<div class='full'><img src='styles/default/images/child/deliver_04_black.png' class='full'></div>");
 			var child4_hover = $("<div class='full'><img src='styles/default/images/child/deliver_04.png' class='full'></div>");
 			child4 = box.createChild(child4,child4_hover,item);
 			var child5 = $("<div class='full'><img src='styles/default/images/child/deliver_05_black.png' class='full'></div>");
 			var child5_hover = $("<div class='full'><img src='styles/default/images/child/deliver_05.png' class='full'></div>");
-			child5 = box.createChild(child5,child5_hover,item);
 			child5.on("click",click5);
 			child5_hover.on("click",click5);
 			function click5(){
@@ -229,6 +230,7 @@
 				box.openDialog(bg, dialog, item);
 				
 			}
+			child5 = box.createChild(child5,child5_hover,item);
 			
 			var child6 = $("<div class='full'><img src='styles/default/images/child/deliver_06_black.png' class='full'></div>");
 			var child6_hover = $("<div class='full'><img src='styles/default/images/child/deliver_06.png' class='full'></div>");
