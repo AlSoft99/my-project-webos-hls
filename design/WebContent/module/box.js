@@ -19,6 +19,8 @@ define(function(require, exports, module){
 		_this.height = boxObject.height;
 		_this.realwidth = boxObject.realwidth;
 		_this.realheight = boxObject.realheight;
+		_this.cell = 0;
+		_this.row = 0;
 		_this.className = "box";
 		_this.move = function(cellLeft,cellTop){
 			_this.dom.css("left", this.calcCell(cellLeft, _this.realwidth)+"px")
@@ -118,6 +120,7 @@ define(function(require, exports, module){
 		};
 		if(params.onclick){
 			coverDom.on("click",function(){
+				_this.dom.css("opacity",1);
 				params.onclick($(this), _this);
 				_this.isOpen = true;
 			});
@@ -470,6 +473,19 @@ define(function(require, exports, module){
 		},btn.close);
 		btn.close.dom.addClass("close");
 	};
+	exports.refreshDialogImage = function(item,params){
+		console.log(item.childlist.length);
+		$(item.childlist).each(function(i){
+			var child = item.childlist[i];
+			if(params.left){
+				child.dom.css("background-position-x", (-child.cell*child.realwidth+params.left)+"px");
+			}
+			if(params.top){
+				child.dom.css("background-position-y", (-(child.row-1)*child.realheight+params.top)+"px");
+			}
+			
+		});
+	};
 	exports.openDialog = function(dom, dialog, item){
 		var _this = this;
 		var childList = new Array();
@@ -517,6 +533,8 @@ define(function(require, exports, module){
 				}else{
 					Dialog.prototype = new Box();
 					var child = new Dialog();
+					child.cell = int;
+					child.row = int2;
 					child.move(item.params.left, item.params.top);
 					if(int2 == 0){
 						for(var key in dialog.titleStyle){

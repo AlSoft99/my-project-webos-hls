@@ -1,5 +1,5 @@
 .flip-cover{
-	width: 100%; height: 100%; position: absolute; left:0; top: 0;
+	width: 100%; height: 100%; position: absolute; left:0; top: 0; background-color: white; opacity: .01; filter: alpha(opacity=.01);
 }
 .prev{
 	background:url(../images/dialog/previous_button.png) no-repeat center center white; position: absolute; border-radius: 5px;

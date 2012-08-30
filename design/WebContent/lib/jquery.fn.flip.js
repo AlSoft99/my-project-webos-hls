@@ -8,6 +8,7 @@ define(function(require, exports, module){
 				initLeft: 30,
 				opacity: .7
 			};
+			window.flip = {};
 			$.extend(true, params, param);
 			params.center = params.width/2;
 			params.endLeft = -params.imgWidth + params.width - params.initLeft;
@@ -40,12 +41,15 @@ define(function(require, exports, module){
 				prev.css("opacity", (params.opacity-progress));
 				next.css("opacity", progress);
 				if(position.left >= params.initLeft && value >= 0){
+					window.flip.left = params.initLeft;
 					children.css("left",params.initLeft);
 					return ;
 				}else if(position.left <= params.endLeft && value < 0){
+					window.flip.left = params.endLeft;
 					children.css("left",params.endLeft);
 					return ;
 				}
+				window.flip.left = position.left + value;
 				children.css("left",position.left + value);
 			},10);
 			
