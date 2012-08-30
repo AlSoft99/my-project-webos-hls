@@ -36,7 +36,10 @@
 			var item = deliverItem;
 			var child1 = $("<div class='full'><img src='styles/default/images/child/deliver_01_black.png' class='full'></div>");
 			var child1_hover = $("<div class='full'><img src='styles/default/images/child/deliver_01.png' class='full'></div>");
-			child1_hover.on("click",function(){
+			child1.on("click",click1);
+			child1_hover.on("click",click1);
+			function click1(){
+				child1.stop(true, true);
 				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='styles/default/images/dialog/deliver_largeview_01.jpg' style='' ></div>");
 				
 				var dialog = {
@@ -53,6 +56,9 @@
 						close: {
 							event: function(){
 								vi.goIndex(0);
+								box.refreshDialogImage(item, {
+									left: window.flip.left
+								});
 								return true;
 							}
 						}
@@ -69,6 +75,7 @@
 					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>About Us</div>"),
 					childlist: item.childlist
 				};
+				
 				box.openDialog(bg, dialog, item);
 				bodyContent.flip({
 					width: dialog.cell * item.realwidth,
@@ -76,12 +83,13 @@
 					imgWidth: 3407,
 					imgHeight: 500
 				});
-				
-			});
+			}
 			child1 = box.createChild(child1,child1_hover,item);
 			var child2 = $("<div class='full'><img src='styles/default/images/child/deliver_02_black.png' class='full'></div>");
 			var child2_hover = $("<div class='full'><img src='styles/default/images/child/deliver_02.png' class='full'></div>");
-			child2_hover.on("click",function(){
+			child2.on("click",click2);
+			child2_hover.on("click",click2);
+			function click2(){
 				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='styles/default/images/dialog/deliver_largeview_02.jpg' style='' ></div>");
 				
 				var dialog = {
@@ -98,6 +106,9 @@
 						close: {
 							event: function(){
 								vi.goIndex(0);
+								box.refreshDialogImage(item, {
+									left: window.flip.left
+								});
 								return true;
 							}
 						}
@@ -122,11 +133,13 @@
 					imgHeight: 450
 				});
 				
-			});
+			};
 			child2 = box.createChild(child2,child2_hover,item);
 			var child3 = $("<div class='full'><img src='styles/default/images/child/deliver_03_black.png' class='full'></div>");
 			var child3_hover = $("<div class='full'><img src='styles/default/images/child/deliver_03.png' class='full'></div>");
-			child3_hover.on("click",function(){
+			child3.on("click",click3);
+			child3_hover.on("click",click3);
+			function click3(){
 				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='styles/default/images/dialog/deliver_largeview_03.jpg' style='' ></div>");
 				
 				var dialog = {
@@ -138,6 +151,9 @@
 						close: {
 							event: function(){
 								vi.goIndex(0);
+								box.refreshDialogImage(item, {
+									left: window.flip.left
+								});
 								return true;
 							}
 						}
@@ -167,7 +183,7 @@
 					imgHeight: 500
 				});
 				
-			});
+			}
 			child3 = box.createChild(child3,child3_hover,item);
 			var child4 = $("<div class='full'><img src='styles/default/images/child/deliver_04_black.png' class='full'></div>");
 			var child4_hover = $("<div class='full'><img src='styles/default/images/child/deliver_04.png' class='full'></div>");
@@ -175,7 +191,9 @@
 			var child5 = $("<div class='full'><img src='styles/default/images/child/deliver_05_black.png' class='full'></div>");
 			var child5_hover = $("<div class='full'><img src='styles/default/images/child/deliver_05.png' class='full'></div>");
 			child5 = box.createChild(child5,child5_hover,item);
-			child5_hover.on("click",function(){
+			child5.on("click",click5);
+			child5_hover.on("click",click5);
+			function click5(){
 				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><video width='90%' height='90%' controls=\"controls\"><source src=\"styles/default/images/video/kumo.mp4\" type=\"video/mp4\" />Your browser does not support the video tag.</video></div>");
 				
 				var dialog = {
@@ -210,7 +228,7 @@
 				};
 				box.openDialog(bg, dialog, item);
 				
-			});
+			}
 			
 			var child6 = $("<div class='full'><img src='styles/default/images/child/deliver_06_black.png' class='full'></div>");
 			var child6_hover = $("<div class='full'><img src='styles/default/images/child/deliver_06.png' class='full'></div>");
