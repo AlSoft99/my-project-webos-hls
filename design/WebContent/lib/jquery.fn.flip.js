@@ -33,7 +33,8 @@ define(function(require, exports, module){
 			_this.append(next);
 			var value = params.initLeft;
 			cover.on("mousemove",function(e){
-				value = (parseInt(params.center) - parseInt(e.offsetX))/100;
+				var offsetX = e.offsetX || (e.clientX - $(this).offset().left);
+				value = (parseInt(params.center) - parseInt(offsetX))/100;
 			});
 			var flipVal = setInterval(function(){
 				var position = children.position();

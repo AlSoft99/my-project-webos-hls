@@ -474,14 +474,25 @@ define(function(require, exports, module){
 		btn.close.dom.addClass("close");
 	};
 	exports.refreshDialogImage = function(item,params){
-		console.log(item.childlist.length);
+		
 		$(item.childlist).each(function(i){
 			var child = item.childlist[i];
-			if(params.left){
-				child.dom.css("background-position-x", (-child.cell*child.realwidth+params.left)+"px");
-			}
-			if(params.top){
-				child.dom.css("background-position-y", (-(child.row-1)*child.realheight+params.top)+"px");
+			if(child.dom.css("background-position-x")){
+				if(params.left){
+					child.dom.css("background-position-x", (-child.cell*child.realwidth+params.left)+"px");
+				}
+				if(params.top){
+					child.dom.css("background-position-y", (-(child.row-1)*child.realheight+params.top)+"px");
+				}
+			}else{
+				var positon = child.dom.css("background-position");
+				var list = position.split(" ");
+				var newArray = new Array();
+				if(params.left){
+					newArray.push(parseInt(list[0])+params.left);
+				}else{
+					newArray.push(parseInt(list[0]));
+				}
 			}
 			
 		});
