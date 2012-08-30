@@ -96,6 +96,7 @@ define(function(require, exports, module){
 		_this.dom.css("background-color",params.color).css("z-index",1).css("opacity",1).addClass("cell").addClass("item");
 		_this.move(params.left,params.top);
 		_this.childlist;
+		_this.isOpen = false;
 		
 		bodyDom.append(titleDom);
 		bodyDom.append(hoverDom);
@@ -118,6 +119,7 @@ define(function(require, exports, module){
 		if(params.onclick){
 			coverDom.on("click",function(){
 				params.onclick($(this), _this);
+				_this.isOpen = true;
 			});
 		};
 		function stopOpacity(items){
@@ -186,9 +188,11 @@ define(function(require, exports, module){
 		var _this = this;
 		_this.actionItems(item, function(elem){
 			elem.dom.hide();
+			elem.isOpen = false;
 		}, function(item){
 			item.dom.before("<div class='item-cover'></div>");
 			item.dom.show();
+			item.isOpen = true;
 		});
 	};
 	exports.actionItems = function(item, callback, callbackItem){
@@ -217,6 +221,7 @@ define(function(require, exports, module){
 	exports.dropAllItems = function(item, isReduction){
 		var _this = this;
 		isReduction = isReduction || true;
+		item.isOpen = false;
 		if(isReduction==true){
 			_this.actionItems(item, function(elem){
 				_this.dropItem(elem);
@@ -270,6 +275,7 @@ define(function(require, exports, module){
 		params = params || {};
 		___this.stopAllShock();
 		___this.hideAllItems(item);
+		item.isOpen = true;
 		$(list).each(function(i){
 			if(i<=8){
 				Child.prototype = new Box();
@@ -330,6 +336,16 @@ define(function(require, exports, module){
 	};
 	exports.getItems = function(){
 		return items;
+	};
+	exports.getOpenItem = function(){
+		var items = this.getItems();
+		var isOpen = null;
+		$(items).each(function(i){
+			if(items[i].isOpen){
+				isOpen = items[i];
+			}
+		});
+		return isOpen;
 	};
 	exports.createClose = function(childList, item, params){
 		var _this = this;
@@ -462,9 +478,11 @@ define(function(require, exports, module){
 		var sum = dialog.cell*dialog.row;
 		var itemChild = dialog.childlist || item.childlist || [];
 		this.hideAllItems(item);
+		item.isOpen = true;
 		item.dom.find(".close").remove();
 		item.dom.css("opacity",1);
 		item.dom.stop(true,true);
+		item.dialog = dialog;
 		var dialogDom = new Array();
 		dialog.btn = dialog.btn || {};
 		this.setDefaultClose(dialog.btn);
@@ -545,6 +563,7 @@ define(function(require, exports, module){
 			time+=30;
 			tempLeft = tempLeft + 1;
 		}
+		item.childlist = childList;
 		_this.createBtn(dialogDom,childList, item, dialog);
 		function countCallback(){
 			count++;
