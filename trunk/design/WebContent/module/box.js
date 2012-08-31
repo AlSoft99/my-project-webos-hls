@@ -485,14 +485,20 @@ define(function(require, exports, module){
 					child.dom.css("background-position-y", (-(child.row-1)*child.realheight+params.top)+"px");
 				}
 			}else{
-				var positon = child.dom.css("background-position");
+				var position = child.dom.css("background-position");
 				var list = position.split(" ");
 				var newArray = new Array();
 				if(params.left){
-					newArray.push(parseInt(list[0])+params.left);
+					newArray.push(-child.cell*child.realwidth + params.left);
 				}else{
 					newArray.push(parseInt(list[0]));
 				}
+				if(params.top){
+					newArray.push((-(child.row-1)*child.realheight + params.top));
+				}else{
+					newArray.push(parseInt(list[1]));
+				}
+				child.dom.css("background-position", newArray[0]+"px "+newArray[1]+"px");
 			}
 			
 		});
