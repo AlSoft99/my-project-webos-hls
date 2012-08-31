@@ -32,30 +32,37 @@
 				vi.goIndex(1);
 			}
 		});
-		function openDelivered(){
-			var item = deliverItem;
-			var child1 = $("<div class='full'><img src='styles/default/images/child/deliver_01_black.png' class='full'></div>");
-			var child1_hover = $("<div class='full'><img src='styles/default/images/child/deliver_01.png' class='full'></div>");
+		/**
+		params: {
+			child: child,
+			childhover: hover,
+			body: body,
+			item: item,
+			image: image,
+			title: title,
+			imgWidth: imgWidth,
+			imgHeight: imgHeight
+		}
+		**/
+		function createChild(params){
+			var child1 = $("<div class='full'><img src='"+params.child+"' class='full'></div>");
+			var child1_hover = $("<div class='full'><img src='"+params.childhover+"' class='full'></div>");
 			child1.on("click",click1);
 			child1_hover.on("click",click1);
 			function click1(){
-				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='styles/default/images/dialog/deliver_largeview_01.jpg' style='' ></div>");
+				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='"+params.body+"' style='' ></div>");
 				
 				var dialog = {
 					left: "center",
 					top: "center",
 					row: 6,
 					cell: 12,
-					image:{
-						height: 500,
-						left: 30,
-						top: "center"
-					},
+					image: params.image,
 					btn: {
 						close: {
 							event: function(){
 								vi.goIndex(0);
-								box.refreshDialogImage(item, {
+								box.refreshDialogImage(params.item, {
 									left: window.flip.left
 								});
 								return true;
@@ -63,7 +70,7 @@
 						}
 					},
 					bodyStyle: {
-						"background": "url(styles/default/images/dialog/deliver_largeview_01.jpg) no-repeat center center black",
+						"background": "url("+params.body+") no-repeat center center black",
 						"border": "1px solid black"
 					},
 					titleStyle: {
@@ -71,131 +78,38 @@
 						"border": "1px solid black"
 					},
 					bodyContent: bodyContent,
-					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>About Us</div>"),
-					childlist: item.childlist
+					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>"+params.title+"</div>"),
+					childlist: params.item.childlist
 				};
 				
-				box.openDialog(bg, dialog, item);
+				box.openDialog(bg, dialog, params.item);
 				bodyContent.flip({
-					width: dialog.cell * item.realwidth,
-					height: (dialog.row-1) * item.realheight,
-					imgWidth: 3407,
-					imgHeight: 500
+					width: dialog.cell * params.item.realwidth,
+					height: (dialog.row-1) * params.item.realheight,
+					imgWidth: params.imgWidth,
+					imgHeight: params.imgHeight
 				});
 			}
-			child1 = box.createChild(child1,child1_hover,item);
-			
-			var child2 = $("<div class='full'><img src='styles/default/images/child/deliver_02_black.png' class='full'></div>");
-			var child2_hover = $("<div class='full'><img src='styles/default/images/child/deliver_02.png' class='full'></div>");
-			child2.on("click",click2);
-			child2_hover.on("click",click2);
-			function click2(){
-				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='styles/default/images/dialog/deliver_largeview_02.jpg' style='' ></div>");
-				
-				var dialog = {
-					left: "center",
-					top: "center",
-					row: 6,
-					cell: 12,
-					image:{
-						height: 450,
-						left: 30,
-						top: "center"
-					},
-					btn: {
-						close: {
-							event: function(){
-								vi.goIndex(0);
-								box.refreshDialogImage(item, {
-									left: window.flip.left
-								});
-								return true;
-							}
-						}
-					},
-					bodyStyle: {
-						"background": "url(styles/default/images/dialog/deliver_largeview_02.jpg) no-repeat center center black",
-						"border": "1px solid black"
-					},
-					titleStyle: {
-						"background-color": "black",
-						"border": "1px solid black"
-					},
-					bodyContent: bodyContent,
-					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>About Us</div>"),
-					childlist: item.childlist
-				};
-				box.openDialog(bg, dialog, item);
-				bodyContent.flip({
-					width: dialog.cell * item.realwidth,
-					height: (dialog.row-1) * item.realheight,
-					imgWidth: 4280,
-					imgHeight: 450
-				});
-				
-			};
-			child2 = box.createChild(child2,child2_hover,item);
-			
-			var child3 = $("<div class='full'><img src='styles/default/images/child/deliver_03_black.png' class='full'></div>");
-			var child3_hover = $("<div class='full'><img src='styles/default/images/child/deliver_03.png' class='full'></div>");
-			child3.on("click",click3);
-			child3_hover.on("click",click3);
-			function click3(){
-				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='styles/default/images/dialog/deliver_largeview_03.jpg' style='' ></div>");
-				
-				var dialog = {
-					left: "center",
-					top: "center",
-					row: 6,
-					cell: 12,
-					btn: {
-						close: {
-							event: function(){
-								vi.goIndex(0);
-								box.refreshDialogImage(item, {
-									left: window.flip.left
-								});
-								return true;
-							}
-						}
-					},
-					image:{
-						height: 500,
-						left: 30,
-						top: "center"
-					},
-					bodyStyle: {
-						"background": "url(styles/default/images/dialog/deliver_largeview_03.jpg) no-repeat center center black",
-						"border": "1px solid black"
-					},
-					titleStyle: {
-						"background-color": "black",
-						"border": "1px solid black"
-					},
-					bodyContent: bodyContent,
-					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>About Us</div>"),
-					childlist: item.childlist
-				};
-				box.openDialog(bg, dialog, item);
-				bodyContent.flip({
-					width: dialog.cell * item.realwidth,
-					height: (dialog.row-1) * item.realheight,
-					imgWidth: 3407,
-					imgHeight: 500
-				});
-				
-			}
-			child3 = box.createChild(child3,child3_hover,item);
-			
-			var child4 = $("<div class='full'><img src='styles/default/images/child/deliver_04_black.png' class='full'></div>");
-			var child4_hover = $("<div class='full'><img src='styles/default/images/child/deliver_04.png' class='full'></div>");
-			child4 = box.createChild(child4,child4_hover,item);
-			var child5 = $("<div class='full'><img src='styles/default/images/child/deliver_05_black.png' class='full'></div>");
-			var child5_hover = $("<div class='full'><img src='styles/default/images/child/deliver_05.png' class='full'></div>");
+			return box.createChild(child1,child1_hover,params.item);
+		}
+		/**
+		params: {
+			child: child,
+			childhover: hover,
+			body: body,
+			bodyImage: bodyImage,
+			item: item,
+			image: image,
+			title: title
+		}
+		**/
+		function createVideo(params){
+			var child5 = $("<div class='full'><img src='"+params.child+"' class='full'></div>");
+			var child5_hover = $("<div class='full'><img src='"+params.childhover+"' class='full'></div>");
 			child5.on("click",click5);
 			child5_hover.on("click",click5);
 			function click5(){
-				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><video height='450' autoplay controls=\"controls\" style='margin-top:75px;'><source src=\"styles/default/images/video/kumo.mp4\" type=\"video/mp4\" />Your browser does not support the video tag.</video></div>");
+				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><video height='450' autoplay controls=\"controls\" style='margin-top:75px;'><source src=\""+params.body+"\" type=\"video/mp4\" />Your browser does not support the video tag.</video></div>");
 				
 				var dialog = {
 					left: "center",
@@ -210,14 +124,9 @@
 							}
 						}
 					},
-					image:{
-						width: 654,
-						height: 450,
-						left: "center",
-						top: "center"
-					},
+					image:params.image,
 					bodyStyle: {
-						"background": "url(styles/default/images/video/kumo.png) no-repeat center center black",
+						"background": "url("+params.bodyImage+") no-repeat center center black",
 						"border": "1px solid black"
 					},
 					titleStyle: {
@@ -225,23 +134,139 @@
 						"border": "1px solid black"
 					},
 					bodyContent: bodyContent,
-					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>About Us</div>"),
-					childlist: item.childlist
+					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>"+params.title+"</div>"),
+					childlist: params.item.childlist
 				};
-				box.openDialog(bg, dialog, item);
+				box.openDialog(bg, dialog, params.item);
 				
 			}
-			child5 = box.createChild(child5,child5_hover,item);
+			return box.createChild(child5,child5_hover,params.item);
+		}
+		
+		
+		function openDelivered(){
+			var item = deliverItem;
 			
-			var child6 = $("<div class='full'><img src='styles/default/images/child/deliver_06_black.png' class='full'></div>");
-			var child6_hover = $("<div class='full'><img src='styles/default/images/child/deliver_06.png' class='full'></div>");
-			child6 = box.createChild(child6,child6_hover,item);
-			var child7 = $("<div class='full'><img src='styles/default/images/child/deliver_07_black.png' class='full'></div>");
-			var child7_hover = $("<div class='full'><img src='styles/default/images/child/deliver_07.png' class='full'></div>");
-			child7 = box.createChild(child7,child7_hover,item);
-			var child8 = $("<div class='full'><img src='styles/default/images/child/deliver_08_black.png' class='full'></div>");
-			var child8_hover = $("<div class='full'><img src='styles/default/images/child/deliver_08.png' class='full'></div>");
-			child8 = box.createChild(child8,child8_hover,deliverItem);
+			var child1 = createChild({
+				child: 'styles/default/images/child/deliver_01_black.png',
+				childhover: 'styles/default/images/child/deliver_01.png',
+				body: 'styles/default/images/dialog/deliver_largeview_01.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 30,
+					top: "center"
+				},
+				title: "About Me",
+				imgWidth: 3407,
+				imgHeight: 500
+			});
+			
+			var child2 = createChild({
+				child: 'styles/default/images/child/deliver_02_black.png',
+				childhover: 'styles/default/images/child/deliver_02.png',
+				body: 'styles/default/images/dialog/deliver_largeview_02.jpg',
+				item: item,
+				image: {
+					height: 450,
+					left: 30,
+					top: "center"
+				},
+				title: "About Me",
+				imgWidth: 4280,
+				imgHeight: 450
+			});
+			
+			var child3 = createChild({
+				child: 'styles/default/images/child/deliver_03_black.png',
+				childhover: 'styles/default/images/child/deliver_03.png',
+				body: 'styles/default/images/dialog/deliver_largeview_03.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 30,
+					top: "center"
+				},
+				title: "About Me",
+				imgWidth: 3407,
+				imgHeight: 500
+			});
+			
+			var child4 = createChild({
+				child: 'styles/default/images/child/deliver_04_black.png',
+				childhover: 'styles/default/images/child/deliver_04.png',
+				body: 'styles/default/images/dialog/deliver_largeview_04.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 30,
+					top: "center"
+				},
+				title: "About Me",
+				imgWidth: 3407,
+				imgHeight: 500
+			});
+			
+			var child5 = createVideo({
+				child: 'styles/default/images/child/deliver_05_black.png',
+				childhover: 'styles/default/images/child/deliver_05.png',
+				body: "styles/default/images/video/kumo.mp4",
+				bodyImage: "styles/default/images/video/kumo.png",
+				item: item,
+				image: {
+					width: 654,
+					height: 450,
+					left: "center",
+					top: "center"
+				},
+				title: "Video"
+			});
+			
+			var child6 = createChild({
+				child: 'styles/default/images/child/deliver_06_black.png',
+				childhover: 'styles/default/images/child/deliver_06.png',
+				body: 'styles/default/images/dialog/deliver_largeview_06.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 30,
+					top: "center"
+				},
+				title: "About Me",
+				imgWidth: 3407,
+				imgHeight: 500
+			});
+			
+			var child7 = createChild({
+				child: 'styles/default/images/child/deliver_07_black.png',
+				childhover: 'styles/default/images/child/deliver_07.png',
+				body: 'styles/default/images/dialog/deliver_largeview_07.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 30,
+					top: "center"
+				},
+				title: "About Me",
+				imgWidth: 3407,
+				imgHeight: 500
+			});
+			
+			var child8 = createChild({
+				child: 'styles/default/images/child/deliver_08_black.png',
+				childhover: 'styles/default/images/child/deliver_08.png',
+				body: 'styles/default/images/dialog/deliver_largeview_08.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 30,
+					top: "center"
+				},
+				title: "About Me",
+				imgWidth: 3407,
+				imgHeight: 500
+			});
+			
 			var child = [child1, child2, child3, child4, child5, child6, child7, child8];
 			box.openChild(bg,child,item,{
 				close: function(){
@@ -398,11 +423,23 @@
 			$(".dialog-content").remove();
 			$(".item > .body").show();
 		}
+		function hasSelect(_this){
+			if(_this.hasClass("select")){
+				return false;
+			}else{
+				_this.parent().find(".select").removeClass("select");
+				_this.addClass("select");
+				return true;
+			}
+		}
 		var vi = box.createNavigate({
 			id: "navigate",
 			list: [{
 				text: "Home",
 				onclick: function(){
+					if(!hasSelect($(this))){
+						return false;
+					}
 					var openItem = box.getOpenItem();
 					if(openItem !=null && openItem.childlist){
 						box.closeItem(openItem.childlist, $(".close"), openItem);
@@ -419,6 +456,9 @@
 			},{
 				text: "Delivered Project",
 				onclick: function(){
+					if(!hasSelect($(this))){
+						return false;
+					}
 					initElement();
 					box.hideAllItems(box.getOpenItem());
 					openDelivered();
@@ -426,6 +466,9 @@
 			},{
 				text: "Concepts & Inspireations",
 				onclick: function(){
+					if(!hasSelect($(this))){
+						return false;
+					}
 					initElement();
 					box.hideAllItems(box.getOpenItem());
 					openConcepts();
@@ -433,13 +476,18 @@
 			},{
 				text: "Quick Usability Testing",
 				onclick: function(){
-					
+					if(!hasSelect($(this))){
+						return false;
+					}
 					initElement();
 					openTesting();
 				}
 			},{
 				text: "About Us",
 				onclick: function(){
+					if(!hasSelect($(this))){
+						return false;
+					}
 					initElement();
 					openAboutUs();
 				}
