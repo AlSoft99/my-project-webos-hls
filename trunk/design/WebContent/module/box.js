@@ -54,6 +54,8 @@ define(function(require, exports, module){
 		_this.transformMove = function(diffLeft, diffTop, time){
 			var left = parseInt(_this.dom.css("left"));
 			var top = parseInt(_this.dom.css("top"));
+			_this.diffLeft = diffLeft;
+			_this.diffTop = diffTop;
 			_this.transformPositionMove(diffLeft*_this.realwidth + left, diffTop*_this.realheight + top, time);
 		};
 		_this.transformCellMove = function(cellLeft, cellTop, time, callback){
@@ -187,13 +189,16 @@ define(function(require, exports, module){
 		create.append(content);
 		return create;
 	};
-	exports.hideAllItems = function(item){
+	exports.hideAllItems = function(item,name){
 		var _this = this;
 		_this.actionItems(item, function(elem){
 			elem.dom.hide();
 			elem.isOpen = false;
 		}, function(item){
-			item.dom.before("<div class='item-cover'></div>");
+			var conver = $("<div class='item-cover'></div>");
+			conver.addClass(name);
+			item.cover = conver;
+			item.dom.before(item.cover);
 			item.dom.show();
 			item.isOpen = true;
 		});
@@ -271,13 +276,33 @@ define(function(require, exports, module){
 			item.move(item.params.left, item.params.top);
 		});
 	};
+	function loadingMain(itemChild){
+		if(itemChild!=""){
+			$(".dialog, .dialog-content").each(function(){
+				if(!$(this).hasClass(itemChild)){
+					$(this).remove();
+				}
+			});
+		}
+		
+	};
+	function hideLoadingMain(itemChild){
+		if(itemChild!=""){
+			$(".dialog, .dialog-content").each(function(){
+				if(!$(this).hasClass(itemChild)){
+					$(this).hide();
+				}
+			});
+		}
+		
+	};
 	exports.openChild = function(dom, list, item, params){
 		var ___this = this;
 		var childList = [];
 		var dir = [[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 		params = params || {};
 		___this.stopAllShock();
-		___this.hideAllItems(item);
+		___this.hideAllItems(item,"cover-item");
 		item.isOpen = true;
 		$(list).each(function(i){
 			if(i<=8){
@@ -289,11 +314,21 @@ define(function(require, exports, module){
 				child.move(cellLeft, cellTop);
 				var random = $.random(0,dir.length);
 				var dirRandom = dir.splice(random,1);
-				child.transformMove(dirRandom[0][0], dirRandom[0][1]);
+				child.transformMove(dirRandom[0][0], dirRandom[0][1],150);
 				child.dom.on("click",function(){
-					___this.closeItem(childList, false, item, "y");
-					___this.hideAllItems(item);
+//					___this.closeItem(childList, false, item, "y", "false");
+					$(this).parent().find(".select").removeClass("select");
+					$(this).addClass("select");
+					___this.closeItem(childList, {
+						self: false,
+						item: item,
+						isReduction: "y",
+						isRemove: "false",
+						cover: "cover-item"
+					});
+					//___this.hideAllItems(item,"cover-child");
 				});
+				child.dom.data("index","item-child-"+i);
 				childList.push(child);
 			}else{
 				console.error("the child should be <= 8 in length");
@@ -305,6 +340,15 @@ define(function(require, exports, module){
 			item.dom.append(close);
 			item.dom.find(".body").hide();
 		})();
+	};
+	exports.openChildItem = function(itemChildList, item,dialogContent){
+		var offset = item.position();
+		$(itemChildList).each(function(i){
+			var child = itemChildList[i];
+			dialogContent.append(child.dom);
+			child.dom.css("left", offset.left+"px").css("top", offset.top+"px").fadeTo(0,1);
+			child.transformMove(child.diffLeft, child.diffTop);
+		});
 	};
 	exports.getMaxNumber = function(){
 		var one = new Box();
@@ -365,7 +409,12 @@ define(function(require, exports, module){
 			if(!counitus){
 				return;
 			}
-			_this.closeItem(childList, $(this), item);
+//			_this.closeItem(childList, $(this), item);
+			_this.closeItem(childList,{
+				self: $(this),
+				item: item,
+				cover: "cover-item"
+			});
 			
 		});
 		if($.type(params.dom)!="undefined" && params.dom!=null){
@@ -374,12 +423,20 @@ define(function(require, exports, module){
 		item.dom.find(".body").hide();
 		return div;
 	};
-	exports.closeItem = function(childList,self,item ,isReduction){
+	//function(childList,self,item ,isReduction,isRemove)
+	exports.closeItem = function(childList,params){
 		var dropTop = 100;
 		var dropTime = 100;
 		var _this = this;
-		$(".item-cover").remove();
-		isReduction = isReduction|| true;
+		params = params || {};
+		params.isRemove = params.isRemove || true;
+		params.cover = params.cover || "cover-item";
+		//$(".item-cover").remove();
+		if(params.cover) {
+				$("."+params.cover).remove();
+		}
+		
+		params.isReduction = params.isReduction|| true;
 		for ( var int = childList.length-1; int >= 0; int--) {
 			
 			var time = $.random(100,300);
@@ -404,17 +461,23 @@ define(function(require, exports, module){
 			}).animate({
 				top: '+=600'
 			},dropTime,function(){
-				$(this).remove();
+				if(params.isRemove==true){
+					$(this).remove();
+				}else{
+					$(this).fadeTo(100,0);
+				}
 			});
 		}
-		if(self){
-			self.remove();
+		if(params.self){
+			params.self.remove();
 		}
-		if(item && isReduction==true){
-			item.dom.find(".body").show();
+		if(params.item && params.isReduction==true){
+			params.item.dom.find(".body").show();
 		}
 		setTimeout(function(){
-			_this.dropAllItems(item,isReduction);
+			if(params.item){
+				_this.dropAllItems(params.item, params.isReduction);
+			}
 		},200);
 	};
 	exports.createBtn = function(dialogDom, childList, item, dialog){
@@ -436,7 +499,12 @@ define(function(require, exports, module){
 					var counitus = getCounitus(o);
 					if(counitus){
 						var closeDom = item.dom.find(".close");
-						_this.closeItem(childList,closeDom,item);
+//						_this.closeItem(childList,closeDom,item);
+						_this.closeItem(childList,{
+							self: closeDom,
+							item: item,
+							cover: "cover-dialog"
+						});
 						if(dialog.titleDiv){
 							dialog.titleDiv.remove();
 						}
@@ -451,7 +519,12 @@ define(function(require, exports, module){
 				o.btn.dom.on("click",function(){
 					var counitus = getCounitus(o);
 					if(counitus){
-						_this.closeItem(childList,$(this),item);
+//						_this.closeItem(childList,$(this),item);
+						_this.closeItem(childList,{
+							self: $(this),
+							item: item,
+							cover: "cover-dialog"
+						});
 						if(dialog.titleDiv){
 							dialog.titleDiv.remove();
 						}
@@ -509,8 +582,18 @@ define(function(require, exports, module){
 		var time = 100;
 		var count = 0;
 		var sum = dialog.cell*dialog.row;
-		var itemChild = dialog.childlist || item.childlist || [];
-		this.hideAllItems(item);
+		var itemChildList = dialog.childlist || item.childlist || [];
+		//item.cover.remove();
+		
+		this.hideAllItems(item,"cover-dialog");
+		var itemChild = (function(){
+			var tmp = "";
+			if(dialog._this){
+				tmp = dialog._this.parents(".child").data("index");
+			}
+			return tmp;
+		})();
+		hideLoadingMain(itemChild);
 		item.isOpen = true;
 		item.dom.find(".close").remove();
 		item.dom.css("opacity",1);
@@ -563,7 +646,7 @@ define(function(require, exports, module){
 						}
 						child.dom.css("background-position", (-int*child.realwidth+imageLeft)+"px " + (-(int2-1)*child.realheight+imageTop)+"px");
 					}
-					child.dom.addClass("dialog");
+					child.dom.addClass("dialog").addClass(itemChild);
 					if((int == 0 && int2 == 1) || (int == 1 && int2 == 0)){
 						child.dom.addClass("dialog-lt");
 					}
@@ -598,7 +681,7 @@ define(function(require, exports, module){
 			time+=30;
 			tempLeft = tempLeft + 1;
 		}
-		item.childlist = childList;
+		//item.childlist = childList;
 		_this.createBtn(dialogDom,childList, item, dialog);
 		function countCallback(){
 			count++;
@@ -616,7 +699,7 @@ define(function(require, exports, module){
 					var width = item.calcContent((dialog.cell-1), item.realwidth);
 					var height = item.calcContent(1, item.realheight);
 					titleDiv.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content").hide();
-					titleDiv.append(dialog.titleContent);
+					titleDiv.append(dialog.titleContent).addClass(itemChild);
 					titleDiv.fadeIn(200);
 				}
 				if(dialog.bodyContent){
@@ -625,7 +708,7 @@ define(function(require, exports, module){
 					var width = item.calcContent(dialog.cell, item.realwidth);
 					var height = item.calcContent(dialog.row-1, item.realheight);
 					contentDiv.css("width", width+"px").css("height", height+"px").css("left",left+"px").css("top",top+"px").addClass("dialog-content").hide();
-					contentDiv.append(dialog.bodyContent);
+					contentDiv.append(dialog.bodyContent).addClass(itemChild);
 					contentDiv.fadeIn(200);
 				}
 				/*if(dialog.content){
@@ -638,18 +721,49 @@ define(function(require, exports, module){
 				return contentDiv;
 			})(dialog, item);
 			
-			_this.createChildItem(itemChild,dialog, dialogContent);
+			_this.createChildItem(itemChildList,dialog, dialogContent);
+			loadingMain(itemChild);
+			
 		}
 	};
-	exports.createChildItem = function(itemChild,dialog,dialogContent){
+	exports.createChildItem = function(itemChildList,dialog,dialogContent){
 		var _this = this;
+		var follow = $("<div class='follow'></div>");
+		if(itemChildList.length==0){
+			return;
+		}
+		dialogContent.append(follow);
 		dialogContent.on("mousemove", function(e){
-			var offset = [e.offsetX, e.offsetY];
+			if(follow.hasClass("select")){
+				return ;
+			}
+			var offset = [e.clientX-$(this).offset().left, e.clientY-$(this).offset().top];
+			
 			var cellLeft = Math.floor(offset[0]/boxObject.realwidth);
 			var cellTop = Math.floor(offset[1]/boxObject.realheight);
-			var left = cellLeft*boxObject.realwidth+1;
-			var top = cellTop*boxObject.realheight+1;
+			var left = cellLeft*boxObject.realwidth;
+			var top = cellTop*boxObject.realheight;
+			follow.css("width",boxObject.width+"px").css("height",boxObject.height+"px").css("left",left+"px").css("top",top+"px");
+			follow.css("width",boxObject.width+"px").css("height",boxObject.height+"px").css("left",left+"px").css("top",top+"px");
 		});
+		$(itemChildList).each(function(i){
+			var child = itemChildList[i];
+			dialogContent.append(child.dom);
+		});
+		follow.on("click", function(){
+			dialog.childlist = itemChildList;
+			if($(this).hasClass("select")){
+				_this.closeItem(itemChildList,{
+					isRemove: "false",
+					cover: "cover-follow"
+				});
+			}else{
+				$(this).before("<div class='item-cover cover-follow'></div>");
+				_this.openChildItem(itemChildList,$(this),dialogContent);
+			}
+			$(this).toggleClass("select");
+		});
+		
 	};
 	
 	var Navigate = function(params){
