@@ -131,6 +131,9 @@ div,p,span,li,ul,label,dd,dl{
 .dialog-content{
 	position: absolute; z-index:2;
 }
+.follow{
+	position: absolute; background:url(../images/dialog/next_button.png) no-repeat center center white; box-shadow: inset 0 0 10px rgba(0,0,0,.7); border-radius: 5px; opacity: .7; filter: alpha(opacity=.7);
+}
 
 .animation-form{  
     -webkit-animation: shock 1s linear infinite;  
