@@ -548,8 +548,8 @@ define(function(require, exports, module){
 	};
 	exports.refreshDialogImage = function(item,params){
 		
-		$(item.childlist).each(function(i){
-			var child = item.childlist[i];
+		$(item.dialogitem).each(function(i){
+			var child = item.dialogitem[i];
 			if(child.dom.css("background-position-x")){
 				if(params.left){
 					child.dom.css("background-position-x", (-child.cell*child.realwidth+params.left)+"px");
@@ -682,6 +682,7 @@ define(function(require, exports, module){
 			tempLeft = tempLeft + 1;
 		}
 		//item.childlist = childList;
+		item.dialogitem = childList;
 		_this.createBtn(dialogDom,childList, item, dialog);
 		function countCallback(){
 			count++;
@@ -718,10 +719,13 @@ define(function(require, exports, module){
 				dialog.contentDiv = contentDiv;
 				dom.append(titleDiv);
 				dom.append(contentDiv);
+				if(dialog.renderer){
+					dialog.renderer(dialog);
+				}
 				return contentDiv;
 			})(dialog, item);
 			
-			_this.createChildItem(itemChildList,dialog, dialogContent);
+			//_this.createChildItem(itemChildList,dialog, dialogContent);
 			loadingMain(itemChild);
 			
 		}
