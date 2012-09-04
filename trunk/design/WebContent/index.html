@@ -78,7 +78,8 @@
 						"border": "1px solid black"
 					},
 					bodyContent: bodyContent,
-					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>"+params.title+"</div>"),
+					//titleContent: $("<div style='color: white;font-size: 24px; border-bottom: 1px solid rgba(255,255,255,.3);box-sizing:border-box; margin-top:58px; line-height:20px; height:61px;'><div class='float' style='padding: 0 50px;background:url(styles/default/images/dot_line.png) no-repeat top right; height:40px;'>"+params.title+"</div><div class='float' style='padding: 0px 30px;font-size: 12px; '>dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa dsadasdsa</div><div class='clear'></div></div>"),
+					titleContent: $("<div class='index-dialog-title'><table><tr><td style='padding:0 40px 30px;background:url(styles/default/images/dot_line.png) no-repeat top right;white-space:nowrap; vertical-align:top;'>"+params.title+"</td><td style='padding:0 30px;font-size:12px;vertical-align:top;'>"+params.subTitle+"</td></tr></table></div>"),
 					childlist: params.item.childlist,
 					_this: $(this)
 				};
@@ -87,7 +88,8 @@
 					width: dialog.cell * params.item.realwidth,
 					height: (dialog.row-1) * params.item.realheight,
 					imgWidth: params.imgWidth,
-					imgHeight: params.imgHeight
+					imgHeight: params.imgHeight,
+					initLeft: 120
 				});
 			}
 			return box.createChild(child1,child1_hover,params.item);
@@ -144,23 +146,151 @@
 			return box.createChild(child5,child5_hover,params.item);
 		}
 		
+		function createDom(params){
+			var child5 = $("<div class='full'><img src='"+params.child+"' class='full'></div>");
+			var child5_hover = $("<div class='full'><img src='"+params.childhover+"' class='full'></div>");
+			child5.on("click",click5);
+			child5_hover.on("click",click5);
+			function click5(){
+				var bodyContent = $("<div class='index-dialog' style='background-color:black;' >"+params.body+"</div>");
+				
+				var dialog = {
+					left: "center",
+					top: "center",
+					row: 6,
+					cell: 9,
+					btn: {
+						close: {
+							event: function(){
+								vi.goIndex(0);
+								return true;
+							}
+						}
+					},
+					image:params.image,
+					bodyStyle: {
+						"background": "url("+params.bodyImage+") no-repeat center center black",
+						"border": "1px solid black"
+					},
+					titleStyle: {
+						"background-color": "black",
+						"border": "1px solid black"
+					},
+					bodyContent: bodyContent,
+					titleContent: $("<div style='color: white;font-size: 24px; padding-left: 30px;  line-height: 121px;'>"+params.title+"</div>"),
+					childlist: params.item.childlist,
+					_this: $(this),
+					renderer: function(){
+						var container;
+						var camera, scene, renderer;
+						var mesh;
+						(function(){
+							var w=700,h=700;
+							container = document.getElementById( 'container' );
+							scene = new THREE.Scene();
+							camera = new THREE.PerspectiveCamera( 60, w / h, 1, 10000 );
+							camera.position.z = 200;
+							//renderer = new THREE.CanvasRenderer();
+							renderer = new THREE.WebGLRenderer({antialias: true});
+							renderer.setSize( w, h );
+							container.appendChild( renderer.domElement );
+						})();
+						//earch
+						(function initPlane(){
+							//mesh = new THREE.Mesh( new THREE.SphereGeometry( 20, 20, 20 ), new THREE.MeshLambertMaterial({color: 0xff0000}));
+							var texture1  = new THREE.ImageUtils.loadTexture('/styles/default/images/earth/5142ca20-ad9a-48d2-a1bb-840a2248fef2.jpg');
+							mesh = new THREE.Mesh(
+								new THREE.SphereGeometry(50,50,50),
+								new THREE.MeshLambertMaterial({map: texture1})
+							);
+							scene.add(mesh);
+						})();
+						var moon;
+						//moon
+						(function initMoon(){
+							//mesh = new THREE.Mesh( new THREE.SphereGeometry( 20, 20, 20 ), new THREE.MeshLambertMaterial({color: 0xff0000}));
+							var texture1  = new THREE.ImageUtils.loadTexture('/upload/rayln@163.com/article/3073083b-fd15-47d6-bca7-7a589db1bb61.jpg');
+							moon = new THREE.Mesh(
+								new THREE.SphereGeometry(10,20,20),
+								new THREE.MeshLambertMaterial({map: texture1})
+							);
+							moon.position.set(-100,0,0);
+							scene.add(moon);
+						})();
+						//box
+						/* (function initCube(){
+							var plane = new THREE.Mesh(new THREE.CubeGeometry(30, 30, 30), new THREE.MeshLambertMaterial({
+					            color: 0xff0000
+					        }));
+							plane.position.x = 100;
+							plane.position.z = 100;
+							scene.add(plane);
+						})(); */
+						//shadow
+						(function(){
+							var plane = new THREE.Mesh( new THREE.PlaneGeometry( 300, 300, 3, 3 ), new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( '/upload/rayln@163.com/article/efd1edc0-500e-4fec-92b0-88a963d8bb97.png' ), overdraw: true } ) );
+							plane.position.set(0,-100,-100);
+							plane.rotation.x = 30;
+							scene.add( plane );
+						})();
+						//lang
+						(function initLight(){
+							var light = new THREE.DirectionalLight(0xFFFFFF, 1.0, 0);
+							light.position.set( -500, 0, 500 );
+							scene.add(light);
+						})();
+						function animate() {
+							requestAnimationFrame( animate );
+							render();
+						}
+						var t=0;
+						function render() {
+							t++;
+							renderer.clear();
+							mesh.rotation.y -= 0.001;
+							moon.position.set( 70*Math.sin(t/200) , 0 ,70*Math.cos(t/200));
+							renderer.render( scene, camera );
+						}
+						animate();
+					}
+				};
+				box.openDialog(bg, dialog, params.item);
+				
+			}
+			return box.createChild(child5,child5_hover,params.item);
+		}
 		
 		function openDelivered(){
 			var item = deliverItem;
 			
-			var child1 = createChild({
+			/* var child1 = createChild({
 				child: 'styles/default/images/child/deliver_01_black.png',
 				childhover: 'styles/default/images/child/deliver_01.png',
 				body: 'styles/default/images/dialog/deliver_largeview_01.jpg',
 				item: item,
 				image: {
 					height: 500,
-					left: 30,
+					left: 120,
 					top: "center"
 				},
 				title: "About Me",
+				subTitle: "123456",
 				imgWidth: 3407,
 				imgHeight: 500
+			}); */
+			var child1 = createVideo({
+				child: 'styles/default/images/child/deliver_01_black.png',
+				childhover: 'styles/default/images/child/deliver_01.png',
+				body: "styles/default/images/video/newbee.mp4",
+				bodyImage: "styles/default/images/video/newbee.png",
+				item: item,
+				image: {
+					width: 800,
+					height: 450,
+					left: "center",
+					top: "center"
+				},
+				title: "Video"
 			});
 			
 			var child2 = createChild({
@@ -169,13 +299,14 @@
 				body: 'styles/default/images/dialog/deliver_largeview_02.jpg',
 				item: item,
 				image: {
-					height: 450,
-					left: 30,
+					height: 500,
+					left: 120,
 					top: "center"
 				},
 				title: "About Me",
-				imgWidth: 4280,
-				imgHeight: 450
+				subTitle: "123456",
+				imgWidth: 3636,
+				imgHeight: 500
 			});
 			
 			var child3 = createChild({
@@ -185,13 +316,15 @@
 				item: item,
 				image: {
 					height: 500,
-					left: 30,
+					left: 120,
 					top: "center"
 				},
 				title: "About Me",
+				subTitle: "123456",
 				imgWidth: 3407,
 				imgHeight: 500
 			});
+			
 			
 			var child4 = createChild({
 				child: 'styles/default/images/child/deliver_04_black.png',
@@ -200,15 +333,32 @@
 				item: item,
 				image: {
 					height: 500,
-					left: 30,
+					left: 120,
 					top: "center"
 				},
 				title: "About Me",
-				imgWidth: 3407,
+				subTitle: "123456",
+				imgWidth: 3763,
 				imgHeight: 500
 			});
 			
-			var child5 = createVideo({
+			var child5 = createChild({
+				child: 'styles/default/images/child/deliver_05_black.png',
+				childhover: 'styles/default/images/child/deliver_05.png',
+				body: 'styles/default/images/dialog/deliver_largeview_05.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 120,
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456",
+				imgWidth: 5035,
+				imgHeight: 500
+			});
+			
+			/* var child5 = createVideo({
 				child: 'styles/default/images/child/deliver_05_black.png',
 				childhover: 'styles/default/images/child/deliver_05.png',
 				body: "styles/default/images/video/kumo.mp4",
@@ -221,7 +371,7 @@
 					top: "center"
 				},
 				title: "Video"
-			});
+			}); */
 			
 			var child6 = createChild({
 				child: 'styles/default/images/child/deliver_06_black.png',
@@ -230,11 +380,12 @@
 				item: item,
 				image: {
 					height: 500,
-					left: 30,
+					left: 120,
 					top: "center"
 				},
 				title: "About Me",
-				imgWidth: 3407,
+				subTitle: "123456",
+				imgWidth: 5679,
 				imgHeight: 500
 			});
 			
@@ -245,11 +396,12 @@
 				item: item,
 				image: {
 					height: 500,
-					left: 30,
+					left: 120,
 					top: "center"
 				},
 				title: "About Me",
-				imgWidth: 3407,
+				subTitle: "123456",
+				imgWidth: 4721,
 				imgHeight: 500
 			});
 			
@@ -260,11 +412,12 @@
 				item: item,
 				image: {
 					height: 500,
-					left: 30,
+					left: 120,
 					top: "center"
 				},
 				title: "About Me",
-				imgWidth: 3407,
+				subTitle: "123456",
+				imgWidth: 4280,
 				imgHeight: 500
 			});
 			
@@ -289,7 +442,7 @@
 		});
 		function openConcepts(){
 			var item = conceptsItem;
-			var child1 = $("<div class='full'><img src='styles/default/images/child/concept_01_black.png' class='full'></div>");
+			/* var child1 = $("<div class='full'><img src='styles/default/images/child/concept_01_black.png' class='full'></div>");
 			child1.on("click",function(){
 				box.openDialog(bg, {
 					left: 0,
@@ -298,7 +451,6 @@
 					cell: 3,
 					style: {
 						"background-image": "url(styles/default/images/b6eeaa6791756cb38123c205622feff8.jpg)"
-						/* "background-color": "#FFFFFF" */
 					},
 					childlist: item.childlist
 				}, item);
@@ -321,6 +473,136 @@
 			var child6_hover = $("<div class='full'><img src='styles/default/images/child/concept_06.png' class='full'></div>");
 			child6 = box.createChild(child6,child6_hover,item);
 			var child = [child1, child2, child3, child4, child5, child6];
+			box.openChild(bg,child,item,{
+				close: function(){
+					vi.goIndex(0);
+					return true;
+				}
+			}); */
+			
+			var child1 = createChild({
+				child: 'styles/default/images/child/concept_01_black.png',
+				childhover: 'styles/default/images/child/concept_01.png',
+				body: 'styles/default/images/dialog/concept_largeview_01.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 120,
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456",
+				imgWidth: 1399,
+				imgHeight: 500
+			});
+			
+			var child2 = createChild({
+				child: 'styles/default/images/child/concept_02_black.png',
+				childhover: 'styles/default/images/child/concept_02.png',
+				body: 'styles/default/images/dialog/concept_largeview_02.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 120,
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456",
+				imgWidth: 1399,
+				imgHeight: 500
+			});
+			var child3 = createChild({
+				child: 'styles/default/images/child/concept_03_black.png',
+				childhover: 'styles/default/images/child/concept_03.png',
+				body: 'styles/default/images/dialog/concept_largeview_03.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 120,
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456",
+				imgWidth: 2537,
+				imgHeight: 500
+			});
+			var child4 = createChild({
+				child: 'styles/default/images/child/concept_04_black.png',
+				childhover: 'styles/default/images/child/concept_04.png',
+				body: 'styles/default/images/dialog/concept_largeview_04.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 120,
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456",
+				imgWidth: 2538,
+				imgHeight: 500
+			});
+			var child5 = createChild({
+				child: 'styles/default/images/child/concept_05_black.png',
+				childhover: 'styles/default/images/child/concept_05.png',
+				body: 'styles/default/images/dialog/concept_largeview_05.jpg',
+				item: item,
+				image: {
+					height: 500,
+					left: 120,
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456",
+				imgWidth: 5677,
+				imgHeight: 500
+			});
+			var child6 = createChild({
+				child: 'styles/default/images/child/concept_06_black.png',
+				childhover: 'styles/default/images/child/concept_06.png',
+				body: 'styles/default/images/dialog/concept_largeview_06.jpg',
+				item: item,
+				image: {
+					height: 505,
+					left: 120,
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456",
+				imgWidth: 3560,
+				imgHeight: 505
+			});
+			var child7 = createVideo({
+				child: 'styles/default/images/child/deliver_01_black.png',
+				childhover: 'styles/default/images/child/deliver_01.png',
+				body: "styles/default/images/video/clock.mp4",
+				bodyImage: "styles/default/images/video/clock.png",
+				item: item,
+				image: {
+					width: 783,
+					height: 460,
+					left: "center",
+					top: "center"
+				},
+				title: "Video"
+			});
+			
+			var child8 = createDom({
+				child: 'styles/default/images/child/concept_06_black.png',
+				childhover: 'styles/default/images/child/concept_06.png',
+				body: "<canvas width='700' height='500'></canvas>",
+				bodyImage: "styles/default/images/video/clock.png",
+				item: item,
+				image: {
+					width: 783,
+					height: 460,
+					left: "center",
+					top: "center"
+				},
+				title: "About Me",
+				subTitle: "123456"
+			});
+			
+			var child = [child1, child2, child3, child4, child5, child6, child7];
 			box.openChild(bg,child,item,{
 				close: function(){
 					vi.goIndex(0);
@@ -387,11 +669,11 @@
 			var dialog = {
 				left: "center",
 				top: "center",
-				row: 7,
-				cell: 9,
+				row: 6,
+				cell: 10,
 				image:{
-					width: 944,
-					height: 678,
+					width: 1197,
+					height: 593,
 					left: "center",
 					top: 0
 				},

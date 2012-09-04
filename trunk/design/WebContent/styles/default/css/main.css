@@ -119,10 +119,11 @@ div,p,span,li,ul,label,dd,dl{
 }
 .navigate ul > li{
 	/* float: left; */
-	display: inline; padding: 12px 30px;vertical-align: middle; line-height: 58px; border-right: 1px dashed #FFFFFF; margin: 5px 0; cursor: pointer;
+	display: inline; padding: 12px 30px;vertical-align: middle; line-height: 58px; /* border-right: 1px dashed #FFFFFF; */ margin: 5px 0; cursor: pointer;
+	background: url("../images/dot_line.png") no-repeat center right;
 }
 .navigate ul > li.navigate-last{
-	border-right: 0px dashed #FFFFFF; 
+	/* border-right: 0px dashed #FFFFFF; */ background-image: none;
 }
 .navigate .arrow{
 	background: url("../images/arrow.png") no-repeat;width:18px; height:10px; display: block; position: absolute; top: 46px;
