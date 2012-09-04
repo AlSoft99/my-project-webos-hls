@@ -5,6 +5,7 @@
 <title>ASG DESIGN TEAM PORTFOLIO</title>
 <link href="styles/default/css/main.css" rel="stylesheet" type="text/css" media="screen" />
 <script type="text/javascript" src="lib/sea.min.js"></script>
+<script type="text/javascript" src="lib/three.js"></script>
 <script type="text/javascript" src="lib/sea.config.js"></script>
 </head>
 <body>
@@ -185,7 +186,7 @@
 						var camera, scene, renderer;
 						var mesh;
 						(function(){
-							var w=700,h=700;
+							var w=700,h=600;
 							container = document.getElementById( 'container' );
 							scene = new THREE.Scene();
 							camera = new THREE.PerspectiveCamera( 60, w / h, 1, 10000 );
@@ -198,7 +199,7 @@
 						//earch
 						(function initPlane(){
 							//mesh = new THREE.Mesh( new THREE.SphereGeometry( 20, 20, 20 ), new THREE.MeshLambertMaterial({color: 0xff0000}));
-							var texture1  = new THREE.ImageUtils.loadTexture('/styles/default/images/earth/5142ca20-ad9a-48d2-a1bb-840a2248fef2.jpg');
+							var texture1  = new THREE.ImageUtils.loadTexture('styles/default/images/earth/5142ca20-ad9a-48d2-a1bb-840a2248fef2.jpg');
 							mesh = new THREE.Mesh(
 								new THREE.SphereGeometry(50,50,50),
 								new THREE.MeshLambertMaterial({map: texture1})
@@ -209,7 +210,7 @@
 						//moon
 						(function initMoon(){
 							//mesh = new THREE.Mesh( new THREE.SphereGeometry( 20, 20, 20 ), new THREE.MeshLambertMaterial({color: 0xff0000}));
-							var texture1  = new THREE.ImageUtils.loadTexture('/upload/rayln@163.com/article/3073083b-fd15-47d6-bca7-7a589db1bb61.jpg');
+							var texture1  = new THREE.ImageUtils.loadTexture('styles/default/images/earth/3073083b-fd15-47d6-bca7-7a589db1bb61.jpg');
 							moon = new THREE.Mesh(
 								new THREE.SphereGeometry(10,20,20),
 								new THREE.MeshLambertMaterial({map: texture1})
@@ -228,7 +229,7 @@
 						})(); */
 						//shadow
 						(function(){
-							var plane = new THREE.Mesh( new THREE.PlaneGeometry( 300, 300, 3, 3 ), new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( '/upload/rayln@163.com/article/efd1edc0-500e-4fec-92b0-88a963d8bb97.png' ), overdraw: true } ) );
+							var plane = new THREE.Mesh( new THREE.PlaneGeometry( 300, 300, 3, 3 ), new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'styles/default/images/earth/efd1edc0-500e-4fec-92b0-88a963d8bb97.png' ), overdraw: true } ) );
 							plane.position.set(0,-100,-100);
 							plane.rotation.x = 30;
 							scene.add( plane );
@@ -589,12 +590,12 @@
 			var child8 = createDom({
 				child: 'styles/default/images/child/concept_06_black.png',
 				childhover: 'styles/default/images/child/concept_06.png',
-				body: "<canvas width='700' height='500'></canvas>",
-				bodyImage: "styles/default/images/video/clock.png",
+				body: "<div id='container' width='700' height='500'></div>",
+				bodyImage: "styles/default/images/earth/earth.png",
 				item: item,
 				image: {
-					width: 783,
-					height: 460,
+					width: 699,
+					height: 600,
 					left: "center",
 					top: "center"
 				},
@@ -602,7 +603,7 @@
 				subTitle: "123456"
 			});
 			
-			var child = [child1, child2, child3, child4, child5, child6, child7];
+			var child = [child1, child2, child3, child4, child5, child6, child7, child8];
 			box.openChild(bg,child,item,{
 				close: function(){
 					vi.goIndex(0);
