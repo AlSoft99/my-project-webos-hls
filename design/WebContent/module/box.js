@@ -242,8 +242,8 @@ define(function(require, exports, module){
 	exports.dropItem = function(item){
 		var height = item.dom.height();
 		var position = {
-			top: parseInt(item.dom.css("top")),
-			left: parseInt(item.dom.css("left"))
+			top: parseInt(item.params.top * item.realheight + 1),
+			left: parseInt(item.params.left * item.realwidth + 1)
 		};
 		item.dom.css("top",-height).show();
 		this.shock(item, position);
@@ -425,20 +425,40 @@ define(function(require, exports, module){
 	};
 	//function(childList,self,item ,isReduction,isRemove)
 	exports.closeItem = function(childList,params){
-		var dropTop = 100;
-		var dropTime = 100;
+		
 		var _this = this;
 		params = params || {};
 		params.isRemove = params.isRemove || true;
 		params.cover = params.cover || "cover-item";
 		//$(".item-cover").remove();
 		if(params.cover) {
-				$("."+params.cover).remove();
+			$("."+params.cover).remove();
 		}
-		
 		params.isReduction = params.isReduction|| true;
+		eastOutAnimation(childList,function(that){
+			if(params.isRemove==true){
+				that.remove();
+			}else{
+				that.fadeTo(100,0);
+			}
+		});
+		
+		if(params.self){
+			params.self.remove();
+		}
+		if(params.item && params.isReduction==true){
+			params.item.dom.find(".body").show();
+		}
+		setTimeout(function(){
+			if(params.item){
+				_this.dropAllItems(params.item, params.isReduction);
+			}
+		},200);
+	};
+	function lineAnimation(childList,callback){
+		var dropTop = 100;
+		var dropTime = 100;
 		for ( var int = childList.length-1; int >= 0; int--) {
-			
 			var time = $.random(100,300);
 			var childTmp = childList[int];
 			if(dropTop>=0){
@@ -461,24 +481,58 @@ define(function(require, exports, module){
 			}).animate({
 				top: '+=600'
 			},dropTime,function(){
-				if(params.isRemove==true){
-					$(this).remove();
-				}else{
-					$(this).fadeTo(100,0);
+				if(callback){
+					callback($(this));
 				}
 			});
 		}
-		if(params.self){
-			params.self.remove();
-		}
-		if(params.item && params.isReduction==true){
-			params.item.dom.find(".body").show();
-		}
-		setTimeout(function(){
-			if(params.item){
-				_this.dropAllItems(params.item, params.isReduction);
+	};
+	function eastOutAnimation(childList,callback){
+		var dropTop = 100;
+		var dropTime = 100;
+		var nowCell = 0;
+		var dropOffset = 20;
+		for ( var int = childList.length-1; int >= 0; int--) {
+			var time = $.random(100,400);
+			var childTmp = childList[int];
+			
+			if(nowCell != childTmp.cell){
+				dropTop = $.random(100,300);
+				nowCell = childTmp.cell;
 			}
-		},200);
+			if(childList.length < 10){
+				dropOffset = 20;
+			}else{
+				dropOffset = 70;
+			}
+			if(dropTop>=dropOffset){
+				dropTop-=dropOffset;
+			}else{
+				dropTop = 0;
+			}
+			
+			if(dropTime<=300){
+				dropTime+=20;
+			}
+			childTmp.dom.animate({
+				top: '+='+dropTop
+			},time,function(){
+				var isrotate = $.random(0,3);
+				var rotate = 0;
+				if(isrotate==0){
+					rotate = 0;
+				}else{
+					rotate = $.random(-10,10);
+				}
+				$(this).css("transform", "rotate("+rotate+"deg)");
+			}).animate({
+				top: '+=600'
+			},dropTime,function(){
+				if(callback){
+					callback($(this));
+				}
+			});
+		}
 	};
 	exports.createBtn = function(dialogDom, childList, item, dialog){
 		var _this = this;
@@ -817,7 +871,8 @@ define(function(require, exports, module){
 			arrow.animate({
 				left: left+_this.margin
 			},time);
-			
+			ul.find(".select").removeClass("select");
+			ul.find("li").eq(index).addClass("select");
 		};
 		_this.goIndex(defaults, 1);
 	};

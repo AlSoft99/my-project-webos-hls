@@ -835,7 +835,8 @@
 						//box.closeItem(openItem.childlist, $(".close"), openItem);
 						box.closeItem(openItem.childlist, {
 							self: $(".close"),
-							item: openItem
+							item: openItem,
+							cover: "item-cover"
 						});
 					}
 					if(openItem !=null && openItem.dialog){
@@ -845,6 +846,11 @@
 						if(openItem.dialog.contentDiv){
 							openItem.dialog.contentDiv.remove();
 						}
+						box.closeItem(openItem.dialogitem,{
+							self: openItem.dom.find(".close"),
+							item: openItem,
+							cover: "cover-dialog"
+						});
 					}
 				}
 			},{
