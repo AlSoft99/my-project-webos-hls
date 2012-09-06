@@ -25,6 +25,32 @@ define(function(require, exports, module){
 				prev.css("top", top+"px").css("left", params.btnLeft+"px").css("opacity", params.opacity);
 				next.css("top", top+"px").css("right", params.btnLeft+"px").css("opacity", params.opacity);
 				children.css("position", "absolute");
+				prev.on("click", move);
+				next.on("click", move);
+				function move(){
+					var left = 600;
+					var dir = $(this).hasClass("prev");
+					var position = children.position();
+					children.stop();
+					
+					if(dir){
+						if(position.left+600 > params.initLeft){
+							left = params.initLeft - position.left;
+						}
+						children.animate({
+							left: "+="+left
+						},200);
+					}else{
+						if(position.left-600 < params.endLeft){
+							left = position.left - params.endLeft;
+						}
+						console.log("left:"+left+"   params.endLeft:"+params.endLeft);
+						children.animate({
+							left: "-="+left
+						},200);
+					}
+					//console.log("dir:"+dir+"  left:"+left+"   position.left:"+position.left+"   params.endLeft:"+params.endLeft + "   params.initLeft:"+params.initLeft);
+				};
 			})();
 			
 			(function setCenter(){
@@ -71,6 +97,26 @@ define(function(require, exports, module){
 				next.hide();
 			}
 			
+		},
+		flipMove: function(params,time,callback){
+			var percent = {
+				paramsTime: .8,
+				moveTime: .5
+			};
+			var animateParamsOne = {};
+			var animateParamsTwo = {};
+			for(var key in params){
+				var value = params[key];
+				if(value<0){
+					animateParamsOne[key] = "-="+Math.abs(value*percent.paramsTime);
+					animateParamsTwo[key] = "-="+Math.abs(value*(1-percent.paramsTime));
+				}else{
+					animateParamsOne[key] = "+="+Math.abs(value*percent.paramsTime);
+					animateParamsTwo[key] = "+="+Math.abs(value*(1-percent.paramsTime));
+				}
+			}
+			$(this).animate(animateParamsOne, time*percent.moveTime);
+			$(this).animate(animateParamsTwo, time*(1-percent.moveTime));
 		}
 	});
 	$.extend({
