@@ -505,8 +505,8 @@ define(function(require, exports, module){
 			}else{
 				dropOffset = 70;
 			}
-			if(dropTop>=dropOffset){
-				dropTop-=dropOffset;
+			if(dropTop >= dropOffset){
+				dropTop -= dropOffset;
 			}else{
 				dropTop = 0;
 			}
