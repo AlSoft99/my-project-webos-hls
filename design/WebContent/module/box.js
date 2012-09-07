@@ -497,13 +497,14 @@ define(function(require, exports, module){
 			var childTmp = childList[int];
 			
 			if(nowCell != childTmp.cell){
-				dropTop = $.random(100,300);
+				var height = childTmp.row * childTmp.height;
+				dropTop = $.random(height/2,height);
 				nowCell = childTmp.cell;
 			}
 			if(childList.length < 10){
 				dropOffset = 20;
 			}else{
-				dropOffset = 70;
+				dropOffset = $.random(childTmp.height/2,childTmp.height*2);
 			}
 			if(dropTop >= dropOffset){
 				dropTop -= dropOffset;
