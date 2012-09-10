@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  	http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  	http://www.springframework.org/schema/tx 
+  	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  	http://www.springframework.org/schema/context 
+  	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+  	<!-- 连接池 -->
+  	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	  	<property name="jndiName">
+	    	<value>java:comp/env/jdbc/ebus</value>
+	  	</property>
+	</bean>
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/test" />
+		<property name="username" value="root" />
+		<property name="password" value="xxxxx" />
+	</bean> -->
+	<!-- <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				*****************需要修改部分***************
+				<value>com/test/entity/UserInfo.hbm.xml</value>
+			</list>
+		</property>
+	</bean> -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.test.entity</value><!-- 扫描实体类，也就是平时所说的model -->
+				<value>com.ux.entity</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+		<!-- 哪些方法需要事务回滚 -->
+			<tx:method name="execute" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+			<!-- <tx:method name="*" read-only="true" rollback-for="java.lang.Exception"/> -->
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<!-- 切面. 表示vo包下Vo结尾的类中execute方法进行切面代理, 代理事务回滚 --><!-- *****************需要修改部分*************** -->
+		<aop:pointcut id="productServiceMethods" expression="execution(* com.ux.vo.*Vo.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="productServiceMethods" />
+	</aop:config>
+	
+	
+	<!-- 配置上传文件的类路径, 可以删掉 -->
+	<bean id="fileUpload" class="com.frame.util.FileUpload">
+		<property name="filepath" value=""/>
+	</bean>
+</beans>
