@@ -15,10 +15,26 @@
 		<div id="navigate"></div>
 	</div>
 	<div id="box-background" class="bg"></div>
+	<audio id="audio1" src="http://interscope.edgeboss.net/download/interscope/elliegoulding/site/lights-video/music.mp3" ></audio>
 </body>
 </html>
 <script>
 	seajs.use(['box','jquery','jquery.fn','jquery.fn.flip'], function(box, $){
+		/* 
+		var audio = document.getElementById("audio1");
+		audio.addEventListener( "canplaythrough", function(c){
+			console.log("=============canplaythrough============");
+			console.log(c);
+			
+		}, true );
+		audio.load(); */
+		$.queryData({
+			sql:"SQL3",
+			where:"2"
+		}, function(c){
+			console.log(c);
+			debugger;
+		});
 		var bg = $("#box-background");
 		box.createBackground(bg);
 		var deliverItem = box.createItem(bg,{

@@ -174,6 +174,105 @@ define(function(require, exports, module){
 					|| (!result && $.browser.msie) ? "-ms-":false
 					|| "";
 			return result;
-		}
+		},
+		toast : function(msg,duration){
+			var time = 2000;
+			if(typeof(duration)!="undefined"){
+				time = duration;
+			}
+			var obj = $("<div style='position: fixed;top:50%;left:48%;z-index:99999;border:1px solid #EADFCF;padding:10px;background-color:#F9F9F5;border-radius:5px;box-shadow:1px 1px 3px #F2EDE4;visibility: hidden;'>"+msg+"</div>");
+			$("body").append(obj);
+			var left = ($(document).width()-obj.innerWidth())/2;
+			obj.css("left",left+"px").css("display","none").css("visibility","visible");
+			obj.fadeIn(500,function(){
+				setTimeout(function(){
+					obj.fadeOut(500,function(){
+						obj.remove();
+					});
+				},time);
+			});
+		},
+		//判断中文长度
+		getLength:function(strTemp){
+	    	var i,sum;  
+	    	sum=0;  
+	    	for(i=0;i<strTemp.length;i++) {  
+	    		if ((strTemp.charCodeAt(i)>=0) && (strTemp.charCodeAt(i)<=255)){
+	    			sum=sum+1;  
+	    		}else{
+	    			sum=sum+2;
+	    		}
+	    	}  
+	    	return sum;  
+	    },
+	    swfupload : function(option){
+	    	if($("#SWFUpload_"+SWFUpload.movieCount).length>0){
+	    		$("#SWFUpload_"+SWFUpload.movieCount).remove();
+	    	}
+	    	var v = {
+				// 处理文件上传的url  ${pageContext.request.contextPath}
+				upload_url : "uploadphoto.head", // 路径写全，否则Firefox下会出现404错误。自由修改处一：处理文件上传的url路径，注意还要写全部
+
+				// 上传文件限制设置
+				file_size_limit : "10240", // 10MB
+				file_types : "*.jpg;*.gif;*.png", //此处也可以修改成你想限制的类型，比如：*.doc;*.wpd;*.pdf
+				file_types_description : "Image Files",
+				//file_upload_limit : "1",
+				file_queue_limit : "1",
+
+				// 事件处理设置（所有的自定义处理方法都在handler.js文件里）
+				file_dialog_start_handler : fileDialogStart,
+				file_queued_handler : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				file_dialog_complete_handler : fileDialogComplete,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler : uploadSuccess,
+				upload_complete_handler : uploadComplete,
+
+				// 按钮设置
+				button_image_url : "lib/swfupload/xpbutton.png", // 按钮图标
+				button_placeholder_id : "spanButtonPlaceholder",
+				button_width : 60,
+				button_height : 25,
+				//button_text : "<span>1234567</span>",
+				button_disabled: false,
+
+				// swf设置
+				flash_url : "lib/swfupload/swfupload.swf",
+
+				custom_settings : {
+					progressTarget : "fsUploadProgress",
+					cancelButtonId : "btnCancel"
+				},
+
+				// Debug 设置
+				debug : false
+			};
+	    	$.extend(true,v,option);
+	    	var upload = new SWFUpload(v);
+	    	return upload;
+	    },
+	    queryData: function(option,fn){
+	    	/**
+	    	 * {start:1,row:5,sql:xxx,logout:true}
+	    	 */
+	    	var url = "query";
+	    	if(option.logout!=null && $.type(option.logout)!="undefined" && option.logout){
+	    		url += "-logout";
+	    	}
+	    	$.ajax({
+	    		url:url+".do",
+	    		dataType: 'json',
+	    		data: option,
+	    		async : false,
+	    		success: function(data){
+	    			if($.isFunction(fn)){
+	    				fn(data);
+	    			}
+	    		}
+	    	});
+	    }
 	});
 });
