@@ -30,10 +30,10 @@
 		audio.load(); */
 		$.queryData({
 			sql:"SQL3",
-			where:"2",
-			logout:true
+			where:"2"
 		}, function(c){
 			console.log(c);
+			debugger;
 		});
 		var bg = $("#box-background");
 		box.createBackground(bg);
