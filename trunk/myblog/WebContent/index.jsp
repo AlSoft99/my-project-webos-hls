@@ -29,11 +29,11 @@
 		}, true );
 		audio.load(); */
 		$.queryData({
+			logout: true,
 			sql:"SQL3",
 			where:"2"
 		}, function(c){
 			console.log(c);
-			debugger;
 		});
 		var bg = $("#box-background");
 		box.createBackground(bg);

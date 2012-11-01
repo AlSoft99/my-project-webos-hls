@@ -259,7 +259,7 @@ define(function(require, exports, module){
 	    	 * {start:1,row:5,sql:xxx,logout:true}
 	    	 */
 	    	var url = "query";
-	    	if(option.logout!=null && $.type(option.logout)!="undefined" && option.logout){
+	    	if(option.logout){
 	    		url += "-logout";
 	    	}
 	    	$.ajax({
