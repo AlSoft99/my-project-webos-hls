@@ -1,0 +1,47 @@
+.peri{
+	overflow: hidden; -webkit-transform-style: preserve-3d; -webkit-perspective-origin-x: 50%; -webkit-perspective-origin-y: 50%; position: absolute; -webkit-perspective: 535.6256282377356px;
+	background-color: black;
+}
+.peri > .body{
+	-webkit-transform-style: preserve-3d;  -webkit-transform: translate3d(0px, 0px, 535.6256282377356px) matrix3d(0.9993711113929749, -0.024290278553962708, -0.025834068655967712, 0, -0.02310149557888508, -0.9987035989761353, 0.045359522104263306, 0, 0.026902372017502785, 0.04473418742418289, 0.9986366629600525, 0, -0.000001083601659956912, -0.0000012132870779169025, -1460.0828857421875, 1) translate3d(960px, 411px, 0px);
+}
+.peri > .body > .element {
+	padding:10px;
+	width: 240px;
+	height: 240px;
+	box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.5);
+	border: 1px solid rgba(127, 255, 255, 0.25);
+	cursor: default;
+	
+	background-color: rgba(0, 127, 127, 0.698039); position: absolute; -webkit-transform-style: preserve-3d; 
+}
+.peri > .body > .element .number {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 30px;
+	color: rgba(127, 255, 255, 0.75);
+}
+.peri > .body > .element .symbol {
+	position: absolute;
+	top: 40px;
+	
+	text-align: left !important;
+	font-size: 40px;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.75);
+	font-weight: bold;
+	-webkit-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	-moz-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	-o-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	-ms-filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+	filter: drop-shadow(0px 0px 20px rgba(0,255,255,0.95));
+}
+.peri > .body > .element .details {
+	position: absolute;
+	top: 125px;
+	width: 100%;
+	font-size: 18px;
+	text-align: center;
+	color: rgba(127, 255, 255, 0.75);
+}
