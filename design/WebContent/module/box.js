@@ -8,7 +8,9 @@ define(function(require, exports, module){
 		width : 120,
 		height : 120,
 		realwidth : 121,
-		realheight : 121
+		realheight : 121,
+		minRowCount: 7,
+		minCellCount: 13
 	};
 	function random(min,max){
 		return Math.floor(min+Math.random()*(max-min));
@@ -888,4 +890,5 @@ define(function(require, exports, module){
 		});*/
 		return vi;
 	};
+	exports.boxObj = boxObject;
 });
