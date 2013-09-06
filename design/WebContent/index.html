@@ -574,7 +574,7 @@
 					left: 165,
 					top: "center"
 				},
-				title: "Moonrise",
+				title: "Puppet Play",
 				subTitle: "An touch based design for Android pad. Explore the possibility of utilizing timeline to present photos from different source. Attempt to create a new design pattern of grouping editing controls. Maximize the possibility of gesture operating when editing photo.",
 				imgWidth: 3560,
 				imgHeight: 505
@@ -595,7 +595,7 @@
 				subTitle: "Play the concept of merging user’s schedule with the clock."
 			});
 			
-			var child8 = createDom({
+			/* var child8 = createDom({
 				child: 'styles/default/images/child/concept_08_black.png',
 				childhover: 'styles/default/images/child/concept_08.png',
 				body: "<div id='container' width='700' height='500'></div>",
@@ -609,10 +609,27 @@
 				},
 				title: "3D Globe",
 				subTitle: "Use WebGL to build this 3D Globe. It is real 3D technology!"
+			}); */
+			
+			var child8 = createChild({
+				child: 'styles/default/images/child/concept_08_black.png',
+				childhover: 'styles/default/images/child/concept_08.png',
+				body: 'styles/default/images/dialog/concept_largeview_08.jpg',
+				item: item,
+				image: {
+					height: 505,
+					left: 165,
+					top: "center"
+				},
+				title: "Moonrise",
+				subTitle: "An touch based design for Android pad. Explore the possibility of utilizing timeline to present photos from different source. Attempt to create a new design pattern of grouping editing controls. Maximize the possibility of gesture operating when editing photo.",
+				imgWidth: 2538,
+				imgHeight: 500
 			});
 			
 			var child = [child1, child2, child3, child4, child5, child6, child7, child8];
 			box.openChild(bg,child,item,{
+				opentype: 'sort', //random or sort
 				close: function(){
 					vi.goIndex(0);
 					return true;
