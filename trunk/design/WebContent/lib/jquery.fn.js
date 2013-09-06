@@ -125,10 +125,12 @@ define(function(require, exports, module){
             var startTime = window.msAnimationStartTime || (new Date()).getTime();
             var animationFunction = function (nowTime) {
                 var process = (function () {
-                    
+                	nowTime = window.msAnimationStartTime || (new Date()).getTime();
+                    console.log("nowTime:"+nowTime+"   startTime:"+startTime+"   time:"+time);
                     return process = (parseFloat(nowTime) - parseFloat(startTime)) / parseFloat(time);
                 })();
-                if (process >= 1) {
+                console.log("===process:"+process);
+                if (process >= 1 || process < 0) {
                     for (var key in change) {
                     	var exist = isExist(indexList, key);
                     	if(!exist.exist){

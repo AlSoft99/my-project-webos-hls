@@ -304,6 +304,7 @@ define(function(require, exports, module){
 		___this.stopAllShock();
 		___this.hideAllItems(item,"cover-item");
 		item.isOpen = true;
+		var opentype = params.opentype || 'sort';
 		$(list).each(function(i){
 			if(i<=8){
 				Child.prototype = new Box();
@@ -312,7 +313,7 @@ define(function(require, exports, module){
 				var cellTop = parseInt(item.params.top);
 				dom.append(child.dom);
 				child.move(cellLeft, cellTop);
-				var random = $.random(0,dir.length);
+				var random = opentype=='sort' ? 0 : $.random(0,dir.length);
 				var dirRandom = dir.splice(random,1);
 				child.transformMove(dirRandom[0][0], dirRandom[0][1],150);
 				child.dom.on("click",function(){
@@ -516,7 +517,7 @@ define(function(require, exports, module){
 				dropTime+=20;
 			}
 			childTmp.dom.animate({
-				top: '+='+dropTop
+				top: '+=' + dropTop
 			},time,function(){
 				var isrotate = $.random(0,3);
 				var rotate = 0;
