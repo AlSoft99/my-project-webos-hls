@@ -21,12 +21,55 @@
 	seajs.use(['box','jquery','jquery.fn','jquery.fn.flip'], function(box, $){
 		var bg = $("#box-background");
 		box.createBackground(bg);
+		var itemPosition = {
+			deliver:{
+				left: 5,
+				top: 5
+			},
+			concept:{
+				left: 9,
+				top: 3
+			},
+			testing:{
+				left: 10,
+				top: 4
+			},
+			about:{
+				left: 11,
+				top: 1
+			}
+		};
+		(function(){
+			var cell = Math.ceil($(document).width()/box.boxObj.realwidth);
+			var row = Math.ceil($(document).height()/box.boxObj.realheight);
+			
+			var interCell =  cell - box.boxObj.minCellCount -1;
+			var interRow = row - box.boxObj.minRowCount - 1;
+			
+			box.boxObj["actCell"] = cell;
+			box.boxObj["actRow"] = row;
+			for(var obj in itemPosition){
+				if(interCell < 0){
+					itemPosition[obj].left = itemPosition[obj].left + interCell;
+					if(itemPosition[obj].left <= 0){
+						itemPosition[obj].left = 1;
+					}
+				}
+				if(interRow < 0){
+					itemPosition[obj].top = itemPosition[obj].top + interRow;
+					if(itemPosition[obj].top <= 0){
+						itemPosition[obj].top = 1;
+					}
+				}
+			}
+		})();
+		
 		var deliverItem = box.createItem(bg,{
 			color: "#2DA4DB",
 			title: "Delivered Projects",
 			hover: "04",
-			left:5,
-			top:5,
+			left:itemPosition.deliver.left,
+			top:itemPosition.deliver.top,
 			onclick: function(_this, item){
 				//item1.animateMove(1,-1);
 				openDelivered();
@@ -52,8 +95,8 @@
 			child1_hover.on("click",click1);
 			function click1(){
 				var bodyContent = $("<div class='index-dialog' style='background-color:black;' ><img src='"+params.body+"' style='' ></div>");
-				var row = params.row || 6;
-				var cell = params.cell || 12;
+				var row = (box.boxObj.actRow - 1) < 6 ? (box.boxObj.actRow - 1) : 6;
+				var cell = (box.boxObj.actCell - 1 ) < 12 ? (box.boxObj.actCell - 1 ) : 12;
 				var content = "";
 				if(params.subTitle){
 					content = "<div class='index-dialog-title'><table><tr><td style='padding:0 40px 30px;background:url(styles/default/images/dot_line.png) no-repeat top right;white-space:nowrap; vertical-align:top;'>"+params.title+"</td><td style='padding:0 30px;font-size:12px;vertical-align:top;'>"+params.subTitle+"</td></tr></table></div>";
@@ -441,8 +484,8 @@
 			color: "#7AB42C",
 			title: "Concepts<br>&<br>Inspirations",
 			hover: "05",
-			left:9,
-			top:3,
+			left: itemPosition.concept.left,
+			top: itemPosition.concept.top,
 			onclick: function(_this, item){
 				openConcepts();
 				vi.goIndex(2);
@@ -640,8 +683,8 @@
 			color: "#964547",
 			title: "Quick<br>Usability<br>Testing",
 			hover: "06",
-			left:10,
-			top:4,
+			left: itemPosition.testing.left,
+			top: itemPosition.testing.top,
 			onclick: function(_this, item){
 				vi.goIndex(3);
 				openTesting();
@@ -782,8 +825,8 @@
 			color: "#332727",
 			title: "About<br>Us",
 			hover: "01",
-			left:11,
-			top:1,
+			left: itemPosition.about.left,
+			top: itemPosition.about.top,
 			onclick: function(_this, item){
 				vi.goIndex(4);
 				openAboutUs();
